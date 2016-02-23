@@ -1,0 +1,28 @@
+{
+  "name": "festatic",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "devDependencies": {
+    "gulp": "*",
+    "gulp-concat": "*",
+    "gulp-filter": "*",
+    "gulp-imagemin": "*",
+    "gulp-jshint": "*",
+    "gulp-livereload": "*",
+    "gulp-minify-css": "*",
+    "gulp-rename": "*",
+    "gulp-uglify": "*",
+    "simple-mime": "0.0.8",
+    "static-server": "^1.0.0"
+  },
+  "scripts": {
+    "test": "node index.js"
+  },
+  "author": "http://ydr.me",
+  "license": "ISC",
+  "dependencies": {
+    "gulp": "^3.8.1",
+    "mime": "^1.2.11"
+  }
+}

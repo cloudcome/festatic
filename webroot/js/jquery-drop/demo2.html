@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="renderer" content="webkit">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<meta name="author" content="云淡然;http://ydr.me">
+	<meta name="keywords" content="关键词1,关键词2">
+	<meta name="description" content="描述语句">
+	<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+	<link rel="apple-touch-icon" href="/favicon.png">
+	<title>文档标题</title>
+	<link rel="stylesheet" href="/bootstrap/3.1.1/css/bootstrap.min.css">
+	<link rel="stylesheet" href="/bootstrap/3.1.1/css/bootstrap-theme.min.css">
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<p>拖动的东西和释放的容器在一起<button id="btn1">再加个东西</button></p>
+				<div id="list" class="clearfix">
+					<div class="item">1</div>
+					<div class="item">2</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<script src="/js/yquery/latest/yquery.js"></script>
+	<script src="/js/jquery-drag/1.2/jquery-drag.js"></script>
+	<script src="/js/jquery-drop/1.0/jquery-drop.js"></script>
+	<script>
+	var id = $('#list').children().length;
+	$('#btn1').click(function(){
+		$('#list').append('<div class="item">' + (++id) +'</div>');
+	});
+	$('#list').drop({
+		handle: '.item',
+		drag: '.item',
+		containment: '#list',
+		ondragover: function(){
+			$(this).addClass('over');
+		},
+		ondragout: function(){
+			$(this).removeClass('over');
+		},
+		ondragenter: function(){
+			$(this).addClass('enter');
+		},
+		ondragleave: function(){
+			$(this).removeClass('enter');
+		}
+	});
+	</script>
+</body>
+</html>

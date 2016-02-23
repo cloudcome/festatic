@@ -1,0 +1,73 @@
+<!doctype html>
+
+<html lang="en">
+
+
+
+<head>
+
+    <meta charset="utf-8">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+
+    <meta name="author" content="云淡然;http://ydr.me">
+
+    <title>yQuery 操作DOM</title>
+
+    <link rel="stylesheet" href="http://festatic.aliapp.com/css/3/latest.css">
+
+    <style>
+    #demo {
+        width: 600px;
+        margin: auto;
+        text-align: center;
+    }
+    </style>
+
+</head>
+
+
+
+<body style="padding:10px;">
+
+
+
+    <div id="demo" class="alert alert-success">#demo</div>
+
+    <hr>
+
+    <button id="button-1">在#demo中最前面插入&lt;p&gt;#demo最前&lt;/p&gt;</button>
+    <button id="button-2">在#demo中最后面插入&lt;p&gt;#demo最后&lt;/p&gt;</button>
+    <button id="button-3">在#demo之前插入&lt;p&gt;#demo之前&lt;/p&gt;</button>
+    <button id="button-4">在#demo之后插入&lt;p&gt;#demo之后&lt;/p&gt;</button>
+
+
+
+    <script src="./1.7/yquery.js"></script>
+    <script>
+        var $demo = $("#demo");
+	    var $buttons = $("button");
+	    $("#button-1").click(function(e) {
+	    	$demo.prepend("<p>#demo最前</p>");
+	    });
+
+	    $("#button-2").click(function() {
+	    	$demo.append("<p>#demo最后</p>");
+	    });
+
+	    $("#button-3").click(function() {
+	    	$demo.before("<p>#demo之前</p>");
+	    });
+
+	    $("#button-4").click(function() {
+	    	$demo.after("<p>#demo之后</p>");
+	    });
+    </script>
+
+</body>
+
+
+
+</html>

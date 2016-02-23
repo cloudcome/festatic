@@ -1,0 +1,551 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+	<meta name="author" content="云淡然;http://ydr.me">
+
+	<title>jquery-scrollable.js demo - 前端静态资源</title>
+	<link rel="stylesheet" href="../../css/3/latest.min.css">
+
+
+	<style>
+	#demo1, #demo2 {
+		background: #000;
+		color: #fff;
+		padding: 10px;
+		width: 200px;
+		overflow: hidden;
+		position: relative;
+	}
+	#demo1 li, #demo2 li {
+		line-height: 20px;
+		margin-bottom: 10px;
+	}
+	#demo3, #demo4, #demo5 {
+		background: #eee;
+		border: 1px solid #ddd;
+		padding: 10px;
+	}
+	#demo3 li, #demo4 li, #demo5 li {
+		width: 100px;
+		height: 100px;
+		float: left;
+		line-height: 100px;
+		text-align: center;
+		font-size: 50px;
+		background: #fff;
+		color: #555;
+		margin: 10px;
+	}
+	#demo6{
+		background: #ffc;
+		padding: 10px;
+		border: 1px solid #EEEEA0;
+		border-radius: 4px;
+		color: #945300;
+	}
+	#demo7,#demo8{
+		background: #FFE5E5;
+		color: #A51A1A;
+		border: 1px solid #F8C6C6;
+		padding: 10px;
+		border-radius: 3px;
+		width: 250px;
+	}
+	#demo9,#demo10{
+		width: 400px;
+	}
+	#demo10 li{
+		width: 400px;
+		float: left;
+	}
+	</style>
+
+
+</head>
+
+<body style="padding:20px;">
+	<div class="hero">
+		<h1>jquery-scrollable.js demo</h1>
+		<p>作者：云淡然</p>
+		<p>兼容：ie9（含）+、chrome、firefox</p>
+	</div>
+
+	<div class="module">
+		<div class="module-header">1、插件说明</div>
+		<div class="module-body">
+			<ol class="list-lines">
+				<li>相关文章：<a href="http://qianduanblog.com/3072.html" target="_blank">http://qianduanblog.com/3072.html</a></li>
+				<li>默认DOM结构：<code>#list>ul>li*n</code></li>
+				<li>按需滚动任何列表，丰富配置，简单接口</li>
+				<li>无缝滚动不支持<code>prev</code>、<code>next</code>、<code>onbeforechange</code>、<code>onafterchange</code></li>
+			</ol>
+		</div>
+	</div>
+
+	<div class="module">
+		<div class="module-header">2、插件API</div>
+		<div class="module-body">
+			<pre>// 1、默认参数
+$.fn.scrollable = {
+	// 内容区域选择器
+	contentSelector: "ul",
+	// 宽度，超过隐藏
+	width: "auto",
+	// 高度，超过隐藏
+	height: "auto",
+	// 滚动方向
+	direction: "top",
+	// 每次滚动的项目数量
+	// 如果为1，则每次滚动1个，暂停的时候会是某一个项目的结尾
+	// 如果为0，则无缝滚动，暂停的时候可能会是某一个项目的中间
+	scrollNum: 1,
+	// 延迟时间
+	delay: 2000,
+	// 动画时间，如果滚动数量为0，则滚动全部数量的动画时间
+	duration: 678,
+	// 是否自动播放
+	isAutoPlay: true,
+	// 是否鼠标悬停暂停
+	isHoverPause: true,
+	// 变化之前回调
+	onbeforechange: emptyFn,
+	// 变化之后回调
+	onafterchange: emptyFn
+};
+
+
+// 2、初始化
+// 默认DOM：#demo>ul>li*n
+$("#demo").scrollable();
+
+
+// 3、控制
+// 3.1、滚动到
+$("#demo").scrollable(index[, duration][, callback]);
+
+// 3.2、播放
+$("#demo").scrollable("play");
+
+// 3.3、暂停
+$("#demo").scrollable("pause");
+
+// 3.4、前
+$("#demo").scrollable("prev");
+
+// 3.5、后
+$("#demo").scrollable("next");
+</pre>
+		</div>
+	</div>
+
+	<div class="module">
+		<div class="module-header">3、插件演示</div>
+		<div class="module-body">
+			<p class="text-lead">3.1、2个项目向上滚动</p>
+			<p class="mb10">
+				<button class="button" id="button1-1">滚动到index=10</button>
+				<button class="button" id="button1-2">上一轮</button>
+				<button class="button" id="button1-3">下一轮</button>
+			</p>
+			<div id="demo1">
+				<ol class="list-lines">
+					<li>单行项目</li>
+					<li>多行项目多行项目多行项目多行项目多行项目多行项目多行项目多行项目多行项目多行项目多行项目多行项目多行项目多行项目多行项目多行项目多行项目</li>
+					<li>单行项目</li>
+					<li>多行项目多行项目多行项目多行项目多行项目多行项目多行项目多行项目多行项目多行项目多行项目多行项目多行项目多行项目多行项目多行项目多行项目</li>
+					<li>单行项目</li>
+					<li>单行项目</li>
+					<li>多行项目多行项目多行项目多行项目多行项目多行项目多行项目多行项目多行项目多行项目多行项目多行项目多行项目多行项目多行项目多行项目多行项目</li>
+					<li>单行项目</li>
+					<li>单行项目</li>
+					<li>多行项目多行项目多行项目多行项目多行项目多行项目多行项目多行项目多行项目多行项目多行项目多行项目多行项目多行项目多行项目多行项目多行项目</li>
+					<li>单行项目</li>
+					<li>单行项目</li>
+					<li>单行项目</li>
+				</ol>
+			</div>
+			<hr>
+			<p class="text-lead">3.2、3个项目向下滚动</p>
+			<p class="mb10">
+				<button class="button" id="button2-1">滚动到index=10</button>
+				<button class="button" id="button2-2">上一轮</button>
+				<button class="button" id="button2-3">下一轮</button>
+			</p>
+			<div id="demo2">
+				<ol class="list-lines">
+					<li>单行项目</li>
+					<li>多行项目多行项目多行项目多行项目多行项目多行项目多行项目多行项目多行项目多行项目多行项目多行项目多行项目多行项目多行项目多行项目多行项目</li>
+					<li>单行项目</li>
+					<li>多行项目多行项目多行项目多行项目多行项目多行项目多行项目多行项目多行项目多行项目多行项目多行项目多行项目多行项目多行项目多行项目多行项目</li>
+					<li>单行项目</li>
+					<li>单行项目</li>
+					<li>多行项目多行项目多行项目多行项目多行项目多行项目多行项目多行项目多行项目多行项目多行项目多行项目多行项目多行项目多行项目多行项目多行项目</li>
+					<li>单行项目</li>
+					<li>单行项目</li>
+					<li>多行项目多行项目多行项目多行项目多行项目多行项目多行项目多行项目多行项目多行项目多行项目多行项目多行项目多行项目多行项目多行项目多行项目</li>
+					<li>单行项目</li>
+					<li>单行项目</li>
+					<li>单行项目</li>
+				</ol>
+			</div>
+			<hr>
+			<p class="text-lead">3.3、5个项目向左滚动</p>
+			<p class="mb10">
+				<button class="button" id="button3-1">滚动到index=10</button>
+				<button class="button" id="button3-2">上一轮</button>
+				<button class="button" id="button3-3">下一轮</button>
+			</p>
+			<div id="demo3">
+				<ul class="list-unstyled clearfix">
+					<li>1</li>
+					<li>2</li>
+					<li>3</li>
+					<li>4</li>
+					<li>5</li>
+					<li>6</li>
+					<li>7</li>
+					<li>8</li>
+					<li>9</li>
+					<li>10</li>
+					<li>11</li>
+					<li>12</li>
+					<li>13</li>
+					<li>14</li>
+					<li>15</li>
+					<li>16</li>
+					<li>17</li>
+					<li>18</li>
+					<li>19</li>
+					<li>20</li>
+					<li>21</li>
+					<li>22</li>
+				</ul>
+			</div>
+			<hr>
+			<p class="text-lead">3.4、5个项目向右滚动</p>
+			<p class="mb10">
+				<button class="button" id="button4-1">滚动到index=10</button>
+				<button class="button" id="button4-2">上一轮</button>
+				<button class="button" id="button4-3">下一轮</button>
+			</p>
+			<div id="demo4">
+				<ul class="list-unstyled clearfix">
+					<li>1</li>
+					<li>2</li>
+					<li>3</li>
+					<li>4</li>
+					<li>5</li>
+					<li>6</li>
+					<li>7</li>
+					<li>8</li>
+					<li>9</li>
+					<li>10</li>
+					<li>11</li>
+					<li>12</li>
+					<li>13</li>
+					<li>14</li>
+					<li>15</li>
+					<li>16</li>
+					<li>17</li>
+					<li>18</li>
+					<li>19</li>
+					<li>20</li>
+					<li>21</li>
+					<li>22</li>
+				</ul>
+			</div>
+			<hr>
+			<p class="text-lead">3.5、向右无缝滚动</p>
+			<p class="mb10">
+				<button class="button" id="button5-1">滚动到index=10</button>
+			</p>
+			<div id="demo5">
+				<ul class="list-unstyled clearfix">
+					<li>1</li>
+					<li>2</li>
+					<li>3</li>
+					<li>4</li>
+					<li>5</li>
+					<li>6</li>
+					<li>7</li>
+					<li>8</li>
+					<li>9</li>
+					<li>10</li>
+					<li>11</li>
+					<li>12</li>
+					<li>13</li>
+					<li>14</li>
+					<li>15</li>
+					<li>16</li>
+					<li>17</li>
+					<li>18</li>
+					<li>19</li>
+					<li>20</li>
+					<li>21</li>
+					<li>22</li>
+				</ul>
+			</div>
+			<hr>
+			<p class="text-lead">3.6、向左无缝滚动</p>
+			<p class="mb10">
+				<button class="button" id="button6-1">500ms滚动到index=10并回调</button>
+			</p>
+			<div id="demo6">
+				<ul class="list-inline">
+					<li>1-水平滚动文字</li>
+					<li>2-水平滚动文字</li>
+					<li>3-水平滚动文字</li>
+					<li>4-水平滚动文字</li>
+					<li>5-水平滚动文字</li>
+					<li>6-水平滚动文字</li>
+					<li>7-水平滚动文字</li>
+					<li>8-水平滚动文字</li>
+					<li>9-水平滚动文字</li>
+					<li>10-水平滚动文字</li>
+					<li>11-水平滚动文字</li>
+					<li>12-水平滚动文字</li>
+					<li>13-水平滚动文字</li>
+					<li>14-水平滚动文字</li>
+					<li>15-水平滚动文字</li>
+					<li>16-水平滚动文字</li>
+				</ul>
+			</div>
+			<hr>
+			<p class="text-lead">3.7、向上无缝滚动</p>
+			<p class="mb10">
+				<button class="button" id="button7-1">默认时间滚动到index=10并回调</button>
+			</p>
+			<div id="demo7">
+				<ol class="list-lines">
+					<li>单行项目</li>
+					<li>多行项目多行项目多行项目多行项目多行项目多行项目多行项目多行项目多行项目多行项目多行项目多行项目多行项目多行项目多行项目多行项目多行项目</li>
+					<li>单行项目</li>
+					<li>多行项目多行项目多行项目多行项目多行项目多行项目多行项目多行项目多行项目多行项目多行项目多行项目多行项目多行项目多行项目多行项目多行项目</li>
+					<li>单行项目</li>
+					<li>单行项目</li>
+					<li>多行项目多行项目多行项目多行项目多行项目多行项目多行项目多行项目多行项目多行项目多行项目多行项目多行项目多行项目多行项目多行项目多行项目</li>
+					<li>单行项目</li>
+					<li>单行项目</li>
+					<li>多行项目多行项目多行项目多行项目多行项目多行项目多行项目多行项目多行项目多行项目多行项目多行项目多行项目多行项目多行项目多行项目多行项目</li>
+					<li>单行项目</li>
+					<li>单行项目</li>
+					<li>单行项目</li>
+				</ol>
+			</div>
+			<hr>
+			<p class="text-lead">3.8、向上无缝滚动</p>
+			<p class="mb10">
+				<button class="button" id="button8-1">默认时间滚动到index=10</button>
+			</p>
+			<div id="demo8">
+				<ol class="list-lines">
+					<li>单行项目</li>
+					<li>多行项目多行项目多行项目多行项目多行项目多行项目多行项目多行项目多行项目多行项目多行项目多行项目多行项目多行项目多行项目多行项目多行项目</li>
+					<li>单行项目</li>
+					<li>多行项目多行项目多行项目多行项目多行项目多行项目多行项目多行项目多行项目多行项目多行项目多行项目多行项目多行项目多行项目多行项目多行项目</li>
+					<li>单行项目</li>
+					<li>单行项目</li>
+					<li>多行项目多行项目多行项目多行项目多行项目多行项目多行项目多行项目多行项目多行项目多行项目多行项目多行项目多行项目多行项目多行项目多行项目</li>
+					<li>单行项目</li>
+					<li>单行项目</li>
+					<li>多行项目多行项目多行项目多行项目多行项目多行项目多行项目多行项目多行项目多行项目多行项目多行项目多行项目多行项目多行项目多行项目多行项目</li>
+					<li>单行项目</li>
+					<li>单行项目</li>
+					<li>单行项目</li>
+				</ol>
+			</div>
+			<hr>
+			<p class="text-lead">3.9、单行向上滚动</p>
+			<div id="demo9" class="alert alert-info">
+				<ol class="list-line">
+					<li>1111111111111111111111111111111111111111</li>
+					<li>2222222222222222222222222222222222222222</li>
+					<li>3333333333333333333333333333333333333333</li>
+					<li>4444444444444444444444444444444444444444</li>
+					<li>5555555555555555555555555555555555555555</li>
+				</ol>
+			</div>
+			<hr>
+			<p class="text-lead">3.10、单行向左滚动</p>
+			<div id="demo10" class="alert alert-warning">
+				<ol class="list-line">
+					<li>1111111111111111111111111111111111111111</li>
+					<li>2222222222222222222222222222222222222222</li>
+					<li>3333333333333333333333333333333333333333</li>
+					<li>4444444444444444444444444444444444444444</li>
+					<li>5555555555555555555555555555555555555555</li>
+				</ol>
+			</div>
+		</div>
+	</div>
+
+	<div class="module">
+		<div class="module-header">4、插件下载</div>
+		<div class="module-body">
+			<p>
+				<a href="/#jquery-scrollable">http://festatic.aliapp.com/#jquery-scrollable</a>
+			</p>
+		</div>
+	</div>
+
+
+
+	<script src="http://libs.baidu.com/jquery/1.10.2/jquery.min.js"></script>
+	<script src="latest.js"></script>
+	<script>
+	$("#demo1").scrollable({
+		contentSelector:"ol",
+		direction:"top",
+		height:"300",
+		scrollNum:2
+	});
+	$("#button1-1").click(function(){
+		$("#demo1").scrollable(10);
+	});
+	$("#button1-2").click(function(){
+		$("#demo1").scrollable("prev");
+	});
+	$("#button1-3").click(function(){
+		$("#demo1").scrollable("next");
+	});
+	
+
+	$("#demo2").scrollable({
+		contentSelector:"ol",
+		direction:"bottom",
+		height:"300",
+		scrollNum:3
+	});
+	$("#button2-1").click(function(){
+		$("#demo2").scrollable(10);
+	});
+	$("#button2-2").click(function(){
+		$("#demo2").scrollable("prev");
+	});
+	$("#button2-3").click(function(){
+		$("#demo2").scrollable("next");
+	});
+
+
+	$("#demo3").scrollable({
+		contentSelector:"ul",
+		width:"auto",
+		height:120,
+		direction:"left",
+		scrollNum:5
+	});
+	$("#button3-1").click(function(){
+		$("#demo3").scrollable(10);
+	});
+	$("#button3-2").click(function(){
+		$("#demo3").scrollable("prev");
+	});
+	$("#button3-3").click(function(){
+		$("#demo3").scrollable("next");
+	});
+
+
+	$("#demo4").scrollable({
+		contentSelector: "ul",
+		width: "auto",
+		height: 120,
+		direction: "right",
+		scrollNum: 5
+	});
+	$("#button4-1").click(function(){
+		$("#demo4").scrollable(10);
+	});
+	$("#button4-2").click(function(){
+		$("#demo4").scrollable("prev");
+	});
+	$("#button4-3").click(function(){
+		$("#demo4").scrollable("next");
+	});
+
+
+	$("#demo5").scrollable({
+		contentSelector: "ul",
+		width: "auto",
+		height: 120,
+		direction: "right",
+		duration:10000,
+		scrollNum: 0
+	});
+	$("#button5-1").click(function(){
+		$("#demo5").scrollable(10);
+	});
+
+
+	$("#demo6").scrollable({
+		contentSelector: "ul",
+		width: "auto",
+		height: 20,
+		direction: "left",
+		duration:60000,
+		scrollNum: 0
+	});
+	$("#button6-1").click(function(){
+		$("#demo6").scrollable(10,500,function(){
+			alert("滚动完成！");
+		});
+	});
+
+
+	$("#demo7").scrollable({
+		contentSelector: "ol",
+		width: 250,
+		height: 250,
+		direction: "top",
+		duration:20000,
+		scrollNum: 0
+	});
+	$("#button7-1").click(function(){
+		$("#demo7").scrollable(10,function(){
+			alert("滚动完成！");
+		});
+	});
+
+
+	$("#demo8").scrollable({
+		contentSelector: "ol",
+		width: 250,
+		height: 250,
+		direction: "bottom",
+		duration:20000,
+		scrollNum: 0
+	});
+	$("#button8-1").click(function(){
+		$("#demo8").scrollable(10);
+	});
+
+	$("#demo9").scrollable({
+		contentSelector:"ol",
+		width:"auto",
+		height:30,
+		direction:"top",
+		scrollNum:1,
+		duration:1000,
+		delay:3000
+	});
+
+	$("#demo10").scrollable({
+		contentSelector:"ol",
+		width:"auto",
+		height:30,
+		direction:"left",
+		scrollNum:1,
+		duration:1000,
+		delay:3000
+	});
+	</script>
+
+
+
+
+</body>
+
+</html>

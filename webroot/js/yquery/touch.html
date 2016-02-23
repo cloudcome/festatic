@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="renderer" content="webkit">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<meta name="author" content="云淡然;http://ydr.me">
+	<meta name="keywords" content="关键词1,关键词2">
+	<meta name="description" content="描述语句">
+	<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+	<link rel="apple-touch-icon" href="/favicon.png">
+	<title>touch</title>
+	<style>
+		.box{
+			border: 4px solid;
+			padding: 30px;
+			line-height: 60px;
+			text-align: center;
+			font-size: 30px;
+			margin-bottom: 20px;
+		}
+		.box:nth-child(1){
+			background: #FA90D8;
+			border-color: #D858AF;
+		}
+		.box:nth-child(2){
+			background: #A0D1F0;
+			border-color: #3B86B7;
+		}
+		.box:nth-child(3){
+			background: #79D6B9;
+			border-color: #3BB48E;
+		}
+		.box:nth-child(4){
+			background: #89EA7E;
+			border-color: #46A23B;
+		}
+		.box:nth-child(5){
+			background: #E5EA86;
+			border-color: #BCC44D;
+		}
+		.box:nth-child(6){
+			background: #DE9D6C;
+			border-color: #BC7640;
+		}
+		.box:nth-child(7){
+			background: #8695FA;
+			border-color: #4652BF;
+		}
+		.box:nth-child(8){
+			background: #FA8995;
+			border-color: #CE5562;
+		}
+	</style>
+</head>
+<body>
+	<div id="click" class="box">
+		单击此处
+	</div>
+
+	<div id="tap" class="box">
+		轻击此处
+	</div>
+
+	<div id="taphold" class="box">
+		长触此处
+	</div>
+
+	<div id="swipeup" class="box">
+		上滑此处
+	</div>
+
+	<div id="swiperight" class="box">
+		右滑此处
+	</div>
+
+	<div id="swipedown" class="box">
+		下滑此处
+	</div>
+
+	<div id="swipeleft" class="box">
+		左滑此处
+	</div>
+
+	<div id="tapick" class="box">
+		轻击、单击此处
+	</div>
+
+	<script src="1.7/yquery.js"></script>
+	<script>
+		var times0 = 0;
+		$('#click').click(function(){
+			$(this).html('第'+ (++times0) +'次单击。');
+		});
+
+		var times1 = 0;
+		$('#tap').tap(function(){
+			$(this).html('第'+ (++times1) +'次轻击。');
+		});
+
+		var times2 = 0;
+		$('#taphold').taphold(function(e){
+			console.log(e);
+			$(this).html('第'+ (++times2) +'次长触。');
+		});
+
+		var times3 = 0;
+		$('#swipeup').swipeup(function(){
+			$(this).html('第'+ (++times3) +'次上滑。');
+		});
+
+		var times4 = 0;
+		$('#swiperight').swiperight(function(){
+			$(this).html('第'+ (++times4) +'次右滑。');
+		});
+
+		var times5 = 0;
+		$('#swipedown').swipedown(function(){
+			$(this).html('第'+ (++times5) +'次下滑。');
+		});
+
+		var times6 = 0;
+		$('#swipeleft').swipeleft(function(){
+			$(this).html('第'+ (++times6) +'次左滑。');
+		});
+
+		var times7 = 0;
+		$('#tapick').tapick(function(e){
+			console.log(e);
+			$(this).html('第'+ (++times7) +'次' + e.type + '。');
+		});
+
+	</script>
+</body>
+</html>

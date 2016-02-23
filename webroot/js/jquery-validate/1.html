@@ -1,0 +1,399 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="author" content="云淡然;http://ydr.me">
+    <meta name="keywords" content="关键词1,关键词2">
+    <meta name="description" content="描述语句">
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" href="/favicon.png">
+    <title>例1 - jquery-validate.js demo</title>
+    <link rel="stylesheet" href="/bootstrap/3.1.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/bootstrap/3.1.1/css/bootstrap-theme.min.css">
+    <style>
+        form{
+            margin-bottom: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="jumbotron">
+        <div class="container">
+            <h1>jquery-validate.js demo</h1>
+            <p><a href="index.html#5">返回插件文档页面</a>
+            </p>
+        </div>
+    </div>
+    <div class="container">
+        <form action="" class="form form-horizontal" id="form">
+            <legend class="lead text-danger">例1、表单验证，其中远程验证仅为模拟演示，无实际效果，切勿当真</legend>
+            <div class="form-group">
+                <div class="col-md-2">
+                    <label for="username" class="control-label">用户名</label>
+                </div>
+                <div class="col-md-4">
+                    <input type="text" name="username" id="username" class="form-control" required pattern="^[a-zA-Z]\w{3,19}$" data-msg='{
+                        "required":"用户名不能为空！",
+                        "pattern":"用户名不符合规范，必须是4-20位英文、数字、下划线、中横线字符，并且开头只能为字母！"
+                    }'>
+                </div>
+                <div class="col-md-6">
+                    <div class="help-block">填写用户名，4-20位英文、数字、下划线、中横线字符，并且开头只能为字母。</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-2">
+                    <label for="password" class="control-label">密码</label>
+                </div>
+                <div class="col-md-4">
+                    <input type="text" name="password" id="password" class="form-control" required pattern="^\w{4,20}$" data-msg='{
+                        "required":"密码不能为空！",
+                        "pattern":"密码不合法，必须是4-20位字符！"
+                    }'>
+                </div>
+                <div class="col-md-6">
+                    <div class="help-block">填写密码，4-20个字符之间。</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-2">
+                    <label for="password2" class="control-label">确认密码</label>
+                </div>
+                <div class="col-md-4">
+                    <input type="text" name="password2" id="password2" class="form-control" required data-equal="password" pattern="^\w{4,20}$" data-msg='{
+                        "equal":"确认密码不正确！",
+                        "required":"确认密码不能为空！",
+                        "pattern":"确认密码不合法，必须是4-20位字符！"
+                    }'>
+                </div>
+                <div class="col-md-6">
+                    <div class="help-block">填写确认密码，4-20个字符之间。</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-2">
+                    <label for="url" class="control-label">url地址</label>
+                </div>
+                <div class="col-md-4">
+                    <input type="url" name="url" id="url" class="form-control" required data-msg='{
+                        "required":"url地址不能为空！",
+                        "type":"url地址不符合规范！"
+                    }'>
+                </div>
+                <div class="col-md-6">
+                    <div class="help-block">填写url地址。</div>
+                </div>
+            </div>
+            <div class="form-group form-skip">
+                <div class="col-md-2">
+                    <label for="url" class="control-label">跳过</label>
+                </div>
+                <div class="col-md-4">
+                    <input type="text" name="text" class="form-control">
+                </div>
+                <div class="col-md-6">
+                    <div class="help-block">当前此项会在表单验证中被跳过验证。</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-2">
+                    <label for="email" class="control-label">邮箱</label>
+                </div>
+                <div class="col-md-4">
+                    <input type="email" name="email" id="email" class="form-control" required data-msg='{
+                        "required":"email地址不能为空！",
+                        "type":"email地址不符合规范！"
+                    }'>
+                </div>
+                <div class="col-md-6">
+                    <div class="help-block">填写email地址。</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-2">
+                    <label for="number" class="control-label">整数</label>
+                </div>
+                <div class="col-md-4">
+                    <input type="text" data-type="number" name="number" min="10" max="30" step="2" id="number" class="form-control" required data-msg='{
+                        "required":"number数值不能为空！",
+                        "type":"number数值必须是正整数！",
+                        "min":"number数值不能小于10！",
+                        "max":"number数值不能大于20！",
+                        "step":"number数值必须是2的倍数！"
+                    }'>
+                </div>
+                <div class="col-md-6">
+                    <div class="help-block">填写在10-20之间2的倍数的整数。</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-2">
+                    <label for="checkbox1" class="control-label">爱好</label>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-inline">
+                        <label class="checkbox-inline">
+                            <input type="checkbox" name="checkbox" id="checkbox1" value="1" data-least="1" data-most="3" data-msg='{
+                                "least":"至少选择1项爱好",
+                                "most":"最多选择3项爱好"
+                            }'>唱歌</label>
+                        <label class="checkbox-inline">
+                            <input type="checkbox" name="checkbox" id="checkbox2" value="2">跳舞</label>
+                        <label class="checkbox-inline">
+                            <input type="checkbox" name="checkbox" id="checkbox3" value="3">睡觉</label>
+                        <label class="checkbox-inline">
+                            <input type="checkbox" name="checkbox" id="checkbox4" value="4">吃饭</label>
+                        <label class="checkbox-inline">
+                            <input type="checkbox" name="checkbox" id="checkbox5" value="5">奔跑</label>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="help-block">选择你的爱好</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-2">
+                    <label for="radio1" class="control-label">性别</label>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-inline">
+                        <label class="radio-inline">
+                            <input type="radio" name="radio" id="radio1" value="1" required data-msg='{
+                                "required":"性别必选"
+                            }'>男性</label>
+                        <label class="radio-inline">
+                            <input type="radio" name="radio" id="radio2" value="2">女性</label>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="help-block">选择你的性别</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-2">
+                    <label for="select1" class="control-label">年薪</label>
+                </div>
+                <div class="col-md-4">
+                    <select name="select1" id="select1" class="form-control" data-placeholder="" required data-msg='{
+                        "required":"年薪是必选的！"
+                    }'>
+                        <option value="">请选择</option>
+                        <option value="1">10万</option>
+                        <option value="2">20万</option>
+                        <option value="3">30万</option>
+                        <option value="4">40万</option>
+                        <option value="5">50万</option>
+                    </select>
+                </div>
+                <div class="col-md-6">
+                    <div class="help-block">选择你的年薪</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-2">
+                    <label for="select2" class="control-label">喜爱的电影</label>
+                </div>
+                <div class="col-md-4">
+                    <select name="select2" id="select2" class="form-control" multiple data-least="2" data-most="3" data-msg='{
+                        "least":"至少选择2个电影类型",
+                        "most":"最多选择3个电影类型"
+                    }'>
+                        <option value="1">喜剧片</option>
+                        <option value="2">爱情片</option>
+                        <option value="3">动作片</option>
+                        <option value="4">科幻片</option>
+                        <option value="5">古装片</option>
+                        <option value="6">枪战片</option>
+                        <option value="7">戏曲片</option>
+                        <option value="8">文艺片</option>
+                        <option value="9">二逼片</option>
+                    </select>
+                </div>
+                <div class="col-md-6">
+                    <div class="help-block">选择你喜爱的电影</div>
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <div class="col-md-2">
+                    <label for="file" class="control-label">选择图片</label>
+                </div>
+                <div class="col-md-4">
+                    <input type="file" name="file" id="file" required data-suffix="jpg,gif,png">
+                </div>
+                <div class="col-md-6">
+                    <div class="help-block">选择图片，支持“jpg,gif,png”</div>
+                </div>
+            </div>
+            <button id='submit' type="submit" class="btn btn-primary">表单提交</button>
+        </form>
+    </div>
+    <script src="/js/jquery/1.11.0/jquery.min.js"></script>
+    <script src="/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+    <script src="1.0/jquery-validate.js"></script>
+    <script>
+    var simulateAjax = function() {
+        return function() {
+            var url = ajaxUrls[ajaxCurrent];
+            var deferred = _ajax();
+            options.onajax.call(item);
+            $.when(deferred).always(function() {
+                var json = {};
+                var b = deferred.state() === 'resolved';
+                json.status = b ? 1 : 0;
+                json.msg = '【模拟】ajax请求验证' + (b ? '正确' : '错误');
+                callback(json);
+            });
+        }
+    };
+
+    var $formGroups = $('.form-group');
+    var $formControls = $('input,select,textarea');
+    var $form = $('#form');
+    var $submit = $('#submit');
+    var isSubmit = 0;
+
+    $submit.click(function() {
+        // $formControls.prop('disabled', 1);
+        $submit.prop('disabled', 1);
+        $formGroups.removeClass('has-error has-warning has-success');
+        $formControls.each(function() {
+            msg(this);
+        });
+        $form.validate({
+            formItemSkipClass: 'form-skip',
+            localRules: {
+                select2: [
+                    function() {
+                        return {
+                            status: $.inArray('1', $(this).val()) > -1,
+                            msg: '“喜剧片”是必选项！'
+                        }
+                    }
+                ]
+            },
+            remoteRules: {
+                // 按顺序ajax验证
+                username: [{
+                    timeout: 5000,
+                    type: 'get',
+                    dataType: 'script',
+                    url: 'http://festatic.aliapp.com/test/index.php?var=testvar',
+                    success: function(data, textStatus, jqXHR) {
+                        return {
+                            status: true,
+                            msg: '【模拟】该用户名尚未重复。'
+                        };
+                    },
+                    error: function(jqXHR, textStatus, errorThrown) {
+                        return {
+                            status: false,
+                            msg: '【模拟】第1次ajax验证网络错误！'
+                        };
+                    }
+                }, {
+                    timeout: 5000,
+                    dataType: 'script',
+                    url: 'http://festatic.aliapp.com/test/index.php?var=testvar',
+                    success: function(data, textStatus, jqXHR) {
+                        return {
+                            status: true,
+                            msg: '【模拟】该用户名可以注册！'
+                        };
+                    },
+                    error: function(jqXHR, textStatus, errorThrown) {
+                        return {
+                            status: false,
+                            msg: '【模拟】第2次ajax验证网络错误！'
+                        };
+                    }
+                }],
+                email: [{
+                    timeout: 5000,
+                    type: 'get',
+                    dataType: 'script',
+                    url: 'http://festatic.aliapp.com/test/index.php?var=testvar',
+                    success: function(data, textStatus, jqXHR) {
+                        return {
+                            status: true,
+                            msg: '【模拟】该邮箱尚未重复。'
+                        };
+                    },
+                    error: function(jqXHR, textStatus, errorThrown) {
+                        return {
+                            status: false,
+                            msg: '【模拟】第1个ajax网络错误！'
+                        };
+                    }
+                }, {
+                    timeout: 5000,
+                    dataType: 'script',
+                    url: 'http://festatic.aliapp.com/test/index.php?var=testvar',
+                    success: function(data, textStatus, jqXHR) {
+                        return {
+                            status: true,
+                            msg: '【模拟】该邮箱可以注册！'
+                        };
+                    },
+                    error: function(jqXHR, textStatus, errorThrown) {
+                        return {
+                            status: false,
+                            msg: '【模拟】第2个ajax网络错误！'
+                        };
+                    }
+                }]
+            },
+            onvalid: function() {
+                msg(this, 'success', '验证通过！');
+            },
+            oninvalid: function(error) {
+                msg(this, 'error', error);
+            },
+            onfocus: function() {
+                isSubmit = 1;
+                msg(this);
+            },
+            oncomplete: function() {
+                isSubmit = 0;
+                // $formControls.prop('disabled', 0);
+                $submit.prop('disabled', 0);
+            },
+            onremote: function() {
+                msg(this, 'warning', '正在ajax验证，请稍后……');
+            },
+            onsuccess: function() {
+                alert('表单全部验证通过，可以提交了！');
+            },
+            onsubmit: function() {
+                alert('表单提交完成！');
+            }
+        });
+        return !1;
+    });
+
+    function msg($item, type, content) {
+        var $group = $($item).closest('.form-group'),
+            $help = $group.find('.help-block'),
+            cls = 'has-error has-warning has-success';
+
+        if (!$help.data('original')) $help.data('original', $help.html());
+
+        if (type === undefined) {
+            $group.removeClass(cls);
+            $help.html($help.data('original'));
+        } else {
+            $group.removeClass(cls).addClass('has-' + type);
+            $help.html(content);
+            if (type === 'error') $item.focus();
+        }
+    }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,472 @@
+<!doctype html>
+
+<html lang="en">
+
+
+
+<head>
+
+	<meta charset="utf-8">
+
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+
+	<meta name="author" content="云淡然;http://ydr.me">
+
+
+
+	<title>jquery-upload.js demo - 前端静态资源</title>
+
+	<link rel="stylesheet" href="../../css/3/latest.min.css">
+
+
+
+	<style>
+	.progress {
+	position: relative;
+	width: 200px;
+	height: 200px;
+}
+
+.progress span {
+	position: absolute;
+	left: 0;
+	height: 40px;
+	top: 30px;
+	line-height: 40px;
+	text-align: center;
+	width: 200px;
+	font-size: 30px;
+	color: #087BCE;
+}
+	</style>
+
+
+
+</head>
+
+
+
+<body style="padding:20px;">
+
+	<div class="hero">
+
+		<h1>jquery-upload.js demo</h1>
+
+		<p>作者：云淡然</p>
+
+		<p>兼容：ie9（含）+、chrome、firefox以及移动浏览器</p>
+	</div>
+
+
+
+	<div class="module">
+
+		<div class="module-header">1、插件说明</div>
+
+		<ol class="module-body list-line">
+
+			<li>相关文章：<a href="http://qianduanblog.com/2939.html" target="_blank">http://qianduanblog.com/2939.html</a>。</li>
+
+			<li>使用html5 formData对象和html4的form提交，主要用于多文件同时上传</li>
+
+			<li>文件上传使用inputName_index来命名name，用于区分文件的索引匹配</li>
+
+			<li>html5中，分别计算各个input的完成、错误、成功回调</li>
+
+			<li>html4中，统一计算所有input的完成、错误、成功回调</li>
+
+			<li>限制数据接收类型为JSON</li>
+
+		</ol>
+
+	</div>
+
+
+
+
+
+	<div class="module">
+
+		<div class="module-header">2、插件API</div>
+
+		<div class="module-body">
+
+			<p class="text-lead">客户端：</p>
+
+			<pre>// 1、判断浏览器支持特征
+
+// 是否支持HTML5的input的files对象，用于同时选择上传多张图片
+
+$.support.inputFiles;
+
+// 是否支持HTML5的FormData，用于AJAX提交
+
+$.support.formData;
+
+
+
+
+
+// 2、默认参数
+
+$.fn.upload.defaults = {
+
+	// 提交地址
+
+	action: "",
+
+	// 传递额外数据（键值对字符串）
+
+	data: null,
+
+	// 表单文件的name值
+
+	inputName: "file",
+
+	// 文件最小容量（单位B，默认0）
+
+	minSize: 0,
+
+	// 文件最大容量（单位B，默认1M=1024KB=1024*1024B）
+
+	maxSize: 1048576,
+
+	// 文件类型（文件后缀）
+
+	fileType: ["png", "jpg", "jpeg", "gif"],
+
+	// 错误消息提示
+
+	errorMsg: {
+
+		// 单文件上传错误或失败
+
+		singleError: "第{n}个文件上传错误或失败",
+
+		// 多文件上传错误或失败
+
+		multiError: "上传错误或失败",
+
+		// 单文件未选择
+
+		singleNone: "尚未选择第{n}个上传文件",
+
+		// 多文件未选择
+
+		multiNone: "尚未选择任何上传文件",
+
+		// 多文件列表为空
+
+		empty: "待上传文件为空",
+
+		// 单、多文件错误，{n}表示该文件的序号，开始序号为1
+
+		type: "第{n}个文件类型不符合要求",
+
+		size: "第{n}个文件容量不符合要求"
+
+	},
+
+	// 完成回调，无论成功还是失败
+
+	oncomplete: emptyFn,
+
+	// 成功回调
+
+	onsuccess: emptyFn,
+
+	// 失败回调
+
+	onerror: emptyFn,
+
+	// 进度回调
+
+	onprogress: emptyFn
+
+};
+
+
+
+
+
+// 3、上传文件
+
+$("#file").upload({
+
+	action: "upload.php"
+
+});
+
+
+
+
+
+// 4、增加文件MIME配对关系
+
+// 添加单个
+
+$.fn.upload.addTypeRelationship("text/html", "html");
+
+// 添加多个
+
+$.fn.upload.addTypeRelationship({
+
+	"text/html": "html",
+
+	"text/xhtml": "xhtml"
+
+});
+
+</pre>
+
+			<p class="text-lead">服务端：</p>
+
+			<pre>&lt;?php
+
+if(isset($_FILES)){
+
+	$json=array();
+
+	if(is_array($_FILES)){
+
+		foreach ($_FILES as $key => $file) {
+
+			preg_match("#^file_(\d+)$#", $key, $matches);
+
+			if($matches){
+
+				$json[]=array(
+
+					"index"=>$matches[1],
+
+					"name"=>$file["name"],
+
+				);
+
+			}
+
+		}
+
+	}
+
+	echo json_encode($json);
+
+	exit();
+
+}</pre>
+
+		</div>
+
+	</div>
+
+
+
+
+
+	<div class="module">
+
+		<div class="module-header">3、插件演示</div>
+
+		<div class="module-body">
+
+			<p class="mb10">
+
+				<input type="file" class="file hide" name="file" id="file1" accept="image/png,image/jpg,image/gif" multiple />
+
+				<input type="file" class="file hide" name="file" id="file2" accept="image/png,image/jpg,image/gif" multiple />
+
+			</p>
+
+			<div class="progress text-center" id="canvas">
+
+				<canvas id="progress" width="100" height="100">您的浏览器不支持canvas</canvas>
+
+				<span id="precent">0%</span>
+
+			</div>
+
+			<button id="button">上传</button>
+
+			<hr>
+
+			<div id="ret" class="alert alert-muted">结果</div>
+
+		</div>
+
+	</div>
+
+
+
+
+
+	<div class="module">
+
+		<div class="module-header">4、插件下载</div>
+
+		<div class="module-body">
+
+			<p>
+
+				<a href="/#jquery-upload">http://festatic.aliapp.com/#jquery-upload</a>
+
+			</p>
+
+		</div>
+
+	</div>
+
+
+
+
+
+
+
+
+
+	<script src="/js/jquery/1.11.0/jquery.js"></script>
+
+	<script src="../jquery-progress/latest.js"></script>
+
+	<script src="latest.js"></script>
+
+	<script>
+	var $file1 = $("#file1");
+
+	var $file2 = $("#file2");
+
+	var $files = $(".file");
+
+	var $button = $("#button");
+
+	var $canvas = $("#canvas");
+
+	var $progress = $("#progress");
+
+	var $precent = $("#precent");
+
+	var $ret = $("#ret");
+
+
+
+	$progress.progress({
+
+		bgStyle: {
+
+			lineWidth: 4
+
+		},
+
+		fgStyle: {
+
+			lineWidth: 4
+
+		},
+
+		step: .001,
+
+		onprogress: function(p) {
+
+			$precent.html((p * 100).toFixed(0) + "%");
+
+		}
+
+	});
+
+	if ($.support.inputFiles) {
+
+		$file1.show();
+
+		$files = $files.eq(0);
+
+	} else {
+
+		$file1.show();
+
+		$file2.show();
+
+	}
+
+	if (!$.support.canvas) $canvas.hide();
+
+
+
+	$button.click(function() {
+
+		$button.prop("disabled", 1);
+
+		$ret.empty();
+
+		$progress.progress(0);
+
+		$files.upload({
+
+			action: "index.php",
+
+			data: {
+
+				a: 1,
+
+				b: 2
+
+			},
+
+			oncomplete: function() {
+
+				$button.prop("disabled", 0);
+
+			},
+
+			onsuccess: function(json) {
+
+				var ps = '';
+
+				$.each(json, function(k, v) {
+
+					ps += '<p class="text-success">index=' + v.index + '; name=' + v.name + '</p>';
+
+				});
+
+				$ret.append(ps);
+
+			},
+
+			onerror: function(err) {
+
+				var ps = '';
+
+				$.each(err, function(k, v) {
+
+					ps += '<p class="text-error">error=' + v + '</p>';
+
+				});
+
+				$ret.append(ps);
+
+			},
+
+			onprogress: function(e) {
+
+				$progress.progress(e.loaded / e.total);
+
+			}
+
+		});
+
+	});
+	</script>
+
+
+
+
+
+
+
+
+
+</body>
+
+
+
+</html>

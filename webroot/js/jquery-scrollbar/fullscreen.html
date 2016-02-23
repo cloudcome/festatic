@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="renderer" content="webkit">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<meta name="author" content="云淡然;http://ydr.me">
+	<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+	<link href="/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+	<link href="/bootstrap/3.1.1/css/bootstrap-theme.min.css" rel="stylesheet">
+	<link href="style.css" rel="stylesheet">
+	<link rel="stylesheet" href="/css/jquery-scrollbar/default.css">
+	<title>全屏的scrollbar演示</title>
+</head>
+
+<body>
+	<img id="demo" src="http://image.it168.com/n/0x0/4/4811/4811165.jpg" alt="girl" width="7264" height="5440">
+	<script src="/js/yquery/latest/yquery.min.js"></script>
+	<script src="/js/jquery-mousewheel/1.2/jquery-mousewheel.js"></script>
+	<script src="/js/jquery-drag/1.2/jquery-drag.js"></script>
+	<script src="1.2/jquery-scrollbar.js"></script>
+	<script>
+		var $demo = $('#demo');
+		$demo.scrollbar({
+			mousewheelAsix:'x',
+			width: $(window).width(),
+			height: $(window).height()
+		});
+		$(window).resize(function() {
+			$demo.scrollbar('render', {
+				width: $(window).width(),
+				height: $(window).height()
+			});
+		});
+		// $(document).tapick(function(){
+		// 	alert($('.jquery-scrollbar-container').css('height'));
+		// });
+	</script>
+
+</body>
+
+</html>

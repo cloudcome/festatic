@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="renderer" content="webkit">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<meta name="author" content="云淡然;http://ydr.me">
+	<meta name="keywords" content="关键词1,关键词2">
+	<meta name="description" content="描述语句">
+	<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+	<link rel="apple-touch-icon" href="/favicon.png">
+	<title>attr prop data</title>
+</head>
+<body>
+	<input type="checkbox" name="check" id="check" data-s="1" data-j='{"a": 1}'>
+	<label for="check">选择</label>
+	<div id="ret"></div>
+
+	<script src="1.7/yquery.js"></script>
+	<script>
+		$check = $('#check');
+		function info(){
+			var ps = '';
+			ps+='<br>prop("checked") = ' + $check.prop('checked');
+			ps+='<br>attr("checked") = ' + $check.attr('checked');
+			ps+='<br>data("s") = ' + $check.data('s');
+			ps+='<br>data("j") = ' + $check.data('j');
+			$('#ret').html(ps);
+		}
+
+		$check.change(info);
+		info();
+	</script>
+</body>
+</html>

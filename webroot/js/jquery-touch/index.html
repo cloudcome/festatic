@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="renderer" content="webkit">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<meta name="author" content="云淡然;http://ydr.me">
+	<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+	<link rel="stylesheet" href="/bootstrap/3.1.1/css/bootstrap.min.css">
+	<link rel="stylesheet" href="/bootstrap/3.1.1/css/bootstrap-theme.min.css">
+	<link rel="stylesheet" href="/css/prettify/bootstrap.css">
+	<title>jquery-touch.js docs - 前端静态资源</title>
+</head>
+
+<body>
+	<div class="jumbotron">
+		<div class="container">
+			<h1>jquery-touch.js docs</h1>
+			<p>作者：云淡然</p>
+			<p>兼容：ie9+、chrome、firefox</p>
+			<p><span class="label label-success">已适配yquery</span></p>
+		</div>
+	</div>
+	<div class="container">
+
+		<div class="panel panel-default">
+			<div class="panel-heading">1、插件特点</div>
+			<div class="panel-body">
+				<ol>
+					<li>简单易用。</li>
+					<li>yquery自带。</li>
+					<li>利用$.Event，增加了 <code>tap</code>、<code>taphold</code>、<code>swipe</code>、<code>swipeup</code>、<code>swiperight</code>、<code>swipedown</code>、<code>swipeleft</code>、<code>tapick</code>原型方法</li>
+					<li>增加 <code>$.tapSetup</code>、<code>$.tapholdSetup</code>、<code>$.swipeSetup</code> 来配置参数</li>
+				</ol>
+			</div>
+		</div>
+
+		<div class="panel panel-default">
+			<div class="panel-heading">2、插件API</div>
+			<div class="panel-body">
+				<p class="text-danger lead">2.1、tap参数</p>
+				<pre class="prettyprint linenums lang-javascript">$.tapSetup('x', 31);</pre>
+				<div class="table-responsive">
+					<table class="table table-hover table-striped table-bordered">
+						<thead>
+							<tr>
+								<th>参数名称</th>
+								<th>参数默认值</th>
+								<th>参数描述</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>x</td>
+								<td>30</td>
+								<td>
+									<p>表示在X轴移动最大距离</p>
+								</td>
+							</tr>
+							<tr>
+								<td>y</td>
+								<td>30</td>
+								<td>
+									<p>表示在Y轴移动最大距离</p>
+								</td>
+							</tr>
+							<tr>
+								<td>timeout</td>
+								<td>500</td>
+								<td>
+									<p>表示在最大触发延时</p>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<br>
+				<p class="text-danger lead">2.2、taphold参数</p>
+				<pre class="prettyprint linenums lang-javascript">$.tapholdSetup('x', 31);</pre>
+				<div class="table-responsive">
+					<table class="table table-hover table-striped table-bordered">
+						<thead>
+							<tr>
+								<th>参数名称</th>
+								<th>参数默认值</th>
+								<th>参数描述</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>x</td>
+								<td>30</td>
+								<td>
+									<p>表示在X轴移动最大距离</p>
+								</td>
+							</tr>
+							<tr>
+								<td>y</td>
+								<td>30</td>
+								<td>
+									<p>表示在Y轴移动最大距离</p>
+								</td>
+							</tr>
+							<tr>
+								<td>timeout</td>
+								<td>500</td>
+								<td>
+									<p>表示在最大触发延时</p>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<br>
+				<p class="text-danger lead">2.2、swipe参数</p>
+				<pre class="prettyprint linenums lang-javascript">$.swipeSetup('x', 31);</pre>
+				<div class="table-responsive">
+					<table class="table table-hover table-striped table-bordered">
+						<thead>
+							<tr>
+								<th>参数名称</th>
+								<th>参数默认值</th>
+								<th>参数描述</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>x</td>
+								<td>30</td>
+								<td>
+									<p>表示在X轴移动最小距离</p>
+								</td>
+							</tr>
+							<tr>
+								<td>y</td>
+								<td>30</td>
+								<td>
+									<p>表示在Y轴移动最小距离</p>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+
+
+		<div class="panel panel-default">
+			<div class="panel-heading">3、插件示例</div>
+			<div class="panel-body">
+				<p class="text-danger lead">2.1、调用</p>
+				<pre class="prettyprint linenums lang-javascript">$('#demo').tap(fn);</pre>
+				<br>
+				<p class="text-danger lead">2.2、demo</p>
+				<div class="list-group">
+					<a href="./demo1.html" class="list-group-item"><b class="text-info">例1：各种事件类型</b></a>
+					<a href="./demo2.html" class="list-group-item"><b class="text-info">例2：事件代理</b></a>
+				</div>
+			</div>
+		</div>
+
+
+		<div class="panel panel-default" id="demo">
+			<div class="panel-heading">4、插件源码</div>
+			<div class="panel-body">
+				<a class="btn btn-danger" href="/#jquery-touch">点击前往插件下载页面</a>
+			</div>
+		</div>
+
+	</div>
+	<div id="footer" style="border-top:1px solid #ddd;padding:20px;margin-top:30px;">
+		<ul class="list-inline"><li>&copy;云淡然</li><li>2013 - 2014</li><li><a href="/">前端静态资源首页</a></li></ul>
+	</div>
+	<script src="/js/yquery/latest/yquery.min.js"></script>
+	<script src="/js/prettify/r298/prettify.min.js"></script>
+	<script>
+	window.prettyPrint && prettyPrint();
+	</script>
+</body>
+
+</html>

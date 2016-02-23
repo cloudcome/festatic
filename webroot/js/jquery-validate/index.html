@@ -1,0 +1,661 @@
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="renderer" content="webkit">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<meta name="author" content="云淡然;http://ydr.me">
+	<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+	<link rel="stylesheet" href="/bootstrap/3.1.1/css/bootstrap.min.css">
+	<link rel="stylesheet" href="/bootstrap/3.1.1/css/bootstrap-theme.min.css">
+	<link rel="stylesheet" href="/css/prettify/bootstrap.css">
+	<title>jquery-validate.js docs - 前端静态资源</title>
+</head>
+<body>
+	<div class="jumbotron">
+		<div class="container">
+			<h1>jquery-validate.js docs</h1>
+			<p>作者：云淡然</p>
+			<p>兼容：ie9+、chrome、firefox</p>
+		</div>
+	</div>
+	<div class="container">
+		<div class="panel panel-default" id="1">
+			<div class="panel-heading">1、插件特点及注意点</div>
+			<div class="panel-body">
+				<ol>
+					<li>插件介绍文章：暂无。</li>
+					<li>兼容HTML5的表单项目属性，如<code>required</code>、<code>min</code>、<code>max</code>等，
+					不属于HTML5规范的表单属性使用<code>data-属性名</code>来表示，其中验证消息的<code>data-msg</code>的值为JSON字符串。详细阅读<a href="#2">第2节</a>。</li>
+					<li>插件只会对form表单进行验证，不会显示表单的验证消息提示，这些处理必须插件使用者来自己做，
+					但插件会返回验证失败的表单项目和错误消息。</li>
+					<li>插件不会对当前的表单是否进行验证进行判断，这需要插件使用者自行解决，因为这不是插件的职责。</li>
+					<li>插件支持自定义验证规则，自定义验证规则分为本地验证和远程验证，详细阅读<a href="#3">第3节</a>。</li>
+					<li>远程验证时，如果是跨域验证请添加<code>timeout</code>参数，否则会在出现<code>403</code>错误后，无法正常处理，详细参考<a href="#">文章</a>。</li>
+				</ol>
+			</div>
+		</div>
+		<div class="panel panel-default" id="2">
+			<div class="panel-heading">2、表单项目属性</div>
+			<div class="panel-body">
+				<p class="lead text-danger" id="2.1">2.1、<code>data-msg</code>错误消息JSON字符串</p>
+				<pre class="prettyprint linenums">&lt;input type="url" name="url" id="url" class="form-control" required data-msg='{
+	"required":"url地址不能为空！",
+	"type":"url地址不符合规范！"
+}'&gt;</pre>
+				<br>
+				<p class="lead text-danger" id="2.2">2.2、<code>input</code>的<code>type</code>值不为<code>text</code>时</p>
+				<div class="alert alert-warning">
+					在HTML5浏览器中，在非法输入后无法获取该值，这不是插件的BUG，详细文章参考<a href="#">文章</a>。
+					<br>因此，建议使用<code>data-type</code>代替<code>type</code>属性，并且<code>data-type</code>的优先级更高。
+				</div>
+				<br>
+				<p class="lead text-danger" id="2.3">2.3、<code>input:text</code>、<code>textarea</code>元素</p>
+				<div class="table-responsive">
+					<table class="table table-hover table-striped table-bordered">
+						<thead>
+							<tr>
+								<th>表单项目属性</th>
+								<th>属性表示描述</th>
+								<th>默认值</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td><code>required</code></td>
+								<td>必填</td>
+								<td>选填</td>
+							</tr>
+							<tr>
+								<td><code>pattern</code></td>
+								<td>内容正则</td>
+								<td>无限制</td>
+							</tr>
+							<tr>
+								<td><code>maxlength</code></td>
+								<td>内容最大长度（1个中文和1个英文的长度是一样的）</td>
+								<td>无限制</td>
+							</tr>
+							<tr>
+								<td><code>data-msg*</code></td>
+								<td>
+									<p><code>required</code>：内容为空时的错误消息</p>
+									<p><code>pattern</code>：内容为不符合正则时的错误消息</p>
+									<p><code>maxlength</code>：内容超过最大长度的错误消息</p>
+								</td>
+								<td><code>"不符合要求"</code></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<br>
+				<p class="lead text-danger" id="2.4">2.4、<code>input:password</code>元素</p>
+				<div class="table-responsive">
+					<table class="table table-hover table-striped table-bordered">
+						<thead>
+							<tr>
+								<th>表单项目属性</th>
+								<th>属性表示描述</th>
+								<th>默认值</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td><code>required</code></td>
+								<td>必填</td>
+								<td>选填</td>
+							</tr>
+							<tr>
+								<td><code>pattern</code></td>
+								<td>内容正则</td>
+								<td>无限制</td>
+							</tr>
+							<tr>
+								<td><code>maxlength</code></td>
+								<td>内容最大长度（1个中文和1个英文的长度是一样的）</td>
+								<td>无限制</td>
+							</tr>
+							<tr>
+								<td><code>data-equal</code></td>
+								<td>与之相等的表单项目id</td>
+								<td><code>""</code></td>
+							</tr>
+							<tr>
+								<td><code>data-msg*</code></td>
+								<td>
+									<p><code>required</code>：内容为空时的错误消息</p>
+									<p><code>pattern</code>：内容为不符合正则时的错误消息</p>
+									<p><code>maxlength</code>：内容超过最大长度的错误消息</p>
+									<p><code>equal</code>：内容与指定表单项目不全等时的错误消息</p>
+								</td>
+								<td><code>"不符合要求"</code></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<br>
+				<p class="lead text-danger" id="2.5">2.5、<code>input:number</code>元素</p>
+				<div class="table-responsive">
+					<table class="table table-hover table-striped table-bordered">
+						<thead>
+							<tr>
+								<th>表单项目属性</th>
+								<th>属性表示描述</th>
+								<th>默认值</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td><code>required</code></td>
+								<td>必填</td>
+								<td>选填</td>
+							</tr>
+							<tr>
+								<td><code>min</code></td>
+								<td>最小值（含）</td>
+								<td>0</td>
+							</tr>
+							<tr>
+								<td><code>max</code></td>
+								<td>最大值（含）</td>
+								<td>无穷大</td>
+							</tr>
+							<tr>
+								<td><code>step</code></td>
+								<td>最小公倍数</td>
+								<td>1</td>
+							</tr>
+							<tr>
+								<td><code>data-msg*</code></td>
+								<td>
+									<p><code>required</code>：内容为空时的错误消息</p>
+									<p><code>min</code>：数值小于<code>min</code>的错误消息</p>
+									<p><code>max</code>：数值大于<code>max</code>的错误消息</p>
+									<p><code>step</code>：数值不是<code>step</code>倍数的错误消息</p>
+								</td>
+								<td><code>"不符合要求"</code></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<br>
+				<p class="lead text-danger" id="2.6">2.6、<code>input:email</code>、<code>input:url</code>、
+				<code>input:date</code>
+				<code>input:datetime</code>
+				<code>input:datetime-local</code>
+				<code>input:time</code>
+				<code>input:week</code>
+				元素</p>
+				<div class="table-responsive">
+					<table class="table table-hover table-striped table-bordered">
+						<thead>
+							<tr>
+								<th>表单项目属性</th>
+								<th>属性表示描述</th>
+								<th>默认值</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td><code>required</code></td>
+								<td>必填</td>
+								<td>选填</td>
+							</tr>
+							<tr>
+								<td><code>data-msg*</code></td>
+								<td>
+									<p><code>required</code>：内容为空时的错误消息</p>
+									<p><code>type*</code>：不符合<code>type</code>类型时的错误消息</p>
+								</td>
+								<td><code>"不符合要求"</code></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<br>
+				<p class="lead text-danger" id="2.7">2.7、<code>single select</code>元素</p>
+				<div class="table-responsive">
+					<table class="table table-hover table-striped table-bordered">
+						<thead>
+							<tr>
+								<th>表单项目属性</th>
+								<th>属性表示描述</th>
+								<th>默认值</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td><code>required</code></td>
+								<td>必选</td>
+								<td>可选</td>
+							</tr>
+							<tr>
+								<td><code>data-placeholder</code></td>
+								<td>指向单选下拉框的占位值（当选中该值时表示未选中）</td>
+								<td><code>""</code></td>
+							</tr>
+							<tr>
+								<td><code>data-msg*</code></td>
+								<td>
+									<p><code>required</code>：未选择选项时的错误消息</p>
+								</td>
+								<td><code>"不符合要求"</code></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<br>
+				<p class="lead text-danger" id="2.8">2.8、<code>multiple select</code>元素</p>
+				<div class="table-responsive">
+					<table class="table table-hover table-striped table-bordered">
+						<thead>
+							<tr>
+								<th>表单项目属性</th>
+								<th>属性表示描述</th>
+								<th>默认值</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td><code>required</code></td>
+								<td>必选</td>
+								<td>可选</td>
+							</tr>
+							<tr>
+								<td><code>data-placeholder</code></td>
+								<td>指向单选下拉框的占位值（当选中该值时表示未选中）</td>
+								<td><code>""</code></td>
+							</tr>
+							<tr>
+								<td><code>data-least</code></td>
+								<td>最少选择数量</td>
+								<td>0</td>
+							</tr>
+							<tr>
+								<td><code>data-most</code></td>
+								<td>最多选择数量</td>
+								<td>无限制</td>
+							</tr>
+							<tr>
+								<td><code>data-msg*</code></td>
+								<td>
+									<p><code>required</code>：未选择选项时的错误消息</p>
+									<p><code>least</code>：选择数量少于<code>least</code>时的错误消息</p>
+									<p><code>most</code>：选择数量多于<code>least</code>时的错误消息</p>
+								</td>
+								<td><code>"不符合要求"</code></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<br>
+				<p class="lead text-danger" id="2.9">2.9、<code>input:checkbox</code>元素</p>
+				<div class="table-responsive">
+					<table class="table table-hover table-striped table-bordered">
+						<thead>
+							<tr>
+								<th>表单项目属性</th>
+								<th>属性表示描述</th>
+								<th>默认值</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td><code>data-least</code></td>
+								<td>最少选择数量</td>
+								<td>0</td>
+							</tr>
+							<tr>
+								<td><code>data-most</code></td>
+								<td>最多选择数量</td>
+								<td>无限制</td>
+							</tr>
+							<tr>
+								<td><code>data-msg*</code></td>
+								<td>
+									<p><code>least</code>：选择数量少于<code>least</code>时的错误消息</p>
+									<p><code>most</code>：选择数量多于<code>least</code>时的错误消息</p>
+								</td>
+								<td><code>"不符合要求"</code></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<br>
+				<p class="lead text-danger" id="2.10">2.10、<code>input:radio</code>元素</p>
+				<div class="table-responsive">
+					<table class="table table-hover table-striped table-bordered">
+						<thead>
+							<tr>
+								<th>表单项目属性</th>
+								<th>属性表示描述</th>
+								<th>默认值</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td><code>required</code></td>
+								<td>必选</td>
+								<td>可选</td>
+							</tr>
+							<tr>
+								<td><code>data-msg*</code></td>
+								<td>
+									<p><code>required</code>：未选择任何选项时的错误消息</p>
+								</td>
+								<td><code>"不符合要求"</code></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+
+				<br>
+				<p class="lead text-danger" id="2.11">2.11、<code>input:file</code>元素</p>
+				<div class="table-responsive">
+					<table class="table table-hover table-striped table-bordered">
+						<thead>
+							<tr>
+								<th>表单项目属性</th>
+								<th>属性表示描述</th>
+								<th>默认值</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td><code>required</code></td>
+								<td>必选文件</td>
+								<td>可选</td>
+							</tr>
+							<tr>
+								<td><code>data-suffix</code></td>
+								<td>可选文件后缀，使用英文逗号分开“,”</td>
+								<td><code>""</code></td>
+							</tr>
+							<tr>
+								<td><code>data-msg*</code></td>
+								<td>
+									<p><code>required</code>：未选择任何文件时的错误消息</p>
+									<p><code>suffix</code>：选择非法文件时的错误消息</p>
+								</td>
+								<td><code>"不符合要求"</code></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+		<div class="panel panel-default" id="3">
+			<div class="panel-heading">3、自定义验证规则</div>
+			<div class="panel-body">
+				<div class="alert alert-info">
+					<ol>
+						<li>无论是本地验证还是远程验证，单个表单项目的验证规则都是一个<b>数组</b>。</li>
+						<li>单个表单项目的所有本地验证都是在远程验证之前进行的，如果出现本地验证错误，则不会继续验证该表单项目的其他远程验证。</li>
+						<li>远程验证中，只要出现一个远程错误，则不会继续后续的远程验证。如表单项目<code>#username</code>需同时验证该用户名是否重复和是否在黑名单中。
+						如果远程验证该用户名已经重复了，则不会继续验证该用户名是否在黑名单内。</li>
+						<li>本地验证和远程验证的<b>键</b>都是表单项目的id，当表单项目为<code>input:radio</code>或<code>input:checkbox</code>时，使用第一个<code>input:radio</code>或<code>input:checkbox</code>的<code>ID</code>值。</li>
+						<li>本地验证和远程的返回JSON对象格式是一致的，都为
+						<pre class="prettyprint linenums">{
+	// 状态，true表示验证通过，false表示验证失败
+	status: false,
+	// 消息，表示表单验证失败的消息，验证通过是不会有消息返回的
+	msg: '该用户名已经被注册了，请尝试使用其他用户名'
+};
+</pre>
+						</li>
+					</ol>
+				</div>
+				<p class="lead text-danger" id="3.1">3.1、自定义本地验证规则</p>
+				<pre class="prettyprint linenums">localRules: {
+	// checkbox 和 radio 的 id 填写第一个的id值
+	// 每个表单项目可以自定义多个按顺序的本地验证规则
+	'表单项目id': [
+		function() {
+			// 这里必须按照格式来返回json对象
+			// 一些的数据处理与判断后，返回
+			return {
+				// 状态，true表示验证通过，false表示验证失败
+				status: false,
+				// 消息，表示表单验证失败的消息，验证通过是不会有消息返回的
+				msg: '该用户名已经被注册了，请尝试使用其他用户名'
+			};
+		}
+	]
+}
+</pre>
+				<br>
+				<p class="lead text-danger" id="3.2">3.2、自定义远程验证规则</p>
+				<pre class="prettyprint linenums">remoteRules: {
+	// 每个表单项目可能有1个多个ajax验证，按照数组顺序来
+	'表单项目id': [{
+		// 可以是 post 或 get
+		type: 'post',
+		// 可以说 json script text jsonp
+		dataType: 'json',
+		// 在跨域请求的时候，强烈建议添加 timeout 属性，
+		// 否则在遇到403或其他错误时不能触发success 或 error 回调
+		timeout: 5000,
+		// 自行组织data数据
+		data: {},
+		// 只接受处理 success 和 error 两个回调
+		success: function () {
+			// 这里必须按照格式来返回json对象
+			// 一些的数据处理与判断后，返回
+			return {
+				// 状态，true表示验证通过，false表示验证失败
+				status: false,
+				// 消息，表示表单验证失败的消息，验证通过是不会有消息返回的
+				msg: '该用户名已经被注册了，请尝试使用其他用户名'
+			};
+		},
+		// error 的设置参考 success
+		error: function () {}
+	}]
+};
+</pre>
+			</div>
+		</div>
+		<div class="panel panel-default" id="4">
+			<div class="panel-heading">4、插件API</div>
+			<div class="panel-body">
+				<div class="table-responsive">
+					<table class="table table-hover table-striped table-bordered">
+						<thead>
+							<tr>
+								<th>参数键</th>
+								<th>参数值类型</th>
+								<th>参数默认值</th>
+								<th>参数描述</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td><code>$.fn.validate.defaults</code></td>
+								<td><code>Object</code></td>
+								<td><code>{...}</code></td>
+								<td>插件的默认配置</td>
+							</tr>
+							<tr>
+								<td><code>formItemSelector</code></td>
+								<td><code>String</code></td>
+								<td><code>".form-group"</code></td>
+								<td>
+									<ol>
+										<li>表单项目选择器</li>
+										<li>默认为 Bootstrap3 的表单项目class</li>
+										<li>也可以为自定义。</li>
+										<li>目的是为了保证表单验证能够按照顺序进行。</li>
+									</ol>
+								</td>
+							</tr>
+							<tr>
+								<td><code>formItemClass</code></td>
+								<td><code>String</code></td>
+								<td><code>""</code></td>
+								<td>
+									<ol>
+										<li>表单项目中需跳过验证的类</li>
+										<li>默认为空</li>
+										<li>跳过验证常用于动态的表单验证，如</li>
+										<li>选择登陆方式：邮箱登陆或用户名登陆是两个表单项目</li>
+										<li>二者只需要验证其一即可</li>
+									</ol>
+								</td>
+							</tr>
+							<tr>
+								<td><code>isSkipInvalid</code></td>
+								<td><code>Boolean</code></td>
+								<td><code>false</code></td>
+								<td>
+									<ol>
+										<li>是否跳过验证失败</li>
+										<li><code>false</code>：出现验证错误则退出验证。</li>
+										<li><code>true</code>：出现验证错误依然继续，直到全部验证结束。</li>
+									</ol>
+								</td>
+							</tr>
+							<tr>
+								<td><code>isAutoSubmit</code></td>
+								<td><code>Boolean</code></td>
+								<td><code>true</code></td>
+								<td>
+									<ol>
+										<li>在表单全部验证通过后是否自动提交</li>
+										<li><code>true</code>：调用<code>FormData</code>或<code>$.serizlize</code>自动提交表单。</li>
+										<li><code>false</code>：不自动提交表单。</li>
+									</ol>
+								</td>
+							</tr>
+							<tr>
+								<td><code>autoSubmitOptions</code></td>
+								<td><code>Object</code></td>
+								<td><code>{}</code></td>
+								<td>
+									<p>自动提交的AJAX参数</p>
+								</td>
+							</tr>
+							<tr>
+								<td><code>localRules</code></td>
+								<td><code>Object</code></td>
+								<td><code>{}</code></td>
+								<td>本地验证规则（<a href="#3.1">详细阅读第3.1节</a>）</td>
+							</tr>
+							<tr>
+								<td><code>remoteRules</code></td>
+								<td><code>Object</code></td>
+								<td><code>{}</code></td>
+								<td>远程验证规则（<a href="#3.2">详细阅读第3.2节</a>）</td>
+							</tr>
+							<tr>
+								<td><code>onvalid</code></td>
+								<td><code>Function</code></td>
+								<td><code>function(){}</code></td>
+								<td>
+									<ol>
+										<li>表单项目通过验证时回调</li>
+										<li><code>this</code>：当前表单项目的js对象</li>
+									</ol>
+								</td>
+							</tr>
+							<tr>
+								<td><code>oninvalid</code></td>
+								<td><code>Function</code></td>
+								<td><code>function(){}</code></td>
+								<td>
+									<ol>
+										<li>表单项目未通过验证时回调</li>
+										<li><code>this</code>：当前表单项目的js对象</li>
+										<li><code>arguments[0]:String</code>：错误消息</li>
+									</ol>
+								</td>
+							</tr>
+							<tr>
+								<td><code>onfocus</code></td>
+								<td><code>Function</code></td>
+								<td><code>function(){}</code></td>
+								<td>
+									<ol>
+										<li>表单项目验证时回调</li>
+										<li><code>this</code>：当前表单项目的js对象</li>
+									</ol>
+								</td>
+							</tr>
+							<tr>
+								<td><code>onremote</code></td>
+								<td><code>Function</code></td>
+								<td><code>function(){}</code></td>
+								<td>
+									<ol>
+										<li>表单项目正远程验证时回调</li>
+										<li><code>this</code>：当前表单项目的js对象</li>
+									</ol>
+								</td>
+							</tr>
+							<tr>
+								<td><code>onsuccess</code></td>
+								<td><code>Function</code></td>
+								<td><code>function(){}</code></td>
+								<td>
+									<ol>
+										<li>所有表单项目都验证正确时回调</li>
+										<li><code>this</code>：form</li>
+									</ol>
+								</td>
+							</tr>
+							<tr>
+								<td><code>oncomplete</code></td>
+								<td><code>Function</code></td>
+								<td><code>function(){}</code></td>
+								<td>
+									<ol>
+										<li>所有表单项目都验证完毕时回调</li>
+										<li><code>this</code>：form</li>
+									</ol>
+								</td>
+							</tr>
+							<tr>
+								<td><code>onsubmit</code></td>
+								<td><code>Function</code></td>
+								<td><code>function(){}</code></td>
+								<td>
+									<ol>
+										<li>表单自动提交后回调，仅在配置<code>isAutoSubmit</code>为<code>true</code>时。</li>
+										<li><code>this</code>：<code>$.ajax</code>的<code>Deferred</code>对象</li>
+										<li><code>arguments[0]:function</code>：请求成功并解析成功回调</li>
+										<li><code>arguments[1]:function</code>：请求失败或解析失败回调</li>
+										<li>实际调用的是<code>Deferred</code>的<code>always</code>回调，详细参考<a target="_blank" href="http://api.jquery.com/jQuery.ajax/#jqXHR">http://api.jquery.com/jQuery.ajax/#jqXHR</a>。</li>
+									</ol>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+		<div class="panel panel-default" id="5">
+			<div class="panel-heading">5、插件演示</div>
+			<div class="panel-body">
+				<ol>
+					<li><a href="1.html">例1演示 1.html</a></li>
+				</ol>
+			</div>
+		</div>
+		<div class="panel panel-default" id="6">
+			<div class="panel-heading">6、插件下载</div>
+			<div class="panel-body"><a href="/#jquery-form" class="btn btn-sm btn-danger">点击前往插件下载页面</a></div>
+		</div>
+	</div>
+	<div id="footer" style="border-top:1px solid #ddd;padding:20px;margin-top:30px;">
+		<ul class="list-inline">
+			<li>&copy;云淡然</li>
+			<li>2013 - 2014</li>
+			<li><a href="/">前端静态资源首页</a></li>
+		</ul>
+	</div>
+	<script src="/js/jquery/1.11.0/jquery.min.js"></script>
+	<script src="/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+	<script src="/js/prettify/r298/prettify.min.js"></script>
+	<script src="latest/jquery-validate.js"></script>
+	<script>window.prettyPrint && prettyPrint();</script>
+</body>
+</html>

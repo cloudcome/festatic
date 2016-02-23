@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>position</title>
+    <style>
+		#box1{
+			position: relative;
+			top: 10px;
+			left: 10px;
+			width: 600px;
+			padding: 10px;
+			margin: 20px;
+			border: 30px solid #ddd;
+			background: #eee;
+		}
+
+		#box2{
+			width: 400px;
+			top: 10px;
+			left: 10px;
+			width: 400px;
+			padding: 10px;
+			margin: 20px;
+			border: 30px solid #90B24D;
+			background: #C4D69B;
+		}
+ 
+		#box3{
+			position: relative;
+			top: 10px;
+			left: 10px;
+			width: 200px;
+			height: 200px;
+			padding: 10px;
+			margin: 20px;
+			border: 30px solid #DB795A;
+			background: #F0BFAF;
+			overflow: auto;
+			box-sizing: border-box;
+		}
+
+		#content{
+			width: 1000px;
+			height: 1000px;
+		}
+
+		#box4{
+			position: fixed;
+			width: 100px;
+			height: 100px;
+			background: #000;
+			color: #fff;
+			margin: 10px;
+			border: 20px solid #ccc;
+		}
+
+		#box5{
+			position: absolute;
+			width: 100px;
+			height: 100px;
+			background: #087E48;
+			color: #fff;
+			margin: 10px 10px 10px 220px;
+			border: 20px solid #24B974;
+		}
+
+		button{
+			padding: 4px 8px;
+		}
+    </style>
+</head>
+<body>
+
+<div id="box1">
+	<p>#box1 relative</p>
+    <div id="box2">
+    	<p>#box2 static</p>
+        <div id="box3">
+    		<p>#box3 relative</p>
+    		<div id="content">#content</div>
+        </div>
+        <div id="box4">
+        	<p>#box4 fixed</p>
+        </div>
+        <div id="box5">
+        	<p>#box5 abs</p>
+        </div>
+    </div>
+</div>
+
+
+<button id="btn1">box3 的 position</button>
+<button id="btn2">box3 的 offset</button>
+
+<script src="1.7/yquery.js"></script>
+<script>
+
+	var $box1 = $('#box1');
+	var $box3 = $('#box3');
+	var $box4 = $('#box4');
+	var $box5 = $('#box5');
+	
+	$('#btn1').click(function(){
+		console.log($('#box3').position());
+	});
+	
+	$('#btn2').click(function(){
+		console.log($('#box3').offset());
+	});
+
+</script>
+
+
+</body>
+</html>

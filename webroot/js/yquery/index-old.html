@@ -1,0 +1,517 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+	<meta name="author" content="云淡然;http://ydr.me">
+
+	<title>yquery.js demo - 前端静态资源</title>
+	<link rel="stylesheet" href="../../css/3/latest.min.css">
+
+	<style>
+	
+	</style>
+
+</head>
+
+<body style="padding:20px;">
+	<div class="hero">
+		<h1>yquery.js demo</h1>
+		<p>作者：云淡然</p>
+		<p>兼容：ie10+、chrome、firefox</p>
+	</div>
+
+	<div class="module">
+		<div class="module-header">预热</div>
+		<div class="module-body">
+			<ol class="list-lines">
+				<li>
+					相关文章：暂无。
+				</li>
+				<li>
+					兼容ie10（含）+、chrome、firefox。
+				</li>
+				<li>
+					最精简、最常用的API，大部分API和jQuery的使用方法一致。
+				</li>
+			</ol>
+		</div>
+	</div>
+
+	<div class="module">
+		<div class="module-header">初始化</div>
+		<div class="module-body">
+			<ol class="list-line">
+				<li>
+					<code>$(selector,context)</code>
+				</li>
+			</ol>
+		</div>
+	</div>
+
+	<div class="module">
+		<div class="module-header">DOM增删有关API</div>
+		<div class="module-body">
+			<ol class="list-line">
+				<li>
+					<code>$.fn.appendTo</code>
+				</li>
+				<li>
+					<code>$.fn.append</code>
+				</li>
+				<li>
+					<code>$.fn.prependTo</code>
+				</li>
+				<li>
+					<code>$.fn.prepend</code>
+				</li>
+				<li>
+					<code>$.fn.insertBefore</code>
+				</li>
+				<li>
+					<code>$.fn.before</code>
+				</li>
+				<li>
+					<code>$.fn.insertAfter</code>
+				</li>
+				<li>
+					<code>$.fn.after</code>
+				</li>
+				<li>
+					<code>$.fn.remove</code>
+				</li>
+				<li>
+					<code>$.fn.empty</code>
+				</li>
+				<li>
+					<code>$.fn.html</code>
+				</li>
+				<li>
+					<code>$.fn.text</code>
+				</li>
+			</ol>
+		</div>
+	</div>
+
+	<div class="module">
+		<div class="module-header">DOM过滤有关API</div>
+		<div class="module-body">
+			<ol class="list-line">
+				<li>
+					<code>$.fn.find</code>
+				</li>
+				<li>
+					<code>$.fn.eq</code>
+				</li>
+				<li>
+					<code>$.fn.prev</code>
+				</li>
+				<li>
+					<code>$.fn.next</code>
+				</li>
+				<li>
+					<code>$.fn.siblings</code>
+				</li>
+				<li>
+					<code>$.fn.has</code>
+				</li>
+				<li>
+					<code>$.fn.filter</code>
+				</li>
+				<li>
+					<code>$.fn.closest</code>
+				</li>
+			</ol>
+		</div>
+	</div>
+
+	<div class="module">
+		<div class="module-header">默认事件API</div>
+		<div class="module-body">
+			<ol class="list-line">
+				<li>
+					<code>$.fn.abort</code>
+				</li>
+				<li>
+					<code>$.fn.beforecopy</code>
+				</li>
+				<li>
+					<code>$.fn.beforecut</code>
+				</li>
+				<li>
+					<code>$.fn.beforepaste</code>
+				</li>
+				<li>
+					<code>$.fn.beforeunload</code>
+				</li>
+				<li>
+					<code>$.fn.blur</code>
+				</li>
+				<li>
+					<code>$.fn.change</code>
+				</li>
+				<li>
+					<code>$.fn.click</code>
+				</li>
+				<li>
+					<code>$.fn.contextmenu</code>
+				</li>
+				<li>
+					<code>$.fn.copy</code>
+				</li>
+				<li>
+					<code>$.fn.cut</code>
+				</li>
+				<li>
+					<code>$.fn.dblclick</code>
+				</li>
+				<li>
+					<code>$.fn.drag</code>
+				</li>
+				<li>
+					<code>$.fn.dragend</code>
+				</li>
+				<li>
+					<code>$.fn.dragenter</code>
+				</li>
+				<li>
+					<code>$.fn.dragleave</code>
+				</li>
+				<li>
+					<code>$.fn.dragover</code>
+				</li>
+				<li>
+					<code>$.fn.dragstart</code>
+				</li>
+				<li>
+					<code>$.fn.drop</code>
+				</li>
+				<li>
+					<code>$.fn.error</code>
+				</li>
+				<li>
+					<code>$.fn.focus</code>
+				</li>
+				<li>
+					<code>$.fn.hashchange</code>
+				</li>
+				<li>
+					<code>$.fn.input</code>
+				</li>
+				<li>
+					<code>$.fn.invalid</code>
+				</li>
+				<li>
+					<code>$.fn.keydown</code>
+				</li>
+				<li>
+					<code>$.fn.keypress</code>
+				</li>
+				<li>
+					<code>$.fn.keyup</code>
+				</li>
+				<li>
+					<code>$.fn.load</code>
+				</li>
+				<li>
+					<code>$.fn.message</code>
+				</li>
+				<li>
+					<code>$.fn.mousedown</code>
+				</li>
+				<li>
+					<code>$.fn.mouseenter</code>
+				</li>
+				<li>
+					<code>$.fn.mouseleave</code>
+				</li>
+				<li>
+					<code>$.fn.mousemove</code>
+				</li>
+				<li>
+					<code>$.fn.mouseout</code>
+				</li>
+				<li>
+					<code>$.fn.mouseover</code>
+				</li>
+				<li>
+					<code>$.fn.mousewheel</code>
+				</li>
+				<li>
+					<code>$.fn.offline</code>
+				</li>
+				<li>
+					<code>$.fn.online</code>
+				</li>
+				<li>
+					<code>$.fn.paste</code>
+				</li>
+				<li>
+					<code>$.fn.popstate</code>
+				</li>
+				<li>
+					<code>$.fn.reset</code>
+				</li>
+				<li>
+					<code>$.fn.resize</code>
+				</li>
+				<li>
+					<code>$.fn.scroll</code>
+				</li>
+				<li>
+					<code>$.fn.search</code>
+				</li>
+				<li>
+					<code>$.fn.select</code>
+				</li>
+				<li>
+					<code>$.fn.selectstart</code>
+				</li>
+				<li>
+					<code>$.fn.storage</code>
+				</li>
+				<li>
+					<code>$.fn.submit</code>
+				</li>
+				<li>
+					<code>$.fn.unload</code>
+				</li>
+				<li>
+					<code>$.fn.fullscreen</code>
+				</li>
+				<li>
+					<code>$.fn.fullscreenerror</code>
+				</li>
+			</ol>
+		</div>
+	</div>
+
+	<div class="module">
+		<div class="module-header">事件处理有关API</div>
+		<div class="module-body">
+			<ol class="list-line">
+				<li>
+					<code>$.fn.bind</code>
+				</li>
+				<li>
+					<code>$.fn.on</code>
+				</li>
+				<li>
+					<code>$.fn.trigger</code>
+				</li>
+			</ol>
+		</div>
+	</div>
+
+	<div class="module">
+		<div class="module-header">动画有关API</div>
+		<div class="module-body">
+			<ol class="list-line">
+				<li><code>$.fn.animate</code></li>
+				<li><code>$.fn.show</code></li>
+				<li><code>$.fn.hide</code></li>
+			</ol>
+		</div>
+	</div>
+
+	<div class="module">
+		<div class="module-header">属性性质有关API</div>
+		<div class="module-body">
+			<ol class="list-line">
+				<li>
+					<code>$.fn.attr</code>
+				</li>
+				<li>
+					<code>$.fn.hasAttr</code>
+				</li>
+				<li>
+					<code>$.fn.removeAttr</code>
+				</li>
+				<li>
+					<code>$.fn.prop</code>
+				</li>
+				<li>
+					<code>$.fn.val</code>
+				</li>
+				<li>
+					<code>$.fn.hasProp</code>
+				</li>
+				<li>
+					<code>$.fn.removeProp</code>
+				</li>
+				<li>
+					<code>$.fn.data</code>
+				</li>
+				<li>
+					<code>$.fn.hasData</code>
+				</li>
+				<li>
+					<code>$.fn.removeData</code>
+				</li>
+				<li>
+					<code>$.fn.store</code>
+				</li>
+				<li>
+					<code>$.fn.css</code>
+				</li>
+				<li>
+					<code>$.fn.addClass</code>
+				</li>
+				<li>
+					<code>$.fn.removeClass</code>
+				</li>
+				<li>
+					<code>$.fn.hasClass</code>
+				</li>
+			</ol>
+		</div>
+	</div>
+
+	<div class="module">
+		<div class="module-header">位置尺寸有关API</div>
+		<div class="module-body">
+			<ol class="list-line">
+				<li>
+					<code>$.fn.position</code>
+				</li>
+				<li>
+					<code>$.fn.offset</code>
+				</li>
+				<li>
+					<code>$.fn.width</code>
+				</li>
+				<li>
+					<code>$.fn.innerWidth</code>
+				</li>
+				<li>
+					<code>$.fn.outerWidth</code>
+				</li>
+				<li>
+					<code>$.fn.height</code>
+				</li>
+				<li>
+					<code>$.fn.innerHeight</code>
+				</li>
+				<li>
+					<code>$.fn.outerHeight</code>
+				</li>
+				<li>
+					<code>$.fn.scrollTop</code>
+				</li>
+				<li>
+					<code>$.fn.scrollLeft</code>
+				</li>
+			</ol>
+		</div>
+	</div>
+
+	<div class="module">
+		<div class="module-header">对象类型API</div>
+		<div class="module-body">
+			<ol class="list-line">
+				<li>
+					<code>$.type</code>
+				</li>
+				<li>
+					<code>$.isArray</code>
+				</li>
+				<li>
+					<code>$.isBoolean</code>
+				</li>
+				<li>
+					<code>$.isElement</code>
+				</li>
+				<li>
+					<code>$.isFunction</code>
+				</li>
+				<li>
+					<code>$.isInfinite</code>
+				</li>
+				<li>
+					<code>$.isNaN</code>
+				</li>
+				<li>
+					<code>$.isNull</code>
+				</li>
+				<li>
+					<code>$.isObject</code>
+				</li>
+				<li>
+					<code>$.isRegExp</code>
+				</li>
+				<li>
+					<code>$.isString</code>
+				</li>
+				<li>
+					<code>$.isUndefined</code>
+				</li>
+			</ol>
+		</div>
+	</div>
+
+
+	<div class="module">
+		<div class="module-header">AJAX有关API</div>
+		<div class="module-body">
+			<ol class="list-line">
+				<li>
+					<code>$.ajax</code>
+				</li>
+				<li>
+					<code>$.getScript</code>
+				</li>
+				<li>
+					<code>$.crossDomain</code>
+				</li>
+			</ol>
+		</div>
+	</div>
+
+
+	<div class="module">
+		<div class="module-header">其他未分类API</div>
+		<div class="module-body">
+			<ol class="list-line">
+				<li>
+					<code>$.fn.each</code>
+				</li>
+				<li>
+					<code>$.extend</code>
+				</li>
+				<li>
+					<code>$.each</code>
+				</li>
+				<li>
+					<code>$.inArray</code>
+				</li>
+				<li>
+					<code>$.removeArray</code>
+				</li>
+				<li>
+					<code>$.toHumpString</code>
+				</li>
+				<li>
+					<code>$.param</code>
+				</li>
+			</ol>
+		</div>
+	</div>
+
+
+	<div class="module">
+		<div class="module-header">下载</div>
+		<div class="module-body">
+			<p>
+				<a href="/#yquery">http://festatic.aliapp.com/#jquery</a>
+			</p>
+		</div>
+	</div>
+
+
+	<script src="latest.js"></script>
+
+</body>
+
+</html>

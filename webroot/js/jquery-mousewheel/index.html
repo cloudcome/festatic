@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="renderer" content="webkit">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<meta name="author" content="云淡然;http://ydr.me">
+	<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+	<link rel="stylesheet" href="/bootstrap/3.1.1/css/bootstrap.min.css">
+	<link rel="stylesheet" href="/bootstrap/3.1.1/css/bootstrap-theme.min.css">
+	<link rel="stylesheet" href="/css/prettify/bootstrap.css">
+	<title>jquery-mousewheel.js docs - 前端静态资源</title>
+</head>
+
+<body>
+	<div class="jumbotron">
+		<div class="container">
+			<h1>jquery-mousewheel.js docs</h1>
+			<p>作者：云淡然</p>
+			<p>兼容：ie9+、chrome、firefox</p>
+			<p><span class="label label-success">已适配yquery</span></p>
+		</div>
+	</div>
+	<div class="container">
+
+		<div class="panel panel-default">
+			<div class="panel-heading">1、插件说明</div>
+			<div class="panel-body">
+				<ol>
+					<li>鼠标向上滚动为+1，向下滚动为-1。</li>
+					<li>采用定时器监听滚动的过程和结束。</li>
+				</ol>
+			</div>
+		</div>
+
+		<div class="panel panel-default">
+			<div class="panel-heading">2、插件API</div>
+			<div class="panel-body">
+				<p class="lead text-danger">2.1、插件参数</p>
+				<pre class="prettyprint linenums lang-javascript">$.fn.mousewheel.defaults;</pre>
+				<div class="table-responsive">
+					<table class="table table-hover table-striped table-bordered">
+						<thead>
+							<tr>
+								<th>参数名称</th>
+								<th>参数默认值</th>
+								<th>参数描述</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td><code>timeout</code></td>
+								<td>456</td>
+								<td>
+									<p>延时监听滚动停止事件的时间（单位毫秒）</p>
+								</td>
+							</tr>
+							<tr>
+								<td><code>isPreventDefault</code></td>
+								<td>true</td>
+								<td>
+									<p>是否阻止默认事件，默认true</p>
+								</td>
+							</tr>
+							<tr>
+								<td><code>onmousewheelstart</code></td>
+								<td>$.noop</td>
+								<td>
+									<p>开始滚动回调</p>
+									<p>this：element</p>
+								</td>
+							</tr>
+							<tr>
+								<td><code>onmousewheel</code></td>
+								<td>$.noop</td>
+								<td>
+									<p>正在滚动回调</p>
+									<p>this：element</p>
+									<p>参数1：滚动的方向，1：上，-1：下</p>
+								</td>
+							</tr>
+							<tr>
+								<td><code>onmousewheelend</code></td>
+								<td>$.noop</td>
+								<td>
+									<p>滚动停止回调</p>
+									<p>this：element</p>
+									<p>参数1：滚动的距离</p>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+
+				<br>
+				<p class="lead text-danger">2.2、插件方法</p>
+				<pre class="prettyprint linenums lang-javascript">$('#demo').mousewheel('name', 'args0', 'args1', ...);</pre>
+				<div class="table-responsive">
+					<table class="table table-hover table-striped table-bordered">
+						<thead>
+							<tr>
+								<th>方法名称</th>
+								<th>方法参数</th>
+								<th>方法描述</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td><code>preventDefault</code></td>
+								<td>
+									<p>参数1：isPreventDefault，布尔值</p>
+								</td>
+								<td>
+									<p>是否阻止默认事件。</p>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+
+		<div class="panel panel-default">
+			<div class="panel-heading">3、插件演示</div>
+			<div class="panel-body">
+				<div id="demo-1" class="well">
+					<strong>是否阻止默认事件：</strong>
+					<button class="btn btn-success" id="btn-1" disabled>是</button>
+					<button class="btn btn-danger" id="btn-2">否</button>
+					<br>
+					<br>
+					<p class="lead text-danger">demo 1</p>
+					<br>在这个div里滚动鼠标试试
+					<br>这个div监听滚动开始、过程和结束
+					<b>3个事件</b>
+					<br>开始和停止事件也可以在控制台看到监听效果。
+					<hr>
+				</div>
+				<div id="demo-2" class="well">
+					<p class="lead text-danger">demo 2</p>
+					<br>在这个div里滚动鼠标试试
+					<br>这个div值监听滚动过程
+					<b>1个事件</b>
+					<br>
+					<hr>
+				</div>
+			</div>
+		</div>
+
+		<div class="panel panel-default">
+			<div class="panel-heading">4、插件源码</div>
+			<div class="panel-body">
+				<a class="btn btn-danger" href="/#jquery-mousewheel">点击前往插件下载页面</a>
+			</div>
+		</div>
+	</div>
+	<div id="footer" style="border-top:1px solid #ddd;padding:20px;margin-top:30px;">
+		<ul class="list-inline"><li>&copy;云淡然</li><li>2013 - 2014</li><li><a href="/">前端静态资源首页</a></li></ul>
+	</div>
+	<script src="/js/jquery/1.11.0/jquery.min.js"></script>
+	<script src="/js/prettify/r298/prettify.min.js"></script>
+	<script src="1.2/jquery-mousewheel.js"></script>
+	<script>
+	window.prettyPrint && prettyPrint();
+	var len1 = 0;
+	var $demo1 = $("#demo-1");
+	var $p11 = $("p", $demo1).eq(0);
+	var $p12 = $("p", $demo1).eq(1);
+	$demo1.mousewheel({
+		onmousewheelstart: function() {
+			$p12.html("=>滚动已开始")
+		},
+		onmousewheel: function(y) {
+			len1 += y;
+			$p11.html("=>滚动距离为：" + len1);
+			$p12.html("=>滚动中……")
+		},
+		onmousewheelend: function(length) {
+			$p12.html("=>滚动已停止，刚才滚动的距离为"+length)
+		}
+	});
+	$('#btn-1').click(function(){
+		$demo1.mousewheel('preventDefault', true);
+		$(this).prop('disabled', 1);
+		$('#btn-2').prop('disabled', 0);
+	});
+	$('#btn-2').click(function(){
+		$demo1.mousewheel('preventDefault', false);
+		$(this).prop('disabled', 1);
+		$('#btn-1').prop('disabled', 0);
+	});
+	var len2 = 0;
+	var $demo2 = $("#demo-2");
+	var $p2 = $("p", $demo2).eq(0);
+	$demo2.mousewheel(function(y) {
+		len2 += y;
+		$p2.html("=>滚动距离为：" + len2)
+	});
+	</script>
+</body>
+
+</html>

@@ -1,0 +1,270 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+	<meta name="author" content="云淡然;http://ydr.me">
+
+	<title>jquery.hash.js demo - 前端静态资源</title>
+	<link rel="stylesheet" href="../../css/3/latest.min.css">
+
+	<style>
+	
+	</style>
+
+</head>
+
+<body style="padding:20px;">
+	<div class="hero">
+		<h1>jquery.hash.js demo</h1>
+		<p>作者：云淡然</p>
+		<p>兼容：ie9（含）+、chrome、firefox</p>
+	</div>
+	<div class="module">
+		<div class="module-header">1、插件介绍</div>
+		<div class="module-body">
+			<ol>
+				<li>相关文章：
+					<a target="_blank" rel="bookmark" href="http://qianduanblog.com/2003.html">http://qianduanblog.com/2003.html</a>
+				</li>
+				<li>支持url的hash部分的解析和操作</li>
+			</ol>
+		</div>
+	</div>
+
+	<div class="module">
+		<div class="module-header">2、插件API</div>
+		<div class="module-body">
+			<pre>// 默认参数
+$.hash.defaults = {
+	// 默认的解析类型
+	hashType: "!"
+};
+
+// 假设当前的hash为 #!a/1/b/2/c/3
+
+// 1、解析当前hash为json对象
+$.hash();
+// =>{a: "1", b: "2", c: "3"}
+
+// 2.1、读取hash中单个值
+$.hash("a");
+// =>"1"
+
+// 2.2、读取hash中多个值
+$.hash(["a", "b"]);
+// =>{a: "1", b: "2"}
+
+// 3.1、设置hash中单个值
+$.hash("a", "11");
+// =>"!a/11/b/2/c/3"
+
+// 3.2、设置hash中单个值并改变hashType
+$.hash("a", "111", "?");
+// =>"?a=111&b=2&c=3"
+
+// 3.3、设置hash中多个值
+$.hash({
+	b: "22",
+	c: "33"
+});
+// =>"?a=111&b=22&c=33"
+
+// 3.4、设置hash中多个值并改变hashType
+$.hash({
+	b: "222",
+	c: "333"
+}, "!");
+// =>"!a/111/b/222/c/333"
+
+// 3.5、清空hash值
+$.hash(null);
+// =>""
+
+// 4.1、监听单个hash键的变化
+$.hash("listen", "a", function (o, n) {
+	console.log("原对象为：" + o);
+	console.log("现对象为：" + n);
+});
+
+// 4.2、并监听多个hash键的变化
+// b和c的键值都发生变化才触发
+$.hash("listenAnd", ["b", "c"], function (o, n) {
+	console.log("原对象为：" + o);
+	console.log("现对象为：" + n);
+});
+
+// 4.3、或监听多个hash键的变化
+// d或者e的键值发生变化都会触发
+$.hash("listenOr", ["d", "e"], function (o, n) {
+	console.log("原对象为：" + o);
+	console.log("现对象为：" + n);
+});</pre>
+		</div>
+	</div>
+
+
+	<div class="module">
+		<div class="module-header">3、插件演示</div>
+		<div class="module-body">
+			<div class="well">
+				<p class="text-lead">3.1、解析hash</p>
+				<p class="alert alert-info">先把url修改为<code>http://festatic.aliapp.com/js/jquery.hash/#!a/1/b/2/c/3</code>
+				</p>
+				<button id="button-1" class="button button-default">解析当前hash</button>
+			</div>
+
+			<div class="well">
+				<p class="text-lead">3.2、读取hash</p>
+				<button id="button-2" class="button button-info">读取当前hash中 a 的值</button>
+			</div>
+
+			<div class="well">
+				<p class="text-lead">3.3、设置hash</p>
+				<button id="button-3" class="button button-success">设置 x=4</button>
+				<button id="button-3-1" class="button button-success">设置 x=5 hashSearch类型</button>
+				<button id="button-3-2" class="button button-success">设置 x=6 hashPath类型</button>
+
+			</div>
+
+			<div class="well">
+				<p class="text-lead">3.4、清除hash</p>
+				<button id="button-3-4" class="button button-success">清除 a 的hash键值</button>
+			</div>
+
+			<div class="well">
+				<p class="text-lead">3.5、清空hash</p>
+				<button id="button-3-5" class="button button-success">清空所有hash键值对</button>
+			</div>
+
+			<div class="well">
+				<p class="text-lead">3.6、监听hash</p>
+				<p>
+					<button id="button-4-1" class="button button-error">开始监听 a</button>
+					<button id="button-5-1" class="button button-error">随机改变 a 的值以测试是否单监听成功</button>
+				</p>
+				<p>
+					<button id="button-4-2" class="button button-warning">开始并监听 b 和 c</button>
+					<button id="button-5-2" class="button button-warning">随机改变 b 和 c 的值以测试是否并监听成功</button>
+				</p>
+				<p>
+					<button id="button-4-3" class="button button-success">开始或监听 d 和 e</button>
+					<button id="button-5-3" class="button button-success">随机改变 d 或 e 值以测试是否或监听成功</button>
+				</p>
+				<div class="alert alert-warning">
+					<p>
+						<strong>监听结果：</strong>
+						<a href="javascript:;" id="clear">清空结果</a>
+					</p>
+					<div id="result"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<div class="module">
+		<div class="module-header">4、插件源码</div>
+		<div class="module-body">
+			<p>
+				<a href="/#jquery.hash">http://festatic.aliapp.com/#jquery.hash</a>
+			</p>
+		</div>
+	</div>
+
+
+	<script src="http://libs.baidu.com/jquery/1.10.2/jquery.min.js"></script>
+	<script src="latest.js?t=20130108"></script>
+	<script>
+	var $result = $("#result");
+
+	$("#button-1").click(function() {
+		var o = $.hash();
+		console.log(o);
+		alert("请看控制台");
+	});
+
+	$("#button-2").click(function() {
+		var o = $.hash("a");
+		alert(o);
+	});
+
+	$("#button-3").click(function() {
+		var o = $.hash("x", 4);
+	});
+
+	$("#button-3-1").click(function() {
+		var o = $.hash("x", 5, "?");
+	});
+
+	$("#button-3-2").click(function() {
+		var o = $.hash("x", 6, "!");
+	});
+
+	$("#button-3-4").click(function() {
+		var o = $.hash("a", null);
+	});
+
+	$("#button-3-5").click(function() {
+		var o = $.hash(null);
+	});
+
+	$("#button-4-1").click(function() {
+		$(this).prop("disabled", true).text("正在监听 a");
+		$.hash("listen", "a", function(o, n) {
+			$result.append("<p>监听到 a 值发生了变化，原值=" + o.a + "，现值=" + n.a + "</p>");
+		});
+	});
+
+	$("#button-5-1").click(function() {
+		$.hash("a", rand())
+	});
+
+	$("#button-4-2").click(function() {
+		$(this).prop("disabled", true).text("正在并监听 b 和 c");
+		$.hash("listenAnd", ["b", "c"], function(o, n) {
+			$result.append("<p>监听到 b 和 c 的值都发生了变化，b的原值=" + o.b + "，现值=" + n.b + "；c的原值=" + o.c + "，现值=" + n.c + "</p>");
+		});
+	});
+
+	$("#button-5-2").click(function() {
+		$.hash({
+			"b": rand(),
+			"c": rand()
+		})
+	});
+
+	$("#button-4-3").click(function() {
+		$(this).prop("disabled", true).text("正在或监听 d 和 e");
+		$.hash("listenOr", ["d", "e"], function(o, n) {
+			$result.append("<p>监听到 d 或 e 的值发生了变化，d的原值=" + o.d + "，现值=" + n.d + "；e的原值=" + o.e + "，现值=" + n.e + "</p>");
+		});
+	});
+
+	$("#button-5-3").click(function() {
+		var r = rand();
+		if (r % 2) {
+			$.hash("d", rand())
+		} else {
+			$.hash("e", rand())
+		}
+	});
+
+	$("#clear").click(function() {
+		$result.empty();
+	});
+
+
+	function rand() {
+		return parseInt(Math.random() * 10);
+	}
+	</script>
+
+
+
+
+</body>
+
+</html>

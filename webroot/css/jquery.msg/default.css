@@ -1,0 +1,160 @@
+/*!
+ * @for jquery.msg.js default.css
+ * @author ydr.me
+ * @version 1.1
+ */
+
+
+/**
+ * v1.0
+ * 2013年10月2日16:05:35;
+ *
+ * v1.1
+ * 2014年3月18日21:59:25;
+ * 扩大了字体和内边距以及外阴影
+ * 2014年4月24日22:40:32
+ * 增加了字体和边距、调整了行高
+ * 2014年6月2日16:07:06
+ * 调整了行高、宽度;
+ */
+
+
+@charset "utf-8";
+
+.jquery_msg____ {
+	position: fixed;
+	top: 0;
+	left: 0;
+	margin: 0;
+	padding: 0;
+	line-height: 30px;
+	min-height: 1;
+	max-width: 400px;
+	min-width: 300px;
+	z-index: 99999;
+	border-radius: 6px;
+	color: #fff;
+	box-shadow: 0 0 20px #666;
+	overflow: hidden;
+}
+
+@media(max-width: 500px){
+	.jquery_msg____{
+		max-width: 90%;
+	}
+}
+
+.jquery_msg____title,
+.jquery_msg____footer{
+	text-align: center;
+}
+
+.jquery_msg____title{
+	font-size: 14px;
+}
+
+.jquery_msg____body {
+	padding: 10px 20px;
+	word-break: break-all;
+	font-size: 20px;
+}
+
+.jquery_msg____inverse {
+	background: #6F6F6F;
+	text-shadow: 0 1px 0 #000;
+	 background-image: linear-gradient(to bottom,#9B9B9B 0,#585858 100%); 
+}
+
+.jquery_msg____muted {
+	background: #fff;
+	color: #666;
+	background-image: linear-gradient(to bottom,#fff 0,#F8F8F8 100%);
+}
+
+.jquery_msg____success {
+	text-shadow: 0 1px 0 #1B911B;
+	background: #42AF42;
+	 background-image: linear-gradient(to bottom,#68D368 0,#419641 100%); 
+}
+
+.jquery_msg____info {
+	background: #28ABD3;
+	text-shadow: 0 1px 0 #2B9DC0;
+	 background-image: linear-gradient(to bottom,#6BCDEB 0,#2499BD 100%); 
+}
+
+.jquery_msg____error {
+	text-shadow: 0 1px 0 #8B0A07;
+	background: #D54A46;
+	background-image: linear-gradient(to bottom,#E4635F 0,#c12e2a 100%);
+}
+
+.jquery_msg____warning {
+	background: #F17840;
+	text-shadow: 0 1px 0 #CC551E;
+	 background-image: linear-gradient(to bottom,#FAB190 0,#DF5B1E 100%); 
+}
+
+.jquery_msg____footer{
+	border-top: 1px solid;
+}
+
+.jquery_msg____footer button{
+	border: none;
+	margin: 0;
+	padding: 4px 0;
+	width: 0;
+	cursor: pointer;
+	outline: none;
+	font-size: 16px;
+	opacity: .8;
+}
+
+.jquery_msg____footer button{
+	border-right: 1px solid;
+	background: transparent;
+}
+
+.jquery_msg____footer button:last-child{
+	border-right: none;
+}
+
+.jquery_msg____footer button:hover{
+	opacity: 1;
+}
+
+
+.jquery_msg____inverse .jquery_msg____footer,
+.jquery_msg____inverse .jquery_msg____footer button{
+	border-color: #505050;
+}
+
+
+.jquery_msg____muted .jquery_msg____footer,
+.jquery_msg____muted .jquery_msg____footer button{
+	border-color: #d6d6d6;
+}
+
+
+.jquery_msg____success .jquery_msg____footer,
+.jquery_msg____success .jquery_msg____footer button{
+	border-color: #279222;
+}
+
+.jquery_msg____info .jquery_msg____footer,
+.jquery_msg____info .jquery_msg____footer button{
+	border-color: #218EAF;
+}
+
+
+.jquery_msg____error .jquery_msg____footer,
+.jquery_msg____error .jquery_msg____footer button{
+	border-color: #AD2222;
+}
+
+
+.jquery_msg____warning .jquery_msg____footer,
+.jquery_msg____warning .jquery_msg____footer button{
+	border-color: #D6571C;
+}
+

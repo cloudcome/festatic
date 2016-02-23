@@ -1,0 +1,347 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="renderer" content="webkit">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+	<meta name="author" content="云淡然;http://ydr.me">
+	<title>jquery-scrollbar.js docs - 前端静态资源</title>
+	<link rel="stylesheet" href="/bootstrap/3.1.1/css/bootstrap.min.css">
+	<link rel="stylesheet" href="/bootstrap/3.1.1/css/bootstrap-theme.min.css">
+	<link rel="stylesheet" href="/css/prettify/bootstrap.css">
+	<link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" href="/css/jquery-scrollbar/default.css">
+</head>
+
+<body>
+	<div class="jumbotron">
+		<div class="container">
+			<h1>jquery-scrollbar.js docs</h1>
+			<p>
+				作者：云淡然
+			</p>
+			<p>
+				兼容：ie6+、chrome、firefox
+			</p>
+			<p><span class="label label-success">已适配yquery</span></p>
+		</div>
+	</div>
+
+	<div class="container">
+		<div class="panel panel-default" id="1">
+			<div class="panel-heading">1、插件说明</div>
+			<div class="panel-body">
+				<ol>
+					<li class="text-danger">在移动设备上，采用原生的滚动条</li>
+					<li>能够自动监听DOM的改变事件，一般DOM修改不需要额外render</li>
+					<li>自定义滚动条，需引入样式，默认样式为：<b><a href="http://festatic.aliapp.com/css/jquery-scrollbar/default.min.css">http://festatic.aliapp.com/css/jquery-scrollbar/default.min.css</a></b></li>
+					<li>要使支持鼠标滚轮，需引用
+						<a target="_blank" href="/#jquery-mousewheel">
+							<b>jquery-mousewheel.js</b>
+						</a>
+					</li>
+					<li>要使支持拖动滚动条，需引用
+						<a target="_blank" href="/#jquery-drag">
+							<b>jquery-drag.js</b>
+						</a>
+					</li>
+				</ol>
+			</div>
+		</div>
+
+		<div class="panel panel-default">
+			<div class="panel-heading">2、插件API</div>
+			<div class="panel-body">
+				<h4 class="text-lead text-danger">2.1、插件参数</h4>
+				<pre class="prettyprint linenums lang-javascript">$('#demo').scrollbar({
+    参数名称: 参数值
+})</pre>
+				<div class="table-responsive">
+					<table class="table table-hover table-striped table-bordered">
+						<thead>
+							<tr>
+								<th>参数名称</th>
+								<th>参数默认值</th>
+								<th>参数描述</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>width</td>
+								<td><code>"auto"</code></td>
+								<td>渲染滚动条的区域宽度</td>
+							</tr>
+							<tr>
+								<td>height</td>
+								<td><code>"auto"</code></td>
+								<td>渲染滚动条的区域高度</td>
+							</tr>
+							<tr>
+								<td>mousewheelAsix</td>
+								<td><code>"y"</code></td>
+								<td>鼠标滚动绑定的滚动条方向，只能为“x”或“y”</td>
+							</tr>
+							<tr>
+								<td>duration</td>
+								<td><code>345</code></td>
+								<td>定向滚动的动画时间，单位ms</td>
+							</tr>
+							<tr>
+								<td>speed</td>
+								<td><code>10</code></td>
+								<td>每次滚动的距离，单位px</td>
+							</tr>
+							<tr>
+								<td>canCrossBoundary</td>
+								<td><code>true</code></td>
+								<td>
+									<p>是否可以越过边界</p>
+									<p>true: 在容器内滚动条到达边界后，将把鼠标滚轮事件交给外部容器</p>
+									<p>false: 在容器内滚动鼠标事件一直紧抓不放</p>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<br>
+				<h4 class="text-lead text-danger">2.2、插件方法</h4>
+				<pre class="prettyprint linenums lang-javascript">$('#demo').scrollbar('方法名称', 方法参数)</pre>
+				<div class="table-responsive">
+					<table class="table table-hover table-striped table-bordered">
+						<thead>
+							<tr>
+								<th>方法名称</th>
+								<th>方法参数</th>
+								<th>方法描述</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td><code>"x"</code></td>
+								<td>无</td>
+								<td>
+									<p>获取当前x轴滚动区域占比</p>
+									<p>值在[0,1]之间</p>
+								</td>
+							</tr>
+							<tr>
+								<td><code>"y"</code></td>
+								<td>无</td>
+								<td>
+									<p>获取当前y轴滚动区域占比</p>
+									<p>值在[0,1]之间</p>
+								</td>
+							</tr>
+							<tr>
+								<td><code>"x"</code></td>
+								<td>
+									<p>参数1：x轴占比或元素选择器</p>
+									<p>参数2：回调，可选</p>
+								</td>
+								<td>
+									<p>定点滚动</p>
+									<p><code>$('#demo').scrollbar('x', 0.1);</code></p>
+									<p><code>$('#demo').scrollbar('x', '.target');</code></p>
+								</td>
+							</tr>
+							<tr>
+								<td><code>"y"</code></td>
+								<td>
+									<p>参数1：y轴占比或元素选择器</p>
+									<p>参数2：回调，可选</p>
+								</td>
+								<td>
+									<p>定点滚动</p>
+									<p><code>$('#demo').scrollbar('y', 0.1);</code></p>
+									<p><code>$('#demo').scrollbar('y', '.target');</code></p>
+								</td>
+							</tr>
+							<tr>
+								<td><code>"top"</code></td>
+								<td>
+									<p>参数1：回调，可选</p>
+								</td>
+								<td>y轴，定点滚动到顶部</td>
+							</tr>
+							<tr>
+								<td><code>"right"</code></td>
+								<td>
+									<p>参数1：回调，可选</p>
+								</td>
+								<td>x轴，定点滚动到最右边</td>
+							</tr>
+							<tr>
+								<td><code>"bottom"</code></td>
+								<td>
+									<p>参数1：回调，可选</p>
+								</td>
+								<td>y轴，定点滚动到底部</td>
+							</tr>
+							<tr>
+								<td><code>"left"</code></td>
+								<td>
+									<p>参数1：回调，可选</p>
+								</td>
+								<td>x轴，定点滚动到最左边</td>
+							</tr>
+							<tr>
+								<td><code>"render"</code></td>
+								<td>
+									<p>参数1：参数对象，options</p>
+								</td>
+								<td>再次渲染滚动条区域容器，通常应用于可变大小的容器</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+
+		<div class="panel panel-default">
+			<div class="panel-heading">3、使用演示</div>
+			<div class="panel-body">
+				<div class="lead">demo 1</div>
+				<p>
+					<button id="btn-2-1" class="btn btn-success">当前x轴滚动比例 [0,1]</button>
+					<button id="btn-2-2" class="btn btn-success">当前y轴滚动比例 [0,1]</button>
+				</p>
+				<p>
+					<button id="btn-3-1" class="btn btn-warning">x轴方向滚动到50%</button>
+					<button id="btn-3-2" class="btn btn-warning">y轴方向滚动到#p10</button>
+				</p>
+				<p>
+					<button id="btn-4-1" class="btn btn-info">滚动到顶部</button>
+					<button id="btn-4-2" class="btn btn-info">滚动到底部</button>
+					<button id="btn-4-3" class="btn btn-info">滚动到左边</button>
+					<button id="btn-4-4" class="btn btn-info">滚动到右边</button>
+				</p>
+				<p>
+					<button id="btn-5-0" class="btn btn-danger">切换鼠标滚轮绑定轴向</button>
+				</p>
+				<div class="box">
+					<div id="demo1">
+						<p id="p1">#p1</p>
+						<p id="p2">#p2</p>
+						<p id="p3">#p3</p>
+						<p id="p4">#p4</p>
+						<p id="p5">#p5</p>
+						<p id="p6">#p6</p>
+						<p id="p7">#p7</p>
+						<p id="p8">#p8</p>
+						<p id="p9">#p9</p>
+						<p id="p10">#p10</p>
+						<p id="p11">#p11</p>
+						<p id="p12">#p12</p>
+						<p id="p13">#p13</p>
+						<p id="p14">#p14</p>
+						<p id="p15">#p15</p>
+						<p id="p16">#p16</p>
+						<p id="p17">#p17</p>
+						<p id="p18">#p18</p>
+						<p id="p19">#p19</p>
+						<p id="p20">#p20</p>
+					</div>
+				</div>
+				<br>
+				<button id="btn-5-1" class="btn btn-danger">随机改变#demo-1的大小并重新渲染</button>
+				<hr>
+				<div class="lead">demo 2</div>
+				<a href="fullscreen.html" class="btn btn-success">全屏的scrollbar演示</a>
+				<a href="table.html" class="btn btn-success">表格的scrollbar演示</a>
+			</div>
+		</div>
+
+		<div class="panel panel-default">
+			<div class="panel-heading">4、插件下载</div>
+			<div class="panel-body">
+				<a class="btn btn-danger" href="/#jquery-scrollbar">点击前往插件下载页面</a>
+			</div>
+		</div>
+
+	</div>
+
+
+
+	<div id="footer" style="border-top:1px solid #ddd;padding:20px;margin-top:30px;">
+		<ul class="list-inline"><li>&copy;云淡然</li><li>2013 - 2014</li><li><a href="/">前端静态资源首页</a></li></ul>
+	</div>
+
+
+
+
+
+	
+	<script src="/js/yquery/latest/yquery.js"></script>
+	<script src="/js/jquery-mousewheel/1.2/jquery-mousewheel.js"></script>
+	<script src="/js/jquery-drag/1.2/jquery-drag.js"></script>
+	<script src="1.2/jquery-scrollbar.js"></script>
+	<script>
+	$demo1 = $("#demo1");
+	$demo1.scrollbar({
+		width: 260,
+		height: 300
+	});
+	$("#btn-2-1").click(function() {
+		alert("x轴滚动比例为：" + $demo1.scrollbar("x"));
+	});
+	$("#btn-2-2").click(function() {
+		alert("y轴滚动比例为：" + $demo1.scrollbar("y"));
+	});
+	$("#btn-3-1").click(function() {
+		$demo1.scrollbar("x", .5);
+	});
+	$("#btn-3-2").click(function() {
+		$demo1.scrollbar("y", '#p10');
+	});
+	$("#btn-4-1").click(function() {
+		$demo1.scrollbar("top", function(){
+			alert('已到顶部');
+		});
+	});
+	$("#btn-4-2").click(function() {
+		$demo1.scrollbar("bottom", function(){
+			alert('已到底部');
+		});
+	});
+	$("#btn-4-3").click(function() {
+		$demo1.scrollbar("left", function(){
+			alert('已到最左边');
+		});
+	});
+	$("#btn-4-4").click(function() {
+		$demo1.scrollbar("right", function(){
+			alert('已到最右边');
+		});
+	});
+
+	$('#btn-5-0').click(function() {
+		if($demo1.scrollbar("options", 'mousewheelAsix') === 'x'){
+			$demo1.scrollbar("options", 'mousewheelAsix', 'y');
+		}else{
+			$demo1.scrollbar("options", 'mousewheelAsix', 'x');
+		}
+	});
+
+	$('#btn-5-1').click(function() {
+		var width = random(300, 700),
+			height = random(300, 600);
+		$demo1.scrollbar("render", {
+			width: width,
+			height: height
+		});
+	});
+
+	function random(min, max) {
+		return Math.round(Math.random() * (max - min) + min);
+	}
+	</script>
+	
+	<script src="/js/prettify/r298/prettify.min.js"></script>
+	<script>
+	window.prettyPrint && prettyPrint();
+	</script>
+</body>
+
+</html>

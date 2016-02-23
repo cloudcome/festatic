@@ -1,0 +1,12 @@
+#text-2 {
+	border: 1px solid #E2E270;
+	border-left-width: 4px;
+	background: #FFC;
+	width: 90%;
+	height: 150px;
+	resize: none;
+	outline: none;
+	padding: 10px;
+	margin-bottom: 10px;
+	line-height: 20px;
+}

@@ -1,0 +1,137 @@
+/**************************** [reset] ****************************/
+ @charset"utf-8";
+ html {
+	scrollbar-base-color: #c2c2c2;
+	scrollbar-3dlight-color: #c2c2c2;
+	scrollbar-highlight-color: #c2c2c2;
+	scrollbar-track-color: #eee;
+	scrollbar-arrow-color: #000;
+	scrollbar-shadow-color: #c2c2c2;
+	scrollbar-dark-shadow-color: black;
+	/*设置字体相对16px大小，便于rem控制*/
+	font-size: 62.5%;
+	word-break:break-all;
+	word-wrap:break-word;
+}
+html, input, button, select, option, textarea {
+	font-family:"微软雅黑", sans-serif;
+	-webkit-text-size-adjust: none;
+	-ms-text-size-adjust: none;
+}
+::-webkit-scrollbar-track-piece {
+	border-left: 1px solid #d2d2d2;
+	background-color: #f5f5f5
+}
+::-webkit-scrollbar {
+	width: 12px;
+	height: 12px
+}
+::-webkit-scrollbar-thumb {
+	min-height: 28px;
+	border: 1px solid #979797;
+	background-color: #c2c2c2;
+	background-clip: padding-box
+}
+::-webkit-scrollbar-thumb:hover {
+	border: 1px solid #636363;
+	background-color: #929292
+}
+body, div, span, h1, h2, h3, h4, h5, h6, p, a, dl, dt, dd, ol, ul, li, label, table {
+	margin: 0;
+	padding: 0;
+}
+body {
+	font-size: 1.4rem;
+}
+input[type="button"], input[type="submit"], input[type="reset"], button, label, a {
+	cursor: pointer;
+}
+tbody, tfoot, thead, tr, th, td {
+	margin: 0;
+	padding: 0;
+}
+img, iframe {
+	border: 0;
+	vertical-align: top;
+}
+iframe {
+	overflow: hidden;
+}
+a {
+	color: #3C77C3;
+	text-decoration: none;
+	-webkit-transition: color, background 0.5s;
+	-moz-transition: color, background 0.5s;
+	-ms-transition: color, background 0.5s;
+	transition: color, background 0.5s;
+}
+a:hover {
+	color: #1D63BE;
+	text-decoration: underline;
+}
+ul, ol {
+	list-style-position: inside;
+}
+.clearfix:before, .clearfix:after, .progress:before, .progress:after, .tab-nav:before, .tab-nav:after, .form>li:before, .form>li:after {
+	display: table;
+	content:" ";
+	line-height: 0;
+}
+.clearfix:after, .progress:after, .tab-nav:after, .form>li:after {
+	clear: both;
+}
+/*color*/
+ small {
+	color: #999;
+	font-size: 100%;
+}
+.text-lead {
+	margin-bottom: 20px;
+	font-size: 20px;
+	font-weight: 200;
+	line-height: 1.4;
+}
+.text-lead small {
+	font-size: 75%;
+	font-weight: normal;
+}
+.text-muted {
+	color: #aaa;
+}
+a.text-muted:hover {
+	color: #999;
+}
+.text-primary {
+	color: #002E55;
+}
+a.text-primary:hover {
+	color: #022D52;
+}
+.has-success .key, .has-success .desc, .has-success .msg, .has-success input[type="text"], .has-success textarea, .has-success select, .text-success {
+	color: #468847;
+}
+a.text-success:hover {
+	color: #356635;
+}
+.text-info {
+	color: #3a87ad;
+}
+a.text-info:hover {
+	color: #2d6987;
+}
+.has-warning .key, .has-warning .desc, .has-warning .msg, .has-warning input[type="text"], .has-warning textarea, .has-warning select, .text-warning {
+	color: #E08339;
+}
+a.text-warning:hover {
+	color: #DA6B13;
+}
+.has-error .key, .has-error .desc, .has-error .msg, .has-error input[type="text"], .has-error textarea, .has-error select, .form .required, .text-error {
+	color: #F11A1A;
+}
+a.text-error:hover {
+	color: #DF1111;
+}
+/*outline*/
+
+/**************************** [reset] ****************************/
+ 

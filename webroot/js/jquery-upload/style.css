@@ -1,0 +1,17 @@
+.progress2 {
+	position: relative;
+	width: 200px;
+	height: 200px;
+}
+
+.progress2 span {
+	position: absolute;
+	left: 0;
+	height: 40px;
+	top: 30px;
+	line-height: 40px;
+	text-align: center;
+	width: 200px;
+	font-size: 30px;
+	color: #087BCE;
+}

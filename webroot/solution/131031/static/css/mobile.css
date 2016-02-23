@@ -1,0 +1,866 @@
+/*!
+ * 手机样式
+ * @author 云淡然
+ * 2013年10月31日9:29:42;
+ */
+
+/**************************** [reset] ****************************/
+@charset "utf-8";
+
+html {
+	scrollbar-base-color: #c2c2c2;
+	scrollbar-3dlight-color: #c2c2c2;
+	scrollbar-highlight-color: #c2c2c2;
+	scrollbar-track-color: #eee;
+	scrollbar-arrow-color: #000;
+	scrollbar-shadow-color: #c2c2c2;
+	scrollbar-dark-shadow-color: black
+}
+
+::-webkit-scrollbar-track-piece {
+	border-left: 1px solid #d2d2d2;
+	background-color: #f5f5f5
+}
+
+::-webkit-scrollbar {
+	width: 12px;
+	height: 12px
+}
+
+::-webkit-scrollbar-thumb {
+	min-height: 28px;
+	border: 1px solid #979797;
+	background-color: #c2c2c2;
+	background-clip: padding-box
+}
+
+::-webkit-scrollbar-thumb:hover {
+	border: 1px solid #636363;
+	background-color: #929292
+}
+
+html,body,input,button,select,textarea {
+	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif
+}
+
+html {
+	-webkit-text-size-adjust: none;
+	-ms-text-size-adjust: none;
+	font-size: 14px
+	word-break:break-all;
+	word-wrap:break-word;
+}
+
+body,div,span,h1,h2,h3,h4,h5,h6,p,a,dl,dt,dd,ol,ul,li,label,table {
+	margin: 0;
+	padding: 0
+}
+
+input,textarea,select,button {
+	margin: 0;
+	font-size: 100%;
+	vertical-align: middle
+}
+
+input[type="button"],input[type="submit"],input[type="reset"],button,label,a {
+	cursor: pointer
+}
+
+tbody,tfoot,thead,tr,th,td {
+	margin: 0;
+	padding: 0
+}
+
+ol,ul {
+	list-style: none
+}
+
+img,iframe {
+	border: 0;
+	vertical-align:top;
+}
+
+iframe {
+	overflow: hidden
+}
+
+a {
+	color: #3C77C3;
+	text-decoration: none;
+	-webkit-transition: color,background-color .5s;
+	-moz-transition: color,background-color .5s;
+	-ms-transition: color,background-color .5s;
+	transition: color,background-color .5s;
+}
+
+a:hover {
+	color: #1D63BE;
+	text-decoration: underline;
+}
+/**************************** [reset] ****************************/
+
+
+
+
+
+
+
+
+
+
+
+/**************************** [layout] ****************************/
+
+/*align*/
+.pull-left {
+	position: relative;
+	float: left;
+}
+
+.pull-right {
+	position: relative;
+	float: right;
+}
+
+.clearfix{
+	*zoom: 1;
+}
+
+.clearfix:before,
+.clearfix:after{
+	display: table;
+	content: " ";
+	line-height: 0;
+}
+
+.clearfix:after{
+	clear: both;
+}
+
+.text-left {
+	text-align: left;
+}
+
+.text-center {
+	text-align: center;
+}
+
+.text-right {
+	text-align: right;
+}
+
+.block-center{
+	margin-left: auto;
+	margin-right: auto;
+}
+
+/**************************** [layout] ****************************/
+
+
+
+
+
+
+
+/**************************** [widget] ****************************/
+.caret{
+	display: inline-block;
+	width: 0;
+	height: 0;
+	margin-left: 2px;
+	vertical-align: middle;
+	content: "";
+}
+
+.caret-top{
+	border-bottom: 4px solid #000;
+	border-top: 0 dotted;
+	border-left: 4px solid rgba(0,0,0,0);
+	border-right: 4px solid rgba(0,0,0,0);
+}
+
+.caret-right{
+	border-left: 4px solid #000;
+	border-right: 0 dotted;
+	border-top: 4px solid rgba(0,0,0,0);
+	border-bottom: 4px solid rgba(0,0,0,0);
+}
+
+.caret-bottom{
+	border-top: 4px solid #000;
+	border-bottom: 0 dotted;
+	border-left: 4px solid rgba(0,0,0,0);
+	border-right: 4px solid rgba(0,0,0,0);
+}
+
+.caret-left{
+	border-right: 4px solid #000;
+	border-left: 0 dotted;
+	border-top: 4px solid rgba(0,0,0,0);
+	border-bottom: 4px solid rgba(0,0,0,0);
+}
+
+
+/*.navigator*/
+.navigator{
+	height: 30px;
+	line-height: 30px;
+	background: #f5f5f5;
+}
+
+.navigator .circle{
+	width: 8px;
+	height: 8px;
+	background: #888;
+	border-radius: 100%;
+	display: inline-block;
+}
+
+.navigator .circle.active{
+	background: #0DA014;
+}
+
+
+/*title wrap*/
+h2.title{
+	height: 40px;
+	line-height: 40px;
+	color: #fff;
+	padding: 0 5px;
+	background: #888;
+	font-size: 18px;
+}
+
+h2.title .bar{
+	display: inline-block;
+	height: 20px;
+	width: 5px;
+	background: #000;
+	vertical-align: sub;
+	margin-right: 6px;
+	margin-left: 2px;
+}
+
+.wrap{
+	padding: 10px;
+}
+
+/**************************** [widget] ****************************/
+
+
+
+
+
+
+
+
+/**************************** [body] ****************************/
+.flex-container {
+	-ms-flex-pack: space-between;
+	-ms-flex-align: stretch;
+	display: -webkit-flex;
+	display: -moz-flex;
+	display: -ms-flexbox;
+	display: -ms-flex;
+	display: flex;
+	-webkit-align-content: stretch;
+	-moz-align-content: stretch;
+	-ms-align-content: stretch;
+	align-content: stretch;
+	-webkit-align-items: stretch;
+	-moz-align-items: stretch;
+	-ms-align-items: stretch;
+	align-items: stretch;
+}
+
+.flex-sb {
+	-webkit-justify-content: space-between;
+	-moz-justify-content: space-between;
+	-ms-justify-content: space-between;
+	justify-content: space-between;
+}
+
+.flex-c {
+	-webkit-justify-content: center;
+	-moz-justify-content: center;
+	-ms-justify-content: center;
+	justify-content: center;
+}
+
+.flex-col {
+	-webkit-flex-direction: column;
+	-moz-flex-direction: column;
+	-ms-flex-direction: column;
+	flex-direction: column;
+}
+
+.flex-wrap {
+	-webkit-flex-wrap: wrap;
+	-moz-flex-wrap: wrap;
+	-ms-flex-wrap: wrap;
+	flex-wrap: wrap;
+}
+
+.flex-item {
+	-webkit-align-self: stretch;
+	-moz-align-self: stretch;
+	-ms-align-self: stretch;
+	align-self: stretch;
+}
+
+.flex-grow-0 {
+	-webkit-flex-grow: 0;
+	-moz-flex-grow: 0;
+	-ms-flex-grow: 0;
+	flex-grow: 0;
+}
+
+.flex-grow-1 {
+	-webkit-flex-grow: 1;
+	-moz-flex-grow: 1;
+	-ms-flex-grow: 1;
+	flex-grow: 1;
+}
+
+section{
+	position: relative;
+	margin-bottom: 15px;
+}
+/**************************** [body] ****************************/
+
+
+
+
+
+
+
+
+/**************************** [section-1] ****************************/
+.section-1 .close{
+	color: #888;
+	background: #FFF;
+	position: absolute;
+	top: 6px;
+	right: 10px;
+	width: 30px;
+	height: 30px;
+	text-align: center;
+	line-height: 30px;
+	font-size: 30px;
+}
+
+.section-1 .close:hover{
+	color: #FFF;
+	background: #888;
+	text-decoration: none;
+}
+/**************************** [section-1] ****************************/
+
+
+
+
+
+
+
+
+
+/**************************** [section-2] ****************************/
+.section-2{
+	background: #518900;
+}
+
+.section-2 .lead{
+	width: 190px;
+	height: 60px;
+}
+
+.section-2 .part{
+	left: 6px;
+	top: 8px;
+}
+
+.section-2 .part li{
+	width: 30px;
+	text-align: center;
+	font-size: 12px;
+	margin-left: 22px;
+}
+
+.section-2 .part a{
+	color: #fff;
+}
+/**************************** [section-2] ****************************/
+
+
+
+
+
+
+
+
+/**************************** [section-3] ****************************/
+.section-3{
+	background: #A70101;
+}
+
+.section-3 .text{
+	white-space: nowrap;
+	height: 24px;
+	line-height: 24px;
+}
+
+.section-3 *,
+.section-3 *:hover{
+	color: #fff;
+}
+
+.section-3 .sep{
+	margin: 0 10px;
+}
+
+.section-3 .control{
+	width: 60px;
+}
+
+.section-3 .caret-left{
+	border-right-width: 8px;
+	border-right-color: #fff;
+}
+
+.section-3 .caret-right{
+	border-left-width: 8px;
+	border-left-color: #fff;
+}
+
+.section-3 .caret-1{
+	opacity: 0.6;
+}
+
+/**************************** [section-3] ****************************/
+
+
+
+
+
+
+
+
+
+/**************************** [section-4] ****************************/
+.section-4 .content,
+.section-4 .content li{
+	height: 100px;
+	width: 400px;
+	overflow: hidden;
+}
+
+.section-4 .prev,
+.section-4 .next{
+	position: absolute;
+	font-size: 30px;
+	height: 30px;
+	top: 40px;
+}
+
+.section-4 .prev{
+	left: 0;
+}
+
+.section-4 .next{
+	right: 0;
+}
+
+.section-4 i.active{
+	background-color: #FF4300;
+}
+/**************************** [section-4] ****************************/
+
+
+
+
+
+
+
+/**************************** [section-5] ****************************/
+.section-5 .content{
+	overflow: hidden;
+}
+
+.section-5 .content li{
+	width: 100%;
+	text-align: center;
+}
+
+.section-5 .name{
+	line-height: 60px;
+}
+
+.section-5 .name a{
+	color: #982E05;
+	font-size: 20px;
+	font-weight: 900;
+}
+
+.section-5 .meta{
+	color: #888;
+	line-height: 30px;
+}
+/**************************** [section-5] ****************************/
+
+
+
+
+
+
+/**************************** [section-6] ****************************/
+.section-6 .content{
+	overflow: hidden;
+	height: 130px;
+}
+
+.section-6 .content li{
+	width: 225px;
+	text-align: center;
+	margin-left: 10px;
+}
+
+.section-6 .name{
+	line-height: 30px;
+}
+/**************************** [section-6] ****************************/
+
+
+
+
+
+
+
+
+
+
+
+/**************************** [section-7] ****************************/
+.section-7 .content{
+	width: 410px;
+	height: 100px;
+	overflow: hidden;
+}
+
+.section-7 .content li{
+	margin-left: 10px;
+}
+
+.section-7 .content li:nth-child(odd){
+	margin-left: 0;
+}
+
+.section-7 .prev,
+.section-7 .next{
+	position: absolute;
+	height: 20px;
+	top: 40px;
+	font-size: 20px;
+}
+
+.section-7 .prev{
+	left: 4px;
+}
+
+.section-7 .next{
+	right: 4px;
+}
+
+.section-7 .control{
+	line-height: 30px;
+}
+
+.section-7 .caret-left{
+	border-right-width: 8px;
+	border-right-color: #888;
+}
+
+.section-7 .caret-right{
+	border-left-width: 8px;
+	border-left-color: #888;
+}
+
+.section-7 .caret-left.caret-1{
+	margin-right: -9px;
+}
+
+.section-7 .caret-right.caret-1{
+	margin-left: -7px;
+}
+
+.section-7 .caret-1{
+	opacity: 0.6;
+}
+/**************************** [section-7] ****************************/
+
+
+
+
+
+
+
+
+
+
+
+
+
+/**************************** [section-8] ****************************/
+.section-8 .content{
+	height: 270px;
+	overflow: hidden;
+}
+
+.section-8 .content li{
+	margin-left: 24px;
+	text-align: center;
+	margin-bottom: 20px;
+}
+
+.section-8 .content img{
+	width: 90px;
+	height: 90px;
+	border-radius: 100%;
+}
+
+.section-8 .content .name{
+	line-height: 30px;
+	font-weight: 900;
+}
+
+.section-8 .content .name a{
+	color: #444;
+}
+
+.section-8 .navigator [class^=icon]{
+	vertical-align: middle;
+	font-size: 22px;
+	color: #888;
+}
+/**************************** [section-8] ****************************/
+
+
+
+
+
+
+
+
+/**************************** [section-9] ****************************/
+.section-9 .title{
+	background: #2284CB;
+}
+
+.section-9 .wrap{
+	background: #F0F0F0;
+	padding-bottom: 0;
+}
+
+.section-9 .wrap a{
+	display: inline-block;
+	padding: 6px 0;
+	background: #FFF;
+	border: 1px solid #FFF;
+	box-shadow: 0px 2px 0px #DFDFDF;
+	color: #444;
+	margin-bottom: 10px;
+	margin-right: 13px;
+	width: 100px;
+	text-align: center;
+}
+
+.section-9 .wrap a:nth-child(4n){
+	margin-right: 0;
+}
+
+.section-9 .list li{
+	line-height: 40px;
+	border-bottom: 1px solid #eee;
+}
+
+.section-9 .list a{
+	margin-right: 20px;
+	padding: 0 20px;
+	color: #444;
+}
+
+.section-9 .list .lead{
+	border-right: 1px solid #eee;
+	color: #47AEE9;
+}
+
+.section-9 .list a:last-child{
+	margin-right: 0;
+}
+/**************************** [section-9] ****************************/
+
+
+
+
+
+
+
+
+
+
+/**************************** [section-10] ****************************/
+.section-10{
+	background: #f6f6f6;
+	padding: 10px 0;
+}
+
+.section-10 .lead{
+	margin-bottom: 10px;
+}
+
+.section-10 .content li{
+	margin-left: 20px;
+	text-align: center;
+	border: 1px solid #EEE;
+	background: #FFF;
+	box-shadow: 0 3px 4px #E0E0E0;
+}
+
+.section-10 .name{
+	line-height: 30px;
+}
+
+.section-10 .name a{
+	color: #444;
+}
+/**************************** [section-10] ****************************/
+
+
+
+
+
+
+
+
+
+
+
+
+/**************************** [section-11] ****************************/
+.section-11 .title{
+	background: #fff;
+	color: #000;
+}
+
+.section-11 .title .bar{
+	background: #D77574;
+}
+
+.section-11 .wrap{
+	font-size: 0;
+	padding: 0;
+}
+
+.section-11 .wrap a{
+	display: inline-block;
+	font-size: 14px;
+	width: 159px;
+	text-align: center;
+	border: 1px dashed #DDD;
+	margin-left: -1px;
+	margin-bottom: -1px;
+	padding: 10px 0;
+}
+
+.section-11 .wrap a:nth-child(3n+1){
+	margin-left: 0;
+	border-left: 0;
+}
+
+.section-11 .wrap a:nth-child(3n){
+	margin-right: 0;
+	border-right: 0;
+}
+/**************************** [section-11] ****************************/
+
+
+
+
+
+
+
+
+
+
+
+
+/**************************** [section-12] ****************************/
+.section-12{
+	background: #FBCC02;
+}
+
+.section-12 .list li{
+	margin-left: 10px;
+	text-align: center;
+	border-right: 1px solid rgba(247,185,0,0.5);
+	padding-right: 9px;
+}
+
+.section-12 .list li:last-child{
+	margin-right: 0;
+	padding-right: 0;
+	border-right: 0;
+}
+
+.section-12 .list .name{
+	line-height: 30px;
+}
+/**************************** [section-12] ****************************/
+
+
+
+
+
+
+
+
+
+
+
+
+
+/**************************** [section-13] ****************************/
+.section-13{
+	background: #333;
+	font-size: 0;
+}
+
+.section-13 a{
+	font-size: 16px;
+	display: inline-block;
+	width: 80px;
+	text-align: center;
+	color: #fff;
+	padding: 6px 0;
+}
+/**************************** [section-13] ****************************/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

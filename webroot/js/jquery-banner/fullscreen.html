@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>全屏banner</title>
+	<link rel="stylesheet" href="/bootstrap/3.1.1/css/bootstrap.min.css">
+	<link rel="stylesheet" href="/bootstrap/3.1.1/css/bootstrap-theme.min.css">
+	<style>
+	* {
+		padding: 0;
+		margin: 0;
+	}
+	#banner {
+		max-height: 600px;
+		overflow: hidden;
+		position: relative;
+	}
+	#banner img {
+		max-width: 100%;
+		height: auto;
+	}
+	#banner .nav {
+		text-align: center;
+		margin-top: 10px;
+	}
+	#banner .nav li {
+		display: inline-block;
+		height: 0;
+		line-height: 0;
+		border: 10px solid #ddd;
+		width: 0;
+		border-radius: 100%;
+		margin: 0 10px;
+	}
+	#banner .nav li.active {
+		border-color: #29A9D3;
+	}
+	</style>
+</head>
+
+
+
+<body>
+	<div id="banner">
+		<ul class="content">
+			<li>
+				<img src="http://hoohitech.com/images/1.png" alt="">
+			</li>
+			<li>
+				<img src="http://hoohitech.com/images/2.png" alt="">
+			</li>
+			<li>
+				<img src="http://hoohitech.com/images/3.png" alt="">
+			</li>
+			<li>
+				<img src="http://hoohitech.com/images/4.png" alt="">
+			</li>
+			<li>
+				<img src="http://hoohitech.com/images/5.png" alt="">
+			</li>
+		</ul>
+		<ul class="nav"></ul>
+	</div>
+	<hr>
+	<p class="text-center">
+		<a class="btn btn-success btn-lg" href="index.html">回到刚才页面</a>
+	</p>
+
+	<script src="/js/jquery/1.11.0/jquery.min.js"></script>
+	<script src="../jquery-swipe/latest.js"></script>
+	<script src="latest.js"></script>
+	<script>
+	var $banner = $("#banner");
+	var $nav = $(".nav", $banner);
+	var nav = "";
+	$banner.find(".content li").each(function() {
+		nav += '<li></li>'
+	});
+	$nav.html(nav).find("li").first().addClass("active");
+	$nav.on("click", "li", function() {
+		$banner.banner($(this).index())
+	});
+	$banner.banner({
+		onafterchange: function(index) {
+			$nav.find("li").eq(index).addClass("active").siblings().removeClass("active")
+		}
+	});
+	</script>
+</body>
+
+</html>

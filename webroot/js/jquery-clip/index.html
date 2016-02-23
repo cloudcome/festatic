@@ -1,0 +1,281 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="author" content="云淡然;http://ydr.me">
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="stylesheet" href="http://festatic.aliapp.com/bootstrap/3.1.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="http://festatic.aliapp.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="http://festatic.aliapp.com/css/prettify/bootstrap.min.css">
+    <title>jquery-clip.js docs - 前端静态资源</title>
+    <link rel="stylesheet" href="http://festatic.aliapp.com/css/jquery-clip/default.min.css">
+    <style>
+    #preview {
+        width: 200px;
+        height: 100px;
+    }
+    #demo {
+        margin-right: 10px;
+        border-right: 2px dashed #888;
+        padding-right: 10px;
+    }
+    </style>
+</head>
+
+<body>
+    <div class="jumbotron">
+        <div class="container">
+            <h1>jquery-clip.js docs</h1>
+            <p>作者：云淡然</p>
+            <p>兼容：ie9+、chrome、firefox</p>
+        </div>
+    </div>
+    <div class="container">
+        <div class="panel panel-default">
+            <div class="panel-heading">1、插件简介</div>
+            <div class="panel-body">
+                <ol>
+                    <li>简单的图片裁剪服务。</li>
+                    <li>支持裁剪图片为二进制文件，可用于直接上传。</li>
+                    <li class="text-danger"><b>不支持跨域剪切图片为二进制文件！！</b></li>
+                    <li>搭配<a href="/#jquery-preview" target="_blank">jquery-preview</a>来实现本地预览图片。</li>
+                    <li>搭配<a href="/#jquery-upload" target="_blank">jquery-upload</a>来实现上传裁剪后的二进制文件。</li>
+                </ol>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">2、插件API</div>
+            <div class="panel-body">
+                <p class="text-danger lead">2.1、插件样式</p>
+                <pre class="prettyprint linenums lang-css">&lt;link rel="stylesheet" href="http://festatic.aliapp.com/css/jquery-clip/default.min.css"&gt;</pre>
+                <br>
+                <p class="text-danger lead">2.2、插件选项</p>
+                <div class="table-responsive">
+                    <table class="table table-hover table-striped table-bordered">
+                        <thead>
+                            <tr>
+                                <th>选项</th>
+                                <th>默认值</th>
+                                <th>描述</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <code>width</code>
+                                </td>
+                                <td>
+                                    <code>0</code>
+                                </td>
+                                <td>
+                                    <p>选区的宽度</p>
+                                    <p>
+                                        <code>0</code>表示任意宽度</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <code>height</code>
+                                </td>
+                                <td>
+                                    <code>0</code>
+                                </td>
+                                <td>
+                                    <p>选区的高度</p>
+                                    <p>
+                                        <code>0</code>表示任意高度</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <code>aspectRatio</code>
+                                </td>
+                                <td>
+                                    <code>0</code>
+                                </td>
+                                <td>
+                                    <p>选区的宽高比</p>
+                                    <p>
+                                        <code>0</code>表示任意宽高比</p>
+                                    <p>优先级高于
+                                        <code>width</code>、
+                                        <code>height</code>
+                                    </p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <code>clipWidth</code>
+                                </td>
+                                <td>
+                                    <code>100</code>
+                                </td>
+                                <td>
+                                    <p>裁剪图像的宽度</p>
+                                    <p>不能设置为0</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <code>clipHeight</code>
+                                </td>
+                                <td>
+                                    <code>100</code>
+                                </td>
+                                <td>
+                                    <p>裁剪图像的高度</p>
+                                    <p>不能设置为0</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <code>$preview</code>
+                                </td>
+                                <td>
+                                    <code>null</code>
+                                </td>
+                                <td>
+                                    <p>预览区的jquery对象</p>
+                                    <p>优先级高于
+                                        <code>clipWidth</code>、
+                                        <code>clipHeight</code>
+                                    </p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <code>onchange</code>
+                                </td>
+                                <td>
+                                    <code>function</code>
+                                </td>
+                                <td>
+                                    <p>this: element</p>
+                                    <p>arguments[0]: 裁剪区在原图的左顶点x坐标</p>
+                                    <p>arguments[1]: 裁剪区在原图的左顶点y坐标</p>
+                                    <p>arguments[2]: 裁剪区在原图的右底点x坐标</p>
+                                    <p>arguments[3]: 裁剪区在原图的右底点y坐标</p>
+                                    <p>arguments[4]: 裁剪区在原图的宽度</p>
+                                    <p>arguments[5]: 裁剪区在原图的高度</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <code>onclip</code>
+                                </td>
+                                <td>
+                                    <code>function</code>
+                                </td>
+                                <td>
+                                    <p>this: element</p>
+                                    <p>arguments[0]: 二进制文件</p>
+                                    <p>arguments[1]: 文件名（'jquery-clip____.png'）</p>
+                                    <p>调用 jquery-upload : <code>$('#demo').upload(...).upload('blob', 二进制文件, 文件名);</code></p>
+                                </td>
+                            </tr>
+                             <tr>
+                                <td>
+                                    <code>oncliperror</code>
+                                </td>
+                                <td>
+                                    <code>function</code>
+                                </td>
+                                <td>
+                                    <p>this: element</p>
+                                    <p>arguments[0]: 错误对象</p>
+                                    <p>裁剪错误，一般是遇到了跨域裁剪图片保存 dataURL 的问题</p>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">3、插件演示</div>
+            <div class="panel-body">
+                <div class="clearfix">
+                    <div class="pull-left" id="demo">
+                        <input type="file" name="file" id="file">选择一张图片文件来裁剪
+                    </div>
+                    <div class="pull-left operation">
+                        <div id="preview"></div>
+                        <br>
+                        <br>
+                        <button class="btn btn-primary" id="upload" style="display:none;">上传裁剪图片</button>
+                        <span id="progress"></span>
+                        <br>
+                        <br>
+                        <div id="ret"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">4、插件下载</div>
+            <div class="panel-body"><a href="/#jquery-clip" class="btn btn-sm btn-danger">点击前往插件下载页面</a>
+            </div>
+        </div>
+    </div>
+    <div id="footer" style="border-top:1px solid #ddd;padding:20px;margin-top:30px;">
+        <ul class="list-inline">
+            <li>&copy;云淡然</li>
+            <li>2013 - 2014</li>
+            <li><a href="/">前端静态资源首页</a>
+            </li>
+        </ul>
+    </div>
+    <script src="http://festatic.aliapp.com/js/jquery/1.11.0/jquery.min.js"></script>
+    <script src="http://festatic.aliapp.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+    <script src="http://festatic.aliapp.com/js/prettify/r298/prettify.min.js"></script>
+    <script src="/js/jquery-preview/latest/jquery-preview.js"></script>
+    <script src="/js/jquery-upload/latest/jquery-upload.js"></script>
+    <script src="latest/jquery-clip.js"></script>
+    <script>
+    window.prettyPrint && prettyPrint();
+    $(function() {
+        var blob, filename;
+
+        $('#file').preview({
+            $preview: $('#demo'),
+            onsuccess: function() {
+                $('#demo img').clip({
+                    aspectRatio: 2,
+                    $preview: $('#preview'),
+                    onclip: function(b, f) {
+                        blob = b;
+                        filename = f;
+                        $('#upload').show();
+                    }
+                });
+            },
+            onerror: function(err) {
+                alert('第' + err.join(',') + '张图片读取失败！');
+            }
+        });
+
+        $('#upload').upload({
+            action: 'upload.php',
+            onprogress: function(e) {
+                $('#progress').html((e.loaded / e.total) * 100 + '%');
+            },
+            onsuccess: function(json) {
+                if(json.code>0){
+                    $('#ret').html('<img src="' + json.msg + '" alt="" />');
+                }else{
+                    alert(json.msg);
+                }
+            }
+        });
+
+        $('#upload').click(function() {
+            $(this).upload('blob', blob, filename);
+        });
+    });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,204 @@
+<!doctype html>
+
+<html lang="en">
+
+
+
+<head>
+
+	<meta charset="utf-8">
+
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+
+	<meta name="author" content="云淡然;http://ydr.me">
+
+
+
+	<title>jquery.msg.js demo - 前端静态资源</title>
+
+	<link rel="stylesheet" href="../../css/3/latest.min.css">
+
+
+
+	<style>
+
+	
+
+	</style>
+
+
+
+</head>
+
+
+
+<body style="padding:20px;">
+
+	<div class="hero">
+
+		<h1>jquery.msg.js demo</h1>
+
+		<p>作者：云淡然</p>
+
+		<p>兼容：ie9（含）+、chrome、firefox</p>
+
+	</div>
+
+	<div class="module">
+
+		<div class="module-header">1、插件说明</div>
+
+		<div class="module-body">
+
+			<ol>
+
+				<li>相关文章
+
+					<a href="http://qianduanblog.com/2603.html">http://qianduanblog.com/2603.html</a>
+
+				</li>
+
+				<li>消息没有modal效果，类似于android手机的消息，显示一段时间（3s）然后消失</li>
+
+				<li>在3秒期间，鼠标悬停会暂停消失，鼠标移开3秒后又会消失，不影响阅读！</li>
+
+			</ol>
+
+		</div>
+
+	</div>
+
+	<div class="module">
+
+		<div class="module-header">2、插件API</div>
+
+		<div class="module-body">
+
+			<pre>// 1 默认参数设置
+
+$.msg.defaults = {
+
+	// 默认style样式链接
+
+	css: 'http://festatic.aliapp.com/css/jquery.msg/default.min.css',
+
+	// 动画时间
+
+	duration: 123,
+
+	// 消息内容
+
+	msg: "Hello World!!",
+
+	// 消息类型:inverse(默认)/warning/error/success/info/muted
+
+	type: "inverse",
+
+	// 消息位置，默认水平垂直居中
+
+	position: {}
+
+};
+
+// 如果要更改样式，请在使用jquery.msg插件之前设置其默认参数
+
+
+
+// 2 显示消息
+
+$.msg("消息内容");
+
+$.msg("消息类型","消息内容");
+
+$.msg({...});</pre>
+
+		</div>
+
+	</div>
+
+	<div class="module">
+
+		<div class="module-header">3、插件演示</div>
+
+		<div class="module-body">
+
+			<div class="well" id="well-1">
+
+				<button class="button button-default" data-type="inverse">弹出“inverse”类型消息</button>
+
+				<button class="button button-warning" data-type="warning">弹出“warning”类型消息</button>
+
+				<button class="button button-error" data-type="error">弹出“error”类型消息</button>
+
+				<button class="button button-success" data-type="success">弹出“success”类型消息</button>
+
+				<button class="button button-info" data-type="info">弹出“info”类型消息</button>
+
+				<button class="button button-default" data-type="muted">弹出“muted”类型消息</button>
+
+			</div>
+
+		</div>
+
+	</div>
+
+	<div class="module">
+
+		<div class="module-header">4、插件源码</div>
+
+		<div class="module-body">
+
+			<p>
+
+				<a href="/#jquery.msg">http://festatic.aliapp.com/#jquery.msg</a>
+
+			</p>
+
+		</div>
+
+	</div>
+
+
+
+
+
+
+
+	<script src="http://libs.baidu.com/jquery/1.10.2/jquery.min.js"></script>
+
+	<script src="latest.js"></script>
+
+	<script>
+
+	$("#well-1").on("click", ".button", function() {
+
+		var type = $(this).attr("data-type");
+
+		$.msg({
+
+			type: type,
+
+			msg: "这个消息的类型是【" + type + "】！！"
+
+		});
+
+	});
+
+	</script>
+
+
+
+
+
+
+
+
+
+</body>
+
+
+
+</html>
+

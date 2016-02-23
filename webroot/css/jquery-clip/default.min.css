@@ -1,0 +1,5 @@
+/*!
+ * jquery-clip default.css
+ * @author ydr.me
+ * @version 1.0
+ */.jquery-clip___-wrapper{display:inline-block;position:relative;cursor:crosshair}.jquery-clip___-bg,.jquery-clip___-viewport{position:absolute;top:0;left:0}.jquery-clip___-bg{width:100%;height:100%;background:#000;opacity:.5}.jquery-clip___-viewport{width:100px;height:100px;overflow:hidden;cursor:move}

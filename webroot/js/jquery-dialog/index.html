@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="renderer" content="webkit">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<meta name="author" content="云淡然;http://ydr.me">
+	<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+	<link rel="stylesheet" href="/bootstrap/3.1.1/css/bootstrap.min.css">
+	<link rel="stylesheet" href="/bootstrap/3.1.1/css/bootstrap-theme.min.css">
+	<link rel="stylesheet" href="/css/prettify/bootstrap.css">
+	<title>jquery-dialog.js docs - 前端静态资源</title>
+</head>
+
+<body>
+	<div class="jumbotron">
+		<div class="container">
+			<h1>jquery-dialog.js docs</h1>
+			<p>作者：云淡然</p>
+			<p>兼容：ie9+、chrome、firefox</p>
+		</div>
+	</div>
+	<div class="container">
+
+		<div class="panel panel-default">
+			<div class="panel-heading">1、插件介绍</div>
+			<div class="panel-body">
+				<ol>
+					<li>相关文章：
+						<a href="http://qianduanblog.com/2877.html" target="_blank">http://qianduanblog.com/2877.html</a>
+					</li>
+					<li>欲使对话框支持拖拽，需引用
+						<b>
+							<a target="_blank" href="/#jquery-drag">jquery.drag</a>
+						</b>插件</li>
+					<li>简单易用，可以逐级打开多个对话框，并区分层级关系。</li>
+					<li>按<code>ESC</code>和单击背景可以按层级顺序关闭对话框。</li>
+					<li>可以自动适配窗口的宽度。</li>
+				</ol>
+			</div>
+		</div>
+
+
+		<div class="panel panel-default">
+			<div class="panel-heading">2、插件API</div>
+			<div class="panel-body">
+			</div>
+		</div>
+
+
+		<div class="panel panel-default">
+			<div class="panel-heading">3、插件演示</div>
+			<div class="panel-body">
+				<div id="dialog-1" class="well">
+					<p class="lead text-danger">将这个div#dialog-1作为对话框弹出</p>
+					<div style="width:100px;height:100px;background:#4BA250;border:1px solid #2C9539;"></div>
+				</div>
+				<button class="btn btn-primary" id="btn-1">弹出#dialog-1</button>
+				<button class="btn btn-primary" id="btn-2">弹出#dialog-2</button>
+			</div>
+		</div>
+
+
+		<div class="panel panel-default">
+			<div class="panel-heading">4、插件下载</div>
+			<div class="panel-body">
+				<a class="btn btn-danger" href="/#jquery-dialog">点击前往插件下载页面</a>
+			</div>
+		</div>
+	
+
+		<div id="dialog-2"></div>
+
+	</div>
+	<div id="footer" style="border-top:1px solid #ddd;padding:20px;margin-top:30px;">
+		<ul class="list-inline"><li>&copy;云淡然</li><li>2013 - 2014</li><li><a href="/">前端静态资源首页</a></li></ul>
+	</div>
+	<script src="/js/jquery/1.11.0/jquery.min.js"></script>
+	<script src="/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+	<script src="/js/prettify/r298/prettify.min.js"></script>
+	<script>
+	window.prettyPrint && prettyPrint();
+	</script>
+	<script src="./1.6/jquery-dialog.js?t=20131128"></script>
+	<script>
+	$('#btn-1').click(function(){
+		$('#dialog-1').dialog('open');
+	});
+	$('#btn-2').click(function(){
+		$('#dialog-2').dialog('open', {
+			width: 500,
+			url: 'iframe1.html'
+		});
+	});
+	</script>
+</body>
+
+</html>

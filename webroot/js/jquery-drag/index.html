@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="renderer" content="webkit">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<meta name="author" content="云淡然;http://ydr.me">
+	<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+	<link rel="stylesheet" href="/bootstrap/3.1.1/css/bootstrap.min.css">
+	<link rel="stylesheet" href="/bootstrap/3.1.1/css/bootstrap-theme.min.css">
+	<link rel="stylesheet" href="/css/prettify/bootstrap.css">
+	<title>jquery-drag.js docs - 前端静态资源</title>
+	<style>
+		.box{
+			display: inline-block;
+			width:160px;
+			height:100px;
+			line-height: 100px;
+			text-align: center;
+			font-size: 20px;
+			background: #fcc;
+			border:1px solid #EC6060;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="jumbotron">
+		<div class="container">
+			<h1>jquery-drag.js docs</h1>
+			<p>作者：云淡然</p>
+			<p>兼容：ie9+、chrome、firefox</p>
+			<p><span class="label label-success">已适配yquery</span></p>
+		</div>
+	</div>
+	<div class="container">
+
+		<div class="panel panel-default">
+			<div class="panel-heading">1、插件特点</div>
+			<div class="panel-body">
+				<ol>
+					<li>简单易用。</li>
+					<li>可设置轴向、范围。</li>
+					<li>相关文章：
+						<a rel="bookmark" href="http://qianduanblog.com/2560.html">http://qianduanblog.com/2560.html</a>
+					</li>
+				</ol>
+			</div>
+		</div>
+
+		<div class="panel panel-default">
+			<div class="panel-heading">2、插件API</div>
+			<div class="panel-body">
+				<p class="text-danger lead">2.1、插件参数</p>
+				<pre class="prettyprint linenums lang-javascript">$.fn.drag.defaults;</pre>
+				<div class="table-responsive">
+					<table class="table table-hover table-striped table-bordered">
+						<thead>
+							<tr>
+								<th>参数名称</th>
+								<th>参数默认值</th>
+								<th>参数描述</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td><code>handle</code></td>
+								<td>null</td>
+								<td>
+									<p>鼠标操作区域选择器，默认为this</p>
+									<p>参数为选择器字符串</p>
+								</td>
+							</tr>
+							<tr>
+								<td><code>drag</code></td>
+								<td>null</td>
+								<td>
+									<p>鼠标拖拽时，移动的目标，即从handle开始查找最近匹配的祖先元素</p>
+									<p>默认为this</p>
+									<p>参数为选择器字符串</p>
+								</td>
+							</tr>
+							<tr>
+								<td><code>axis</code></td>
+								<td>"xy"</td>
+								<td>拖拽轴向，x：水平，y：垂直，xy：所有</td>
+							</tr>
+							<tr>
+								<td><code>cursor</code></td>
+								<td>"move"</td>
+								<td>鼠标形状，为空时将不会自动设置</td>
+							</tr>
+							<tr>
+								<td><code>min</code></td>
+								<td>null</td>
+								<td>拖拽对象的最小位置，格式为{left: 10, top: 10}</td>
+							</tr>
+							<tr>
+								<td><code>max</code></td>
+								<td>null</td>
+								<td>拖拽对象的最大位置，格式为{left: 1000, top: 1000}</td>
+							</tr>
+							<tr>
+								<td><code>zIndex</code></td>
+								<td>9999</td>
+								<td>
+									<p>拖拽时的层级值</p>
+								</td>
+							</tr>
+							<tr>
+								<td><code>ondragbefore</code></td>
+								<td>$.noop</td>
+								<td>
+									<p>拖拽开始前回调</p>
+									<p>this: drag element
+									<p>arg0: event</p>
+									<p>arg1: instance</p>
+								</td>
+							</tr>
+							<tr>
+								<td><code>ondragstart</code></td>
+								<td>$.noop</td>
+								<td>
+									<p>拖拽开始后回调</p>
+									<p>this: drag element
+									<p>arg0: event</p>
+									<p>arg1: instance</p>
+								</td>
+							</tr>
+							<tr>
+								<td><code>ondrag</code></td>
+								<td>$.noop</td>
+								<td>
+									<p>拖拽中回调</p>
+									<p>this: drag element
+									<p>arg0: event</p>
+									<p>arg1: instance</p>
+								</td>
+							</tr>
+							<tr>
+								<td><code>ondragend</code></td>
+								<td>$.noop</td>
+								<td>
+									<p>拖拽结束后回调</p>
+									<p>this: drag element
+									<p>arg0: event</p>
+									<p>arg1: instance</p>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+
+
+		<div class="panel panel-default">
+			<div class="panel-heading">3、插件演示</div>
+			<div class="panel-body">
+				<div class="well">
+					<p class="lead text-danger">下面是一个div，可以拖拽，试试看：</p>
+					<div id="drag1" class="box">xy:static</div>
+					<div id="drag2" class="box">xy:relative</div>
+					<div id="drag3" class="box" style="position: absolute;">x:absolute</div>
+					<div id="drag4" class="box" style="position: fixed;top: 200px;right:200px;">y:fixed</div>
+				</div>
+			</div>
+		</div>
+
+
+		<div class="panel panel-default">
+			<div class="panel-heading">4、插件源码</div>
+			<div class="panel-body">
+				<a class="btn btn-danger" href="/#jquery-drag">点击前往插件下载页面</a>
+			</div>
+		</div>
+
+	</div>
+	<div id="footer" style="border-top:1px solid #ddd;padding:20px;margin-top:30px;">
+		<ul class="list-inline"><li>&copy;云淡然</li><li>2013 - 2014</li><li><a href="/">前端静态资源首页</a></li></ul>
+	</div>
+	<script src="/js/yquery/1.7/yquery.js"></script>
+	<script src="/js/prettify/r298/prettify.min.js"></script>
+	<script src="1.2/jquery-drag.js"></script>
+	<script>
+	window.prettyPrint && prettyPrint();
+	$("#drag1").drag();
+	$("#drag2").drag();
+	$("#drag3").drag({
+		axis: 'x'
+	});
+	$("#drag4").drag({
+		axis: 'y'
+	});
+	</script>
+</body>
+
+</html>

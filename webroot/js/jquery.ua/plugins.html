@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>plugins</title>
+	<style>
+	li{
+		border-bottom: 1px solid #ddd;
+		padding-bottom: 10px;
+		margin-bottom: 10px;
+		display: inline-block;
+		width: 500px;
+	}
+	</style>
+</head>
+<body>
+	
+<script>
+	var mimes=window.navigator.plugins;
+	var li='';
+	for (var i=0,mime;mime=mimes[i];i++) {
+		li+='<li>description=<b>'+mime.description+'</b><br>name=<b>'+mime.name+'</b><br>filename=<b>'+mime.filename+'</b></li>';
+	};
+
+	document.write('<ul>'+li+'</ul>');
+</script>
+
+</body>
+</html>

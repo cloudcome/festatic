@@ -1,0 +1,335 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="renderer" content="webkit">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<meta name="author" content="云淡然;http://ydr.me">
+	<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+	<link rel="stylesheet" href="/bootstrap/3.1.1/css/bootstrap.min.css">
+	<link rel="stylesheet" href="/bootstrap/3.1.1/css/bootstrap-theme.min.css">
+	<link rel="stylesheet" href="/css/prettify/bootstrap.css">
+	<title>jquery.msg.js docs - 前端静态资源</title>
+	<link rel="stylesheet" href="/css/jquery.msg/default.css">
+</head>
+
+
+
+<body>
+	<div class="jumbotron">
+		<div class="container">
+			<h1>jquery.msg.js docs</h1>
+			<p>作者：云淡然</p>
+			<p>兼容：ie9+、chrome、firefox</p>
+			<p><span class="label label-success">已适配yquery</span></p>
+		</div>
+	</div>
+	<div class="container">
+		<div class="panel panel-default">
+			<div class="panel-heading">1、插件说明</div>
+			<div class="panel-body">
+				<ol>
+					<li>相关文章
+						<a href="http://qianduanblog.com/2603.html">http://qianduanblog.com/2603.html</a>
+					</li>
+					<li>消息没有modal效果，类似于android手机的消息，显示一段时间（3s）然后消失</li>
+					<li>在3秒期间，鼠标悬停会暂停消失，鼠标移开3秒后又会消失，不影响阅读！</li>
+				</ol>
+			</div>
+		</div>
+		<div class="panel panel-default">
+			<div class="panel-heading">2、插件API</div>
+			<div class="panel-body">
+				<p class="lead text-danger">2.1、默认参数</p>
+				<pre class="prettyprint linenums lang-javascript">$.msg.defaults</pre>
+
+				<p class="lead text-danger">2.2、插件参数</p>
+				<div class="table-responsive">
+					<table class="table table-hover table-striped table-bordered">
+						<thead>
+							<tr>
+								<th>参数名称</th>
+								<th>参数默认值</th>
+								<th>参数描述</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>duration</td>
+								<td>123</td>
+								<td>动画时间</td>
+							</tr>
+							<tr>
+								<td>delay</td>
+								<td>3000</td>
+								<td>
+									<p>延迟消失时间，默认3s</p>
+									<p>如果有button时，则不会自动消失</p>
+								</td>
+							</tr>
+							<tr>
+								<td>buttons</td>
+								<td>null</td>
+								<td>
+									<p>按钮集合数组</p>
+									<p>如果存在按钮，则不会自动消失</p>
+									<p>按钮数组格式为：<pre class="prettyprint linenums lang-javascript">[{'确定': fn1, '取消': fn2}]</pre></p>
+								</td>
+							</tr>
+							<tr>
+								<td>esc</td>
+								<td>-1</td>
+								<td>
+									<p>指定按下 ESC 后触发的按钮，默认触发最后一个按钮事件</p>
+									<p>比如上面定义的2个按钮，定义触发取消事件，</p>
+									<p>那么此处填1，即第2个按钮索引</p>
+								</td>
+							</tr>
+							<tr>
+								<td>title</td>
+								<td>"提示"</td>
+								<td>标题，为空不显示</td>
+							</tr>
+							<tr>
+								<td>msg</td>
+								<td>"Hello World!!"</td>
+								<td>消息内容</td>
+							</tr>
+							<tr>
+								<td>type</td>
+								<td>"muted"</td>
+								<td>消息类型:inverse/warning/error<br>/success/info/muted(默认)</td>
+							</tr>
+							<tr>
+								<td>zIndex</td>
+								<td>99999</td>
+								<td>层级</td>
+							</tr>
+							<tr>
+								<td>position</td>
+								<td>null</td>
+								<td>消息位置，默认水平垂直居中</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+
+				<p class="lead text-danger">2.3、插件方法</p>
+				<p>使用返回的是 Msg 对象实例，该对象实例有以下方法：</p>
+				<div class="table-responsive">
+					<table class="table table-hover table-striped table-bordered">
+						<thead>
+							<tr>
+								<th>方法名称</th>
+								<th>方法参数</th>
+								<th>方法说明</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>hide</td>
+								<td>
+									<p>参数0：fn 回调 可选</p>
+								</td>
+								<td>关闭该消息，销毁该消息实例</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+
+
+				<p class="lead text-danger">2.4、使用范例</p>
+				<pre class="prettyprint linenums lang-javascript">$.msg(settings);
+$.msg('消息内容！');
+$.msg('消息类型', '消息内容！');
+$.msg().hide();</pre>
+			</div>
+		</div>
+		<div class="panel panel-default">
+			<div class="panel-heading">3、插件演示</div>
+			<div class="panel-body">
+				<div class="well" id="well1">
+					<p>无标题、无按钮</p>
+					<button class="btn btn-default" data-type="inverse">inverse 类型</button>
+					<button class="btn btn-warning" data-type="warning">warning 类型</button>
+					<button class="btn btn-danger" data-type="error">error 类型</button>
+					<button class="btn btn-success" data-type="success">success 类型</button>
+					<button class="btn btn-info" data-type="info">info 类型</button>
+					<button class="btn btn-default" data-type="muted">muted 类型</button>
+				</div>
+				<div class="well" id="well2">
+					<p>有标题、无按钮</p>
+					<button class="btn btn-default" data-type="inverse">inverse 类型</button>
+					<button class="btn btn-warning" data-type="warning">warning 类型</button>
+					<button class="btn btn-danger" data-type="error">error 类型</button>
+					<button class="btn btn-success" data-type="success">success 类型</button>
+					<button class="btn btn-info" data-type="info">info 类型</button>
+					<button class="btn btn-default" data-type="muted">muted 类型</button>
+				</div>
+				<div class="well" id="well3">
+					<p>无标题、有按钮</p>
+					<button class="btn btn-default" data-type="inverse">inverse 类型</button>
+					<button class="btn btn-warning" data-type="warning">warning 类型</button>
+					<button class="btn btn-danger" data-type="error">error 类型</button>
+					<button class="btn btn-success" data-type="success">success 类型</button>
+					<button class="btn btn-info" data-type="info">info 类型</button>
+					<button class="btn btn-default" data-type="muted">muted 类型</button>
+				</div>
+				<div class="well" id="well4">
+					<p>有标题、有按钮</p>
+					<button class="btn btn-default" data-type="inverse">inverse 类型</button>
+					<button class="btn btn-warning" data-type="warning">warning 类型</button>
+					<button class="btn btn-danger" data-type="error">error 类型</button>
+					<button class="btn btn-success" data-type="success">success 类型</button>
+					<button class="btn btn-info" data-type="info">info 类型</button>
+					<button class="btn btn-default" data-type="muted">muted 类型</button>
+				</div>
+				<div class="well" id="well5">
+					<p>按钮数量及默认按钮设置</p>
+					<button class="btn btn-default" id="btn1">1个按钮：知道了（默认）</button>
+					<button class="btn btn-default" id="btn2">2个按钮：确定，取消（默认）</button>
+					<button class="btn btn-default" id="btn3">3个按钮：后退，刷新（设置默认），前进</button>
+				</div>
+			</div>
+		</div>
+		<div class="panel panel-default">
+			<div class="panel-heading">4、插件下载</div>
+			<div class="panel-body">
+				<a href="/#jquery.msg" class="btn btn-sm btn-danger">点击前往插件下载页面</a>
+			</div>
+		</div>
+	</div>
+	<div id="footer" style="border-top:1px solid #ddd;padding:20px;margin-top:30px;">
+		<ul class="list-inline">
+			<li>&copy;云淡然</li>
+			<li>2013 - 2014</li>
+			<li>
+				<a href="/">前端静态资源首页</a>
+			</li>
+		</ul>
+	</div>
+	<!-- // <script src="/js/jquery/1.11.0/jquery.min.js"></script> -->
+	<!-- // <script src="/bootstrap/3.1.1/js/bootstrap.min.js"></script> -->
+	<script src="/js/prettify/r298/prettify.min.js"></script>
+	<script src="/js/yquery/1.7/yquery.js"></script>
+	<script src="1.1/jquery.msg.js"></script>
+	<script>
+	window.prettyPrint && prettyPrint();
+
+	$('#well1').on('click', 'button', function(){
+		$.msg({
+			type: $(this).data('type'),
+			title: null,
+			msg: $(this).html() || null
+		});
+	});
+
+	$('#well2').on('click', 'button', function(){
+		$.msg({
+			type: $(this).data('type') || null,
+			title: '注意',
+			msg: $(this).html() || null
+		});
+	});
+
+	$('#well3').on('click', 'button', function(){
+		$.msg({
+			type: $(this).data('type') || null,
+			title: null,
+			buttons:[
+				{
+					"确定": function(){
+						// alert('我确定！');
+					}
+				},
+				{
+					"取消": function(){
+						// alert('我取消！');
+					}
+				}
+			],
+			msg: $(this).html() || null
+		});
+	});
+
+	$('#well4').on('click', 'button', function(){
+		$.msg({
+			type: $(this).data('type') || null,
+			title: '注意',
+			buttons:[
+				{
+					"确定": function(){
+						// alert('我确定！');
+					}
+				},
+				{
+					"取消": function(){
+						// alert('我取消！');
+					}
+				}
+			],
+			msg: $(this).html() || null
+		});
+	});
+
+	$('#btn1').click(function(){
+		$.msg({
+			buttons:[
+				{
+					"知道了": function(){
+						alert('我已经知道了。');
+					}
+				}
+			],
+			msg: '这条消息仅仅是传达一个结果或状态的。'
+		});
+	});
+
+	$('#btn2').click(function(){
+		$.msg({
+			buttons:[
+				{
+					"确定": function(){
+						alert('我确定！');
+					}
+				},
+				{
+					"取消": function(){
+						alert('我取消！');
+					}
+				}
+			],
+			msg: '这条消息是要你确认继续操作的，你确定吗？'
+		});
+	});
+	
+	$('#btn3').click(function(){
+		$.msg({
+			buttons:[
+				{
+					"后退": function(){
+						alert('我后退！');
+					}
+				},
+				{
+					"刷新": function(){
+						alert('我刷新！');
+					}
+				},
+				{
+					"前进": function(){
+						alert('我前进！');
+					}
+				}
+			],
+			msg: '这条消息是要你选择接下来操作的，请选择（这里设置了默认刷新）。',
+			esc: 1
+		});
+	});
+
+	</script>
+</body>
+
+</html>

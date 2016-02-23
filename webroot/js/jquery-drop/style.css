@@ -1,0 +1,43 @@
+.container {
+    margin-top: 20px;
+}
+.item, .clone, .drop {
+    float: left;
+    width: 60px;
+    height: 60px;
+    line-height: 60px;
+    text-align: center;
+    font-size: 30px;
+    color: #fff;
+    margin: 10px;
+}
+.list .item {
+    cursor: move;
+}
+.clone {
+    background: #ddd;
+}
+.drop {
+    border: 4px dashed #666;
+}
+.list, .containment {
+    border: 3px solid #ddd;
+    margin-bottom: 30px;
+    min-height: 100px;
+    position: relative;
+}
+.list.over, .containment.over {
+    border-color: #F5AD1C;
+}
+.list.enter, .containment.enter {
+    background: #FFEDB3;
+}
+.list .item.enter, .containment .item.enter {
+    background: #E04615;
+}
+.item1 {
+    background: #719529;
+}
+.item2 {
+    background: #4BB7C1;
+}

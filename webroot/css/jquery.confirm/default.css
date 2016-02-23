@@ -1,0 +1,82 @@
+/*!
+ * jquery.confirm 默认样式
+ * @author ydr.me
+ * @for jquery.confirm.js
+ * @version 1.1
+ */
+
+/**
+ * v1.0
+ * 2013年12月5日14:44:15;
+ * 
+ * v1.1
+ * 2014年2月18日23:19:28;
+ * IOS7风格
+ * 限制最大宽度
+ * 2014年6月6日19:52:47
+ * 再次限制最大宽度
+ */
+
+@charset "utf-8";
+
+.jquery_confirm____bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: 0;
+    padding: 0;
+    background: #fff;
+    z-index: 9999;
+    opacity: 0.1;
+    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=10);
+    display: none;
+}
+
+.jquery_confirm____ {
+    z-index: 10000;
+    position: fixed;
+    background: #fff;
+    top: 0;
+    left: 0;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+    box-shadow: 0px 0px 30px #ACACAC;
+    text-align: center;
+    display: none;
+    width: 310px;
+}
+
+.jquery_confirm____body {
+    word-break: break-all;
+    padding: 20px;
+    min-width: 200px;
+}
+
+.jquery_confirm____footer {
+    border-top: 1px solid #DDD;
+    background: #F5F5F5;
+}
+
+.jquery_confirm____footer > button {
+    border: 0;
+    padding: 0;
+    margin: 0;
+    width: 50%;
+    background: #FFFFFF;
+    height: 36px;
+    line-height: 36px;
+    font-size: 16px;
+    outline: none;
+    cursor: pointer;
+}
+
+.jquery_confirm____footer > button:hover,
+.jquery_confirm____footer > button:active {
+    background: #F5F5F5;
+}
+
+.jquery_confirm____footer > .jquery_confirm____cancel {
+    border-left: 1px solid #ddd;
+}

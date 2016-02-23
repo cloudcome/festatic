@@ -1,0 +1,19 @@
+#https://github.com/Polymer/docs/blob/master/app.yaml
+rewrite:
+   - url: /update.log
+     script: /update/
+
+handlers:
+   - url: .(eot|svg|ttf|woff)$
+     http_headers:
+        Access-Control-Allow-Origin: "*"
+
+mime_types:
+   - jpg: image/jpeg
+   - jpeg: image/jpeg
+   - j: image/jpeg
+   - jp: image/jpeg
+   - eot: font/eot
+   - svg: font/svg
+   - ttf: font/ttf
+   - woff: font/woff

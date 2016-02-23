@@ -1,0 +1,172 @@
+<!doctype html>
+
+<html lang="en">
+
+
+
+<head>
+
+    <meta charset="utf-8">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+
+    <meta name="author" content="云淡然;http://ydr.me">
+
+    <title>yquery获取和操作style</title>
+
+    <style>
+    * {
+        padding: 0;
+        margin: 0
+    }
+    
+    body {
+        padding: 10px;
+        margin: 15px;
+        border: 20px solid #888;
+        height: 2000px;
+    }
+    
+    #demo1 {
+        width: 400px;
+        height: 400px;
+        position: relative;
+        border: 10px solid #4867AD;
+        color: #4867AD;
+        font-size: 30px;
+        font-weight: 900;
+        background: #AEC8FF;
+        padding: 15px;
+        margin: 20px;
+    }
+    
+    #demo2 {
+        width: 300px;
+        height: 300px;
+        background: #F5F5C4;
+        border: 10px solid #C6C640;
+        color: #C6C640;
+        font-size: 30px;
+        font-weight: 900;
+        padding: 15px;
+        margin: 20px;
+    }
+    
+    #demo3 {
+        width: 200px;
+        height: 200px;
+        background: #F7B79B;
+        border: 10px solid #9B5534;
+        color: #9B5534;
+        font-size: 30px;
+        font-weight: 900;
+        padding: 30px;
+        margin: 20px;
+        overflow: scroll;
+    }
+    
+    #demo4 {
+        width: 1000px;
+        height: 1000px;
+        background: #E067EA;
+        color: #9B21A5;
+        font-size: 30px;
+        font-weight: 900;
+    }
+    
+    button {
+        padding: 6px 12px;
+    }
+    
+    .border-box {
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        -ms-box-sizing: border-box;
+        box-sizing: border-box;
+    }
+    </style>
+
+
+
+</head>
+
+
+
+<body>
+
+    <h1>yquery获取和操作style</h1>
+
+    <div id="demo1">#demo1
+
+        <p class="1"></p>
+
+        <p class="2"></p>
+
+        <p class="3"></p>
+
+        <div id="demo2">#demo2
+
+            <div id="demo3">#demo3
+
+                <div id="demo4">#demo4</div>
+
+            </div>
+
+        </div>
+
+        <a class="1"></a>
+
+        <a class="2"></a>
+
+        <a class="3"></a>
+
+    </div>
+
+    <hr>
+
+    <button id="width">#demo3的宽度width()</button>
+
+    <button id="width2">#demo3的宽度css("width")</button>
+
+    <button id="addClass">#demo3修改为border-box</button>
+
+    <button id="removeClass">#demo3修改为content-box</button>
+
+    <script src="1.7/yquery.js"></script>
+
+    <script>
+    var $body = $("body");
+    var body = $body[0];
+    var $demo1 = $("#demo1");
+    var demo1 = $demo1[0];
+    var $demo2 = $("#demo2");
+    var demo2 = $demo2[0];
+    var $demo3 = $("#demo3");
+    var demo3 = $demo3[0];
+    var $demo4 = $("#demo4");
+    var demo4 = $demo4[0];
+
+
+
+    $("#width").click(function() {
+    	alert("width=" + $demo3.width() + "\n" + "innerWidth=" + $demo3.innerWidth() + "\n" + "outerWidth=" + $demo3.outerWidth() + "\n");
+    });
+
+    $("#width2").click(function() {
+    	alert("width=" + $demo3.css("width"));
+    });
+
+    $("#addClass").click(function() {
+  		$demo3.addClass("border-box");
+    });
+
+    $("#removeClass").click(function() {
+    	$demo3.removeClass("border-box");
+    });
+    </script>
+
+</body>
+
+</html>

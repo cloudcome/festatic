@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="renderer" content="webkit">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<meta name="author" content="云淡然;http://ydr.me">
+	<meta name="keywords" content="关键词1,关键词2">
+	<meta name="description" content="描述语句">
+	<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+	<link rel="apple-touch-icon" href="/favicon.png">
+	<title>文档标题</title>
+	<link rel="stylesheet" href="http://festatic.aliapp.com/bootstrap/3.1.1/css/bootstrap.min.css">
+	<link rel="stylesheet" href="http://festatic.aliapp.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="http://festatic.aliapp.com/css/jquery-clip/default.min.css">
+	<style>
+	#demo-div{
+		width: 600px;
+		height: 400px;
+	}
+	#demo-div img{
+		max-width: 600px;
+		max-height: 400px;
+		width: auto;
+		height: auto;
+	}
+	#preview{
+		width: 200px;
+		height: 100px;
+	}
+	</style>
+</head>
+<body>
+	<div class="jumbotron">
+		<div class="container">
+			<h1>jquery-clip</h1>
+			<p>本地剪切文件为二进制</p>
+			<p>搭配 jquery-preview（本地预览）/jquery-upload（进度上传） 效果更佳</p>
+		</div>
+	</div>
+	<div class="container">
+		<div class="clearfix">
+			<div class="pull-left" id="demo-div">
+				<img src="demo.jpg" alt="" id="demo">
+			</div>
+			<div class="pull-left">
+				<div id="preview"></div>
+			</div>
+		</div>
+	</div>
+	<script src="http://festatic.aliapp.com/js/jquery/1.11.0/jquery.min.js"></script>
+	<script src="latest/jquery-clip.js"></script>
+	<script>
+	$(function(){
+		$('#demo').clip({
+			aspectRatio: 2,
+			$preview: $('#preview'),
+			onclip: function(binary){
+				console.log(binary);
+			}
+		});
+	});
+	</script>
+</body>
+</html>

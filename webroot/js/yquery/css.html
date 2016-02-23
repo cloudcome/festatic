@@ -1,0 +1,134 @@
+<!doctype html>
+
+<html lang="en">
+
+
+
+<head>
+
+	<meta charset="utf-8">
+
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+
+	<meta name="author" content="云淡然;http://ydr.me">
+
+	<title>yQuery 操作ClassList</title>
+
+	<link rel="stylesheet" href="http://festatic.aliapp.com/css/3/latest.css">
+
+	<style>
+
+	#demo {
+
+		width: 200px;
+
+		padding: 10px;
+
+	}
+
+	.a {
+
+		color: #F75D00;
+
+	}
+
+	.b {
+
+		background-color: #C4E3FF;
+
+	}
+
+	.c {
+
+		font-size: 20px;
+
+	}
+
+	</style>
+
+</head>
+
+
+
+<body style="padding:10px;">
+
+	<pre>.a {
+
+	color: #F75D00;
+
+}
+
+.b {
+
+	background-color: #C4E3FF;
+
+}
+
+.c {
+
+	font-size: 20px;
+
+}</pre>
+
+	<div id="demo" class="">#demo</div>
+
+	<hr>
+
+	<button id="button-1">#demo添加.a</button>
+
+	<button id="button-2">#demo添加.b .c</button>
+
+	<button id="button-3">#demo移除.a</button>
+
+	<button id="button-4">#demo是否包含.b</button>
+
+	<button id="button-5">#demo清空class</button>
+
+
+
+	<script src="1.7/yquery.js"></script>
+
+	<script>
+
+	var $demo = $("#demo");
+
+	$("#button-1").click(function() {
+
+		$demo.addClass("a");
+
+	});
+
+	$("#button-2").click(function() {
+
+		$demo.addClass("b c");
+
+	});
+
+	$("#button-3").click(function() {
+
+		$demo.removeClass("a");
+
+	});
+
+	$("#button-4").click(function() {
+
+		alert($demo.hasClass("b"));
+
+	});
+
+	$("#button-5").click(function() {
+
+		$demo.removeClass();
+
+	});
+
+	</script>
+
+</body>
+
+
+
+</html>
+

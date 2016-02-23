@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="author" content="云淡然;http://ydr.me">
+    <meta name="keywords" content="关键词1,关键词2">
+    <meta name="description" content="描述语句">
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" href="/favicon.png">
+    <title>文档标题</title>
+</head>
+
+<body>
+
+    <script>
+
+// 事件监听一个自定义事件 hello
+document.addEventListener('hello', function(e){
+	console.log(e);
+});
+
+// // 创建事件
+// var event = new Event('hello', {
+// 	// 是否冒泡
+// 	bubbles: true,
+// 	// 是否可以被取消
+// 	cancelable: true
+// });
+
+// // 标准事件属性
+// event.clientX = 100;
+// event.clientY = 200;
+// // 自定义事件属性
+// event.detail = {
+// 	text: 'hello world',
+// };
+
+// // 触发事件
+// document.dispatchEvent(event);
+
+
+// var event = new CustomEvent('hello', {
+//     // 是否冒泡
+//     bubbles: true,
+//     // 是否可以被取消
+//     cancelable: true,
+//     // 自定义属性
+//     detail:{
+//         text: 'hello world',
+//     }
+// });
+
+// // 标准属性
+// event.clientX = 100;
+// event.clientY = 200;
+
+
+
+// var event = document.createEvent('Events');
+// // 初始化事件
+// // 参数1：事件类型
+// // 参数2：是否冒泡
+// // 参数3：是否可以取消
+// // 还有其他参数，这里不赘述了
+// event.initEvent('hello', true, true);
+
+// // 标准属性
+// event.clientX = 100;
+// event.clientY = 200;
+
+// // 自定义属性
+// event.detail = {
+//     text: 'hello world',
+// };
+
+
+// 触发事件
+document.dispatchEvent(event);
+
+
+    </script>
+</body>
+
+</html>

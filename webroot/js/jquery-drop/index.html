@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="renderer" content="webkit">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<meta name="author" content="云淡然;http://ydr.me">
+	<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+	<link rel="stylesheet" href="/bootstrap/3.1.1/css/bootstrap.min.css">
+	<link rel="stylesheet" href="/bootstrap/3.1.1/css/bootstrap-theme.min.css">
+	<link rel="stylesheet" href="/css/prettify/bootstrap.css">
+	<title>jquery-drop.js docs - 前端静态资源</title>
+</head>
+
+<body>
+	<div class="jumbotron">
+		<div class="container">
+			<h1>jquery-drop.js docs</h1>
+			<p>作者：云淡然</p>
+			<p>兼容：ie9+、chrome、firefox</p>
+			<p><span class="label label-success">已适配yquery</span></p>
+		</div>
+	</div>
+	<div class="container">
+
+		<div class="panel panel-default">
+			<div class="panel-heading">1、插件特点</div>
+			<div class="panel-body">
+				<ol>
+					<li>简单易用。</li>
+					<li>jquery-drop必须依赖于<a href="/js/jquery-drag/" target="_blank"><b>jquery-drag</b></a></li>
+					<li>多种释放类型</li>
+					<li>相关文章：
+						<a rel="bookmark" href="http://qianduanblog.com/post/jquery-plugin-13-jquery-drop-drag-release-sorting-replacement.html"> 《jquery插件13：jquery-drop拖拽释放排序、替换》</a>
+					</li>
+				</ol>
+			</div>
+		</div>
+
+		<div class="panel panel-default">
+			<div class="panel-heading">2、插件API</div>
+			<div class="panel-body">
+				<p class="text-danger lead">2.1、插件参数</p>
+				<pre class="prettyprint linenums lang-javascript">$.fn.drop.defaults;</pre>
+				<div class="table-responsive">
+					<table class="table table-hover table-striped table-bordered">
+						<thead>
+							<tr>
+								<th>参数名称</th>
+								<th>参数默认值</th>
+								<th>参数描述</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td colspan="3">
+									<p>jquery-drag的配置参数，参考<a href="/js/jquery-drag/" target="_blank">jquery-drag文档说明</a></p>
+								</td>
+							</tr>
+							<tr>
+								<td><code>type</code></td>
+								<td>"insert"</td>
+								<td>
+									<p>释放类型</p>
+									<p>1、insert: 插入，默认</p>
+									<p>2、append: 追加</p>
+									<p>3、prepend: 前加</p>
+									<p>4、exchange: 交换</p>
+									<p>5、replace: 替换</p>
+								</td>
+							</tr>
+							<tr>
+								<td><code>containment</code></td>
+								<td>null</td>
+								<td>
+									<p>目标容器对象</p>
+								</td>
+							</tr>
+							<tr>
+								<td><code>itemSelector</code></td>
+								<td>".item"</td>
+								<td>
+									<p>目标容器内的项目对象，用于判断指定释放位置</p>
+									<p>必须是选择器字符串，通常为 class</p>
+								</td>
+							</tr>
+							<tr>
+								<td><code>duration</code></td>
+								<td>456</td>
+								<td>
+									<p>动画时间，单位ms</p>
+								</td>
+							</tr>
+							<tr>
+								<td><code>dropRatio</code></td>
+								<td>0.1</td>
+								<td>
+									<p>可被拖拽到目标容器内，源模板被占比例</p>
+									<p>例，已有超过10%的面积被拖拽到目标容器内时，此时释放可以被置放在目标容器内</p>
+								</td>
+							</tr>
+							<tr>
+								<td><code>cloneClass</code></td>
+								<td>"placeholder"</td>
+								<td>
+									<p>占位类</p>
+									<p>用于开始拖拽时占位</p>
+								</td>
+							</tr>
+							<tr>
+								<td><code>dropClass</code></td>
+								<td>"drop"</td>
+								<td>
+									<p>占位类</p>
+									<p>用于释放目标占位</p>
+								</td>
+							</tr>
+							<tr>
+								<td><code>ondragover</code></td>
+								<td>$.noop</td>
+								<td>
+									<p>拖拽到目标内回调</p>
+									<p>this: containment element</p>
+									<p>arg0: event</p>
+								</td>
+							</tr>
+							<tr>
+								<td><code>ondragenter</code></td>
+								<td>$.noop</td>
+								<td>
+									<p>进入可被释放区域</p>
+									<p>即：与目标的交叉面积超过dropRatio比例时</p>
+									<p>type为exchange、replace时，目标为item，其他时候为containment</p>
+									<p>this: target element</p>
+									<p>arg0: event</p>
+								</td>
+							</tr>
+							<tr>
+								<td><code>ondragleave</code></td>
+								<td>$.noop</td>
+								<td>
+									<p>离开可被释放区域</p>
+									<p>即：与目标的交叉面积超过dropRatio比例时</p>
+									<p>type为exchange、replace时，目标为item，其他时候为containment</p>
+									<p>this: target element</p>
+									<p>arg0: event</p>
+								</td>
+							</tr>
+							<tr>
+								<td><code>ondragout</code></td>
+								<td>$.noop</td>
+								<td>
+									<p>拖拽离开目标内回调</p>
+									<p>this: containment element</p>
+									<p>arg0: event</p>
+								</td>
+							</tr>
+							<tr>
+								<td><code>ondrop</code></td>
+								<td>$.noop</td>
+								<td>
+									<p>松开并放置目标后回调</p>
+									<p>this: containment element</p>
+									<p>arg0: event</p>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+
+
+		<div class="panel panel-default">
+			<div class="panel-heading">3、插件演示</div>
+			<div class="panel-body">
+				<div class="list-group">
+					<a href="./demo-insert.html" class="list-group-item"><b class="text-info">例1：插入类型 insert</b></a>
+					<a href="./demo-append.html" class="list-group-item"><b class="text-info">例2：追加类型 append</b></a>
+					<a href="./demo-prepend.html" class="list-group-item"><b class="text-info">例3：前加类型 prepend</b></a>
+					<a href="./demo-exchange.html" class="list-group-item"><b class="text-info">例4：交换类型 exchange</b></a>
+					<a href="./demo-replace.html" class="list-group-item"><b class="text-info">例5：替换类型 replace</b></a>
+				</div>
+			</div>
+		</div>
+
+
+		<div class="panel panel-default" id="demo">
+			<div class="panel-heading">4、插件源码</div>
+			<div class="panel-body">
+				<a class="btn btn-danger" href="/#jquery-drop">点击前往插件下载页面</a>
+			</div>
+		</div>
+
+	</div>
+	<div id="footer" style="border-top:1px solid #ddd;padding:20px;margin-top:30px;">
+		<ul class="list-inline"><li>&copy;云淡然</li><li>2013 - 2014</li><li><a href="/">前端静态资源首页</a></li></ul>
+	</div>
+	<script src="/js/yquery/latest/yquery.min.js"></script>
+	<script src="/js/prettify/r298/prettify.min.js"></script>
+	<script>
+	window.prettyPrint && prettyPrint();
+	</script>
+</body>
+
+</html>

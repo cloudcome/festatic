@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+	<meta name="author" content="云淡然;http://ydr.me">
+	<title>动画测试1</title>
+	<style>
+	.demo{
+		width: 100px;
+		height: 100px;
+		background: #95A5D6;
+		border: 2px solid #485FA5;
+		position: relative;
+		margin: 10px;
+		display: inline-block;
+	}
+	</style>
+</head>
+
+<body style="padding:10px;">
+	<button id="animate">继续执行 animate 随机动画 5000ms</button>
+	<button id="stop1">立即停止在当前 animate 动画</button>
+	<button id="stop2">立即停止在终点 animate 动画</button>
+	<br>
+	<button id="fadeIn">fadeIn 5000ms</button>
+	<button id="fadeOut">fadeOut 5000ms</button>
+	<br>
+	<button id="show">show 5000ms</button>
+	<button id="hide">hide 5000ms</button>
+	<br>
+	<p id="to">动画预期终点</p>
+	<p id="ret">动画状态</p>
+	<p id="run">执行状态</p>
+	<hr>
+	<div class="demo"></div>
+	<div class="demo"></div>
+	
+	<script src="1.7/yquery.js"></script>
+	<script>
+		var $to = $('#to'), $ret = $('#ret'), $run = $('#run');
+		$('#animate').click(function(){
+			var width =  randomNumber(100, 600), height = randomNumber(100, 600);
+			$run.html('开始动画……');
+			$to.html('动画至：' + JSON.stringify({
+				width: width,
+				height: height,
+			}));
+			$('.demo').animate({
+				width: width,
+				height: height
+			}, 5000, function(){
+				$run.html('动画完成。');
+				$ret.html('动画停止：' + JSON.stringify({
+					width: $('.demo').css('width'),
+					height: $('.demo').css('height'),
+				}));
+			});
+		});
+
+		$('#stop1').click(function(){
+			$('.demo').stop();
+		});
+
+		$('#stop2').click(function(){
+			$('.demo').stop(true);
+		});
+
+		$('#fadeIn').click(function(){
+			$run.html('开始动画……');
+			$('.demo').fadeIn(5000, function(){
+				$run.html('动画完成。');
+				$ret.html('动画停止。');
+				console.log('动画完成');
+			});
+		});
+
+		$('#fadeOut').click(function(){
+			$run.html('开始动画……');
+			$('.demo').fadeOut(5000, function(){
+				$run.html('动画完成。');
+				$ret.html('动画停止。');
+				console.log('动画完成');
+			});
+		});
+
+		$('#show').click(function(){
+			$run.html('开始动画……');
+			$('.demo').show(5000, function(){
+				$run.html('动画完成。');
+				$ret.html('动画停止。');
+				console.log('动画完成');
+			});
+		});
+
+		$('#hide').click(function(){
+			$run.html('开始动画……');
+			$('.demo').hide(5000, function(){
+				$run.html('动画完成。');
+				$ret.html('动画停止。');
+				console.log('动画完成');
+			});
+		});
+
+
+		function randomNumber(min, max){
+			return Math.round(Math.random()*(max - min) + min);
+		}
+
+		function randomColor(){
+			return "#"+(Math.random()*0xffffff>>>0).toString(16);
+		}
+
+		// var fn = function(){
+		// 	document.removeEventListener('click', fn);
+		// 	alert(1);
+		// };
+		// document.addEventListener('click', fn);
+		
+
+
+
+		function fn(string){
+			var args = arguments;
+
+			string = 123;
+
+			debugger;
+			console.log(string);
+		}
+
+	</script>
+
+</body>
+
+</html>

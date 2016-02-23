@@ -1,0 +1,319 @@
+<!doctype html>
+
+<html lang="en">
+
+
+
+<head>
+
+	<meta charset="utf-8">
+
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+
+	<meta name="author" content="云淡然;http://ydr.me">
+
+
+
+	<title>jquery.confirm.js demo - 前端静态资源</title>
+
+	<link rel="stylesheet" href="../../css/3/latest.min.css">
+
+
+
+	<style>
+	
+
+	</style>
+
+
+
+</head>
+
+
+
+<body style="padding:20px;">
+
+	<div class="hero">
+
+		<h1>jquery.confirm.js demo</h1>
+
+		<p>作者：云淡然</p>
+
+		<p>兼容：ie9（含）+、chrome、firefox</p>
+
+	</div>
+
+
+
+	<div class="module">
+
+		<div class="module-header">1、插件说明</div>
+
+		<div class="module-body">
+
+			<ol>
+
+				<li>相关文章：
+
+					<a href="http://qianduanblog.com/2720.html">http://qianduanblog.com/2720.html</a>
+
+				</li>
+
+				<li class="text-warning">
+
+					目前只支持单个confirm。
+
+				</li>
+
+			</ol>
+
+		</div>
+
+	</div>
+
+
+
+	<div class="module">
+
+		<div class="module-header">2、插件API</div>
+
+		<div class="module-body">
+
+			<pre>// 默认参数
+
+$.confirm.defaults = {
+
+	// 样式
+
+	css: "http://festatic.aliapp.com/css/jquery.confirm/default.min.css?v=" + Math.ceil(new Date() / 86400000),
+
+	// 确认框内容
+
+	content: "确认吗？",
+
+	// 确认按钮文字
+
+	sureButton: "确认",
+
+	// 取消按钮文字
+
+	cancelButton: "取消",
+
+	// 位置
+
+	position: {},
+
+	// 自动打开
+
+	autoOpen: false,
+
+	// 动画持续时间
+
+	duration: 123,
+
+	// 打开确认框回调
+
+	onopen: emptyFn,
+
+	// 单击了确认或者取消回调
+
+	onclick: emptyFn,
+
+	// 确认回调
+
+	onsure: emptyFn,
+
+	// 取消回调
+
+	oncancel: emptyFn,
+
+	// 关闭确认框回调
+
+	onclose: emptyFn
+
+}
+
+
+
+
+
+// 1、 打开确认框
+
+$.confirm({
+
+	content: "确认要查看吗？",
+
+	onopen: function() {
+
+		alert("确认框打开了！");
+
+	},
+
+	onclose: function() {
+
+		alert("确认框关闭了！");
+
+	},
+
+	onsure: function() {
+
+		alert("你单击了确认按钮！");
+
+	},
+
+	oncancel: function() {
+
+		alert("你单击了取消按钮！");
+
+	},
+
+	onclick: function(s) {
+
+		if (s) {
+
+			alert("你单击了确认按钮！");
+
+		} else {
+
+			alert("你单击了取消按钮！");
+
+		}
+
+	}
+
+});
+
+
+
+$.confirm("确认吗？", function(b) {
+
+	if (b) {
+
+		alert("你单击了确认按钮！");
+
+	} else {
+
+		alert("你单击了取消按钮！");
+
+	}
+
+});</pre>
+
+		</div>
+
+	</div>
+
+	<div class="module">
+
+		<div class="module-header">3、插件演示</div>
+
+		<div class="module-body">
+
+			<div class="well">
+
+				<p id="ret-1-1"></p>
+				<p id="ret-1-2"></p>
+
+				<button id="button-1-1" class="button button-info">弹出确认框1</button>
+
+				<button id="button-1-2" class="button button-success">弹出确认框2</button>
+
+			</div>
+
+		</div>
+
+	</div>
+
+	<div class="module">
+
+		<div class="module-header">4、插件源码</div>
+
+		<div class="module-body">
+
+			<p>
+
+				<a href="/#jquery.confirm">http://festatic.aliapp.com/#jquery.confirm</a>
+
+			</p>
+
+		</div>
+
+	</div>
+
+
+
+
+
+	<script src="http://libs.baidu.com/jquery/1.10.2/jquery.min.js"></script>
+
+	<script src="latest.js"></script>
+
+	<script>
+	$("#button-1-1").click(function() {
+
+		var $p = $('#ret-1-1');
+		
+
+		$.confirm({
+
+			autoOpen: true,
+
+			content: "你看到这个确认框了吗？<br>如果没有看到请仔细看看！",
+
+			onopen: function() {
+
+				$p.html("onopen<br>");
+
+			},
+
+			onclose: function() {
+
+				$p.html("onclose<br>");
+
+			},
+
+			onsure: function() {
+
+				$p.html("onsure<br>");
+
+			},
+
+			oncancel: function() {
+
+				$p.html("oncancel<br>");
+
+			}
+
+		});
+
+	});
+
+
+
+	$("#button-1-2").click(function() {
+		var $p = $('#ret-1-2');
+		$.confirm("第2个确认框！", function(b) {
+
+			$p.html('你刚刚选择了' + (b ? '确认' : '取消'));
+
+		});
+
+	});
+	</script>
+
+
+
+
+
+
+
+
+
+
+</body>
+
+
+
+</html>

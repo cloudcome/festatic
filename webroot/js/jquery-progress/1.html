@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>canvas</title>
+	<style>
+	canvas {
+		border: 1px solid #f00;
+	}
+	</style>
+</head>
+
+<body>
+
+
+	<canvas id="canvas" width="400" height="400"></canvas>
+
+	<script>
+	var oCanvas = document.querySelector("#canvas");
+
+	// _arc(oCanvas, 100, 100, 50, -90, 0);
+	// _sector(oCanvas, 100, 100, 50, -90, 225, false);
+	_text(oCanvas, "Hello world!", 100, 100);
+
+	function _arc(progress, x, y, r, begin, end, isAnticlockwise) {
+		var oContext = progress.getContext("2d");
+		oContext.beginPath();
+		oContext.arc(x, y, r, _angle(begin), _angle(end), isAnticlockwise);
+		oContext.lineWidth = 10;
+		oContext.strokeStyle = "#f00";
+		oContext.stroke();
+		oContext.closePath();
+		oContext.rotate(90);
+	}
+
+	function _sector(progress, x, y, r, begin, end, isAnticlockwise) {
+		var oContext = progress.getContext("2d"),
+			agnle0 = _angle(begin),
+			agnle1 = _angle(end),
+			x0 = r * Math.cos(agnle0) + x,
+			y0 = r * Math.sin(agnle0) + y;
+
+		oContext.beginPath();
+		// 画圆弧
+		oContext.arc(x, y, r, agnle0, agnle1, isAnticlockwise);
+		// 移动到圆心
+		oContext.lineTo(x, y);
+		// 移动到圆弧起点
+		oContext.lineTo(x0, y0);
+		oContext.fillStyle = "#f00";
+		oContext.fill();
+		oContext.closePath();
+	}
+
+	function _text(progress, text, x, y) {
+		var oContext = progress.getContext("2d");
+		oContext.font = "20px sans-serif";
+		oContext.fillStyle = "#f00";
+		oContext.fillText(text, x, y);
+	}
+
+	function _angle(deg) {
+		return deg * Math.PI / 180;
+	}
+	</script>
+
+</body>
+
+</html>

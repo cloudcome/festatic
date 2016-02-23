@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="renderer" content="webkit">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<meta name="author" content="云淡然;http://ydr.me">
+	<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+	<link rel="stylesheet" href="/bootstrap/3.1.1/css/bootstrap.min.css">
+	<link rel="stylesheet" href="/bootstrap/3.1.1/css/bootstrap-theme.min.css">
+	<link rel="stylesheet" href="/css/prettify/bootstrap.css">
+	<title>jquery.storage.js docs - 前端静态资源</title>
+</head>
+
+
+
+<body>
+	<div class="jumbotron">
+		<div class="container">
+			<h1>jquery.storage.js docs</h1>
+			<p>作者：云淡然</p>
+			<p>兼容：ie9+、chrome、firefox</p>
+			<p><span class="label label-success">已适配yquery</span></p>
+		</div>
+	</div>
+	<div class="container">
+		<div class="panel panel-default">
+			<div class="panel-heading">1、插件说明</div>
+			<div class="panel-body">
+				<ol>
+					<li>插件支持<code>localStorge</code>和<code>sessionStorage</code>
+					</li>
+				</ol>
+			</div>
+		</div>
+		<div class="panel panel-default">
+			<div class="panel-heading">2、插件API</div>
+			<div class="panel-body">
+				<p class="lead text-danger">2.1、options</p>
+				<pre class="prettyprint linenums lang-javascript">// options
+$.storage.defaults = {
+    // 默认为 localStorage，可选 session为sessionStorage
+    type: 'local'
+};
+$.storage({
+    // 默认为 localStorage，可选 session为sessionStorage
+    type: 'local'
+});</pre>
+				<br><p class="lead text-danger">2.2、set</p>
+				<pre class="prettyprint linenums lang-javascript">// set
+$.storage().set('key', 'val');
+$.storage().set({
+	key1: 'val1',
+	key2: 'val2',
+});</pre>
+				<br><p class="lead text-danger">2.3、get</p>
+				<pre class="prettyprint linenums lang-javascript">// get
+$.storage().get('key');
+$.storage().get(['key1', 'key2']);
+</pre>
+				<br><p class="lead text-danger">2.4、remove</p>
+				<pre class="prettyprint linenums lang-javascript">// remove
+$.storage().remove('key');
+$.storage().remove(['key1', 'key2']);
+</pre>
+				<br><p class="lead text-danger">2.5、clear</p>
+				<pre class="prettyprint linenums lang-javascript">// clear
+$.storage().clear();</pre>
+				<br><p class="lead text-danger">2.6、bind</p>
+				<pre class="prettyprint linenums lang-javascript">// bind
+$.storage().bind('key', fn);</pre>
+				<br><p class="lead text-danger">2.7、unbind</p>
+				<pre class="prettyprint linenums lang-javascript">// unbind
+$.storage().unbind('key', fn);
+// unbind all
+$.storage().unbind('key');</pre>
+			</div>
+		</div>
+		<div class="panel panel-default">
+			<div class="panel-heading">3、插件演示</div>
+			<div class="panel-body">
+				<p class="alert alert-warning">过程简单，不再演示。</p>					
+			</div>
+		</div>
+		<div class="panel panel-default">
+			<div class="panel-heading">4、插件下载</div>
+			<div class="panel-body">
+				<a href="/#jquery.storage" class="btn btn-sm btn-danger">点击前往插件下载页面</a>
+			</div>
+		</div>
+	</div>
+	<div id="footer" style="border-top:1px solid #ddd;padding:20px;margin-top:30px;">
+		<ul class="list-inline">
+			<li>&copy;云淡然</li>
+			<li>2013 - 2014</li>
+			<li>
+				<a href="/">前端静态资源首页</a>
+			</li>
+		</ul>
+	</div>
+	<script src="/js/yquery/1.7/yquery.js"></script>
+	<script src="/js/prettify/r298/prettify.min.js"></script>
+	<script src="./1.1/jquery.storage.js"></script>
+	<script>
+	window.prettyPrint && prettyPrint();
+	</script>
+</body>
+
+</html>

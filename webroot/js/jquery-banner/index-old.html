@@ -1,0 +1,390 @@
+<!doctype html>
+
+<html lang="en">
+
+
+
+<head>
+
+	<meta charset="utf-8">
+
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+
+	<meta name="author" content="云淡然;http://ydr.me">
+
+
+
+	<title>jquery-banner.js demo - 前端静态资源</title>
+
+	<link rel="stylesheet" href="../../css/3/latest.min.css">
+	<link rel="stylesheet" href="style.css">
+
+
+
+</head>
+
+
+
+<body style="padding:20px;">
+
+	<div class="hero">
+
+		<h1>jquery-banner.js demo</h1>
+
+		<p>作者：云淡然</p>
+
+		<p>兼容：ie9（含）+、chrome、firefox以及移动浏览器</p>
+
+	</div>
+
+
+
+	<div class="module">
+
+		<div class="module-header">1、插件说明</div>
+
+		<ol class="module-body">
+
+			<li>相关文章：
+
+				<a target="_blank" href=" http://qianduanblog.com/2913.html">http://qianduanblog.com/2913.html</a>。</li>
+
+			<li>支持自适应宽度，可以是固定最大宽度，也可以是自适应宽度。</li>
+
+			<li>切换采用CSS3的transition 和 transform来说实现。</li>
+
+			<li>支持移动设备的触摸滑动（需引用
+
+				<b>
+
+					<a target="_blank" href="/#jquery-swipe">jquery-swipe</a>
+
+				</b>插件）。</li>
+
+			<li>只支持简单的banner功能，更多功能可以通过回调来扩展。</li>
+
+		</ol>
+
+	</div>
+
+
+
+
+
+	<div class="module">
+
+		<div class="module-header">2、插件API</div>
+
+		<div class="module-body">
+
+			<pre>// 1. 默认参数
+$.banner.defaults = {
+	// 焦点图宽度，设置auto将完全自适应，精确宽度将适应该宽度
+	width: "auto",
+	// 动画时间
+	duration: 678,
+	// 自动播放延时
+	delay: 5000,
+	// 是否自动播放
+	autoPlay: true,
+	// 滚动方向
+	direction: "right",
+	// 内容区域选择器
+	contentSelector: ".content",
+	// 切换之前回调
+	onbeforechange: function (index) {},
+	// 切换之后回调
+	onafterchange: function (index) {}
+};
+
+
+// 2. DOM结构
+// div#demo>.content>li*N
+
+
+// 3. 初始化
+$("#demo").banner({
+	width: ...
+});
+
+
+// 4. 操作
+// 自动播放
+$("#demo").banner("play");
+
+// 暂停
+$("#demo").banner("pause");
+
+// 上一个
+$("#demo").banner("prev");
+
+// 下一个
+$("#demo").banner("next");
+
+// 播放到指定索引
+$("#demo").banner(toIndex);
+</pre>
+
+		</div>
+
+	</div>
+
+
+
+
+
+	<div class="module">
+
+		<div class="module-header">3、插件演示</div>
+
+		<div class="module-body">
+
+			<div id="banner-1" class="mb10">
+
+				<div class="body">
+
+					<ul class="content">
+
+						<li>
+
+							<a href="#">
+
+								<img src="http://www.gxpiao.com/pic/JDLB20130429-0009/2013042905573681.jpg" alt="">
+
+							</a>
+
+						</li>
+
+						<li>
+
+							<a href="#">
+
+								<img src="http://gd.visitgd.net/uploads/allimg/c090418/12400AAK0-1T06.jpg" alt="">
+
+							</a>
+
+						</li>
+
+						<li>
+
+							<a href="#">
+
+								<img src="http://slfjq.mwr.gov.cn/xjqdt/201111/W020111125686263823959.jpg" alt="">
+
+							</a>
+
+						</li>
+
+						<li>
+
+							<a href="#">
+
+								<img src="http://thub.sssccc.net/%E5%9B%BE%E7%89%87%E7%B4%A0%E6%9D%90/high/%E4%B8%AD%E5%8D%8E/%E5%9B%9B%E5%B7%9D%E7%9C%81/%E9%BB%84%E9%BE%99%E9%A3%8E%E6%99%AF%E5%90%8D%E8%83%9C%E5%8C%BA.jpg" alt="">
+
+							</a>
+
+						</li>
+
+						<li>
+
+							<a href="#">
+
+								<img src="http://m2.img.libdd.com/farm2/179/022CD8CDC553887EA1CCAB752C9A38B3_500_200.jpg" alt="">
+
+							</a>
+
+						</li>
+
+						<li>
+
+							<a href="#">
+
+								<img src="http://p2.55tuanimg.com/static/store/2013/09/04/566ed985fd5d56c7708c9aff10f3d33b.jpg" alt="">
+
+							</a>
+
+						</li>
+
+					</ul>
+
+				</div>
+
+				<ul class="nav"></ul>
+
+				<div class="prev">«</div>
+
+				<div class="next">»</div>
+
+			</div>
+
+			<hr>
+
+			<div id="banner-2">
+
+				<div class="body">
+
+					<ul class="content">
+
+						<li>
+
+							<h1>标题111111111</h1>
+
+							<p>描述11111111111</p>
+
+						</li>
+
+					</ul>
+
+				</div>
+
+				<div class="nav"></div>
+
+			</div>
+
+			<hr>
+
+			<p class="text-lead">
+
+				demo3:
+
+				<a href="1.html">全屏banner</a>
+
+			</p>
+
+		</div>
+
+	</div>
+
+
+
+
+
+	<div class="module">
+
+		<div class="module-header">4、插件下载</div>
+
+		<div class="module-body">
+
+			<p>
+
+				<a href="/#jquery-banner">/#jquery-banner</a>
+
+			</p>
+
+		</div>
+
+	</div>
+
+
+
+
+
+
+
+
+
+	<script src="http://libs.baidu.com/jquery/1.10.2/jquery.min.js"></script>
+
+	<script src="../jquery-swipe/latest.js"></script>
+
+	<script src="latest.js"></script>
+
+	<script>
+	var $banner1 = $("#banner-1");
+
+	var $nav1 = $(".nav", $banner1);
+
+	var $prev1 = $(".prev", $banner1);
+
+	var $next1 = $(".next", $banner1);
+
+	var nav1 = "";
+
+	$banner1.find(".content li").each(function() {
+
+		nav1 += '<li></li>';
+
+	});
+
+	$nav1.html(nav1).find("li").first().addClass("active");
+
+	$nav1.on("click", "li", function() {
+
+		$banner1.banner($(this).index());
+
+	});
+
+	$prev1.click(function() {
+
+		$banner1.banner("prev");
+
+	});
+
+	$next1.click(function() {
+
+		$banner1.banner("next");
+
+	});
+
+	$banner1.banner({
+
+		autoPlay: false,
+
+		width: 500,
+
+		onbeforechange: function(index) {},
+
+		onafterchange: function(index) {
+
+			$nav1.find("li").eq(index).addClass("active").siblings().removeClass("active");
+
+		}
+
+	});
+
+	var $banner2 = $("#banner-2");
+
+	var $nav2 = $(".nav", $banner2);
+
+	var nav2 = "";
+
+	$banner2.find(".content li").each(function() {
+
+		nav2 += '<li></li>';
+
+	});
+
+	$nav2.html(nav2).find("li").first().addClass("active");
+
+	$nav2.on("click", "li", function() {
+
+		$banner2.banner($(this).index());
+
+	});
+
+	$banner2.banner({
+
+		onafterchange: function(index) {
+
+			$nav2.find("li").eq(index).addClass("active").siblings().removeClass("active");
+
+		}
+
+	});
+	</script>
+
+
+
+
+
+
+
+
+
+</body>
+
+
+
+</html>

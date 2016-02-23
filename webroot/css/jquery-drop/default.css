@@ -1,0 +1,13 @@
+@charset "utf-8";
+/*!
+ * jquery-drop default.css
+ * @version 1.2
+ * @for jquery-drop
+ * 2014年7月3日19:27:43;
+ */
+
+.jquery-drag-placholder{
+	width: auto;
+	min-height: 40px;
+	border: 4px dotted #E84029;
+}

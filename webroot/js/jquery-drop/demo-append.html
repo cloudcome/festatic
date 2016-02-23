@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="author" content="云淡然;http://ydr.me">
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+    <title>jquery-drop demo 2: append</title>
+    <link rel="stylesheet" href="/bootstrap/3.1.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/bootstrap/3.1.1/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>1、jquery-drop demo 2: append <a href="/js/jquery-drop/#demo">返回 jquery-drop 介绍页</a></h1>
+        <hr>
+        <h2>1.1、2个容器</h2>
+        <div class="row demo">
+            <div class="col-md-6">
+                <p class="lead text-danger">拖拽源：
+                    <button class="btn btn-primary">再加个东西</button>
+                </p>
+                <div class="list clearfix">
+                    <div class="item item1">1</div>
+                    <div class="item item1">2</div>
+                    <div class="item item1">3</div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <p class="lead text-danger">释放容器：</p>
+                <div class="containment clearfix">
+                    <div class="item item2">1</div>
+                    <div class="item item2">2</div>
+                    <div class="item item2">3</div>
+                </div>
+            </div>
+        </div>
+        <h2>1.2、1个容器</h2>
+        <div class="row demo">
+            <div class="col-md-6">
+                <p class="lead text-danger">拖拽源与释放地是同一个：
+                    <button class="btn btn-primary">再加个东西</button>
+                </p>
+                <div class="list clearfix">
+                    <div class="item item1">1</div>
+                    <div class="item item1">2</div>
+                    <div class="item item1">3</div>
+                </div>
+            </div>
+        </div>
+        <h2>1.3、2个容器互相搞</h2>
+        <div class="row" id="demo3">
+            <div class="col-md-6">
+                <p class="lead text-danger">拖拽源与释放地是同一个：
+                    <button class="btn btn-primary" id="btn31">再加个东西</button>
+                </p>
+                <div class="list clearfix" id="list31">
+                    <div class="item item1">1</div>
+                    <div class="item item1">2</div>
+                    <div class="item item1">3</div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <p class="lead text-danger">拖拽源与释放地是同一个：
+                    <button class="btn btn-primary" id="btn32">再加个东西</button>
+                </p>
+                <div class="list containment clearfix" id="list32">
+                    <div class="item item2">1</div>
+                    <div class="item item2">2</div>
+                    <div class="item item2">3</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="/js/yquery/latest/yquery.js"></script>
+    <script src="/js/jquery-drag/1.2/jquery-drag.js"></script>
+    <script src="/js/jquery-drop/1.0/jquery-drop.js"></script>
+    <script>
+    $(function() {
+        $.fn.drop.defaults.type = 'append';
+
+        $('.demo').each(function() {
+            var $btn = $('.btn', this),
+                $list = $('.list', this),
+                $containment = $('.containment', this),
+                num = $list.children().length;
+
+            $btn.click(function() {
+                $list.append('<div class="item item1">' + (++num) + '</div>');
+            });
+
+            if (!$containment.length) $containment = $list;
+
+            $list.drop({
+                handle: '.item',
+                drag: '.item',
+                containment: $containment,
+                ondragover: function() {
+                    $(this).addClass('over');
+                },
+                ondragout: function() {
+                    $(this).removeClass('over');
+                },
+                ondragenter: function() {
+                    $(this).addClass('enter');
+                },
+                ondragleave: function() {
+                    $(this).removeClass('enter');
+                }
+            });
+        });
+
+        var $list31 = $('#list31');
+        var $list32 = $('#list32');
+        var $btn31 = $('#btn31');
+        var $btn32 = $('#btn32');
+        var num31 = $list31.children().length;
+        var num32 = $list32.children().length;
+        $btn31.click(function() {
+            $list31.append('<div class="item item1">' + (++num31) + '</div>');
+        });
+        $btn32.click(function() {
+            $list32.append('<div class="item item2">' + (++num32) + '</div>');
+        });
+        $list31.drop({
+            handle: '.item',
+            drag: '.item',
+            containment: $list32,
+            ondragover: function() {
+                $(this).addClass('over');
+            },
+            ondragout: function() {
+                $(this).removeClass('over');
+            },
+            ondragenter: function() {
+                $(this).addClass('enter');
+            },
+            ondragleave: function() {
+                $(this).removeClass('enter');
+            }
+        });
+        $list32.drop({
+            handle: '.item',
+            drag: '.item',
+            containment: $list31,
+            ondragover: function() {
+                $(this).addClass('over');
+            },
+            ondragout: function() {
+                $(this).removeClass('over');
+            },
+            ondragenter: function() {
+                $(this).addClass('enter');
+            },
+            ondragleave: function() {
+                $(this).removeClass('enter');
+            }
+        });
+    });
+    </script>
+</body>
+
+</html>

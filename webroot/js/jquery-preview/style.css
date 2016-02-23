@@ -1,0 +1,22 @@
+.btn {
+	position: relative;
+	overflow: hidden;
+}
+
+.btn input[type="file"] {
+	position: absolute;
+	top: 0;
+	font-size: 100px;
+	opacity: 0;
+	right: 0;
+	cursor: pointer;
+}
+
+#preview {
+	border: 1px solid #ddd;
+	padding: 4px;
+	min-width: 100px;
+	min-height: 100px;
+	background: #fff;
+	margin-top: 10px;
+}

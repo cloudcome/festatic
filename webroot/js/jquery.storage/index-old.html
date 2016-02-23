@@ -1,0 +1,430 @@
+<!doctype html>
+
+<html lang="en">
+
+
+
+<head>
+
+	<meta charset="utf-8">
+
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+
+	<meta name="author" content="云淡然;http://ydr.me">
+
+
+
+	<title>jquery.storage.js demo - 前端静态资源</title>
+
+	<link rel="stylesheet" href="../../css/3/latest.min.css">
+
+
+
+	<style>
+
+	
+
+	</style>
+
+
+
+</head>
+
+
+
+<body style="padding:20px;">
+
+	<div class="hero">
+
+		<h1>jquery.storage.js demo</h1>
+
+		<p>作者：云淡然</p>
+
+		<p>兼容：ie9（含）+、chrome、firefox</p>
+
+	</div>
+
+
+
+
+
+	<div class="module">
+
+		<div class="module-header">1、插件说明</div>
+
+		<div class="module-body">
+
+			<ol>
+
+				<li>storage支持localStorge和sessionStorage</li>
+
+			</ol>
+
+		</div>
+
+	</div>
+
+	<div class="module">
+
+		<div class="module-header">2、插件API</div>
+
+		<div class="module-body">
+
+			<pre>// 插件默认参数
+
+$.storage.defaults = {
+
+	// 存储类型，默认为Local Storage，可选为 local 和 session
+
+	type: "local"
+
+};
+
+
+
+// 1、解析storage
+
+$.storage();
+
+// =>返回键值对对象
+
+// 如{a:1,b:2,c:3}
+
+
+
+// 2、获取storage
+
+$.storage("a");
+
+// =>1
+
+
+
+$.storage(["a", "b"]);
+
+// =>{a:1,b:2}
+
+
+
+// 3、设置storage
+
+$.storage("a", "b");
+
+$.storage({
+
+	"xx": "1",
+
+	"yy": "2"
+
+});
+
+// =>true
+
+
+
+// 4、删除
+
+$.storage("a", null);
+
+$.storage(["a", "b"], null);
+
+// =>true
+
+
+
+// 5、清空
+
+$.storage(null);
+
+// =>true
+
+
+
+// 6、监听
+
+$.storage("a", function () {});
+
+$.storage(["a", "b"], function () {});</pre>
+
+		</div>
+
+	</div>
+
+	<div class="module">
+
+		<div class="module-header">3、插件演示</div>
+
+		<div class="module-body">
+
+			<div class="well">
+
+				<p class="text-lead">3.0、监听storage</p>
+
+				<div class="alert alert-error">
+
+					<p>
+
+						<b>提示:</b>因storage的特殊性，storage只能监听非本窗口的storge事件</p>
+
+					<p>
+
+						<a target="_blank" href="index.html" class="button button-error">再打开一个页面</a>
+
+					</p>
+
+				</div>
+
+				<button class="button button-error" id="button-0-1">监听 storage a</button>
+
+				<button class="button button-error" id="button-0-2">监听 storage [b,c]</button>
+
+				<div class="alert alert-success">
+
+					<p>监听结果：</p>
+
+					<div id="result"></div>
+
+				</div>
+
+			</div>
+
+
+
+			<div class="well">
+
+				<p class="text-lead">3.1、设置storage</p>
+
+				<button class="button button-info" id="button-3-1">设置 storage 的 a=随机值</button>
+
+				<button class="button button-info" id="button-3-2">设置 storage 的 b=随机值,c=随机值,d=随机值,e=随机值</button>
+
+			</div>
+
+
+
+			<div class="well">
+
+				<p class="text-lead">3.2、解析storage</p>
+
+				<button class="button button-default" id="button-4-1">解析storage</button>
+
+			</div>
+
+
+
+			<div class="well">
+
+				<p class="text-lead">3.3、获取storage</p>
+
+				<button class="button button-success" id="button-5-1">单个获取 storage a</button>
+
+				<button class="button button-success" id="button-5-2">多个获取 storage [b,c]</button>
+
+			</div>
+
+
+
+			<div class="well">
+
+				<p class="text-lead">3.4、删除storage</p>
+
+				<button class="button button-warning" id="button-6-1">单个删除 storage a</button>
+
+				<button class="button button-warning" id="button-6-2">多个删除 storage [b,c]</button>
+
+			</div>
+
+
+
+			<div class="well">
+
+				<p class="text-lead">3.5、清空storage</p>
+
+				<button class="button button-error" id="button-7-1">清空 storage</button>
+
+			</div>
+
+		</div>
+
+	</div>
+
+	<div class="module">
+
+		<div class="module-header">4、插件源码</div>
+
+		<div class="module-body">
+
+			<p>
+
+				<a href="/#jquery.storage">http://festatic.aliapp.com/#jquery.storage</a>
+
+			</p>
+
+		</div>
+
+	</div>
+
+
+
+
+
+
+
+
+
+	<script src="http://libs.baidu.com/jquery/1.10.2/jquery.min.js"></script>
+
+	<script src="latest.js"></script>
+
+	<script>
+
+	var $rs = $("#result");
+
+
+
+	$("#button-0-1").click(function() {
+
+		$(this).prop("disabled", true).text("正在监听a的storage变化...");
+
+		$.storage("a", function(e, o, n) {
+
+			$rs.append('<p>a值发生了变化，原值=' + o.a + '，现值=' + n.a + '</p>');
+
+		});
+
+	});
+
+
+
+	$("#button-0-2").click(function() {
+
+		$(this).prop("disabled", true).text("正在监听b、c的storage变化...");
+
+		$.storage(["b", "c"], function(e, o, n) {
+
+			$rs.append('<p>b或c值发生了变化，b原值=' + o.b + '，b现值=' + n.b + '，c原值=' + o.c + '，c现值=' + n.c + '</p>');
+
+		});
+
+	});
+
+
+
+	$("#button-3-1").click(function() {
+
+		$.storage("a", _rand());
+
+		alert("设置成功，请看storage存储！");
+
+	});
+
+
+
+	$("#button-3-2").click(function() {
+
+		$.storage({
+
+			b: _rand(),
+
+			c: _rand(),
+
+			d: _rand(),
+
+			e: _rand()
+
+		});
+
+		alert("设置成功，请看storage存储！");
+
+	});
+
+
+
+	$("#button-4-1").click(function() {
+
+		var o = $.storage();
+
+		console.log(o);
+
+		alert("设置成功，请看控制台！");
+
+	});
+
+
+
+	$("#button-5-1").click(function() {
+
+		var o = $.storage("a");
+
+		alert("a=" + o);
+
+	});
+
+
+
+	$("#button-5-2").click(function() {
+
+		var o = $.storage(["b", "c"]);
+
+		console.log(o);
+
+		alert("获取成功，请看控制台！");
+
+	});
+
+
+
+	$("#button-6-1").click(function() {
+
+		var o = $.storage("a", null);
+
+		alert("删除成功，请看storage存储！");
+
+	});
+
+
+
+	$("#button-6-2").click(function() {
+
+		var o = $.storage(["b", "c"], null);
+
+		alert("删除成功，请看storage存储！");
+
+	});
+
+
+
+	$("#button-7-1").click(function() {
+
+		var o = $.storage(null);
+
+		alert("删除成功，请看storage存储！");
+
+	});
+
+
+
+	function _rand() {
+
+		return parseInt(Math.random() * 100);
+
+	}
+
+	</script>
+
+
+
+
+
+
+
+
+
+</body>
+
+
+
+</html>
+

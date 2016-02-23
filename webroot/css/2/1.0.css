@@ -1,0 +1,379 @@
+/*!
+ * yundanran css-2
+ * @author 云淡然 http://qianduanblog.com;
+ * @version 1.0
+ */
+
+
+
+/*=================================== [reset] ========================================*/
+
+@charset "utf-8";
+
+html {
+	scrollbar-base-color: #c2c2c2;
+	scrollbar-3dlight-color: #c2c2c2;
+	scrollbar-highlight-color: #c2c2c2;
+	scrollbar-track-color: #eee;
+	scrollbar-arrow-color: #000;
+	scrollbar-shadow-color: #c2c2c2;
+	scrollbar-dark-shadow-color: black
+}
+
+::-webkit-scrollbar-track-piece {
+	border-left: 1px solid #d2d2d2;
+	background-color: #f5f5f5
+}
+
+::-webkit-scrollbar {
+	width: 12px;
+	height: 12px
+}
+
+::-webkit-scrollbar-thumb {
+	min-height: 28px;
+	border: 1px solid #979797;
+	background-color: #c2c2c2;
+	background-clip: padding-box
+}
+
+::-webkit-scrollbar-thumb:hover {
+	border: 1px solid #636363;
+	background-color: #929292
+}
+
+html,body,small,span,div {
+	font-size: 14px;
+	font-family: \5b8b\4f53;
+	-ms-text-size-adjust: 100%;
+	-webkit-text-size-adjust: 100%
+}
+
+body,div,span,h1,h2,h3,h4,h5,h6,p,a,dl,dt,dd,ol,ul,li,label,table {
+	margin: 0;
+	padding: 0
+}
+
+table {
+	border-collapse: collapse;
+	border-spacing: 0
+}
+
+input,textarea,select,button {
+	margin: 0;
+	font-size: 100%
+}
+
+select {
+	padding: 2px;
+	border: 1px solid #ddd;
+	border-radius: 2px
+}
+
+textarea {
+	overflow-y: auto;
+	resize: vertical
+}
+
+input[type="button"],input[type="submit"],button,label,a {
+	cursor: pointer
+}
+
+table {
+	width: 100%;
+	border-collapse: collapse;
+	border-spacing: 0
+}
+
+tbody,tfoot,thead,tr,th,td {
+	margin: 0;
+	padding: 0
+}
+
+ol,ul {
+	list-style: none
+}
+
+img,iframe {
+	border-style: none;
+	border-width: 0
+}
+
+iframe {
+	overflow: hidden
+}
+
+img {
+	vertical-align: middle
+}
+
+a {
+	color: #3c77c3;
+	text-decoration: none
+}
+
+a:hover {
+	color: #083b7e;
+	text-decoration: underline
+}
+
+.pull-left {
+	position: relative;
+	float: left;
+	_display: inline
+}
+
+.pull-right {
+	position: relative;
+	float: right
+}
+
+.clearfix {
+	*zoom: 1
+}
+
+.clearfix:before,.clearfix:after {
+	display: table;
+	content: "";
+	line-height: 0
+}
+
+.clearfix:after {
+	clear: both
+}
+
+.hide {
+	display: none
+}
+
+.wrap {
+	position: relative;
+	padding: 10px;
+	word-wrap: break-word;
+	line-height: 20px;
+	zoom: 1;
+	-ms-word-wrap: break-word
+}
+
+table th,table td {
+	padding: 10px;
+	border: 1px solid #ddd
+}
+
+thead th {
+	background: #f5f5f5;
+	text-align: center;
+	font-weight: 900;
+	font-size: 14px
+}
+
+.muted {
+	color: #888
+}
+
+small {
+	color: #999
+}
+
+.text-warning {
+	color: #d67012
+}
+
+.text-error,.form .required {
+	color: #a20000
+}
+
+.text-success {
+	color: #098cf3
+}
+
+.text-tip {
+	color: #0a721b
+}
+
+.text-left {
+	text-align: left
+}
+
+.text-center {
+	text-align: center
+}
+
+.text-right {
+	text-align: right
+}
+
+input.text,textarea.text {
+	padding: 4px;
+	border: 1px solid #ddd;
+	border-radius: 2px;
+	line-height: 14px
+}
+
+input.text-warning,textarea.text-warning {
+	outline: 0;
+	border-color: #f8caa0;
+	background: #FFF7F0
+}
+
+input.text-error,textarea.text-error {
+	outline: 0;
+	border-color: #ec9090;
+	background: #FFEFEF
+}
+
+input.text-success,textarea.text-success {
+	outline: 0;
+	border-color: #8ccdff;
+	background: #E8F5FF
+}
+
+input.text-tip,textarea.text-tip {
+	outline: 0;
+	border-color: #8CD698;
+	background: #F2FFF4
+}
+
+.label,.badge {
+	display: inline-block;
+	padding: 2px 4px;
+	background-color: #999;
+	color: #fff;
+	vertical-align: baseline;
+	text-shadow: 0 -1px 0 rgba(0,0,0,0.25);
+	white-space: nowrap;
+	font-weight: bold;
+	font-size: 11.844px;
+	line-height: 14px
+}
+
+.label {
+	border-radius: 3px
+}
+
+.badge {
+	padding-right: 9px;
+	padding-left: 9px;
+	border-radius: 9px
+}
+
+a.label:hover,a.label:focus,a.badge:hover,a.badge:focus {
+	color: #fff;
+	text-decoration: none;
+	cursor: pointer
+}
+
+.label-important,.badge-important {
+	background-color: #b94a48
+}
+
+.label-warning,.badge-warning {
+	background-color: #f89406
+}
+
+.label-success,.badge-success {
+	background-color: #468847
+}
+
+.label-info,.badge-info {
+	background-color: #3a87ad
+}
+
+.label-inverse,.badge-inverse {
+	background-color: #333
+}
+
+.img-round {
+	padding: 2px;
+	border: 1px solid #ddd
+}
+
+.img-tacvam {
+	display: table-cell;
+	vertical-align: middle;
+	text-align: center
+}
+
+.img-tacvam a,.img-tacvam span {
+	*height: 100%;
+	*writing-mode: tb-rl
+}
+
+.img-tacvam img {
+	vertical-align: middle
+}
+
+.form .key {
+	display: inline-block;
+	width: 60px;
+	text-align: right
+}
+
+.form .msg,.form .desc {
+	display: inline;
+	margin-left: 10px;
+}
+
+.form .msg-block,.form .desc-block {
+	display: block;
+	margin-left: 67px;
+}
+
+.form li {
+	position: relative;
+	margin-bottom: 10px
+}
+
+.form li:last-child {
+	margin-bottom: 0
+}
+
+.w100 {
+	width: 100%
+}
+
+.w50 {
+	width: 50%
+}
+
+.mg10 {
+	margin: 10px
+}
+
+.mt10 {
+	margin-top: 10px
+}
+
+.mr10 {
+	margin-right: 10px
+}
+
+.mb10 {
+	margin-bottom: 10px
+}
+
+.ml10 {
+	margin-left: 10px
+}
+
+.pd10 {
+	padding: 10px
+}
+
+.pt10 {
+	padding-top: 10px
+}
+
+.pr10 {
+	padding-right: 10px
+}
+
+.pb10 {
+	padding-bottom: 10px
+}
+
+.pl10 {
+	padding-left: 10px
+}
+
+/*=================================== [reset] ========================================*/

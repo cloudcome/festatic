@@ -1,0 +1,290 @@
+<!doctype html>
+
+<html lang="en">
+
+
+
+<head>
+
+	<meta charset="utf-8">
+
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+
+	<meta name="author" content="云淡然;http://ydr.me">
+
+
+
+	<title>jquery-fullscreen.js demo - 前端静态资源</title>
+
+	<link rel="stylesheet" href="../../css/3/latest.min.css">
+
+
+
+	<style>
+
+	#demo-1 {
+
+		padding: 20px;
+
+	}
+
+	*|*:fullscreen {
+
+		position:fixed;
+
+		top:0;
+
+		right:0;
+
+		bottom:0;
+
+		left:0;
+
+		margin:0;
+
+		box-sizing:border-box;
+
+		width:100%;
+
+		height:100%;
+
+		object-fit:contain;
+
+	}
+
+	iframe:fullscreen {
+
+		border:none;
+
+	}
+
+	*|*:fullscreen::backdrop {
+
+		position:fixed;
+
+		top:0;
+
+		right:0;
+
+		bottom:0;
+
+		left:0;
+
+		background:black;
+
+	}
+
+	</style>
+
+
+
+</head>
+
+
+
+<body style="padding:20px;">
+
+	<div class="hero">
+
+		<h1>jquery-fullscreen.js demo</h1>
+
+		<p>作者：云淡然</p>
+
+		<p>兼容：ie9（含）+、chrome、firefox</p>
+
+	</div>
+
+
+
+	<div class="module">
+
+		<div class="module-header">1、插件特点</div>
+
+		<ol class="module-body">
+
+			<li>测试版</li>
+
+			<li>支持目标的全屏幕显示。</li>
+
+			<li>IE会占用<code>document.onmsfullscreenchange</code>事件，请勿覆盖。</li>
+
+		</ol>
+
+	</div>
+
+
+
+
+
+	<div class="module">
+
+		<div class="module-header">2、插件API</div>
+
+		<div class="module-body">
+
+			<pre></pre>
+
+		</div>
+
+	</div>
+
+
+
+
+
+	<div class="module">
+
+		<div class="module-header">3、插件演示</div>
+
+		<div class="module-body">
+
+			<button class="button button-info" id="button-1">全屏幕显示此按钮</button>
+
+			<hr>
+
+			<div id="demo-1" class="alert alert-muted">
+
+				<p id="text-1">监听状态</p>
+
+				<button class="button button-success" id="button-2">全屏幕显示此div</button>
+
+				<button class="button button-error" id="button-3">退出全屏幕显示此div</button>
+
+				<button class="button button-success" id="button-4">全屏幕显示此div2</button>
+
+				<button class="button button-error" id="button-5">退出全屏幕显示此div2</button>
+
+			</div>
+
+		</div>
+
+	</div>
+
+
+
+
+
+	<div class="module">
+
+		<div class="module-header">4、插件源码</div>
+
+		<div class="module-body">
+
+			<p>
+
+				<a href="/#jquery-fullscreen">http://festatic.aliapp.com/#jquery-fullscreen</a>
+
+			</p>
+
+		</div>
+
+	</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<script src="http://libs.baidu.com/jquery/1.10.2/jquery.min.js"></script>
+
+	<script src="latest.js"></script>
+
+	<script>
+
+	$("#button-1").click(function() {
+
+		if (confirm("确认全屏？")) {
+
+			$(this).fullscreen("open");
+
+		}
+
+	});
+
+
+
+	var $text1 = $("#text-1");
+
+	var $demo1 = $("#demo-1");
+
+	$demo1.fullscreen({
+
+		autoOpen: false,
+
+		onopen: function() {
+
+			$text1.html("已打开全屏状态 => " + new Date().getTime());
+
+		},
+
+		onclose: function() {
+
+			$text1.html("已退出全屏状态 => " + new Date().getTime());
+
+		}
+
+	});
+
+	$("#button-2").click(function() {
+
+		$demo1.fullscreen("open");
+
+	});
+
+	$("#button-3").click(function() {
+
+		$demo1.fullscreen("close");
+
+	});
+
+
+
+
+
+	// $demo1[0].addEventListener("mozfullscreenchange",function(){
+
+	// 	console.log("=======");
+
+	// });
+
+
+
+	// document.addEventListener("click", function() {
+
+	// console.log("222222222222222");
+
+	// }, false);
+
+
+
+
+
+	// $(document).on("mozfullscreenchange",function(){
+
+	// 	console.log("3333333333333333");
+
+	// });
+
+	</script>
+
+
+
+</body>
+
+
+
+</html>
+

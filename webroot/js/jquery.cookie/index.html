@@ -1,0 +1,214 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="renderer" content="webkit">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<meta name="author" content="云淡然;http://ydr.me">
+	<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+	<link rel="stylesheet" href="/bootstrap/3.1.1/css/bootstrap.min.css">
+	<link rel="stylesheet" href="/bootstrap/3.1.1/css/bootstrap-theme.min.css">
+	<link rel="stylesheet" href="/css/prettify/bootstrap.css">
+	<title>jquery.cookie.js docs - 前端静态资源</title>
+</head>
+
+
+
+<body>
+	<div class="jumbotron">
+		<div class="container">
+			<h1>jquery.cookie.js docs</h1>
+			<p>作者：云淡然</p>
+			<p>兼容：ie6+、chrome、firefox</p>
+			<p><span class="label label-success">已适配yquery</span></p>
+		</div>
+	</div>
+	<div class="container">
+		<div class="panel panel-default">
+			<div class="panel-heading">1、插件说明</div>
+			<div class="panel-body">
+				<ol>
+					<li>相关文章1：
+						<a target="_blank" href="http://qianduanblog.com/2844.html">http://qianduanblog.com/2844.html</a>
+					</li>
+					<li>相关文章2：
+						<a target="_blank" href="http://qianduanblog.com/1772.html">http://qianduanblog.com/1772.html</a>
+					</li>
+					<li>因为cookie的特殊性，只能读取key、value，其他参数不能获取到，所以在设置cookie的时候不同路径尽量使用不同的cookie名称。</li>
+					<li>插件的清空cookie功能默认清空
+						<code>location.host</code>下的cookie，如果你需要清空其他domain下的cookie需要自己指定默认参数的domain。</li>
+					<li>插件的删除cookie功能会把cookie真正删除，但某些浏览器会把这些cookie当做session cookie临时保存下来，如session一样，会在浏览器关闭的时候清除。</li>
+					</li>
+				</ol>
+			</div>
+		</div>
+		<div class="panel panel-default">
+			<div class="panel-heading">2、插件API</div>
+			<div class="panel-body">
+				<p class="lead text-danger">2.1、插件参数</p>
+				<pre class="prettyprint linenums lang-javascript">$.cookie(settings);</pre>
+				<div class="table-responsive">
+					<table class="table table-hover table-striped table-bordered">
+						<thead>
+							<tr>
+								<th>参数名称</th>
+								<th>参数默认值</th>
+								<th>参数描述</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td><code>isStrict</code></td>
+								<td>true</td>
+								<td>
+									<p>是否以严格模式读取和设置cookie，默认true</p>
+									<p>严格模式下，将在读之后、写之前都会进行<code>encodeURIComponent</code>、<code>decodeURIComponent</code>操作</p>
+								</td>
+							</tr>
+							<tr>
+								<td><code>domain</code></td>
+								<td>cookie设置域</td>
+								<td>
+									<p>在无域名（file协议）时候，必须设置为空才能在本地写入</p>
+								</td>
+							</tr>
+							<tr>
+								<td><code>expires</code></td>
+								<td>3600</td>
+								<td>
+									<p>默认cookie有效期1个小时（单位秒）</p>
+								</td>
+							</tr>
+							<tr>
+								<td><code>path</code></td>
+								<td>"/"</td>
+								<td>
+									<p>默认cookie存储路径</p>
+								</td>
+							</tr>
+							<tr>
+								<td><code>secure</code></td>
+								<td>false</td>
+								<td>
+									<p>是否加密cookie</p>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<br>
+				<p class="lead text-danger">2.1、插件方法</p>
+				<pre class="prettyprint linenums lang-javascript">$.cookie(settings).fn();</pre>
+				<div class="table-responsive">
+					<table class="table table-hover table-striped table-bordered">
+						<thead>
+							<tr>
+								<th>方法名称</th>
+								<th>方法参数</th>
+								<th>方法描述</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td><code>get</code></td>
+								<td>
+									<ol>
+										<li>undefined</li>
+										<li>key</li>
+										<li>keyArray</li>
+									</ol>
+								</td>
+								<td>获取1个cookie值、多个或全部cookie键值对</td>
+							</tr>
+							<tr>
+								<td><code>set</code></td>
+								<td>
+									<ol>
+										<li>key, val</li>
+										<li>keyValMap</li>
+									</ol>
+								</td>
+								<td>设置1个cookie值、多个cookie值</td>
+							</tr>
+							<tr>
+								<td><code>remove</code></td>
+								<td>
+									<ol>
+										<li>undefined</li>
+										<li>key, val</li>
+										<li>keyArray</li>
+									</ol>
+								</td>
+								<td>移除1个cookie值、多个或全部cookie值</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+		<div class="panel panel-default">
+			<div class="panel-heading">3、插件演示</div>
+			<div class="panel-body">
+				<p class="lead text-danger">3.1、获取</p>
+				<pre class="prettyprint linenums lang-javascript">// 获取所有可读cookie键值对
+$.cookie().get();
+
+// 获取单个可读cookie值
+$.cookie().get('a');
+
+// 获取多个可读cookie键值对
+$.cookie().get(['a', 'b']);</pre>
+
+				<br>
+				<p class="lead text-danger">3.2、设置</p>
+				<pre class="prettyprint linenums lang-javascript">// 设置1个可写cookie值
+$.cookie().set('a', '1');
+
+// 设置多个可写cookie值
+$.cookie().set({
+    a: '1',
+    b: '2'
+});</pre>
+
+				<br>
+				<p class="lead text-danger">3.3、移除</p>
+				<pre class="prettyprint linenums lang-javascript">// 删除所有可读可写cookie
+$.cookie().remove();
+
+// 删除单个可读可写cookie
+$.cookie().remove('a');
+
+// 删除多个可读可写cookie
+$.cookie().remove(['a', 'b']);</pre>
+			</div>
+		</div>
+		<div class="panel panel-default">
+			<div class="panel-heading">4、插件下载</div>
+			<div class="panel-body">
+				<a href="/#jquery.cookie" class="btn btn-sm btn-danger">点击前往插件下载页面</a>
+			</div>
+		</div>
+	</div>
+
+
+
+	<div id="footer" style="border-top:1px solid #ddd;padding:20px;margin-top:30px;">
+		<ul class="list-inline">
+			<li>&copy;云淡然</li>
+			<li>2013 - 2014</li>
+			<li>
+				<a href="/">前端静态资源首页</a>
+			</li>
+		</ul>
+	</div>
+	<script src="/js/yquery/latest/yquery.min.js"></script>
+	<script src="/js/prettify/r298/prettify.min.js"></script>
+	<script src="./1.1/jquery.cookie.js"></script>
+	<script>
+	window.prettyPrint && prettyPrint();
+	</script>
+</body>
+
+</html>

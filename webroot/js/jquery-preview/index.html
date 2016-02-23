@@ -1,0 +1,120 @@
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="renderer" content="webkit">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<meta name="author" content="云淡然;http://ydr.me">
+	<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+	<link rel="stylesheet" href="http://festatic.aliapp.com/bootstrap/3.1.1/css/bootstrap.min.css">
+	<link rel="stylesheet" href="http://festatic.aliapp.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
+	<link rel="stylesheet" href="http://festatic.aliapp.com/css/prettify/bootstrap.min.css">
+	<title>jquery-preview.js docs - 前端静态资源</title>
+	<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+	<div class="jumbotron">
+		<div class="container">
+			<h1>jquery-preview.js docs</h1>
+			<p>作者：云淡然</p>
+			<p>兼容：ie6+、chrome、firefox</p>
+		</div>
+	</div>
+	<div class="container">
+		<div class="panel panel-default">
+			<div class="panel-heading">1、插件介绍</div>
+			<div class="panel-body">
+				<ol>
+					<li>相关文章1：
+						<a href="http://qianduanblog.com/1350.html" target="_blank">javascript学习9：兼容性读取本地图片</a>
+					</li>
+					<li>相关文章2：
+						<a href="http://qianduanblog.com/1350.html" target="_blank">html5学习4：HTML5之input:file说明</a>
+					</li>
+					<li>读取了本地文件，然后就可以进行相关的裁剪服务了（仅限html5）。</li>
+				</ol>
+			</div>
+		</div>
+		<div class="panel panel-default">
+			<div class="panel-heading">2、插件API</div>
+			<div class="panel-body">
+				<pre class="prettyprint linenums lang-javascript">$.fn.preview.defaults = {
+	// 允许文件后缀
+	suffix: ['png', 'jpg', 'gif'],
+
+	// 是否允许多图，如果支持的话
+	multiple: true,
+
+	// 预览图片的宽
+	width: 100,
+
+	// 预览图片的高
+	height: 100,
+
+	// 预览图片容器对象
+	$preview: null,
+
+	// 成功回调
+	// @this: this
+	// @imgs: ['imageName.png'...] 图片名称数组，可能是空数组
+	onsuccess: emptyFn,
+
+	// 失败回调
+	// @this: this
+	// @error: [1,2...] 错误序号，从1开始
+	onerror: emptyFn
+};
+</pre>
+			</div>
+		</div>
+		<div class="panel panel-default">
+			<div class="panel-heading">3、插件演示</div>
+			<div class="panel-body">
+				<div class="well">
+					<button class="btn btn-primary" id="btn-file">
+						<span>可以选择多张图片</span>
+						<input type="file" name="" id="file" multiple>
+					</button>
+					<div id="preview"></div>
+				</div>
+			</div>
+		</div>
+		<div class="panel panel-default">
+			<div class="panel-heading">4、插件下载</div>
+			<div class="panel-body">
+				<a href="/#jquery-preview" class="btn btn-sm btn-danger">点击前往插件下载页面</a>
+			</div>
+		</div>
+	</div>
+	<div id="footer" style="border-top:1px solid #ddd;padding:20px;margin-top:30px;">
+		<ul class="list-inline">
+			<li>&copy;云淡然</li>
+			<li>2013 - 2014</li>
+			<li>
+				<a href="/">前端静态资源首页</a>
+			</li>
+		</ul>
+	</div>
+	<script src="http://festatic.aliapp.com/js/jquery/1.11.0/jquery.min.js"></script>
+	<script src="http://festatic.aliapp.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+	<script src="http://festatic.aliapp.com/js/prettify/r298/prettify.min.js"></script>
+	<script src="latest/jquery-preview.js"></script>
+	<script>
+	window.prettyPrint && prettyPrint();
+
+	var $span = $('#btn-file span');
+	$('#file').preview({
+		$preview: $('#preview'),
+		onsuccess: function(imgs) {
+			$span.html('已选择了 <b>' + imgs.length + '</b> 张图片');
+		},
+		onerror: function(error) {
+			alert('第' + error.join(',') + '张图片格式错误');
+		}
+	});
+	</script>
+</body>
+
+</html>

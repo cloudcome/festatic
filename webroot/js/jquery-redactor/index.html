@@ -1,0 +1,673 @@
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="renderer" content="webkit">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<meta name="author" content="云淡然;http://ydr.me">
+	<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+	<link rel="stylesheet" href="http://festatic.aliapp.com/bootstrap/3.1.1/css/bootstrap.min.css">
+	<link rel="stylesheet" href="http://festatic.aliapp.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
+	<link rel="stylesheet" href="http://festatic.aliapp.com/css/prettify/bootstrap.min.css">
+	<title>jquery-redactor.js docs - 前端静态资源</title>
+	<link rel="stylesheet" href="/css/jquery-redactor/default.css">
+</head>
+<body>
+	<div class="jumbotron">
+		<div class="container">
+			<h1>jquery-redactor.js docs</h1>
+			<p>作者：Ray Bradbury</p>
+			<p>修改：云淡然</p>
+			<p>兼容：ie9+、chrome、firefox</p>
+		</div>
+	</div>
+	<div class="container">
+		<div class="panel panel-default">
+			<div class="panel-heading">1、插件介绍</div>
+			<div class="panel-body">
+				<p>A beautiful and easy-to-use WYSIWYG html editor. 原始地址<a href="http://imperavi.com/redactor/" target="_blank">http://imperavi.com/redactor/</a></p>
+				<p>插件样式：<a href="/css/jquery-redactor/default.min.css" target="_blank">default.min.css</a>，见DEMO。</p>
+			</div>
+		</div>
+		<div class="panel panel-default">
+			<div class="panel-heading">2、插件配置</div>
+			<div class="panel-body">
+				<p class="lead text-danger">2.1、插件API</p>
+				<br><br>
+				<p class="lead text-danger">2.1.1、插件设置</p>
+				<div class="table-responsive">
+					<table class="table table-hover table-striped table-bordered">
+						<thead>
+							<tr>
+								<th>参数名称</th>
+								<th>参数默认值</th>
+								<th>参数描述</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td><code>preClass</code></td>
+								<td><code>"prettyprint linenums"</code></td>
+								<td>插入pre的类名称</td>
+							</tr>
+							<tr>
+								<td><code>rangy</code></td>
+								<td><code>false</code></td>
+								<td>广选区</td>
+							</tr>
+							<tr>
+								<td><code>air</code></td>
+								<td><code>false</code></td>
+								<td>浮动模式</td>
+							</tr>
+							<tr>
+								<td><code>airButtons</code></td>
+								<td><code>["formatting", "bold", "italic", "underline", "deleted",</code>
+								<code>"pre", "code", "unorderedlist", "orderedlist"]</code></td>
+								<td>浮动模式默认按钮</td>
+							</tr>
+							<tr>
+								<td><code>allowedTags</code></td>
+								<td><code>false</code></td>
+								<td>允许标签，可以是数组</td>
+							</tr>
+							<tr>
+								<td><code>autoresize</code></td>
+								<td><code>true</code></td>
+								<td>自动尺寸</td>
+							</tr>
+							<tr>
+								<td><code>autosave</code></td>
+								<td><code>false</code></td>
+								<td>自动保存地址</td>
+							</tr>
+							<tr>
+								<td><code>autosaveInterval</code></td>
+								<td><code>false</code></td>
+								<td>自动保存定时器</td>
+							</tr>
+							<tr>
+								<td><code>boldTag</code></td>
+								<td><code>"strong"</code></td>
+								<td>加粗标签</td>
+							</tr>
+							<tr>
+								<td><code>buttons</code></td>
+								<td><code>["html", "formatting", "bold", "italic", "underline", "deleted", "pre",</code>
+								<code>"code", "unorderedlist", "orderedlist", "image", "video", "file", "table",</code>
+								<code>"link", "alignment", "|", "horizontalrule"]</code></td>
+								<td>按钮</td>
+							</tr>
+							<tr>
+								<td><code>buttonsHideOnMobile</code></td>
+								<td><code>[]</code></td>
+								<td>手机模式下隐藏的按钮</td>
+							</tr>
+							<tr>
+								<td><code>buttonSource</code></td>
+								<td><code>true</code></td>
+								<td>显示“源码”按钮</td>
+							</tr>
+							<tr>
+								<td><code>cleanFontTag</code></td>
+								<td><code>true</code></td>
+								<td>清除“font”标签</td>
+							</tr>
+							<tr>
+								<td><code>cleanSpaces</code></td>
+								<td><code>true</code></td>
+								<td>清除多余空白</td>
+							</tr>
+							<tr>
+								<td><code>cleanup</code></td>
+								<td><code>true</code></td>
+								<td>粘贴清理</td>
+							</tr>
+							<tr>
+								<td><code>convertDivs</code></td>
+								<td><code>true</code></td>
+								<td>转换“div”</td>
+							</tr>
+							<tr>
+								<td><code>convertImageLinks</code></td>
+								<td><code>false</code></td>
+								<td>转换图片链接为图片img</td>
+							</tr>
+							<tr>
+								<td><code>convertLinks</code></td>
+								<td><code>false</code></td>
+								<td>转换链接地址为链接A</td>
+							</tr>
+							<tr>
+								<td><code>convertVideoLinks</code></td>
+								<td><code>false</code></td>
+								<td>转换视频地址为视频video</td>
+							</tr>
+							<tr>
+								<td><code>css</code></td>
+								<td><code>false</code></td>
+								<td>样式地址</td>
+							</tr>
+							<tr>
+								<td><code>deniedTags</code></td>
+								<td><code>['html', 'head', 'link', 'body', 'meta', 'script', 'style', 'applet']</code></td>
+								<td>禁止标签</td>
+							</tr>
+							<tr>
+								<td><code>direction</code></td>
+								<td><code>ltr</code></td>
+								<td>文本方向</td>
+							</tr>
+							<tr>
+								<td><code>dragUpload</code></td>
+								<td><code>true</code></td>
+								<td>是否拖拽上传，如果为true，必须设置<code>imageUpload</code></td>
+							</tr>
+							<tr>
+								<td><code>focus</code></td>
+								<td><code>false</code></td>
+								<td>自动聚焦</td>
+							</tr>
+							<tr>
+								<td><code>formattingPre</code></td>
+								<td><code>false</code></td>
+								<td>格式<code>pre</code>标签</td>
+							</tr>
+							<tr>
+								<td><code>formattingTags</code></td>
+								<td><code>['p', 'blockquote', 'pre', 'h1', 'h2', 'h3', 'h4']</code></td>
+								<td>格式标签列表</td>
+							</tr>
+							<tr>
+								<td><code>fullpage</code></td>
+								<td><code>false</code></td>
+								<td>全屏</td>
+							</tr>
+							<tr>
+								<td><code>iframe</code></td>
+								<td><code>false</code></td>
+								<td>内容输出在iframe</td>
+							</tr>
+							<tr>
+								<td><code>imageFloatMargin</code></td>
+								<td><code>"10px"</code></td>
+								<td>图片外边距</td>
+							</tr>
+							<tr>
+								<td><code>imageGetJson</code></td>
+								<td><code>false</code></td>
+								<td>图片列表获取地址</td>
+							</tr>
+							<tr>
+								<td><code>imageTabLink</code></td>
+								<td><code>false</code></td>
+								<td>tab键切换图片为图片链接</td>
+							</tr>
+							<tr>
+								<td><code>imageUpload</code></td>
+								<td><code>false</code></td>
+								<td>图片上传地址</td>
+							</tr>
+							<tr>
+								<td><code>imageUploadHeaders</code></td>
+								<td><code>false</code></td>
+								<td>图片上传额外headers</td>
+							</tr>
+							<tr>
+								<td><code>imageUploadData</code></td>
+								<td><code>false</code></td>
+								<td>图片上传额外data</td>
+							</tr>
+							<tr>
+								<td><code>imageUploadName</code></td>
+								<td><code>"file"</code></td>
+								<td>图片上传name</td>
+							</tr>
+							<tr>
+								<td><code>italicTag</code></td>
+								<td><code>"em"</code></td>
+								<td>斜体标签</td>
+							</tr>
+							<tr>
+								<td><code>linebreaks</code></td>
+								<td><code>false</code></td>
+								<td>true为p换行，false为br换行</td>
+							</tr>
+							<tr>
+								<td><code>linkNofollow</code></td>
+								<td><code>false</code></td>
+								<td>链接是否nofollow</td>
+							</tr>
+							<tr>
+								<td><code>linkProtocol</code></td>
+								<td><code>"http://"</code></td>
+								<td>链接协议</td>
+							</tr>
+							<tr>
+								<td><code>linkSize</code></td>
+								<td><code>50</code></td>
+								<td>链接长度</td>
+							</tr>
+							<tr>
+								<td><code>maxHeight</code></td>
+								<td><code>false</code></td>
+								<td>最大高度</td>
+							</tr>
+							<tr>
+								<td><code>minHeight</code></td>
+								<td><code>false</code></td>
+								<td>最小高度</td>
+							</tr>
+							<tr>
+								<td><code>mobile</code></td>
+								<td><code>true</code></td>
+								<td>是否允许mobile模式</td>
+							</tr>
+							<tr>
+								<td><code>modalOverlay</code></td>
+								<td><code>true</code></td>
+								<td>模态对话框背景</td>
+							</tr>
+							<tr>
+								<td><code>observeImages</code></td>
+								<td><code>true</code></td>
+								<td>是否单击图片打开图片设置对话框</td>
+							</tr>
+							<tr>
+								<td><code>observeLinks</code></td>
+								<td><code>true</code></td>
+								<td>是否单击链接打开链接设置对话框</td>
+							</tr>
+							<tr>
+								<td><code>paragraphy</code></td>
+								<td><code>true</code></td>
+								<td>是否格式化p标签</td>
+							</tr>
+							<tr>
+								<td><code>pastePlainText</code></td>
+								<td><code>false</code></td>
+								<td>粘贴纯文本</td>
+							</tr>
+							<tr>
+								<td><code>phpTags</code></td>
+								<td><code>false</code></td>
+								<td>PHP标签</td>
+							</tr>
+							<tr>
+								<td><code>placeholder</code></td>
+								<td><code>false</code></td>
+								<td>占位字符</td>
+							</tr>
+							<tr>
+								<td><code>removeEmptyTags</code></td>
+								<td><code>true</code></td>
+								<td>移除空标签</td>
+							</tr>
+							<tr>
+								<td><code>shortcuts</code></td>
+								<td><code>false</code></td>
+								<td>是否允许快捷键</td>
+							</tr>
+							<tr>
+								<td><code>shortcutsAdd</code></td>
+								<td><code>false</code></td>
+								<td>增加快捷键</td>
+							</tr>
+							<tr>
+								<td><code>tabFocus</code></td>
+								<td><code>true</code></td>
+								<td>多个编辑器，是否允许tab键切换聚焦</td>
+							</tr>
+							<tr>
+								<td><code>tabindex</code></td>
+								<td><code>false</code></td>
+								<td>tab键索引值</td>
+							</tr>
+							<tr>
+								<td><code>tabSpaces</code></td>
+								<td><code>false</code></td>
+								<td>tab键输入，可以为true或数字</td>
+							</tr>
+							<tr>
+								<td><code>tidyHtml</code></td>
+								<td><code>true</code></td>
+								<td>格式化html</td>
+							</tr>
+							<tr>
+								<td><code>toolbar</code></td>
+								<td><code>true</code></td>
+								<td>是否显示工具栏</td>
+							</tr>
+							<tr>
+								<td><code>toolbarFixed</code></td>
+								<td><code>false</code></td>
+								<td>工具栏固定定位</td>
+							</tr>
+							<tr>
+								<td><code>toolbarFixedBox</code></td>
+								<td><code>false</code></td>
+								<td>工具栏固定定位在box上</td>
+							</tr>
+							<tr>
+								<td><code>toolbarFixedTarget</code></td>
+								<td><code>document</code></td>
+								<td>工具栏固定定位参考对象</td>
+							</tr>
+							<tr>
+								<td><code>toolbarFixedTopOffset</code></td>
+								<td><code>0</code></td>
+								<td>工具栏固定定位参考偏移</td>
+							</tr>
+							<tr>
+								<td><code>toolbarOverflow</code></td>
+								<td><code>false</code></td>
+								<td>工具栏是否超过隐藏</td>
+							</tr>
+							<tr>
+								<td><code>visual</code></td>
+								<td><code>true</code></td>
+								<td>是否可视视图</td>
+							</tr>
+							<tr>
+								<td><code>wym</code></td>
+								<td><code>false</code></td>
+								<td>是否代码视图</td>
+							</tr>
+							<tr>
+								<td><code>xhtml</code></td>
+								<td><code>false</code></td>
+								<td><code>xhtml</code>格式</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<br><br>
+				<p class="lead text-danger">2.1.2、插件回调</p>
+				<div class="table-responsive">
+					<table class="table table-hover table-striped table-bordered">
+						<thead>
+							<tr>
+								<th>参数名称</th>
+								<th>参数默认值</th>
+								<th>参数描述</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td><code>initCallback</code></td>
+								<td><code>false</code></td>
+								<td>
+									<p>编辑器初始化之后回调</p>
+								</td>
+							</tr>
+							<tr>
+								<td><code>insertPreBeforeCallback</code></td>
+								<td><code>false</code></td>
+								<td>
+									<p>插入pre标签之前回调</p>
+									<p>arguments[0]: 待插入的pre内容</p>
+									<p>必须返回 pre内容</p>
+								</td>
+							</tr>
+							<tr>
+								<td><code>insertPreAfterCallback</code></td>
+								<td><code>false</code></td>
+								<td>
+									<p>插入pre标签之后回调</p>
+									<p>arguments[0]: 插入后的pre内容</p>
+								</td>
+							</tr>
+							<tr>
+								<td><code>syncBeforeCallback</code></td>
+								<td><code>false</code></td>
+								<td>
+									<p>同步之前回调</p>
+									<p>arguments[0]: 待同步的内容</p>
+									<p>必须返回同步内容</p>
+								</td>
+							</tr>
+							<tr>
+								<td><code>syncAfterCallback</code></td>
+								<td><code>false</code></td>
+								<td>
+									<p>同步之前回调</p>
+									<p>arguments[0]: 同步后的内容</p>
+								</td>
+							</tr>
+							<tr>
+								<td><code>changeCallback</code></td>
+								<td><code>false</code></td>
+								<td>
+									<p>编辑器内容改变之后回调</p>
+									<p>arguments[0]: 改变后的内容</p>
+								</td>
+							</tr>
+							<tr>
+								<td><code>blurCallback</code></td>
+								<td><code>false</code></td>
+								<td>
+									<p>编辑器失去焦点之后回调</p>
+									<p>arguments[0]: event对象</p>
+								</td>
+							</tr>
+							<tr>
+								<td><code>keydownCallback</code></td>
+								<td><code>false</code></td>
+								<td>
+									<p>编辑器键盘按下之后回调</p>
+									<p>arguments[0]: event对象</p>
+								</td>
+							</tr>
+							<tr>
+								<td><code>keyupCallback</code></td>
+								<td><code>false</code></td>
+								<td>
+									<p>编辑器键盘按起之后回调</p>
+									<p>arguments[0]: event对象</p>
+								</td>
+							</tr>
+							<tr>
+								<td><code>enterCallback</code></td>
+								<td><code>false</code></td>
+								<td>
+									<p>编辑器输入之后回调</p>
+									<p>arguments[0]: event对象</p>
+								</td>
+							</tr>
+							<tr>
+								<td><code>autosaveCallback</code></td>
+								<td><code>false</code></td>
+								<td>
+									<p>自动保存成功后回调</p>
+									<p>arguments[0]: 服务器返回的JSON对象</p>
+								</td>
+							</tr>
+							<tr>
+								<td><code>autosaveErrorCallback</code></td>
+								<td><code>false</code></td>
+								<td>
+									<p>自动保存失败后回调</p>
+									<p>arguments[0]: 服务器返回的JSON对象</p>
+								</td>
+							</tr>
+							<tr>
+								<td><code>dropdownShowCallback</code></td>
+								<td><code>false</code></td>
+								<td>
+									<p>下拉菜单打开之前回调</p>
+									<p>arguments[0]: 下来菜单对象</p>
+									<p>对象键：<code>dropdown</code>下来菜单jquery对象</p>
+									<p>对象键：<code>key</code>按键</p>
+									<p>对象键：<code>button</code>触发的按钮jquery对象</p>
+								</td>
+							</tr>
+							<tr>
+								<td><code>dropdownShownCallback</code></td>
+								<td><code>false</code></td>
+								<td>
+									<p>下拉菜单打开之后回调</p>
+									<p>arguments[0]: 下来菜单对象</p>
+									<p>对象键：<code>dropdown</code>下来菜单jquery对象</p>
+									<p>对象键：<code>key</code>按键</p>
+									<p>对象键：<code>button</code>触发的按钮jquery对象</p>
+								</td>
+							</tr>
+							<tr>
+								<td><code>dropdownHideCallback</code></td>
+								<td><code>false</code></td>
+								<td>
+									<p>下拉菜单关闭之后回调</p>
+								</td>
+							</tr>
+							<tr>
+								<td><code>execCommandCallback</code></td>
+								<td><code>false</code></td>
+								<td>
+									<p>下拉菜单关闭之后回调</p>
+									<p>arguments[0]: 命令名称</p>
+									<p>arguments[1]: 命令参数</p>
+								</td>
+							</tr>
+							<tr>
+								<td><code>pasteBeforeCallback</code></td>
+								<td><code>false</code></td>
+								<td>
+									<p>粘贴内容之前回调</p>
+									<p>arguments[0]: 粘贴内容</p>
+								</td>
+							</tr>
+							<tr>
+								<td><code>pasteAfterCallback</code></td>
+								<td><code>false</code></td>
+								<td>
+									<p>粘贴内容之后回调</p>
+									<p>arguments[0]: 粘贴内容</p>
+								</td>
+							</tr>
+							<tr>
+								<td><code>imageUploadCallback</code></td>
+								<td><code>false</code></td>
+								<td>
+									<p>图片上传成功之后回调</p>
+									<p>arguments[0]: 图片element对象</p>
+									<p>arguments[1]: 成功JSON对象</p>
+								</td>
+							</tr>
+							<tr>
+								<td><code>imageUploadErrorCallback</code></td>
+								<td><code>false</code></td>
+								<td>
+									<p>图片上传错误之后回调</p>
+									<p>arguments[0]: 错误JSON对象</p>
+								</td>
+							</tr>
+							<tr>
+								<td><code>imageGetErrorCallback</code></td>
+								<td><code>false</code></td>
+								<td>
+									<p>图片列表获取错误之后回调</p>
+									<p>arguments[0]: 错误JSON对象</p>
+								</td>
+							</tr>
+							<tr>
+								<td><code>imageDeleteCallback</code></td>
+								<td><code>false</code></td>
+								<td>
+									<p>图片删除之后回调</p>
+									<p>arguments[0]: elememt对象</p>
+								</td>
+							</tr>
+							<tr>
+								<td><code>imageDeleteCallback</code></td>
+								<td><code>false</code></td>
+								<td>
+									<p>图片删除之后回调</p>
+									<p>arguments[0]: elememt对象</p>
+								</td>
+							</tr>
+							<tr>
+								<td><code>modalOpenedCallback</code></td>
+								<td><code>false</code></td>
+								<td>
+									<p>模式对话框打开之后回调</p>
+									<p>arguments[0]: 对话框jquery对象</p>
+								</td>
+							</tr>
+							<tr>
+								<td><code>modalClosedCallback</code></td>
+								<td><code>false</code></td>
+								<td>
+									<p>模式对话框关闭之后回调</p>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<br><br>
+				<p class="lead text-danger">2.2、关于AJAX上传</p>
+				<div class="alert alert-danger">
+					AJAX上传调用的插件为 <a href="/#jquery-upload" target="_blank">jquery-upload</a>。
+				</div>
+				<ol>
+					<li>只支持JSON格式结果</li>
+					<li>并且必须设置<code>content-type: text/html</code></li>
+					<li>JSON字符串中不能有额外的空白或特殊字符</li>
+					<li>JSON字符串请以<b>UTF-8</b>编码</li>
+					<li>处理正确结果JSON格式为：<code>{"code":1,"data":{"url":"图片路径"}}</code></li>
+					<li>处理错误结果JSON格式为：<code>{"code":-1,"msg":"错误消息"}</code></li>
+					<li>即：&gt;0表示处理正确，&lt;=0表示处理错误。</li>
+				</ol>
+				<br><br>
+				<p class="lead text-danger">2.3、关于AJAX图片列表</p>
+				<ol>
+					<li>处理正确JSON格式为：<code>{"code":1,"data":{"images":[{"url":"图片路径"},...],"pagination":"分页HTML"}}</code></li>
+					<li>处理错误JSON格式为：<code>{"code":-1,"msg":"错误消息"}</code></li>
+					<li>即：&gt;0表示处理正确，&lt;=0表示处理错误。</li>
+				</ol>
+				<br><br>
+				<p class="lead text-danger">2.4、插件已去除功能</p>
+				<ol>
+					<li>已去除视频的支持</li>
+					<li>已去除s3的支持</li>
+					<li>一些设置</li>
+					<li>使用额外上传插件</li>
+				</ol>
+			</div>
+		</div>
+		<div class="panel panel-default">
+			<div class="panel-heading">3、插件使用</div>
+			<div class="panel-body">
+				<p class="lead text-danger">3.1、初始化</p>
+				<pre class="prettyprint linenums lang-html">引用样式和脚本
+&lt;link rel=&quot;stylesheet&quot; href=&quot;/css/jquery-redactor/default.min.css&quot; /&gt;
+&lt;script src=&quot;/js/jquery-redactor/latest/jquery-redactor.min.js&quot;&gt;&lt;/script&gt;
+</pre>
+				<pre class="prettyprint linenums lang-javascript">//初始化
+$('#demo').redactor();</pre>
+				<br><br>
+				<p class="lead text-danger">3.2、demo</p>
+				<textarea id="editor" class="form-control" rows="10" placeholder="写你想写"></textarea>
+			</div>
+		</div>
+		<div class="panel panel-default">
+			<div class="panel-heading">4、插件下载</div>
+			<div class="panel-body"><a href="/#jquery-redactor" class="btn btn-sm btn-danger">点击前往插件下载页面</a></div>
+		</div>
+	</div>
+	<div id="footer" style="border-top:1px solid #ddd;padding:20px;margin-top:30px;">
+		<ul class="list-inline">
+			<li>&copy;云淡然</li>
+			<li>2013 - 2014</li>
+			<li><a href="/">前端静态资源首页</a></li>
+		</ul>
+	</div>
+	<script src="http://festatic.aliapp.com/js/jquery/1.11.0/jquery.min.js"></script>
+	<script src="http://festatic.aliapp.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+	<script src="/js/prettify/r298/prettify.min.js"></script>
+	<script src="9.2.3/jquery-redactor.js"></script>
+	<script>
+	window.prettyPrint && prettyPrint();
+	$('#editor').redactor();
+	</script>
+</body>
+</html>

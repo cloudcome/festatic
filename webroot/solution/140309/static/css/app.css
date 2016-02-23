@@ -1,0 +1,178 @@
+/**
+ * 友窝 第1版
+ * @author  ydr.me
+ */
+
+body.home {
+	overflow: hidden;
+	background: url(http://cdnst.immomo.com/static/w4-img/banner.png);
+	color: #fff;
+}
+
+body {
+	background-color: #5CBFEE;
+}
+
+.single .jumbotron {
+	background-color: #02517A;
+	padding-top: 120px;
+	color: #fff;
+}
+
+.separator {
+	display: inline;
+	margin: 0 10px;
+}
+
+#header {
+	background: rgba(0, 0, 0, 0.27);
+	border: 0;
+	padding: 10px 0;
+}
+
+.navbar-brand {
+	display: inline-block;
+	width: 202px;
+	height: 67px;
+	background: url(../img/brand.png) no-repeat;
+}
+
+.navbar-inverse .navbar-nav>li>a {
+	color: #fff;
+}
+
+#body {
+	padding-top: 90px;
+}
+
+.hero {
+	height: 80px;
+	background: url(../img/allinone.png) center no-repeat;
+	margin-bottom: 100px;
+}
+
+.mob h2 {
+	height: 30px;
+	background: url(../img/mobile.png) center no-repeat;
+	margin-top: -13px;
+}
+
+.dl {
+	text-align: right;
+}
+
+.mob a {
+	display: inline-block;
+	width: 214px;
+	height: 55px;
+	background-image: url(http://app.zmd5.com/images/down.png);
+}
+
+.ios:hover {
+	background-position: 0 -55px;
+}
+
+.android {
+	background-position: 0 -110px;
+}
+
+.android:hover {
+	background-position: 0 -165px;
+}
+
+.pc {
+	text-align: right;
+}
+
+.pc .logo {
+	display: inline-block;
+	width: 120px;
+	height: 125px;
+	background: url(../img/logo.png) no-repeat;
+}
+
+.form-group {
+	position: relative;
+	width: 220px;
+}
+
+.form-group .glyphicon {
+	position: absolute;
+	font-size: 20px;
+	color: #ddd;
+	top: 8px;
+	left: 7px;
+}
+
+.form-group .form-control {
+	padding-left: 32px;
+}
+
+.form-group .btn {
+	padding-left: 20px;
+	padding-right: 20px;
+}
+
+#footer {
+	padding: 10px;
+	width: 100%;
+	bottom: 0;
+}
+
+.home #footer {
+	position: fixed;
+}
+
+@media (min-width: 768px) {
+	.navbar-nav>li {
+		margin-top: 25px;
+		border-right: 1px dotted #eee;
+	}
+
+	.navbar-nav>li>a {
+		padding: 0 30px;
+	}
+}
+/*
+
+
+@media (max-width: 992px) {
+	body {
+		overflow: auto;
+		padding-bottom: 50px;
+	}
+
+	.mob {
+		margin-bottom: 50px;
+	}
+
+	#footer {
+		position: relative;
+	}
+}
+
+@media (max-width: 768px) {
+	.mob .dl {
+		width: 225px;
+	}
+
+	.mob .code {
+		width: 104px;
+	}
+
+	.pc .logo {
+		display: block;
+	}
+
+	.form {
+		width: 240px;
+	}
+
+	.mob .dl,
+	.mob .code,
+	.pc .logo,
+	.pc .form {
+		margin: 10px auto;
+	}
+}
+*/

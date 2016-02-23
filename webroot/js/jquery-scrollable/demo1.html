@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="renderer" content="webkit">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<meta name="author" content="云淡然;http://ydr.me">
+	<meta name="keywords" content="关键词1,关键词2">
+	<meta name="description" content="描述语句">
+	<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+	<link rel="apple-touch-icon" href="/favicon.png">
+	<title>文档标题</title>
+	<style>
+	ul,li,img{
+		margin: 0;
+		padding: 0;
+		list-style: none;
+		vertical-align: top;
+	}
+	#demo2 li{
+		float: left;
+	}
+	</style>
+</head>
+<body>
+	<ul id="demo1">
+		<li><img src="http://dummyimage.com/100x100/000000/fff" alt=""></li>
+		<li><img src="http://dummyimage.com/100x200/0F6F9B/fff" alt=""></li>
+		<li><img src="http://dummyimage.com/100x300/0F9B12/fff" alt=""></li>
+		<li><img src="http://dummyimage.com/100x200/AD6A17/fff" alt=""></li>
+		<li><img src="http://dummyimage.com/100x100/7C17AD/fff" alt=""></li>
+	</ul>
+	<br>
+	<hr>
+	<br>
+	<div id="demo2-wrap">
+		<ul id="demo2">
+			<li><img src="http://dummyimage.com/100x100/000000/fff" alt=""></li>
+			<li><img src="http://dummyimage.com/200x100/0F6F9B/fff" alt=""></li>
+			<li><img src="http://dummyimage.com/300x100/0F9B12/fff" alt=""></li>
+			<li><img src="http://dummyimage.com/200x100/AD6A17/fff" alt=""></li>
+			<li><img src="http://dummyimage.com/100x100/7C17AD/fff" alt=""></li>
+		</ul>
+	</div>
+
+	<script src="http://festatic.aliapp.com/js/jquery/1.11.0/jquery.min.js"></script>
+	<script src="latest/jquery-scrollable.js"></script>
+	<script>
+	$(window).load(function(){
+		$('#demo1').scrollable({
+			width: 200,
+			height: 300,
+			direction: 'top',
+			scrollCount: 0,
+			duration: 10000,
+		});
+		$('#demo2').scrollable({
+			width: 200,
+			height: 100,
+			direction: 'left',
+			scrollCount: 0,
+			duration: 10000,
+		});
+	});
+	</script>
+</body>
+</html>

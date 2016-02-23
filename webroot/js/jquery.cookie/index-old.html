@@ -1,0 +1,462 @@
+<!doctype html>
+
+<html lang="en">
+
+
+
+<head>
+
+	<meta charset="utf-8">
+
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+
+	<meta name="author" content="云淡然;http://ydr.me">
+
+
+
+	<title>jquery.query.js demo - 前端静态资源</title>
+
+	<link rel="stylesheet" href="../../css/3/latest.min.css">
+
+
+
+	<style>
+
+	
+
+	</style>
+
+
+
+</head>
+
+
+
+<body style="padding:20px;">
+
+	<div class="hero">
+
+		<h1>jquery.query.js demo</h1>
+
+		<p>作者：云淡然</p>
+
+		<p>兼容：ie6（含）+、chrome、firefox</p>
+
+	</div>
+
+
+
+	<div class="module">
+
+		<div class="module-header">1、插件说明</div>
+
+		<div class="module-body">
+
+			<p>相关文章1：
+
+				<a target="_blank" href="http://qianduanblog.com/2844.html">http://qianduanblog.com/2844.html</a>
+
+			</p>
+
+			<p>相关文章2：
+
+				<a target="_blank" href="http://qianduanblog.com/1772.html">http://qianduanblog.com/1772.html</a>
+
+			</p>
+
+			<div class="alert alert-error">
+
+				<p>1. 因为cookie的特殊性，只能读取key、value，其他参数不能获取到，所以在设置cookie的时候不同路径尽量使用不同的cookie名称</p>
+
+				<p>2. 插件的清空cookie功能默认清空
+
+					<code>location.host</code>下的cookie，如果你需要清空其他domain下的cookie需要自己指定默认参数的domain。</p>
+
+				<p>3. 插件的删除cookie功能会把cookie真正删除，但某些浏览器会把这些cookie当做session cookie临时保存下来，如session一样，会在浏览器关闭的时候清除。</p>
+
+			</div>
+
+		</div>
+
+	</div>
+
+
+
+	<div class="module">
+
+		<div class="module-header">2、插件API</div>
+
+		<div class="module-body">
+
+			<pre>// 插件默认参数
+
+$.cookie.defaults = {
+
+	// 是否以严格模式读取和设置cookie，默认true
+
+	// 严格模式将编码键值对再设置，非严格模式将不进行编码
+
+	// 严格模式将解码键值对再读取，非严格模式将不进行解码
+
+	isStrict: true,
+
+	// 在无域名的时候，必须设置为空才能在本地写入
+
+	domain: location.host || "",
+
+	// 默认cookie有效期1个小时（单位秒）
+
+	expires: 3600,
+
+	// 默认cookie存储路径
+
+	path: "/",
+
+	// 是否加密cookie
+
+	secure: false
+
+};
+
+
+
+// 1、解析cookie
+
+$.cookie();
+
+// 返回键值对对象
+
+// =>{a:1,b:2,c:3}
+
+
+
+
+
+// 2、获取cookie
+
+$.cookie("a");
+
+// =>1
+
+
+
+
+
+$.cookie(["a", "b"]);
+
+// =>{a:1,b:2}
+
+
+
+
+
+// 3、设置cookie
+
+$.cookie("a", "b");
+
+// =>"a=b;expires=Wed, 23 Oct 2013 03:20:59 GMT;path=/;domain=festatic.aliapp.com;"
+
+
+
+$.cookie("aa", "bb", {
+
+	path: "/123/"
+
+});
+
+// =>"aa=bb;expires=Wed, 23 Oct 2013 03:21:09 GMT;path=/123/;domain=festatic.aliapp.com;"
+
+
+
+$.cookie({
+
+	"xx": "1",
+
+	"yy": "2"
+
+});
+
+// =>xx=1;expires=Wed, 23 Oct 2013 03:21:22 GMT;path=/;domain=festatic.aliapp.com;yy=2;expires=Invalid Date;path=/;domain=festatic.aliapp.com;"
+
+
+
+$.cookie({
+
+	"m": "1",
+
+	"n": "2"
+
+}, {
+
+	path: "/123/"
+
+});
+
+// =>"m=1;expires=Wed, 23 Oct 2013 03:21:36 GMT;path=/123/;domain=festatic.aliapp.com;n=2;expires=Invalid Date;path=/123/;domain=festatic.aliapp.com;"
+
+
+
+
+
+// 4、删除
+
+$.cookie("a", null);
+
+// =>a=;expires=Wed, 23 Oct 2013 02:21:54 GMT;path=/;domain=festatic.aliapp.com;"
+
+
+
+$.cookie(["a", "b"], null);
+
+// =>"a=;expires=Wed, 23 Oct 2013 02:22:03 GMT;path=/;domain=festatic.aliapp.com;b=;expires=Invalid Date;path=/;domain=festatic.aliapp.com;"
+
+
+
+
+
+// 5、清空
+
+$.cookie(null);
+
+// =>true</pre>
+
+		</div>
+
+	</div>
+
+
+
+	<div class="module">
+
+		<div class="module-header">3、插件演示</div>
+
+		<div class="module-body">
+
+			<div class="well">
+
+				<p class="text-lead">3.1、解析cookie</p>
+
+				<button id="button-3-1" class="button button-info">解析 cookie</button>
+
+			</div>
+
+
+
+			<div class="well">
+
+				<p class="text-lead">3.2、设置cookie</p>
+
+				<button id="button-4-1" class="button button-success">设置 cookie x=4</button>
+
+				<button id="button-4-2" class="button button-success">设置 cookie y=5 路径为/js/juery.cookie/</button>
+
+				<button id="button-4-3" class="button button-success">设置 cookie z=6 有效期为120s</button>
+
+
+
+			</div>
+
+
+
+			<div class="well">
+
+				<p class="text-lead">3.3、获取cookie</p>
+
+				<button id="button-5-1" class="button button-info">获取 cookie 中 x 的值</button>
+
+				<button id="button-5-2" class="button button-info">获取 cookie 中 x和y 的值</button>
+
+			</div>
+
+
+
+
+
+			<div class="well">
+
+				<p class="text-lead">3.4、删除cookie</p>
+
+				<div class="alert alert-error">
+
+					<p>1. 插件的删除cookie功能默认清空
+
+						<code>location.host</code>下的cookie，如果你需要删除其他domain下的cookie需要自己指定domain。
+
+						<p>2. 插件的删除cookie功能会把cookie真正删除，但某些浏览器会把这些cookie当做session cookie临时保存下来，如session一样，会在浏览器关闭的时候清除。
+
+				</div>
+
+				<button id="button-6-1" class="button button-warning">删除 cookie 中 x 的值</button>
+
+			</div>
+
+
+
+			<div class="well">
+
+				<p class="text-lead">3.5、清空cookie</p>
+
+				<div class="alert alert-error">
+
+					<p>1. 插件的清空cookie功能默认清空
+
+						<code>location.host</code>下的cookie，如果你需要清空其他domain下的cookie需要自己指定默认参数的domain。
+
+						<p>2. 插件的删除cookie功能会把cookie真正删除，但某些浏览器会把这些cookie当做session cookie临时保存下来，如session一样，会在浏览器关闭的时候清除。
+
+				</div>
+
+				<button id="button-7-1" class="button button-error">清空所有 cookie</button>
+
+			</div>
+
+		</div>
+
+	</div>
+
+
+
+	<div class="module">
+
+		<div class="module-header">4、插件源码</div>
+
+		<div class="module-body">
+
+			<p>
+
+				<a href="/#jquery.cookie">http://festatic.aliapp.com/#jquery.cookie</a>
+
+			</p>
+
+		</div>
+
+	</div>
+
+
+
+
+
+	<script src="http://libs.baidu.com/jquery/1.10.2/jquery.min.js"></script>
+
+	<script src="latest.js?v=2013-10-23 10:22:56"></script>
+
+	<script>
+
+	$("#button-3-1").click(function() {
+
+		var o = $.cookie();
+
+		console.log(o);
+
+		alert("解析成功，请看控制台");
+
+	});
+
+
+
+	$("#button-4-1").click(function() {
+
+		var o = $.cookie("x", "4");
+
+		console.log(o);
+
+		alert("设置成功，请看控制台");
+
+	});
+
+
+
+	$("#button-4-2").click(function() {
+
+		var o = $.cookie("y", "5", {
+
+			path: "/js/jquery.cookie/"
+
+		});
+
+		console.log(o);
+
+		alert("设置成功，请看控制台");
+
+	});
+
+
+
+	$("#button-4-3").click(function() {
+
+		var o = $.cookie("z", "6", {
+
+			expires: 120
+
+		});
+
+		console.log(o);
+
+		alert("设置成功，请看控制台");
+
+	});
+
+
+
+	$("#button-5-1").click(function() {
+
+		var o = $.cookie("x");
+
+		alert(o);
+
+	});
+
+
+
+	$("#button-5-2").click(function() {
+
+		var o = $.cookie(["x", "y"]);
+
+		console.log(o);
+
+		alert("获取成功，请看控制台");
+
+	});
+
+
+
+	$("#button-6-1").click(function() {
+
+		var o = $.cookie('x', null);
+
+		console.log(o);
+
+		alert("删除成功，请看控制台");
+
+	});
+
+
+
+	$("#button-7-1").click(function() {
+
+		var o = $.cookie(null);
+
+		console.log(o);
+
+		alert("清除成功，请看控制台");
+
+	});
+
+	</script>
+
+
+
+
+
+
+
+
+
+</body>
+
+
+
+</html>
+

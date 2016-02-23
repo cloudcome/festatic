@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="renderer" content="webkit">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<meta name="author" content="云淡然;http://ydr.me">
+	<meta name="keywords" content="关键词1,关键词2">
+	<meta name="description" content="描述语句">
+	<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+	<link rel="apple-touch-icon" href="/favicon.png">
+	<title>动画测试2</title>
+	<style>
+	.demo{
+		width: 100px;
+		height: 100px;
+		background: #95A5D6;
+		border: 2px solid #485FA5;
+		position: relative;
+		margin: 10px;
+		display: inline-block;
+	}
+	</style>
+</head>
+<body style="padding:10px;">
+	<div class="demo demo1">.demo1</div>
+	<div class="demo demo1">.demo1</div>
+	<div class="demo demo2">.demo2</div>
+	<div class="demo demo2">.demo2</div>
+
+	<hr>
+	<p>.demo1状态：<span id="ret1"></span></p>
+	<p>.demo2状态：<span id="ret2"></span></p>
+	<hr>
+
+	<button id="btn1">.demo1动画 1000ms</button>
+	<button id="btn2">.demo2动画 3000ms</button>
+
+
+	<script src="1.7/yquery.js"></script>
+	<script>
+
+		$('#btn1').click(function(){
+			$('#ret1').html('动画中……');
+			$('.demo1').animate({
+				background: randomColor(),
+				color: randomColor()
+			}, 1000, function(){
+				$('#ret1').html('动画完成');
+				console.log('动画完成1');
+			});
+		});
+
+		$('#btn2').click(function(){
+			$('#ret2').html('动画中……');
+			$('.demo2').animate({
+				background: randomColor(),
+				color: randomColor()
+			}, 3000, function(){
+				$('#ret2').html('动画完成');
+				console.log('动画完成2');
+			});
+		});
+
+		function randomColor(){
+			return "#"+(Math.random()*0xffffff>>>0).toString(16);
+		}
+	</script>
+</body>
+</html>

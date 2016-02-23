@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="author" content="云淡然;http://ydr.me">
+    <meta name="keywords" content="关键词1,关键词2">
+    <meta name="description" content="描述语句">
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" href="/favicon.png">
+    <title>文档标题</title>
+</head>
+
+<body>
+    <script>
+    
+        function fn1(callback){
+            // 这里判断 callback 里的实参？？
+            var a = callback 的 第1个 实参 1
+            var b = callback 的 第2个 实参 2
+            var c = callback 的 第3个 实参 3
+            // 这里处理完
+            // 然后返回结果
+        }
+
+        function fn2(a, b, c){
+            return fn1(function(a, b, c){
+                // 这里得到包装好的 d
+            });
+        }
+
+        fn2(1, 2, 3);
+
+    </script>
+</body>
+
+</html>

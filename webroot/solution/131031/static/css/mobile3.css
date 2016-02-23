@@ -1,0 +1,1600 @@
+/*!
+ * 手机样式
+ * @author 云淡然
+ * 2013-12-5 14:47:57;
+ */
+
+/**************************** [reset] ****************************/
+ @charset"utf-8";
+ html {
+	scrollbar-base-color: #c2c2c2;
+	scrollbar-3dlight-color: #c2c2c2;
+	scrollbar-highlight-color: #c2c2c2;
+	scrollbar-track-color: #eee;
+	scrollbar-arrow-color: #000;
+	scrollbar-shadow-color: #c2c2c2;
+	scrollbar-dark-shadow-color: black
+}
+::-webkit-scrollbar-track-piece {
+	border-left: 1px solid #d2d2d2;
+	background-color: #f5f5f5
+}
+::-webkit-scrollbar {
+	width: 12px;
+	height: 12px
+}
+::-webkit-scrollbar-thumb {
+	min-height: 28px;
+	border: 1px solid #979797;
+	background-color: #c2c2c2;
+	background-clip: padding-box
+}
+::-webkit-scrollbar-thumb:hover {
+	border: 1px solid #636363;
+	background-color: #929292
+}
+html, body, input, button, select, textarea {
+	font-family:"Helvetica Neue", Helvetica, Arial, sans-serif
+}
+html {
+	-webkit-text-size-adjust: none;
+	-ms-text-size-adjust: none;
+	font-size: 14px word-break:break-all;
+	word-wrap:break-word;
+}
+body, div, span, h1, h2, h3, h4, h5, h6, p, a, dl, dt, dd, ol, ul, li, label, table {
+	margin: 0;
+	padding: 0
+}
+input, textarea, select, button {
+	margin: 0;
+	font-size: 100%;
+	vertical-align: middle
+}
+input[type="button"], input[type="submit"], input[type="reset"], button, label, a {
+	cursor: pointer
+}
+tbody, tfoot, thead, tr, th, td {
+	margin: 0;
+	padding: 0
+}
+ol, ul {
+	list-style: none
+}
+img, iframe {
+	border: 0;
+	vertical-align:top;
+	max-width: 100%;
+}
+iframe {
+	overflow: hidden
+}
+a {
+	color: #3C77C3;
+	text-decoration: none;
+	-webkit-transition: color, background-color .5s;
+	-moz-transition: color, background-color .5s;
+	-ms-transition: color, background-color .5s;
+	transition: color, background-color .5s;
+}
+a:hover {
+	color: #1D63BE;
+	text-decoration: underline;
+}
+a:active {
+	background: #A9D6FD;
+	border: 1px solid #66B5F0;
+}
+/**************************** [reset] ****************************/
+
+/**************************** [layout] ****************************/
+
+/*align*/
+ .pull-left {
+	position: relative;
+	float: left;
+}
+.pull-right {
+	position: relative;
+	float: right;
+}
+.clearfix {
+	*zoom: 1;
+}
+.clearfix:before, .clearfix:after {
+	display: table;
+	content:" ";
+	line-height: 0;
+}
+.clearfix:after {
+	clear: both;
+}
+.text-left {
+	text-align: left;
+}
+.text-center {
+	text-align: center;
+}
+.text-right {
+	text-align: right;
+}
+.block-center {
+	margin-left: auto;
+	margin-right: auto;
+}
+/*flex*/
+
+/*更多参考1：http://qianduanblog.com/2549.html*/
+
+/*更多参考2：http://qianduanblog.com/2779.html*/
+
+/*更多参考3：http://www.w3.org/html/ig/zh/wiki/Css3-flexbox/zh-hans*/
+
+/*flex布局以主轴在水平方向、侧轴在垂直方向为准，行（主轴）为水平方向、列（侧轴）为垂直方向。当主轴在垂直方向、侧轴在水平方向时，行即为垂直方向，列即为水平方向。无论怎样，行都为主轴、列都为侧轴。*/
+
+/*flex容器*/
+ .flex {
+	-ms-flex-align: stretch;
+	display: -ms-flexbox;
+	display: -ms-flex;
+	display: -webkit-flex;
+	display: -moz-flex;
+	display: -o-flex;
+	display: flex;
+}
+/*flex容器 - 水平的flex布局*/
+ .flex-row {
+	-o-flex-direction: row;
+	-ms-flex-direction: row;
+	-moz-flex-direction: row;
+	-webkit-flex-direction: row;
+	flex-direction: row;
+}
+/*flex容器 - 垂直的flex布局*/
+ .flex-col {
+	-o-flex-direction: column;
+	-ms-flex-direction: column;
+	-moz-flex-direction: column;
+	-webkit-flex-direction: column;
+	flex-direction: column;
+}
+/*flex容器 - 水平的flex反布局*/
+ .flex-row-reverse {
+	-o-flex-direction: row-reverse;
+	-ms-flex-direction: row-reverse;
+	-moz-flex-direction: row-reverse;
+	-webkit-flex-direction: row-reverse;
+	flex-direction: row-reverse;
+}
+/*flex容器 - 水平的flex反布局*/
+ .flex-col-reverse {
+	-o-flex-direction: column-reverse;
+	-ms-flex-direction: column-reverse;
+	-moz-flex-direction: column-reverse;
+	-webkit-flex-direction: column-reverse;
+	flex-direction: column-reverse;
+}
+/*flex容器 - 内容多个侧轴排列*/
+ .flex-wrap {
+	-o-flex-wrap: wrap;
+	-webkit-flex-wrap: wrap;
+	-moz-flex-wrap: wrap;
+	-ms-flex-wrap: wrap;
+	flex-wrap: wrap;
+}
+/*行flex容器 - 开始方向排列*/
+ .flex-row-start {
+	-ms-flex-pack: flex-start;
+	-o-justify-content: flex-start;
+	-webkit-justify-content: flex-start;
+	-moz-justify-content: flex-start;
+	-ms-justify-content: flex-start;
+	justify-content: flex-start;
+}
+/*行flex容器 - 居中方向排列*/
+ .flex-row-center {
+	-ms-flex-pack: center;
+	-o-justify-content: center;
+	-webkit-justify-content: center;
+	-moz-justify-content: center;
+	-ms-justify-content: center;
+	justify-content: center;
+}
+/*行flex容器 - 结束方向排列*/
+ .flex-row-end {
+	-ms-flex-pack: flex-end;
+	-o-justify-content: flex-end;
+	-webkit-justify-content: flex-end;
+	-moz-justify-content: flex-end;
+	-ms-justify-content: flex-end;
+	justify-content: flex-end;
+}
+/*flex容器 - 两端方向排列，开始结束有余白*/
+ .flex-row-around {
+	-ms-flex-pack: space-around;
+	-o-justify-content: space-around;
+	-webkit-justify-content: space-around;
+	-moz-justify-content: space-around;
+	-ms-justify-content: space-around;
+	justify-content: space-around;
+}
+/*flex容器 - 两端方向排列，开始结束无余白*/
+ .flex-row-between {
+	-ms-flex-pack: space-between;
+	-o-justify-content: space-between;
+	-webkit-justify-content: space-between;
+	-moz-justify-content: space-between;
+	-ms-justify-content: space-between;
+	justify-content: space-between;
+}
+/*flex容器 - 开始方向排列*/
+ .flex-rows-start {
+	-o-align-content: flex-start;
+	-webkit-align-content: flex-start;
+	-moz-align-content: flex-start;
+	-ms-align-content: flex-start;
+	align-content: flex-start;
+}
+/*flex容器 - 居中方向排列*/
+ .flex-rows-center {
+	-o-align-content: center;
+	-webkit-align-content: center;
+	-moz-align-content: center;
+	-ms-align-content: center;
+	align-content: center;
+}
+/*flex容器 - 结束方向排列*/
+ .flex-rows-end {
+	-o-align-content: flex-end;
+	-webkit-align-content: flex-end;
+	-moz-align-content: flex-end;
+	-ms-align-content: flex-end;
+	align-content: flex-end;
+}
+/*flex容器 - 两端方向排列，开始结束有余白*/
+ .flex-rows-around {
+	-o-align-content: space-around;
+	-webkit-align-content: space-around;
+	-moz-align-content: space-around;
+	-ms-align-content: space-around;
+	align-content: space-around;
+}
+/*flex容器 - 两端方向排列，开始结束无余白*/
+ .flex-rows-between {
+	-o-align-content: space-between;
+	-webkit-align-content: space-between;
+	-moz-align-content: space-between;
+	-ms-align-content: space-between;
+	align-content: space-between;
+}
+/*flex容器 - flex项目侧轴方向开始对齐*/
+ .flex-col-start {
+	-o-align-items: flex-start;
+	-webkit-align-items: flex-start;
+	-moz-align-items: flex-start;
+	-ms-align-items: flex-start;
+	align-items: flex-start;
+}
+/*flex容器 - flex项目侧轴方向居中对齐*/
+ .flex-col-center {
+	-o-align-items: center;
+	-webkit-align-items: center;
+	-moz-align-items: center;
+	-ms-align-items: center;
+	align-items: center;
+}
+/*flex容器 - flex项目侧轴方向结束对齐*/
+ .flex-col-end {
+	-o-align-items: flex-end;
+	-webkit-align-items: flex-end;
+	-moz-align-items: flex-end;
+	-ms-align-items: flex-end;
+	align-items: flex-end;
+}
+/*flex容器 - flex项目侧轴方向拉伸对齐*/
+ .flex-col-stretch {
+	-o-align-items: stretch;
+	-webkit-align-items: stretch;
+	-moz-align-items: stretch;
+	-ms-align-items: stretch;
+	align-items: stretch;
+}
+/*flex-self 与 flex-col 效果类似，只是flex-self的优先级更高一点*/
+
+/*flex项目 - flex项目侧轴方向开始对齐*/
+ .flex-self-start {
+	-o-align-self: flex-start;
+	-webkit-align-self: flex-start;
+	-moz-align-self: flex-start;
+	-ms-align-self: flex-start;
+	align-self: flex-start;
+}
+/*flex项目 - flex项目侧轴方向居中对齐*/
+ .flex-self-center {
+	-o-align-self: center;
+	-webkit-align-self: center;
+	-moz-align-self: center;
+	-ms-align-self: center;
+	align-self: center;
+}
+/*flex项目 - flex项目侧轴方向结束对齐*/
+ .flex-self-end {
+	-o-align-self: flex-end;
+	-webkit-align-self: flex-end;
+	-moz-align-self: flex-end;
+	-ms-align-self: flex-end;
+	align-self: flex-end;
+}
+/*flex项目 - flex项目侧轴方向拉伸对齐*/
+ .flex-self-stretch {
+	-o-align-self: stretch;
+	-webkit-align-self: stretch;
+	-moz-align-self: stretch;
+	-ms-align-self: stretch;
+	align-self: stretch;
+}
+/*flex项目 - 剩余空白分配宽度占比为0*/
+ .flex-grow-0,
+/*表单、列表的键*/
+ .form .key, .list-lines .key, .list-line .key {
+	-o-flex-grow: 0;
+	-webkit-flex-grow: 0;
+	-moz-flex-grow: 0;
+	-ms-flex-grow: 0;
+	flex-grow: 0;
+}
+/*flex项目 - 剩余空白分配宽度占比为1*/
+ .flex-grow-1,
+/*表单、列表的值*/
+ .form .value, .list-lines .value, .list-line .value {
+	-o-flex-grow: 1;
+	-webkit-flex-grow: 1;
+	-moz-flex-grow: 1;
+	-ms-flex-grow: 1;
+	flex-grow: 1;
+}
+/**************************** [layout] ****************************/
+
+/**************************** [widget] ****************************/
+
+/*caret*/
+ .caret {
+	display: inline-block;
+	width: 0;
+	height: 0;
+	margin-left: 2px;
+	vertical-align: middle;
+	content:"";
+}
+.caret-top {
+	border-bottom: 4px solid #000;
+	border-top: 0 dotted;
+	border-left: 4px solid rgba(0, 0, 0, 0);
+	border-right: 4px solid rgba(0, 0, 0, 0);
+}
+.caret-right {
+	border-left: 4px solid #000;
+	border-right: 0 dotted;
+	border-top: 4px solid rgba(0, 0, 0, 0);
+	border-bottom: 4px solid rgba(0, 0, 0, 0);
+}
+.caret-bottom {
+	border-top: 4px solid #000;
+	border-bottom: 0 dotted;
+	border-left: 4px solid rgba(0, 0, 0, 0);
+	border-right: 4px solid rgba(0, 0, 0, 0);
+}
+.caret-left {
+	border-right: 4px solid #000;
+	border-left: 0 dotted;
+	border-top: 4px solid rgba(0, 0, 0, 0);
+	border-bottom: 4px solid rgba(0, 0, 0, 0);
+}
+/*.navigator*/
+ .navigator {
+	height: 30px;
+	line-height: 30px;
+	background: #f5f5f5;
+}
+.navigator .circle {
+	width: 8px;
+	height: 8px;
+	background: #888;
+	border-radius: 100%;
+	display: inline-block;
+	margin-right: 6px;
+}
+.navigator .square {
+	width: 12px;
+	height: 6px;
+	background: #888;
+	border-radius: 2px;
+	display: inline-block;
+	margin-right: 6px;
+}
+.navigator .active {
+	background: #0DA014;
+}
+/*title wrap*/
+ h2.title {
+	height: 40px;
+	line-height: 40px;
+	color: #fff;
+	padding: 0 5px;
+	background: #888;
+	font-size: 18px;
+}
+h2.title .bar {
+	display: inline-block;
+	height: 20px;
+	width: 5px;
+	background: #000;
+	vertical-align: sub;
+	margin-right: 6px;
+	margin-left: 2px;
+}
+.wrap {
+	padding: 10px;
+}
+/*tabbable*/
+ .tabbable .tab-nav {
+	background: linear-gradient(to bottom, #DDEAF3 0%, #CEDCE9 100%);
+	border-bottom: 1px solid #BBCEDC;
+	height: 40px;
+}
+.tabbable .tab-nav li {
+	text-align: center;
+	width: 25%;
+	color: #6982A0;
+	font-size: 16px;
+	font-weight: 900;
+}
+.tabbable .tab-nav span {
+	display: inline-block;
+	width: 60px;
+	height: 37px;
+	border-bottom: 4px solid rgba(0, 0, 0, 0);
+	line-height: 40px;
+}
+.tabbable .tab-nav li.active span {
+	border-bottom-color: #3397D5;
+	color: #3397D5;
+}
+section {
+	position: relative;
+	margin-bottom: 15px;
+}
+/**************************** [widget] ****************************/
+
+/**************************** [section-1] ****************************/
+ .section-1 {
+	transition: .5s;
+}
+.section-1.active {
+	height: 0;
+	overflow: hidden;
+	margin: 0;
+}
+.section-1 .close {
+	color: #888;
+	background: #FFF;
+	position: absolute;
+	top: 6px;
+	right: 10px;
+	width: 30px;
+	height: 30px;
+	text-align: center;
+	line-height: 30px;
+	font-size: 30px;
+}
+.section-1 .close:hover, .section-1 .close:active {
+	color: #FFF;
+	background: #888;
+	text-decoration: none;
+}
+/**************************** [section-1] ****************************/
+
+/**************************** [section-2] ****************************/
+ .section-2 {
+	background: #518900;
+	padding: 6px;
+}
+.section-2 .name {
+	height: 20px;
+	line-height: 20px;
+	text-align: center;
+}
+.section-2 .name a {
+	font-size: 12px;
+	display: block;
+	height: 100%;
+	color: #fff;
+}
+/**************************** [section-2] ****************************/
+
+/**************************** [section-3] ****************************/
+ .section-3 {
+	background: #A70101;
+}
+.section-3 .text {
+	white-space: nowrap;
+	height: 24px;
+	line-height: 24px;
+	overflow: hidden;
+}
+.section-3 a {
+	color: #fff;
+	padding-right: 10px;
+	margin-right: 10px;
+	border-right: 1px solid rgba(255, 255, 255, .3);
+}
+.section-3 .control {
+	width: 60px;
+}
+.section-3 .caret-left {
+	border-right-width: 8px;
+	border-right-color: #fff;
+}
+.section-3 .caret-right {
+	border-left-width: 8px;
+	border-left-color: #fff;
+}
+.section-3 .caret-1 {
+	opacity: 0.6;
+}
+/**************************** [section-3] ****************************/
+
+/**************************** [section-4] ****************************/
+ .section-4 .content {
+	overflow: hidden;
+}
+.section-4 .prev, .section-4 .next {
+	position: absolute;
+	font-size: 30px;
+	height: 30px;
+	top: 50%;
+	margin-top: -30px;
+}
+.section-4 .prev {
+	left: 0;
+}
+.section-4 .next {
+	right: 0;
+}
+.section-4 i.active {
+	background-color: #FF4300;
+}
+/**************************** [section-4] ****************************/
+
+/**************************** [section-5] ****************************/
+ .section-5 .content {
+	overflow: hidden;
+}
+.section-5 .name {
+	line-height: 60px;
+}
+.section-5 .name a {
+	color: #982E05;
+	font-size: 20px;
+	font-weight: 900;
+}
+.section-5 .meta {
+	color: #888;
+	line-height: 30px;
+}
+/**************************** [section-5] ****************************/
+
+/**************************** [section-6] ****************************/
+ .section-6 .name {
+	line-height: 30px;
+	height: 30px;
+	overflow: hidden;
+}
+.section-6 .name a {
+	display: block;
+	height: 100%;
+}
+/**************************** [section-6] ****************************/
+
+/**************************** [section-7] ****************************/
+ .section-7 .prev, .section-7 .next {
+	position: absolute;
+	height: 20px;
+	top: 40px;
+	font-size: 20px;
+}
+.section-7 .prev {
+	left: 4px;
+}
+.section-7 .next {
+	right: 4px;
+}
+.section-7 .control {
+	line-height: 30px;
+}
+.section-7 .caret-left {
+	border-right-width: 8px;
+	border-right-color: #888;
+}
+.section-7 .caret-right {
+	border-left-width: 8px;
+	border-left-color: #888;
+}
+.section-7 .caret-left.caret-1 {
+	margin-right: -9px;
+}
+.section-7 .caret-right.caret-1 {
+	margin-left: -7px;
+}
+.section-7 .caret-1 {
+	opacity: 0.6;
+}
+/**************************** [section-7] ****************************/
+
+/**************************** [section-8] ****************************/
+ .section-8 .body {
+	padding: 10px;
+	background: #F3F3F3;
+}
+.section-8 .content ul li {
+	margin: 10px;
+}
+.section-8 .content img {
+	border-radius: 100%;
+}
+.section-8 .content .name {
+	line-height: 30px;
+	font-weight: 900;
+}
+.section-8 .content .name a {
+	color: #444;
+	display: block;
+	height: 100%;
+}
+.section-8 .navigator[class^=icon] {
+	vertical-align: middle;
+	font-size: 22px;
+	color: #888;
+}
+/**************************** [section-8] ****************************/
+
+/**************************** [section-9] ****************************/
+ .section-9 .title {
+	background: #2284CB;
+}
+.section-9 .wrap {
+	background: #F0F0F0;
+	padding-bottom: 0;
+}
+.section-9 .wrap li {
+	width: 25%;
+	text-align: center;
+}
+.section-9 .wrap a {
+	display: inline-block;
+	min-width: 60px;
+	height: 30px;
+	line-height: 30px;
+	background: #FFF;
+	border: 1px solid #FFF;
+	box-shadow: 0px 2px 0px #DFDFDF;
+	color: #444;
+	margin-bottom: 10px;
+	text-align: center;
+	font-size: 12px;
+}
+.section-9 .list li {
+	line-height: 40px;
+	border-bottom: 1px solid #eee;
+}
+.section-9 .list dd {
+	width: 20%;
+}
+.section-9 .list a {
+	display: block;
+	color: #444;
+	height: 100%;
+	text-align: center;
+}
+.section-9 .list dd:first-child a {
+	border-right: 1px solid #eee;
+	color: #47AEE9;
+}
+/**************************** [section-9] ****************************/
+
+/**************************** [section-10] ****************************/
+ .section-10 {
+	background: #f6f6f6;
+	padding: 10px 0;
+}
+.section-10 .lead {
+	margin-bottom: 10px;
+}
+.section-10 .content li {
+	text-align: center;
+	border: 1px solid #EEE;
+	background: #FFF;
+	box-shadow: 0 3px 4px #E0E0E0;
+}
+.section-10 .name {
+	line-height: 30px;
+}
+.section-10 .name a {
+	font-size: 12px;
+	color: #444;
+	display: block;
+	height: 100%;
+}
+/**************************** [section-10] ****************************/
+
+/**************************** [section-11] ****************************/
+ .section-11 .title {
+	background: #fff;
+	color: #000;
+}
+.section-11 .title .bar {
+	background: #D77574;
+}
+.section-11 li {
+	width: 33.33333333333333%;
+	height: 40px;
+	line-height: 40px;
+	margin-bottom: 1px;
+}
+.section-11 li a {
+	display: block;
+	height: 100%;
+	text-align: center;
+	border: 1px solid #ddd;
+	border-right: 0;
+}
+.section-11 li:nth-child(3n+1) a {
+	border-left: 0;
+}
+/**************************** [section-11] ****************************/
+
+/**************************** [section-12] ****************************/
+ .section-12 {
+	background: #FBCC02;
+}
+.section-12 .list li {
+	text-align: center;
+}
+.section-12 .list .divider {
+	width: 0;
+	border-left: 1px solid rgba(250, 152, 5, .6);
+	border-right: 1px solid rgba(250, 152, 5, .1);
+}
+.section-12 .name {
+	line-height: 30px;
+}
+.section-12 .name a {
+	display: block;
+	height: 100%;
+}
+/**************************** [section-12] ****************************/
+
+/**************************** [section-13] ****************************/
+ .section-13 {
+	background: #333;
+	font-size: 16px;
+	padding: 4px 0;
+}
+.section-13 a {
+	display: inline-block;
+	height: 30px;
+	line-height: 30px;
+	text-align: center;
+	color: #fff;
+	width: 16.66666666666667%;
+}
+/**************************** [section-13] ****************************/
+
+/**************************** [section-14] ****************************/
+ .section-14 .lead li {
+	background: #FCCB02;
+	height: 50px;
+	line-height: 50px;
+	border-bottom: 1px solid #D4807E;
+}
+.section-14 .big a {
+	display: block;
+	height: 100%;
+	background: #fff;
+	color: #000;
+	font-size: 20px;
+	padding: 0 10px;
+}
+.section-14 .small {
+	margin-right: 10px;
+}
+.section-14 .small a {
+	color: #000;
+}
+.section-14 .divider {
+	margin: 0 10px;
+	font-size: 12px;
+	color: #888;
+}
+.section-14 .list li {
+	padding: 0 10px;
+	line-height: 40px;
+	border-bottom: 1px dashed #ddd;
+}
+/**************************** [section-14] ****************************/
+
+/**************************** [section-15] ****************************/
+ .section-15 {
+	background: #EEEEEE;
+}
+.section-15 .big {
+	margin-bottom: 10px;
+}
+.section-15 .big .name {
+	line-height: 30px;
+	text-align: center;
+}
+.section-15 .name a {
+	display: block;
+	height: 30px;
+}
+.section-15 .small {
+	background: #fff;
+	padding: 10px;
+}
+.section-15 .small .line {
+	margin-bottom: 10px;
+}
+.section-15 .small .line:last-child {
+	margin-bottom: 0;
+}
+.section-15 .divider {
+	width: 0;
+	border-left: 1px solid rgba(155, 155, 155, 0.3);
+	border-right: 1px solid rgba(255, 255, 255, 0.9);
+}
+/**************************** [section-15] ****************************/
+
+/**************************** [section-16] ****************************/
+ .section-16 {
+	border-left: 6px solid #1B54AD;
+	color: #1B54AD;
+	font-weight: 900;
+	padding: 0 10px;
+	height: 50px;
+	line-height: 50px;
+	box-shadow: 0 4px 10px #888;
+}
+.section-16 .big {
+	font-size: 20px;
+}
+.section-16 .small a {
+	color: #999;
+	margin-left: 14px;
+}
+/**************************** [section-16] ****************************/
+
+/**************************** [section-17] ****************************/
+ .section-17 ul {
+	border-bottom: 1px solid #ddd;
+	padding-bottom: 10px;
+}
+.section-17 .divider {
+	width: 0;
+	border-left: 1px solid #ddd;
+	border-right: 1px solid #fff;
+}
+.section-17 a {
+	color: #444;
+}
+/**************************** [section-17] ****************************/
+
+/**************************** [section-18] ****************************/
+ .section-18 a {
+	background: #387CCF;
+	display: block;
+	height: 42px;
+	line-height: 42px;
+	color: #fff;
+	text-align: center;
+	font-weight: 900;
+	font-size: 20px;
+}
+.section-18 a:hover, .section-18 a:active {
+	text-decoration: none;
+}
+/**************************** [section-18] ****************************/
+
+/**************************** [section-19] ****************************/
+ .section-19 ul {
+	margin-bottom: 10px;
+}
+.section-19 ul:last-child {
+	margin-bottom: 0;
+}
+.section-19 li {
+	width: 11.11111111111111%;
+	text-align: center;
+}
+.section-19 a {
+	color: #444;
+}
+.section-19 .divider {
+	width: 0;
+	border-left: 1px solid #ddd;
+	border-right: 1px solid #f5f5f5;
+}
+/**************************** [section-19] ****************************/
+
+/**************************** [section-20] ****************************/
+ .section-20 {
+	border-top: 2px solid #8AC2E5;
+}
+.section-20 li {
+	width: 20%;
+	line-height: 40px;
+	text-align: center;
+	margin-bottom: -1px;
+}
+.section-20 a {
+	display: block;
+	border: 1px solid #ddd;
+	border-left: 0;
+}
+.section-20 li:nth-child(5n) a {
+	border-right: 0;
+}
+/**************************** [section-20] ****************************/
+
+/**************************** [section-21] ****************************/
+ .section-21 img {
+	width: 400px;
+	height: 100px;
+}
+/**************************** [section-21] ****************************/
+
+/**************************** [section-22] ****************************/
+ .section-22 li {
+	width: 50%;
+	margin-bottom: -1px;
+}
+.section-22 .inner {
+	border: 1px solid #ddd;
+	border-left: 0;
+	padding: 10px;
+}
+.section-22 li:nth-child(2n+1) .inner {
+	border-left: 1px solid #ddd;
+}
+.section-22 .info {
+	margin-left: 10px;
+}
+.section-22 .info p {
+	line-height: 20px;
+	color: #999;
+}
+.section-22 .info p.type {
+	color: #000;
+	font-weight: 900;
+}
+/**************************** [section-22] ****************************/
+
+/**************************** [section-23] ****************************/
+ .section-23 .control {
+	text-align: center;
+	position: relative;
+	height: 30px;
+	line-height: 30px;
+	margin-top: -30px;
+	background: rgba(19, 66, 112, .7);
+	color: #fff;
+}
+.section-23 .caret {
+	border-top-width: 8px;
+	border-bottom-width: 8px;
+	position: absolute;
+	top: 7px;
+}
+.section-23 .caret-left {
+	border-right-width: 8px;
+	border-right-color: #fff;
+	left: 4px;
+}
+.section-23 .caret-right {
+	border-left-width: 8px;
+	border-left-color: #fff;
+	right: 4px;
+}
+/**************************** [section-23] ****************************/
+
+/**************************** [section-24] ****************************/
+ .section-24 li {
+	line-height: 40px;
+	position: relative;
+	padding-left: 10px;
+}
+.section-24 li:before {
+	content:"";
+	width: 4px;
+	height: 4px;
+	border-radius: 100%;
+	position: absolute;
+	background: #9DCEED;
+	left: 4px;
+	top: 50%;
+	margin-top: -2px;
+}
+.section-24 li:nth-child(odd) {
+	background: #f5f5f5;
+}
+/**************************** [section-24] ****************************/
+
+/**************************** [section-25] ****************************/
+ .section-25 {
+	background: #3F9B1E;
+	padding: 10px;
+}
+.section-25.color-red {
+	background: #B20000;
+}
+.section-25 .button {
+	display: inline-block;
+	padding: 6px 12px;
+	color: #FFF;
+	border-radius: 4px;
+	background: linear-gradient(to bottom, #4EA230 0%, #369016 100%);
+	box-shadow: 0 1px 2px #A4E78A inset, 0 1px 2px #0E4400;
+	border: 0;
+}
+.section-25.color-red .button {
+	background: linear-gradient(to bottom, #CA3F3F 0%, #921414 100%);
+	box-shadow: 0 1px 2px #F36C6C inset, 0 1px 2px #790000;
+}
+.section-25 .button:hover, .section-25 .button:active {
+	text-decoration: none;
+}
+.section-25 a[class^=icon] {
+	font-size: 20px;
+	color: #fff;
+	cursor: pointer;
+}
+.section-25 .text {
+	color: #fff;
+	font-size: 20px;
+	font-weight: 900;
+}
+/**************************** [section-25] ****************************/
+
+/**************************** [section-26] ****************************/
+ .section-26 .info {
+	margin-left: 10px;
+}
+.section-26 .name {
+	font-size: 20px;
+	font-weight: 900;
+	line-height: 40px;
+	margin-bottom: 2px;
+}
+.section-26 .line {
+	line-height: 30px;
+	color: #999;
+}
+/**************************** [section-26] ****************************/
+
+/**************************** [section-27] ****************************/
+ .section-27 .focus {
+	position: relative;
+}
+.section-27 .name {
+	background: #4B8934;
+	width: 40px;
+	padding: 0 10px;
+	position: relative;
+}
+.section-27 .name a {
+	position: absolute;
+	display: block;
+	height: 60px;
+	line-height: 30px;
+	color: #fff;
+	padding: 60px 0;
+	top: 50%;
+	margin-top: -90px;
+	text-align: center;
+	font-weight: 900;
+}
+.section-27 .navigator {
+	background: rgba(0, 0, 0, 0);
+	position: absolute;
+	right: 10px;
+	bottom: 30px;
+}
+.section-27 .text {
+	background: rgba(19, 66, 112, .5);
+	height: 30px;
+	line-height: 30px;
+	margin-top: -30px;
+	position: relative;
+	text-align: center;
+	color: #fff;
+}
+/**************************** [section-27] ****************************/
+
+/**************************** [section-28] ****************************/
+ .section-28 ul {
+	background: #F4F4F4;
+	padding-top: 10px;
+}
+.section-28 .link {
+	width: 33.33333333333333%;
+	text-align: center;
+	margin-bottom: 10px;
+}
+.section-28 .link a {
+	display: inline-block;
+	padding: 10px 20px;
+	background: #fff;
+	color: #444;
+}
+/**************************** [section-28] ****************************/
+
+/**************************** [section-29] ****************************/
+ .section-29 {
+	background: #EEEEEE;
+	padding-bottom: 0;
+}
+.section-29 a {
+	display: inline-block;
+	padding: 5px 10px;
+	color: #444;
+	background: #F9F9F9;
+	border: 1px solid #ddd;
+	box-shadow: 0 1px 1px rgba(255, 255, 255, 1) inset;
+	margin-bottom: 10px;
+	margin-right: 10px;
+	border-radius: 3px;
+}
+/**************************** [section-29] ****************************/
+
+/**************************** [section-30] ****************************/
+ .section-30 {
+	background: #F6F6F6;
+}
+.section-30 .name {
+	width: 100px;
+	height: 100px;
+	background: #235F7B;
+	font-size: 20px;
+	font-weight: 900;
+	color: #fff;
+	line-height: 40px;
+	text-indent: 10px;
+	position: relative;
+}
+.section-30 .name a {
+	display: block;
+	height: 100%;
+}
+.section-30 .name i {
+	position: absolute;
+	right: 10px;
+	bottom: 0;
+}
+.section-30 .pull-left:last-child {
+	border-left: 4px solid #fff;
+}
+.section-30 .pull-left:last-child i {
+	right: auto;
+	left: -10px;
+}
+.section-30 .text {
+	height: 30px;
+	line-height: 30px;
+	background: rgba(0, 0, 0, .6);
+	margin-top: -30px;
+	padding: 0 10px;
+}
+/**************************** [section-30] ****************************/
+
+/**************************** [section-31] ****************************/
+ .section-31 {
+	padding-bottom: 0;
+	background: #F6F6F6;
+}
+.section-31 a {
+	padding: 10px 20px;
+	border-radius: 6px;
+	display: inline-block;
+	margin-bottom: 10px;
+	margin-right: 10px;
+	border: 1px solid #ddd;
+	color: #444;
+}
+/**************************** [section-31] ****************************/
+
+/**************************** [section-32] ****************************/
+ .section-32 .name span {
+	color: #f00;
+}
+.section-32 .focus {
+	border-radius: 10px;
+	position: relative;
+}
+.section-32 .navigator {
+	background: #888;
+}
+.section-32 .navigator .circle {
+	background: #eee;
+}
+.section-32 .navigator .circle.active {
+	background: #DA0000;
+}
+.section-32 .prev, .section-32 .next {
+	position: absolute;
+	width: 30px;
+	height: 30px;
+	top: 50%;
+	margin-top: -15px;
+}
+.section-32 .prev {
+	left: 10px;
+}
+.section-32 .next {
+	right: 10px;
+}
+.section-32 .meta li, .section-32 .feedback li {
+	width: 50%;
+	float: left;
+	color: #999;
+	font-size: 12px;
+	line-height: 30px;
+}
+.section-32 .meta li {
+	border-bottom: 1px dashed #ccc;
+}
+.section-32 .meta .key, .section-32 .feedback .key {
+	color: #444;
+}
+.section-32 .feedback .key {
+	display: inline-block;
+	width: 70px;
+	text-align: right;
+}
+.section-32 .feedback li.l .key {
+	display: block;
+	width: auto;
+	text-align: left;
+}
+.section-32 .feedback textarea {
+	width: 100%;
+	box-sizing: border-box;
+	height: 50px;
+	line-height: 20px;
+	padding: 4px;
+	border: 1px solid #CCC;
+	border-radius: 4px;
+}
+.section-32 .feedback .required {
+	color: #d00;
+}
+.section-32 .feedback .text {
+	width: 100px;
+	line-height: 14px;
+	padding: 4px;
+	border: 1px solid #CCC;
+	border-radius: 2px;
+}
+.section-32 .feedback .submit {
+	display: inline-block;
+	padding: 6px 12px;
+	color: #FFF;
+	border-radius: 4px;
+	background: linear-gradient(to bottom, #E77F39 0%, #F60 100%);
+	box-shadow: 0 1px 2px #FC8538 inset, 0 1px 2px #B95A1B;
+	border: 1px solid #CA895D;
+}
+.section-32 .meta li.l, .section-32 .feedback li.l {
+	width: 100%;
+}
+.section-32 .feedback {
+	margin: 10px 0;
+	border: 1px solid #FFE8BE;
+	padding: 10px;
+	background: #DCEAF5;
+}
+.section-32 .tell {
+	background: #C10001;
+	color: #FFF;
+	border: 1px solid #AC0000;
+	padding: 5px 8px 5px 1px;
+	border-radius: 3px;
+}
+.section-32 .tell i {
+	background: #F00;
+	border-radius: 9px;
+	padding: 2px;
+}
+/**************************** [section-32] ****************************/
+
+/**************************** [section-33] ****************************/
+ .section-33 .name {
+	background: #88A002;
+	border-left: 6px solid #315E01;
+	color: #fff;
+	font-size: 20px;
+	line-height: 35px;
+	padding-left: 8px;
+}
+.section-33 .content {
+	word-break:break-all;
+}
+/**************************** [section-33] ****************************/
+
+/**************************** [section-34] ****************************/
+ .section-34 .item li {
+	position: relative;
+	padding-left: 15px;
+	line-height: 40px;
+}
+.section-34 .item li:before {
+	content:"";
+	width: 4px;
+	height: 4px;
+	border-radius: 100%;
+	position: absolute;
+	background: #54B0D7;
+	left: 4px;
+	top: 50%;
+	margin-top: -2px;
+}
+/**************************** [section-34] ****************************/
+
+/**************************** [section-35] ****************************/
+ .section-35 .name {
+	background: #51B3D8;
+	color: #fff;
+	font-size: 20px;
+	font-weight: 900;
+	height: 50px;
+	line-height: 50px;
+	padding: 0 10px;
+}
+.section-35 .wrap, .section-35 .list-more {
+	font-weight: 900;
+	background: #F4F4F4;
+}
+.section-35 .list {
+	background: #fff;
+}
+.section-35 .list, .section-35 .list-more {
+	line-height: 16px;
+	padding: 10px 0;
+}
+.section-35 .list a, .section-35 .list-more a {
+	color: #444;
+	display: inline-block;
+	padding: 4px 10px;
+}
+.section-35 .list a:first-child {
+	color: #0152A3;
+}
+.section-35 .divider {
+	width: 0;
+	border-left: 1px solid #ddd;
+	border-right: 1px solid #fff;
+}
+.section-35 i {
+	color: #999;
+}
+.section-35 .icon-up-open {
+	color: #2EC917;
+}
+.section-35 .icon-up-open, .section-35 .active .icon-down-open {
+	display: none;
+}
+.section-35 .active .icon-up-open {
+	display: inline-block;
+}
+.section-35 .list-more {
+	display: none;
+	position: relative;
+}
+.section-35 .active .list-more {
+	display: block;
+}
+.section-35 .list-more:before, .section-35 .list-more:after {
+	position: absolute;
+	right: 10px;
+	display: inline-block;
+	width: 0;
+	height: 0;
+	margin-left: 2px;
+	vertical-align: middle;
+	content:"";
+	border-top: 0 dotted;
+	border-left: 6px solid rgba(0, 0, 0, 0);
+	border-right: 6px solid rgba(0, 0, 0, 0);
+}
+.section-35 .list-more:before {
+	border-bottom: 6px solid #ddd;
+	top: -6px;
+}
+.section-35 .list-more:after {
+	border-bottom: 6px solid #eee;
+	top: -5px;
+}
+.section-35 .list-more li {
+	margin-bottom: 10px;
+	padding-bottom: 10px;
+	border-bottom: 1px solid #ddd;
+}
+.section-35 .list-more li:last-child {
+	margin-bottom: 0;
+}
+/**************************** [section-35] ****************************/
+
+/**************************** [section-36] ****************************/
+ .section-36 .name {
+	height: 40px;
+	background: #744122;
+	line-height: 40px;
+	font-size: 20px;
+	font-weight: 900;
+	padding-right: 10px;
+}
+.section-36 .big {
+	height: 40px;
+	padding: 0 10px;
+	background: #472C21;
+	border-right: 1px solid #26150B;
+	color: #fff;
+}
+.section-36 .small {
+	color: #fff;
+}
+.section-36 .wrap {
+	background: #E0E0E0;
+}
+.section-36 li {
+	background: #fff;
+	padding: 10px 0;
+	border-bottom: 1px solid #DDD;
+}
+.section-36 .divider {
+	width: 0;
+	border-left: 1px solid #ddd;
+	border-right: 1px solid #fff;
+}
+/**************************** [section-36] ****************************/
+
+/**************************** [section-37] ****************************/
+ .section-37 .heading {
+	background: #472C21;
+	line-height: 40px;
+	font-weight: 900;
+	font-size: 20px;
+	color: #fff;
+}
+.section-37 .heading a {
+	color: #fff;
+}
+.section-37 .heading .left {
+	border-right: 1px solid #AA6A46;
+	padding: 0 10px;
+}
+.section-37 .heading .right {
+	border-left: 1px solid #AA6A46;
+	padding: 0 10px;
+}
+.section-37 .show {
+	background: url(http://images.weiphone.com/attachments/photo/Day_130104/228686_da731357285569546724890d68864.gif);
+	background-size: 100%;
+	max-width: 400px;
+	height: 160px;
+	position: relative;
+	overflow: hidden;
+}
+.section-37 .show a {
+	display: block;
+	height: 100%;
+}
+.section-37 .show span {
+	background: #FFF;
+	display: inline-block;
+	bottom: 40px;
+	padding: 6px;
+	position: relative;
+	box-shadow: 0 0 4px #808080;
+}
+.section-37 .show.text-right span {
+	right: 10px;
+}
+.section-37 .show.text-left span {
+	left: 10px;
+}
+/**************************** [section-37] ****************************/
+
+/**************************** [section-38] ****************************/
+ .section-38, .section-39 {
+	box-shadow: 0 0 8px #666;
+	margin: 10px
+}
+/**************************** [section-38] ****************************/
+
+/**************************** [section-39] ****************************/
+ .section-39 .img {
+	width: 200px;
+	height: 120px;
+}
+.section-39 .info {
+	margin-left: 10px;
+}
+.section-39 .info p {
+	margin-bottom: 12px;
+}
+.section-39 .info span {
+	color: #999;
+}
+/**************************** [section-39] ****************************/
+
+/**************************** [section-40] ****************************/
+ .section-40 .f1 {
+	background: #EBEBEB;
+	height: 80px;
+}
+.section-40 .f1 a {
+	position: absolute;
+	top: 15px;
+	padding: 10px 20px;
+	box-shadow: 0 0 10px #999;
+	background: #fff;
+	color: #000;
+	font-size: 26px;
+	font-weight: 900;
+}
+.section-40 .f2 {
+	background: #F2F3F5;
+	padding: 20px 10px 5px 10px;
+	border-bottom: 2px solid #000;
+	position: relative;
+}
+.section-40 .f2 a {
+	color: #444;
+}
+.section-40 .f2 a.active {
+	color: #155FAA;
+}
+.section-40 .f2 a.back-top {
+	position: absolute;
+	background: linear-gradient(to bottom, #0E66E2 0%, #3481DD 100%);
+	top: 0;
+	right: 10px;
+	color: #fff;
+	padding: 4px 10px;
+	border-radius: 0 0 4px 4px;
+}
+.section-40 .f3 {
+	background: #E5E5E5;
+	padding: 10px;
+}
+.section-40 .f3 a {
+	color: #444;
+}
+.section-40 .f3 a i {
+	color: #fff;
+	background: #7ABE2D;
+	border-radius: 100%;
+	border: 1px solid #7ABE2D;
+	font-size: 12px;
+	padding: 2px 3px 2px 2px;
+	margin-right: 2px;
+}
+/**************************** [section-40] ****************************/
+
+/**************************** [section-41] ****************************/
+ .section-41 {
+	background: #eee;
+	color: #999;
+	margin-bottom: 0;
+}
+/**************************** [section-41] ****************************/

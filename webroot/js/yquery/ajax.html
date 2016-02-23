@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="author" content="云淡然;http://ydr.me">
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+    <title>AJAX</title>
+</head>
+
+<body>
+    <button id="btn-1">异步请求 ajax.json</button>
+    <button id="btn-2">异步请求 ajax.js</button>
+    <button id="btn-3">跨域异步请求 http://api.flickr.com/services/feeds/photos_public.gne?jsoncallback=?</button>
+    <script src="1.7/yquery.js"></script>
+    <script>
+    $('#btn-1').click(function() {
+        $.ajax({
+            url: './ajax.json'
+        }).done(function(json) {
+            alert('成功：' + json.a);
+        }).fail(function(e) {
+            alert('失败：' + e.message);
+        }).always(function() {
+            alert('总是：');
+        });
+    });
+
+    $('#btn-2').click(function() {
+        $.getScript({
+            url: './ajax.js'
+        }).done(function(json) {
+            alert('成功：');
+        }).fail(function(e) {
+            alert('失败：');
+        }).always(function() {
+            alert('总是：');
+        });
+    });
+
+    $('#btn-3').click(function() {
+        $.getJSON({
+            url: 'http://api.flickr.com/services/feeds/photos_public.gne?jsoncallback=?',
+            data: {
+                tags: 'mount+rainier',
+                tagmode: 'any',
+                format: 'json',
+            }
+        }).done(function(json) {
+            alert('成功：长度=' + json.items.length);
+        }).fail(function(e) {
+            alert('失败：');
+        }).always(function() {
+            alert('总是：');
+        });
+    });
+
+    $('#btn-4').click(function(){
+
+    });
+    </script>
+</body>
+
+</html>

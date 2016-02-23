@@ -1,0 +1,525 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="renderer" content="webkit">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<meta name="author" content="云淡然;http://ydr.me">
+	<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+	<link rel="stylesheet" href="/bootstrap/3.1.1/css/bootstrap.min.css">
+	<link rel="stylesheet" href="/bootstrap/3.1.1/css/bootstrap-theme.min.css">
+	<link rel="stylesheet" href="/css/prettify/bootstrap.css">
+	<title>yquery.js docs - 前端静态资源</title>
+</head>
+
+
+<body>
+	<div class="jumbotron">
+		<div class="container">
+			<h1>yquery.js docs</h1>
+			<p>作者：云淡然</p>
+			<p>兼容：ie10（含）+、chrome、firefox</p>
+		</div>
+	</div>
+	<div class="container">
+		<div class="panel panel-default">
+			<div class="panel-heading">1、预热</div>
+			<div class="panel-body">
+				<p class="lead text-danger">1.1、特点</p>
+				<ol>
+					<li>
+						相关文章：暂无。
+					</li>
+					<li>
+						兼容ie10（含）+、chrome、firefox。
+					</li>
+					<li>
+						包含了移动端的事件。
+					</li>
+					<li>
+						最精简、最常用的API，大部分API和jQuery的使用方法一致。
+					</li>
+				</ol>
+				<br>
+				<p class="lead text-danger">1.2、怎么和jQuery、zepto相比</p>
+				<ol>
+					<li>为标准而生，不知道IE9(lte)是什么，我只认识chrome。</li>
+					<li>没有复杂的兼容考虑，最精简的代码，适合现代浏览器。与jQuery和zepto相比，适用场景略窄。</li>
+					<li>接近完美的CSS3动画。</li>
+					<li>可以直接不带浏览器前缀获取、设置CSS。</li>
+					<li>最大程度的兼容jQuery，0学习成本。</li>
+					<li>更小的代码体积，加载更快。</li>
+				</ol>
+			</div>
+		</div>
+		<div class="panel panel-default">
+			<div class="panel-heading">2、初始化</div>
+			<div class="panel-body">
+				<ol>
+					<li>
+						<code>$(selector,context)</code>
+					</li>
+				</ol>
+			</div>
+		</div>
+		<div class="panel panel-default">
+			<div class="panel-heading">3、DOM增删有关API</div>
+			<div class="panel-body">
+				<ol>
+					<li>
+						<code>$.fn.appendTo</code>
+					</li>
+					<li>
+						<code>$.fn.append</code>
+					</li>
+					<li>
+						<code>$.fn.prependTo</code>
+					</li>
+					<li>
+						<code>$.fn.prepend</code>
+					</li>
+					<li>
+						<code>$.fn.insertBefore</code>
+					</li>
+					<li>
+						<code>$.fn.before</code>
+					</li>
+					<li>
+						<code>$.fn.insertAfter</code>
+					</li>
+					<li>
+						<code>$.fn.after</code>
+					</li>
+					<li>
+						<code>$.fn.remove</code>
+					</li>
+					<li>
+						<code>$.fn.empty</code>
+					</li>
+					<li>
+						<code>$.fn.html</code>
+					</li>
+					<li>
+						<code>$.fn.text</code>
+					</li>
+					<li>
+						<code>$.fn.wrap</code>
+					</li>
+				</ol>
+			</div>
+		</div>
+		<div class="panel panel-default">
+			<div class="panel-heading">4、DOM过滤有关API</div>
+			<div class="panel-body">
+				<ol>
+					<li>
+						<code>$.fn.add</code>
+					</li>
+					<li>
+						<code>$.fn.clone</code>
+					</li>
+					<li>
+						<code>$.fn.find</code>
+					</li>
+					<li>
+						<code>$.fn.eq</code>
+					</li>
+					<li>
+						<code>$.fn.last</code>
+					</li>
+					<li>
+						<code>$.fn.prev</code>
+					</li>
+					<li>
+						<code>$.fn.next</code>
+					</li>
+					<li>
+						<code>$.fn.siblings</code>
+					</li>
+					<li>
+						<code>$.fn.has</code>
+					</li>
+					<li>
+						<code>$.fn.not</code>
+					</li>
+					<li>
+						<code>$.fn.filter</code>
+					</li>
+					<li>
+						<code>$.fn.closest</code>
+					</li>
+					<li>
+						<code>$.fn.parent</code>
+					</li>
+					<li>
+						<code>$.fn.contents</code>
+					</li>
+					<li>
+						<code>$.fn.children</code>
+					</li>
+				</ol>
+			</div>
+		</div>
+
+		<div class="panel panel-default">
+			<div class="panel-heading">5、默认常用事件API</div>
+			<div class="panel-body">
+				<ol>
+					<li>
+						<code>$.fn.blur</code>
+					</li>
+					<li>
+						<code>$.fn.focus</code>
+					</li>
+					<li>
+						<code>$.fn.focusin</code>
+					</li>
+					<li>
+						<code>$.fn.focusout</code>
+					</li>
+					<li>
+						<code>$.fn.load</code>
+					</li>
+					<li>
+						<code>$.fn.resize</code>
+					</li>
+					<li>
+						<code>$.fn.scroll</code>
+					</li>
+					<li>
+						<code>$.fn.unload</code>
+					</li>
+					<li>
+						<code>$.fn.click</code>
+					</li>
+					<li>
+						<code>$.fn.dblclick</code>
+					</li>
+					<li>
+						<code>$.fn.mousedown</code>
+					</li>
+					<li>
+						<code>$.fn.mouseup</code>
+					</li>
+					<li>
+						<code>$.fn.mousemove</code>
+					</li>
+					<li>
+						<code>$.fn.mouseover</code>
+					</li>
+					<li>
+						<code>$.fn.mouseout</code>
+					</li>
+					<li>
+						<code>$.fn.mouseenter</code>
+					</li>
+					<li>
+						<code>$.fn.mouseleave</code>
+					</li>
+					<li>
+						<code>$.fn.change</code>
+					</li>
+					<li>
+						<code>$.fn.select</code>
+					</li>
+					<li>
+						<code>$.fn.submit</code>
+					</li>
+					<li>
+						<code>$.fn.keydown</code>
+					</li>
+					<li>
+						<code>$.fn.keypress</code>
+					</li>
+					<li>
+						<code>$.fn.keyup</code>
+					</li>
+					<li>
+						<code>$.fn.error</code>
+					</li>
+					<li>
+						<code>$.fn.contextmenu</code>
+					</li>
+					<li>
+						<code>$.fn.tap</code>
+					</li>
+					<li>
+						<code>$.fn.taphold</code>
+					</li>
+					<li>
+						<code>$.fn.swipe</code>
+					</li>
+					<li>
+						<code>$.fn.swipeup</code>
+					</li>
+					<li>
+						<code>$.fn.swiperight</code>
+					</li>
+					<li>
+						<code>$.fn.swipedown</code>
+					</li>
+					<li>
+						<code>$.fn.swipeleft</code>
+					</li>
+					<li>
+						<code>$.fn.tapick</code>
+					</li>
+				</ol>
+			</div>
+		</div>
+
+		<div class="panel panel-default">
+			<div class="panel-heading">6、事件处理有关API</div>
+			<div class="panel-body">
+				<ol>
+					<li>
+						<code>$.fn.bind</code>
+					</li>
+					<li>
+						<code>$.fn.on</code>
+					</li>
+					<li>
+						<code>$.fn.trigger</code>
+					</li>
+				</ol>
+			</div>
+		</div>
+
+		<div class="panel panel-default">
+			<div class="panel-heading">7、动画有关API</div>
+			<div class="panel-body">
+				<ol>
+					<li>
+						<code>$.fn.animate</code>
+					</li>
+					<li>
+						<code>$.fn.stop</code>
+					</li>
+					<li>
+						<code>$.fn.show</code>
+					</li>
+					<li>
+						<code>$.fn.hide</code>
+					</li>
+					<li>
+						<code>$.fn.fadeIn</code>
+					</li>
+					<li>
+						<code>$.fn.fadeOut</code>
+					</li>
+				</ol>
+			</div>
+		</div>
+
+		<div class="panel panel-default">
+			<div class="panel-heading">8、属性性质有关API</div>
+			<div class="panel-body">
+				<ol>
+					<li>
+						<code>$.fn.attr</code>
+					</li>
+					<li>
+						<code>$.fn.removeAttr</code>
+					</li>
+					<li>
+						<code>$.fn.prop</code>
+					</li>
+					<li>
+						<code>$.fn.val</code>
+					</li>
+					<li>
+						<code>$.fn.data</code>
+					</li>
+					<li>
+						<code>$.fn.css</code>
+					</li>
+					<li>
+						<code>$.fn.addClass</code>
+					</li>
+					<li>
+						<code>$.fn.removeClass</code>
+					</li>
+					<li>
+						<code>$.fn.hasClass</code>
+					</li>
+				</ol>
+			</div>
+		</div>
+
+		<div class="panel panel-default">
+			<div class="panel-heading">9、位置尺寸有关API</div>
+			<div class="panel-body">
+				<ol>
+					<li>
+						<code>$.fn.position</code>
+					</li>
+					<li>
+						<code>$.fn.offset</code>
+					</li>
+					<li>
+						<code>$.fn.width</code>
+					</li>
+					<li>
+						<code>$.fn.innerWidth</code>
+					</li>
+					<li>
+						<code>$.fn.outerWidth</code>
+					</li>
+					<li>
+						<code>$.fn.clientWidth</code>
+					</li>
+					<li>
+						<code>$.fn.height</code>
+					</li>
+					<li>
+						<code>$.fn.innerHeight</code>
+					</li>
+					<li>
+						<code>$.fn.outerHeight</code>
+					</li>
+					<li>
+						<code>$.fn.clientHeight</code>
+					</li>
+					<li>
+						<code>$.fn.scrollTop</code>
+					</li>
+					<li>
+						<code>$.fn.scrollLeft</code>
+					</li>
+				</ol>
+			</div>
+		</div>
+
+		<div class="panel panel-default">
+			<div class="panel-heading">10、对象类型API</div>
+			<div class="panel-body">
+				<ol>
+					<li>
+						<code>$.type</code>
+					</li>
+					<li>
+						<code>$.isArray</code>
+					</li>
+					<li>
+						<code>$.isObject</code>
+					</li>
+					<li>
+						<code>$.isFunction</code>
+					</li>
+					<li>
+						<code>$.isString</code>
+					</li>
+					<li>
+						<code>$.isElement</code>
+					</li>
+					<li>
+						<code>$.isNumber</code>
+					</li>
+				</ol>
+			</div>
+		</div>
+
+		<div class="panel panel-default">
+			<div class="panel-heading">11、AJAX有关API</div>
+			<div class="panel-body">
+				<ol>
+					<li>
+						<code>$.ajax</code>
+					</li>
+					<li>
+						<code>$.getScript</code>
+					</li>
+					<li>
+						<code>$.getJSON</code>
+					</li>
+					<li>
+						<code>$.ajaxSetup</code>
+					</li>
+				</ol>
+			</div>
+		</div>
+
+		<div class="panel panel-default">
+			<div class="panel-heading">12、工具类API</div>
+			<div class="panel-body">
+				<ol>
+					<li>
+						<code>$.fn.each</code>
+					</li>
+					<li>
+						<code>$.fn.serialize</code>
+					</li>
+					<li>
+						<code>$.fn.index</code>
+					</li>
+					<li>
+						<code>$.extend</code>
+					</li>
+					<li>
+						<code>$.each</code>
+					</li>
+					<li>
+						<code>$.inArray</code>
+					</li>
+					<li>
+						<code>$.removeInArray</code>
+					</li>
+					<li>
+						<code>$.toHumpString</code>
+					</li>
+					<li>
+						<code>$.param</code>
+					</li>
+					<li>
+						<code>$.isNumeric</code>
+					</li>
+					<li>
+						<code>$.isEmptyObject</code>
+					</li>
+					<li>
+						<code>$.noop</code>
+					</li>
+					<li>
+						<code>$.Event</code>
+					</li>
+					<li>
+						<code>$.proxy</code>
+					</li>
+					<li>
+						<code>$.tapSetup</code>
+					</li>
+					<li>
+						<code>$.tapholdSetup</code>
+					</li>
+					<li>
+						<code>$.swipeSetup</code>
+					</li>
+				</ol>
+			</div>
+		</div>
+
+		<div class="panel panel-default">
+			<div class="panel-heading">13、下载</div>
+			<div class="panel-body">
+				<a href="/#yquery" class="btn btn-sm btn-danger">点击前往插件下载页面</a>
+			</div>
+		</div>
+	</div>
+	<div id="footer" style="border-top:1px solid #ddd;padding:20px;margin-top:30px;">
+		<ul class="list-inline">
+			<li>&copy;云淡然</li>
+			<li>2013 - 2014</li>
+			<li>
+				<a href="/">前端静态资源首页</a>
+			</li>
+		</ul>
+	</div>
+	<script src="/js/prettify/r298/prettify.min.js"></script>
+	<script>
+	window.prettyPrint && prettyPrint();
+	</script>
+</body>
+
+</html>

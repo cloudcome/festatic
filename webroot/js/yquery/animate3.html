@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="renderer" content="webkit">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<meta name="author" content="云淡然;http://ydr.me">
+	<meta name="keywords" content="关键词1,关键词2">
+	<meta name="description" content="描述语句">
+	<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+	<link rel="apple-touch-icon" href="/favicon.png">
+	<title>文档标题</title>
+	<style>
+	#box{
+		position: fixed;
+		top: 10px;
+		left: 10px;
+		padding: 30px;
+		border: 10px solid #ddd;
+	}
+	</style>
+</head>
+<body style="height:3000px;">
+	<div id="box">
+		<button id="btn1">3000ms滚动到1000px</button>
+		<button id="btn2">3000ms滚动到2000px</button>
+		<p id="ret"></p>
+	</div>
+
+	<script src="./1.7/yquery.js"></script>
+	<script>
+	$('#btn1').click(function(){
+		var t0 = Date.now();
+		$(document).animate({
+			scrollTop: 1000
+		}, 3000, function(){
+			$('#ret').html(Date.now() - t0 + ' => scrollTop ' + $(document).scrollTop());
+		});
+	});
+	$('#btn2').click(function(){
+		var t0 = Date.now();
+		$(document).animate({
+			scrollTop: 2000
+		}, 3000, function(){
+			$('#ret').html(Date.now() - t0 + ' => scrollTop ' + $(document).scrollTop());
+		});
+	});
+	</script>
+</body>
+</html>

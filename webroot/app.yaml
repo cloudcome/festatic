@@ -1,0 +1,25 @@
+#以下是app.yaml配置格式模板，您可以根据需要修改参数，然后去掉配置项前的"#"，保存后生效
+#说明：“#”为注释标记符号，从#至行尾的字符仅作备注用，不会作为配置参数生效
+
+#配置URL重写
+#支持最多配置10个重写规则
+#支持nginx语法
+#rewrite:
+#    -url: /(.*\.(gif|png|jpg))
+#     script: static.php?img=\1
+
+#配置目录访问控制（请列出禁止浏览器访问的/ace/app/webroot/下的目录）
+#支持最多配置10个目录
+#deny:
+#    -/js
+#    -/css
+#    -/admin
+
+#配置网络存储目录（以读写本地目录路径的方式读写网络存储空间）
+#单个文件最大不超过1MB，超出限制的文件不予写入
+#支持最多配置10个目录
+#oss_bucket: bucket_name  #请指定用于存储文件的存储空间
+#ossprefix:  #请指定本地映射的目录路径，前缀必须为/ace/app
+#    -/ace/app/webroot/img
+#    -/ace/app/webroot/doc
+#    -/ace/app/webroot/config

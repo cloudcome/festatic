@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+	<meta name="author" content="云淡然;http://ydr.me">
+
+	<title>yundanran css3 animate demo - 前端静态资源</title>
+	<link rel="stylesheet" href="../3/latest.min.css">
+	<link rel="stylesheet" href="latest.css">
+
+<style>
+	
+#box-1,
+#box-2,
+#box-3,
+#box-4,
+#box-5,
+#box-6{
+	width: 200px;
+	height: 100px;
+	line-height: 100px;
+	text-align: center;
+	font-size: 30px;
+	font-weight: 900;
+}
+
+#box-1{
+	background: #B7D8F5;
+	color: #025EA7;
+	border: 3px solid #5DA2D8;
+}
+
+#box-2{
+	background: #FCE3B4;
+	color: #C68912;
+	border: 3px solid #DEA743;
+}
+
+#box-3{
+	background: #FFABAB;
+	color: #B80606;
+	border: 3px solid #EC6464;
+}
+
+#box-4{
+	background: #ACE7A7;
+	color: #119206;
+	border: 3px solid #54C44A;
+}
+
+#box-5{
+	background: #9DF1E7;
+	color: #13B9A5;
+	border: 3px solid #5AE2D2;
+}
+
+#box-6{
+	background: #BBA7E7;
+	color: #5D30BE;
+	border: 3px solid #8666CC;
+	margin-left: 300px;
+}
+
+
+</style>
+
+</head>
+<body style="padding:20px;">
+	<div class="hero">
+		<h1>yundanran css3 animate demo</h1>
+		<p>作者：云淡然</p>
+		<p>兼容：ie9（含，部分）+、chrome、firefox</p>
+		<p><a href="/" target="_blank">首页</a></p>
+	</div>
+	<div class="module">
+		<div class="module-header">样式库介绍</div>
+		<div class="module-body">
+			<p class="text-lead">1、样式库说明</p>
+
+
+			<p class="text-lead">2、使用说明</p>
+			<div class="well">
+				<p>1. 给你需要动画效果的元素（display不能为none）上添加<code>animated</code>样式</p>
+				<p>2. 默认的动画时间是1S，可以改变时间和延迟时间等等，如：</p>
+				<pre>#yourElement {
+    -vendor-animation-duration: 3s;
+    -vendor-animation-delay: 2s;
+    -vendor-animation-iteration-count: infinite;
+}</pre>
+				<p>wendor为<code>webkit, moz, ms, o</code>。</p>
+				<p>3. 在需要执行动画的时候添加class即可，如<code>fadeIn</code></p>
+				<p>4. 动画样式库参考了：https://github.com/daneden/animate.css</p>
+			</div>
+
+
+
+
+			<p class="text-lead">3、样式库演示</p>
+
+			<div class="well" id="well-1">
+				<p class="text-lead">3.1、淡入淡出</p>
+				<p>
+					<button class="button button-primary" data-animated="fadeIn">淡入 fadeIn</button>
+					<button class="button button-primary" data-animated="fadeOut">淡出 fadeOut</button>
+					<button class="button button-primary" data-animated="flash">闪光 flash</button>
+				</p>
+				<div id="box-1">BOX</div>
+			</div>
+			
+			<div class="well" id="well-2">
+				<p class="text-lead">3.2、弹入弹出</p>
+				<p>
+					<button class="button button-info" data-animated="bounceOut">正弹出 bounceOut</button>
+					<button class="button button-info" data-animated="bounceOutBottom">向下弹出 bounceOutBottom</button>
+					<button class="button button-info" data-animated="bounceOutTop">向上弹出 bounceOutTop</button>
+					<button class="button button-info" data-animated="bounceOutLeft">向左弹出 bounceOutLeft</button>
+					<button class="button button-info" data-animated="bounceOutRight">向右弹出 bounceOutRight</button>
+				</p>
+				<p>
+					<button class="button button-success" data-animated="bounceIn">正弹入 bounceIn</button>
+					<button class="button button-success" data-animated="bounceInBottom">向下弹入 bounceInBottom</button>
+					<button class="button button-success" data-animated="bounceInTop">向上弹入 bounceInTop</button>
+					<button class="button button-success" data-animated="bounceInLeft">向左弹入 bounceInLeft</button>
+					<button class="button button-success" data-animated="bounceInRight">向右弹入 bounceInRight</button>
+				</p>
+				<div id="box-2">BOX</div>
+			</div>
+			
+
+			<div class="well" id="well-3">
+				<p class="text-lead">3.3、支点震动</p>
+				<p>
+					<button class="button button-success" data-animated="shake">左右震动 shake</button>
+					<button class="button button-success" data-animated="shock">上下震动 shock</button>
+				</p>
+				<div id="box-3">BOX</div>
+			</div>
+
+			<div class="well" id="well-4">
+				<p class="text-lead">3.4、支点摇摆</p>
+				<p>
+					<button class="button button-info" data-animated="swing">左右摇摆 swing</button>
+				</p>
+				<div id="box-4">BOX</div>
+			</div>
+
+			<div class="well" id="well-5">
+				<p class="text-lead">3.5、沿线翻转</p>
+				<p>
+					<button class="button button-success" data-animated="flipLeft">沿左边界翻转 flipLeft</button>
+					<button class="button button-success" data-animated="flipRight">沿右边界翻转 flipRight</button>
+					<button class="button button-success" data-animated="flipTop">沿上边界翻转 flipTop</button>
+					<button class="button button-success" data-animated="flipBottom">沿下边界翻转 flipBottom</button>
+				</p>
+				<div id="box-5">BOX</div>
+			</div>
+
+			<p class="text-lead">4、样式库源码</p>
+			<p><a href="/#css.animate">/#css.animate</a></p>
+		</div>
+	</div>
+
+
+<script src="http://libs.baidu.com/jquery/1.10.2/jquery.min.js"></script>
+<script>
+
+function init(index){
+	var $well=$("#well-"+index),
+	$button=$well.find(".button"),
+	$box=$("#box-"+index),
+	timer=0;
+	$well.on("click",".button",function(){
+		var klass=$(this).attr("data-animated");
+		$box.removeClass().addClass("animated "+klass);
+		$button.prop("disabled",true);
+		if(timer){
+			clearTimeout(timer);
+			timer=0;
+		}
+		timer=setTimeout(function(){
+			$box.removeClass();
+			$button.prop("disabled",false);
+		},1000);
+	});
+}
+
+init(1);
+init(2);
+init(3);
+init(4);
+init(5);
+init(6);
+
+
+</script>
+
+
+
+
+</body>
+</html>

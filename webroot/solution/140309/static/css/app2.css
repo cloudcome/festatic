@@ -1,0 +1,135 @@
+/**
+ * 友窝 第2版
+ * @author  ydr.me
+ */
+
+body {
+	overflow: hidden;
+	background: #131C35 url(../img/bg3.png) center bottom no-repeat fixed;
+	color: #fff;
+	padding-top: 100px;
+}
+
+.col-md-3{
+	float: left\0;
+	width: 25%;
+}
+
+.navbar-toggle {
+	margin-top: 14px;
+	margin-bottom: 14px;
+}
+
+#header {
+	background: rgba(0, 0, 0, 0.4);
+	border: 0;
+	padding: 10px 0;
+}
+
+.navbar-brand {
+	display: inline-block;
+	width: 202px;
+	height: 67px;
+	background: url(../img/brand.png) no-repeat;
+}
+
+.navbar-inverse .navbar-nav>li>a {
+	color: #fff;
+}
+
+.hero {
+	height: 80px;
+	background: url(../img/allinone.png) center no-repeat;
+	margin-top: 60px;
+	margin-bottom: 80px;
+}
+
+#main {
+	position: relative;
+}
+
+.btn {
+	padding: 15px 30px;
+	font-size: 26px;
+	margin-bottom: 30px;
+	width: 200px;
+}
+
+.icon {
+	display: inline-block;
+	width: 30px;
+	height: 30px;
+	background-image: url(../img/btn.png);
+	background-repeat: no-repeat;
+	vertical-align: middle;
+}
+
+.icon-iphone {
+	background-position: 0 0;
+}
+
+.btn:hover .icon-iphone {
+	background-position: 0 -30px;
+}
+
+.icon-android {
+	background-position: -30px 0;
+}
+
+.btn:hover .icon-android {
+	background-position: -30px -30px;
+}
+
+.icon-web {
+	background-position: -60px 0;
+}
+
+.btn:hover .icon-web {
+	background-position: -60px -30px;
+}
+
+.icon-wap {
+	background-position: -90px 0;
+}
+
+.btn:hover .icon-wap {
+	background-position: -90px -30px;
+}
+
+.box {
+	text-align: center;
+	background: rgba(255, 255, 255, 0.5);
+	padding: 20px;
+	border: 1px solid #FFF;
+	border-radius: 4px;
+	font-size: 20px;
+}
+
+@media (max-width: 991px) {
+	body {
+		overflow: auto;
+		padding-bottom: 120px;
+	}
+}
+
+@media (min-width: 768px) {
+	.navbar-nav>li {
+		margin-top: 25px;
+		border-right: 1px dotted #bbb;
+	}
+
+	.navbar-nav>li>a {
+		padding: 0 30px;
+		color: #eee;
+	}
+}
+
+@media (max-width: 767px) {
+	.navbar-header {
+		margin-bottom: 10px;
+	}
+
+	.box {
+		margin-bottom: 70px;
+	}
+}

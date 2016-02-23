@@ -1,0 +1,678 @@
+<!doctype html>
+
+<html lang="en">
+
+
+
+<head>
+
+	<meta charset="utf-8">
+
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+
+	<meta name="author" content="云淡然;http://ydr.me">
+
+
+
+	<title>jquery-selection.js demo - 前端静态资源</title>
+
+	<link rel="stylesheet" href="../../css/3/latest.min.css">
+
+
+
+	<style>
+
+	#text-2 {
+
+		border: 1px solid #E2E270;
+
+		border-left-width: 4px;
+
+		background: #FFC;
+
+		width: 90%;
+
+		height: 150px;
+
+		resize: none;
+
+		outline: none;
+
+		padding: 10px;
+
+		margin-bottom: 10px;
+
+		line-height: 20px;
+
+	}
+
+	</style>
+
+
+
+</head>
+
+
+
+<body style="padding:20px;">
+
+	<div class="hero">
+
+		<h1>jquery-selection.js demo</h1>
+
+		<p>作者：云淡然</p>
+
+		<p>兼容：ie9（含）+、chrome、firefox</p>
+
+	</div>
+
+
+
+
+
+	<div class="module">
+
+		<div class="module-header">1、插件说明</div>
+
+		<div class="module-body">
+
+			<ol>
+
+				<li>相关文章：
+
+					<a href="http://qianduanblog.com/2636.html" target="_blank">http://qianduanblog.com/2636.html</a>
+
+				</li>
+
+				<li>目前仅适用于对input、textarea标签里的输入文本操作</li>
+
+			</ol>
+
+		</div>
+
+	</div>
+
+
+
+
+
+	<div class="module">
+
+		<div class="module-header">2、插件API</div>
+
+		<div class="module-body"><pre>// 1、位置
+
+// 光标开始位置
+
+$("#id").selection().start;
+
+
+
+// 光标结束位置
+
+$("#id").selection().end;
+
+
+
+
+
+// 2、文本
+
+// 选中的文本
+
+$("#id").selection().val;
+
+
+
+// 选中指定文本
+
+$("#id").selection().select("selectVal");
+
+
+
+// 选中指定位置文本，从位置10到结尾
+
+$("#id").selection().select(10);
+
+
+
+// 选中指定位置文本，从位置10到位置20
+
+$("#id").selection().select(10, 20);
+
+
+
+
+
+// 3、定位
+
+// 定位光标到指定位置，定位光标到位置10
+
+$("#id").selection().to(10);
+
+
+
+// 定位光标到指定位置，定位光标到文本开始
+
+$("#id").selection().toStart();
+
+
+
+// 定位光标到指定位置，定位光标到文本结束
+
+$("#id").selection().toEnd();
+
+
+
+
+
+// 4、增改
+
+// 在当前光标位置前插入指定文本，并选中
+
+$("#id").selection().before("insertVal");
+
+// 在当前光标位置前插入指定文本，但不选中
+
+$("#id").selection().before("insertVal", false);
+
+
+
+// 在当前光标位置后插入指定文本，并选中
+
+$("#id").selection().after("insertVal");
+
+// 在当前光标位置后插入指定文本，但不选中
+
+$("#id").selection().after("insertVal", false);
+
+
+
+// 在当前文本开头插入指定文本，并选中
+
+$("#id").selection().prepend("prependVal");
+
+// 在当前文本开头插入指定文本，但不选中
+
+$("#id").selection().prepend("prependVal", false);
+
+
+
+// 在当前文本结尾插入指定文本，并选中
+
+$("#id").selection().append("appendVal");
+
+// 在当前文本结尾插入指定文本，但不选中
+
+$("#id").selection().append("appendVal", false);
+
+
+
+// 替换当前选中的文本，并选中
+
+$("#id").selection().replace("replaceVal");
+
+// 替换当前选中的文本，但不选中
+
+$("#id").selection().replace("replaceVal", false);
+
+
+
+// 移除当前选中的文本
+
+$("#id").selection().remove();
+
+
+
+
+
+// 5、删除
+
+// 向前删除（退格）指定长度（默认0）的文本
+
+$("#id").selection().backspace(length);
+
+
+
+// 向后删除指定长度（默认0）的文本
+
+$("#id").selection().delete(length);</pre>
+
+		</div>
+
+	</div>
+
+
+
+
+
+	<div class="module">
+
+		<div class="module-header">3、插件演示</div>
+
+		<div class="module-body">
+
+			<div class="well">
+
+
+
+				<p>
+
+					<b>3.1 位置：</b>
+
+					<button class="button button-primary" id="button-1-1">获得光标的起始位置</button>
+
+					<button class="button button-primary" id="button-1-2">获得光标的结束位置</button>
+
+				</p>
+
+				<br>
+
+				<p>
+
+					<b>3.2 文本：</b>
+
+					<button class="button button-success" id="button-2-1">获得光标选中的文本</button>
+
+					输入您想选中的文本
+
+					<input type="text" name="" id="text-2-2" class="text" value="Macintosh">
+
+					<button class="button button-success" id="button-2-2">选中左边输入框的文本</button>
+
+					<button class="button button-success" id="button-2-3">选中3-末尾位置的文本</button>
+
+					<button class="button button-success" id="button-2-4">选中3-4位置的文本</button>
+
+				</p>
+
+				<br>
+
+				<div class="alert alert-warning">
+
+					<textarea id="text-1" class="text" style="padding:4px;width:90%;height:60px;">苹果公司，原称苹果电脑股份有限公司，于2007年1月9日在旧金山Macworld Expo上宣布改为现名。总部位于美国加利福尼亚库比蒂诺，核心业务是电子科技产品。苹果的Apple II于1970年代助长了个人电脑革命，其后的Macintosh接力于1980年代持续发展。</textarea>
+
+					<br>
+
+					<p class="text-info">尝试选中一段文本，然后在点击下列按钮操作。</p>
+
+					<div class="alert alert-info">
+
+						<p>结果：</p>
+
+						<p id="result"></p>
+
+					</div>
+
+				</div>
+
+				<p>
+
+					<b>3.3 定位：</b>
+
+					<button class="button button-info" id="button-3-1">定位光标到 9 位置</button>
+
+					<button class="button button-info" id="button-3-2">定位光标到文本开始位置</button>
+
+					<button class="button button-info" id="button-3-3">定位光标到文本结束位置</button>
+
+				</p>
+
+				<br>
+
+				<p>
+
+					<b>3.4 增改：</b>
+
+					<button class="button button-warning" id="button-4-1">在当前光标位置前插入“云淡然”并选中</button>
+
+					<button class="button button-warning" id="button-4-2">在当前光标位置后插入“前端博客”并选中</button>
+
+					<button class="button button-warning" id="button-4-3">替换当前选中文字为当前时间戳</button>
+
+					<button class="button button-warning" id="button-4-4">移除当前选中的文本</button>
+
+					<br>
+
+					<button class="button button-warning" id="button-4-5">在当前文本开头插入“简介：”并选中</button>
+
+					<button class="button button-warning" id="button-4-6">在当前文本末尾插入“——来源于维基百科”并选中</button>
+
+				</p>
+
+				<br>
+
+				<p>
+
+					<b>3.5 删除：</b>
+
+					<button class="button button-error" id="button-5-1">在当前光标位置向前删除2个长度字符</button>
+
+					<button class="button button-error" id="button-5-2">在当前光标位置向后删除2个长度字符</button>
+
+				</p>
+
+			</div>
+
+		</div>
+
+	</div>
+
+
+
+
+
+	<div class="module">
+
+		<div class="module-header">4、插件应用</div>
+
+		<div class="module-body">
+
+			<div class="well">
+
+				<p>4.1 插入表情</p>
+
+				可以在
+
+				<a href="http://qianduanblog.com" target="_blank">前端博客</a>各个文章页面体验。
+
+			</div>
+
+			<div class="well">
+
+				<p>4.2 打字机效果</p>
+
+				<p>模拟文本：
+
+					<b id="text-2-source">前端博客是专注于Web前端开发和Wordpress主题的云淡然个人博客。</b>
+
+				</p>
+
+				<textarea id="text-2"></textarea>
+
+				<p>
+
+					<button class="button button-error" id="button-1">开始打印</button>
+
+				</p>
+
+			</div>
+
+		</div>
+
+	</div>
+
+
+
+
+
+	<div class="module">
+
+		<div class="module-header">5、插件源码</div>
+
+		<div class="module-body">
+
+			<p>
+
+				<a href="/#jquery-selection">http://festatic.aliapp.com/#jquery-selection</a>
+
+			</p>
+
+		</div>
+
+	</div>
+
+
+
+
+
+
+
+
+
+
+
+	<script src="http://libs.baidu.com/jquery/1.10.2/jquery.min.js"></script>
+
+	<script src="latest.js"></script>
+
+	<script>
+
+	var $text = $("#text-1");
+
+	var $result = $("#result");
+
+
+
+	$("#button-1-1").click(function() {
+
+		var s = $text.selection().start;
+
+		$result.html("光标起始位置为 <b>" + s + "</b> 。");
+
+	});
+
+
+
+	$("#button-1-2").click(function() {
+
+		var s = $text.selection().end;
+
+		$result.html("光标结束位置为 <b>" + s + "</b> 。");
+
+	});
+
+
+
+	$("#button-2-1").click(function() {
+
+		var s = $text.selection().val;
+
+		$result.html("光标选中的文本为 <b>" + s + "</b> 。");
+
+	});
+
+
+
+	$("#button-2-2").click(function() {
+
+		var s = $.trim($("#text-2-2").val());
+
+		$text.selection().select(s);
+
+		$result.html("已选中指定文本 “<b>" + s + "</b>” 。");
+
+	});
+
+
+
+	$("#button-2-3").click(function() {
+
+		$text.selection().select(3);
+
+		$result.html("已选中指定文本 <b>3-length</b>。");
+
+	});
+
+
+
+	$("#button-2-4").click(function() {
+
+		$text.selection().select(3, 4);
+
+		$result.html("已选中指定文本 <b>3,4</b> 。");
+
+	});
+
+
+
+	$("#button-3-1").click(function() {
+
+		$text.selection().to(9);
+
+		$result.html("已定位光标到 <b>9</b> 位置。");
+
+	});
+
+
+
+	$("#button-3-2").click(function() {
+
+		$text.selection().toStart();
+
+		$result.html("已定位光标到文本 <b>开始</b> 位置。");
+
+	});
+
+
+
+	$("#button-3-3").click(function() {
+
+		$text.selection().toEnd();
+
+		$result.html("已定位光标到文本 <b>结束</b> 位置。");
+
+	});
+
+
+
+	$("#button-4-1").click(function() {
+
+		$text.selection().before("云淡然", true);
+
+		$result.html("已插入文本到当前光标位置 <b>之前</b> 。");
+
+	});
+
+
+
+	$("#button-4-2").click(function() {
+
+		$text.selection().after("前端博客", true);
+
+		$result.html("已插入文本到当前光标位置 <b>之后</b> 。");
+
+	});
+
+
+
+	$("#button-4-3").click(function() {
+
+		$text.selection().replace(new Date().getTime(), true);
+
+		$result.html("已 <b>替换</b> 当前光标位置的文本内容。");
+
+	});
+
+
+
+	$("#button-4-4").click(function() {
+
+		$text.selection().remove();
+
+		$result.html("已 <b>移除</b> 当前光标位置的文本内容。");
+
+	});
+
+
+
+	$("#button-4-5").click(function() {
+
+		$text.selection().prepend("简介：", true);
+
+		$result.html("已在文本 <b>开头插入</b> “简介：”并选中。");
+
+	});
+
+
+
+	$("#button-4-6").click(function() {
+
+		$text.selection().append("——来源于维基百科", true);
+
+		$result.html("已在文本 <b>末尾插入</b> “——来源于维基百科”并选中。");
+
+	});
+
+
+
+	$("#button-5-1").click(function() {
+
+		$text.selection().backspace(2);
+
+		$result.html("已在当前光标位置 <b>向前删除</b> 2个长度字符。");
+
+	});
+
+
+
+	$("#button-5-2").click(function() {
+
+		$text.selection().delete(2);
+
+		$result.html("已在当前光标位置 <b>向后删除</b> 2个长度字符。");
+
+	});
+
+
+
+	$("#button-1").click(function() {
+
+		$(this).prop("disabled", true).text("正在打印……");
+
+		var $this = $(this);
+
+		var $source = $("#text-2-source");
+
+		var val = $source.text();
+
+		var start = 0;
+
+		var length = val.length;
+
+		var timer = null;
+
+		var $text2 = $("#text-2");
+
+		timer = setInterval(function() {
+
+			if (start == length) {
+
+				clearInterval(timer);
+
+				timer = null;
+
+				$this.prop("disabled", false).text("再次打印");
+
+				$text2.selection().append("\n");
+
+			} else {
+
+				$text2.selection().append(val.substr(start, 1));
+
+				start++;
+
+			}
+
+		}, 123);
+
+	});
+
+	</script>
+
+
+
+
+
+
+
+
+
+</body>
+
+
+
+</html>
+

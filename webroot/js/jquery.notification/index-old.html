@@ -1,0 +1,304 @@
+<!doctype html>
+
+<html lang="en">
+
+
+
+<head>
+
+	<meta charset="utf-8">
+
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+
+	<meta name="author" content="云淡然;http://ydr.me">
+
+
+
+	<title>jquery.notification.js demo - 前端静态资源</title>
+
+	<link rel="stylesheet" href="../../css/3/latest.min.css">
+
+
+
+	<style>
+
+	
+
+	</style>
+
+
+
+</head>
+
+
+
+<body style="padding:20px;">
+
+	<div class="hero">
+
+		<h1>jquery.notification.js demo</h1>
+
+		<p>作者：云淡然</p>
+
+		<p>兼容：chrome</p>
+
+	</div>
+
+
+
+	<div class="module">
+
+		<div class="module-header">1、插件说明</div>
+
+		<div class="module-body">
+
+			<ol>
+
+				<li class="text-error">目前只有谷歌浏览器支持</li>
+
+			</ol>
+
+		</div>
+
+	</div>
+
+
+
+	<div class="module">
+
+		<div class="module-header">2、插件API</div>
+
+		<div class="module-body">
+
+			<pre>// 插件默认参数
+
+$.notification.defaults = {
+
+	title: "通知标题",
+
+	body: "通知内容",
+
+	// 标签类别
+
+	tag: "",
+
+	// 通知图标
+
+	icon: "http://festatic.aliapp.com/img/icon.png",
+
+	// 显示通知
+
+	onshow: function () {},
+
+	// 关闭通知
+
+	onclose: function () {},
+
+	// 单击通知
+
+	onclick: function () {},
+
+	// 错误通知
+
+	onerror: function () {}
+
+}
+
+
+
+// 1、生成桌面通知
+
+$.notification("标题", "内容");
+
+$.notification({...
+
+});
+
+
+
+// 2、清除桌面通知
+
+$.notification(null);</pre>
+
+		</div>
+
+	</div>
+
+	<div class="module">
+
+		<div class="module-header">3、插件演示</div>
+
+		<div class="module-body">
+
+			<div class="alert alert-error">
+
+				<strong>提示：</strong>浏览器通知仅支持域名访问，不支持本地测试。
+
+			</div>
+
+
+
+			<div class="well">
+
+				<p>3.1、生成通知</p>
+
+				<button class="button button-success" id="button-3-1">生成通知</button>
+
+				<button class="button button-success" id="button-3-2">生成通知，并监听事件</button>
+
+			</div>
+
+			<div class="well">
+
+				<p>3.2、清除通知</p>
+
+				<button class="button button-success" id="button-4-1">清除通知</button>
+
+			</div>
+
+		</div>
+
+	</div>
+
+	<div class="module">
+
+		<div class="module-header">4、插件源码</div>
+
+		<div class="module-body">
+
+			<p>
+
+				<a href="/#jquery.notification">http://festatic.aliapp.com/#jquery.notification</a>
+
+			</p>
+
+		</div>
+
+	</div>
+
+
+
+
+
+	<script src="http://libs.baidu.com/jquery/1.10.2/jquery.min.js"></script>
+
+	<script src="latest.js"></script>
+
+	<script>
+
+	var index = 1;
+
+	var isAlert = 0;
+
+
+
+	$("#button-3-1").click(function() {
+
+		$.notification("通知=>" + index, "内容" + rand());
+
+		index++;
+
+	});
+
+
+
+	$("#button-3-2").click(function() {
+
+		if (!isAlert) {
+
+			isAlert = 1;
+
+			alert("已监听桌面通知事件，详细看控制台！");
+
+		}
+
+		$.notification({
+
+			title: "通知=>" + index,
+
+			body: "内容，单击我就可以也关闭通知哦！" + rand(),
+
+			ondisplay: function() {
+
+				console.log("ondisplay=>");
+
+				console.log(this);
+
+			},
+
+			onshow: function() {
+
+				console.log("onshow=>");
+
+				console.log(this);
+
+			},
+
+			onclick: function() {
+
+				console.log("onclick=>");
+
+				console.log(this);
+
+				this.close();
+
+			},
+
+			onclose: function() {
+
+				console.log("onclose=>");
+
+				console.log(this);
+
+			},
+
+			onerror: function() {
+
+				console.log("onerror=>");
+
+				console.log(this);
+
+			}
+
+		});
+
+		index++;
+
+	});
+
+
+
+	$("#button-4-1").click(function() {
+
+		$.notification(null);
+
+		alert("已清除全部桌面通知");
+
+	});
+
+
+
+	function rand() {
+
+		return parseInt(Math.random() * 1000);
+
+	}
+
+	</script>
+
+
+
+
+
+
+
+
+
+</body>
+
+
+
+</html>
+

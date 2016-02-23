@@ -1,0 +1,294 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="author" content="云淡然;http://ydr.me">
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/bootstrap/3.1.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/bootstrap/3.1.1/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="/css/prettify/bootstrap.css">
+    <title>jquery.hash.js docs - 前端静态资源</title>
+</head>
+
+
+
+<body>
+    <div class="jumbotron">
+        <div class="container">
+            <h1>jquery.hash.js docs</h1>
+            <p>作者：云淡然</p>
+            <p>兼容：ie9+、chrome、firefox</p>
+            <p><span class="label label-success">已适配yquery</span></p>
+        </div>
+    </div>
+    <div class="container">
+        <div class="panel panel-default">
+            <div class="panel-heading">1、插件介绍</div>
+            <div class="panel-body">
+                <ol>
+                    <li>相关文章：
+                        <a target="_blank" rel="bookmark" href="http://qianduanblog.com/2003.html">http://qianduanblog.com/2003.html</a>
+                    </li>
+                    <li>支持url的hash符合hash键值类型部分的解析和操作。假设hash为：<code>#!a/1/b/2#123#456</code>，那么符合hash键值类型的部分为<code>#!a/1/b/2</code>，剩余部分（<code>#123#456</code>）会被原样保留。</li>
+                    <li>插件支持hash键值的增删改查操作。</li>
+                    <li>插件支持hash的尾部（即锚点）的增删改查。</li>
+                    <li>合法的hash键值和hash尾部为：<code>#!a/1/b/2#suffix</code>或<code>#?a=1&b=2#suffix</code></li>
+                </ol>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">2、插件API</div>
+            <div class="panel-body">
+            	<p class="lead text-danger">2.2、插件方法</p>
+            	<div class="table-responsive">
+            		<table class="table table-hover table-striped table-bordered">
+            			<thead>
+            				<tr>
+            					<th>参数名称</th>
+            					<th>参数默认值</th>
+            					<th>参数描述</th>
+            				</tr>
+            			</thead>
+            			<tbody>
+            				<tr>
+            					<td><code>hash</code></td>
+            					<td>""</td>
+            					<td>为空时读取window.location.hash</td>
+            				</tr>
+            			</tbody>
+            		</table>
+            	</div>
+
+            	<br>
+            	<p class="lead text-danger">2.2、插件方法</p>
+            	<div class="table-responsive">
+            		<table class="table table-hover table-striped table-bordered">
+            			<thead>
+            				<tr>
+            					<th>方法名称</th>
+            					<th>方法参数</th>
+            					<th>描述</th>
+            				</tr>
+            			</thead>
+            			<tbody>
+            				<tr>
+            					<td><code>set</code></td>
+            					<td>
+            						<ol>
+            							<li>key, value [, hashType]</li>
+            							<li>keyValueObj [, hashType]</li>
+            						</ol>
+            					</td>
+            					<td>设置1个或多个hash键值，并改变hash类型</td>
+            				</tr>
+            				<tr>
+            					<td><code>get</code></td>
+            					<td>
+            						<ol>
+            							<li>key</li>
+            							<li>keyArray</li>
+            							<li>undefined</li>
+            						</ol>
+            					</td>
+            					<td>获取1个或多个或所有hash键值</td>
+            				</tr>
+            				<tr>
+            					<td><code>remove</code></td>
+            					<td>
+            						<ol>
+            							<li>key</li>
+            							<li>keyArray</li>
+            							<li>undefined</li>
+            						</ol>
+            					</td>
+            					<td>移除1个或多个或所有hash键值</td>
+            				</tr>
+            				<tr>
+            					<td><code>stringify</code></td>
+            					<td>
+            						<ol>
+            							<li>undefined</li>
+            						</ol>
+            					</td>
+            					<td>根据解析结果返回字符串并设置window.location.hash<br>
+            					通常用于传入hash值来映射到当前地址栏</td>
+            				</tr>
+            				<tr>
+            					<td><code>suffix</code></td>
+            					<td>
+            						<ol>
+            							<li>key</li>
+            							<li>undefined</li>
+            						</ol>
+            					</td>
+            					<td>设置或获取suffix部分</td>
+            				</tr>
+            				<tr>
+            					<td><code>listen</code></td>
+            					<td>
+            						<ol>
+            							<li>key</li>
+            							<li>key1, key2, key3, ...</li>
+            							<li>keyArray</li>
+            							<li>undefined</li>
+            						</ol>
+            					</td>
+            					<td>监听1个或多个或所有hash键值变化</td>
+            				</tr>
+            			</tbody>
+            		</table>
+            	</div>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">3、插件演示</div>
+            <div class="panel-body">
+                <p class="lead text-danger">3.1、插件配置</p>
+                <pre class="prettyprint linenums lang-javascript">// 可以直接设置默认参数
+$.hash.defaults = {
+    // 传入hash值，为空时默认为当前window.location.hash
+    hash: ''
+};
+
+// 也可以实例化之后传参
+$.hash({
+    hash: '#123456'
+});
+
+// 也可以直接传hash字符串
+$.hash('http://qianduanblog.com/#123456');</pre>
+				
+				<br>
+				<p class="lead text-danger">3.2、设置指定hash值</p>
+				<pre class="prettyprint linenums lang-javascript">// 设置单个，皆为字符串
+$.hash().set('a', '1');
+
+// 设置单个，并改变hash类型
+$.hash().set('a', '2', '?');
+
+// 设置多个，为字符串键值对
+$.hash().set({
+    a: '3',
+    b: '4'
+});
+
+// 设置多个，并改变hash类型
+$.hash().set({
+    a: '4',
+    b: '5'
+}, '!');</pre>
+
+				<br>
+				<p class="lead text-danger">3.3、获取指定hash值</p>
+				<pre class="prettyprint linenums lang-javascript">// 获取单个值，返回值皆为字符串
+$.hash().get('a');
+
+// 获取多个值，返回值皆为字符串键值对
+$.hash().get(['a', 'b']);
+
+// 获取所有值，返回值皆为字符串键值对
+$.hash().get();</pre>
+
+				<br>
+				<p class="lead text-danger">3.4、清除指定hash</p>
+				<pre class="prettyprint linenums lang-javascript">// 清除单个，传值为字符串
+$.hash().remove('a');
+
+// 清除多个，传值为字符串数组
+$.hash().remove(['a', 'b']);
+
+// 清除所有符合hash类型的hash段
+$.hash().remove();</pre>
+
+				<br>
+
+				<p class="lead text-danger">3.5、字符串化</p>
+				<pre class="prettyprint linenums lang-javascript">// 5、字符串化并改变window.location.hash
+$.hash('#!a/1/b/2#123').stringify();</pre>
+
+				<br>
+				<p class="lead text-danger">3.6、设置或获取suffix部分</p>
+				<pre class="prettyprint linenums lang-javascript">// 设置，如果存在该锚点，则会自动滚动到指定锚点
+$.hash().suffix('456');
+
+// 获取
+$.hash().suffix();</pre>
+
+				<br>
+				<p class="lead text-danger">3.7、监听</p>
+				<pre class="prettyprint linenums lang-javascript">// 单监听单个
+$.hash().listen('a', fn);
+
+// 或监听多个，即当a或者b发生变化时，都会被触发
+$.hash().listen('a', 'b', fn);
+
+// 并监听多个，即当a并且b都发生变化时，才会被触发
+$.hash().listen(['a', 'b'], fn);
+
+// 监听所有，即当hash键值发生变化时，都会被触发
+$.hash().listen(fn);</pre>
+
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">4、插件下载</div>
+            <div class="panel-body">
+                <a href="/#jquery.hash" class="btn btn-sm btn-danger">点击前往插件下载页面</a>
+            </div>
+        </div>
+    </div>
+    <div id="footer" style="border-top:1px solid #ddd;padding:20px;margin-top:30px;">
+        <ul class="list-inline">
+            <li>&copy;云淡然</li>
+            <li>2013 - 2014</li>
+            <li>
+                <a href="/">前端静态资源首页</a>
+            </li>
+        </ul>
+    </div>
+    <script src="/js/yquery/latest/yquery.min.js"></script>
+    <script src="/js/prettify/r298/prettify.min.js"></script>
+    <script src="./1.2/jquery.hash.js"></script>
+    <script>
+    window.prettyPrint && prettyPrint();
+    var fn1 = function() {
+        alert(1);
+    };
+    var fn2 = function() {
+        alert(2);
+    };
+    var fn3 = function() {
+        alert(3);
+    };
+    
+    // all
+    // $.hash().listen(fn1);
+    // $.hash().listen(fn2);
+    // $.hash().listen(fn3);
+    // $.hash().listen(fn3);
+    
+    // one
+    // $.hash().listen('a', fn1);
+    // $.hash().listen('a', fn2);
+    // $.hash().listen('a', fn3);
+    // $.hash().listen('a', fn3);
+
+    // or
+    // $.hash().listen('a', 'b', 'c', fn1);
+    // $.hash().listen('a', 'b', 'c', fn2);
+    // $.hash().listen('a', 'b', 'c', fn3);
+    // $.hash().listen('a', 'b', 'c', fn3);
+    
+    // and
+    // $.hash().listen(['a', 'b', 'c'], fn1);
+    // $.hash().listen(['a', 'b', 'c'], fn2);
+    // $.hash().listen(['a', 'b', 'c'], fn3);
+    // $.hash().listen(['a', 'b', 'c'], fn3);
+    </script>
+</body>
+
+</html>

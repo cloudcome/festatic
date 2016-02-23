@@ -1,0 +1,829 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="renderer" content="webkit">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+	<meta name="author" content="云淡然;http://ydr.me">
+	<title>前端静态资源</title>
+	<link href="/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+	<link href="/bootstrap/3.1.1/css/bootstrap-theme.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+
+	<div id="doc-index">
+		<ol>
+			<li><a href="#js-library">脚本库</a></li>
+			<li><a href="#jq-prototype">jQuery 原型插件</a></li>
+			<li><a href="#jq-property">jQuery 静态插件</a></li>
+			<li><a href="#js-plugin">javascript 插件</a></li>
+			<li><a href="#node-module">Nodejs模块</a></li>
+			<li><a href="#css-library">样式库</a></li>
+			<li><a href="#img-library">图片库</a></li>
+		</ol>
+	</div>
+
+	<div class="jumbotron">
+		<div class="container">
+			<h1>前端静态资源</h1>
+			<ul>
+				<li>Author：云淡然</li>
+				<li>Website：
+					<a href="http://ydr.me" target="_blank">ydr.me</a>
+				</li>
+				<li>Engine：ACE</li>
+			</ul>
+		</div>
+	</div>
+
+	<div class="container body">
+		<div class="alert alert-success">
+			最新的版本为<code>sth.latest.css|js</code>，最新压缩版本为<code>sth.latest.min.css|js</code>
+		</div>
+
+
+		<p class="lead text-danger" id="js-library">脚本库</p>
+		<div class="row">
+			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
+				<div class="box" id="jquery">
+					<div class="box-name">jquery</div>
+					<div class="box-body">
+						<p>
+							<a class="label label-primary" href="http://jquery.com/" target="_blank">jquery官方</a href="http://jquery.com/" target="_blank">
+						</p>
+						<p>
+							<strong>版本：</strong>
+							<a target="_blank" class="badge" href="js/jquery/2.1.0/jquery.min.js">v 2.1.0</a>
+							<a target="_blank" class="badge" href="js/jquery/1.11.0/jquery.min.js">v 1.11.0</a>
+						</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
+				<div class="box" id="yquery">
+					<div class="box-name">
+						<a href="js/yquery/">yquery</a>
+					</div>
+					<div class="box-body">
+						<p>
+							<span class="label label-success">正在更新</span>
+						</p>
+						<p>
+							<strong>版本：</strong>
+							<a target="_blank" class="badge" href="js/yquery/1.7/yquery.min.js">v 1.7</a>
+							<a target="_blank" class="badge" href="js/yquery/1.6/yquery.min.js">v 1.6</a>
+							<a target="_blank" class="badge" href="js/yquery/1.5/yquery.min.js">v 1.5</a>
+							<a target="_blank" class="badge" href="js/yquery/1.4/yquery.min.js">v 1.4</a>
+							<a target="_blank" class="badge" href="js/yquery/1.3/yquery.min.js">v 1.3</a>
+							<a target="_blank" class="badge" href="js/yquery/1.2/yquery.min.js">v 1.2</a>
+							<a target="_blank" class="badge" href="js/yquery/1.1/yquery.min.js">v 1.1</a>
+							<a target="_blank" class="badge" href="js/yquery/1.0/yquery.min.js">v 1.0</a>
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+		<p class="lead text-danger" id="jq-prototype">jQuery 原型插件（jquery-*）</p>
+		<div class="row">
+			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
+				<div class="box" id="jquery-drag">
+					<div class="box-name">
+						<a href="js/jquery-drag/">jquery-drag</a>
+					</div>
+					<div class="box-body">
+						<p>
+							<span class="label label-success">已适配yQuery</span>
+						</p>
+						<p>
+							<strong>版本：</strong>
+							<a target="_blank" class="badge" href="js/jquery-drag/latest/jquery-drag.min.js">latest</a>
+							<a target="_blank" class="badge" href="js/jquery-drag/1.2/jquery-drag.min.js">v 1.2</a>
+							<a target="_blank" class="badge" href="js/jquery-drag/1.1/jquery-drag.min.js">v 1.1</a>
+							<a target="_blank" class="badge" href="js/jquery-drag/1.0/jquery-drag.min.js">v 1.0</a>
+						</p>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
+				<div class="box" id="jquery-drop">
+					<div class="box-name">
+						<a href="js/jquery-drop/">jquery-drop</a>
+					</div>
+					<div class="box-body">
+						<p>
+							<span class="label label-success">已适配yQuery</span>
+						</p>
+						<p>
+							<strong>版本：</strong>
+							<a target="_blank" class="badge" href="js/jquery-drop/latest/jquery-drop.min.js">latest</a>
+							<a target="_blank" class="badge" href="js/jquery-drop/1.0/jquery-drop.min.js">v 1.0</a>
+						</p>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
+				<div class="box" id="jquery-touch">
+					<div class="box-name">
+						<a href="js/jquery-touch/">jquery-touch</a>
+					</div>
+					<div class="box-body">
+						<p>
+							<span class="label label-success">已适配yQuery</span>
+						</p>
+						<p>
+							<strong>版本：</strong>
+							<a target="_blank" class="badge" href="js/jquery-touch/latest/jquery-touch.min.js">latest</a>
+							<a target="_blank" class="badge" href="js/jquery-touch/1.0/jquery-touch.min.js">v 1.0</a>
+						</p>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
+				<div class="box" id="jquery-dialog">
+					<div class="box-name">
+						<a href="js/jquery-dialog/">jquery-dialog</a>
+					</div>
+					<div class="box-body">
+						<p>
+							<strong>版本：</strong>
+							<a target="_blank" class="badge" href="js/jquery-dialog/latest/jquery-dialog.min.js">latest</a>
+							<a target="_blank" class="badge" href="js/jquery-dialog/1.5/jquery-dialog.min.js">v 1.5</a>
+							<a target="_blank" class="badge" href="js/jquery-dialog/1.4/jquery-dialog.min.js">v 1.4</a>
+							<a target="_blank" class="badge" href="js/jquery-dialog/1.3/jquery-dialog.min.js">v 1.3</a>
+							<a target="_blank" class="badge" href="js/jquery-dialog/1.2/jquery-dialog.min.js">v 1.2</a>
+							<a target="_blank" class="badge" href="js/jquery-dialog/1.1/jquery-dialog.min.js">v 1.1</a>
+							<a target="_blank" class="badge" href="js/jquery-dialog/1.0/jquery-dialog.min.js">v 1.0</a>
+						</p>
+						<p>
+							<strong>样式：</strong>
+							<a target="_blank" class="badge" href="css/jquery-dialog/default.min.css">default</a>
+						</p>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
+				<div class="box" id="jquery-scrollable">
+					<div class="box-name">
+						<a href="js/jquery-scrollable/">jquery-scrollable</a>
+					</div>
+					<div class="box-body">
+						<p>
+							<strong>版本：</strong>
+							<a target="_blank" class="badge" href="js/jquery-scrollable/latest/jquery-scrollable.min.js">latest</a>
+							<a target="_blank" class="badge" href="js/jquery-scrollable/1.0/jquery-scrollable.min.js">v 1.0</a>
+						</p>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
+				<div class="box" id="jquery-scrollbar">
+					<div class="box-name">
+						<a href="js/jquery-scrollbar/">jquery-scrollbar</a>
+					</div>
+					<div class="box-body">
+						<p>
+							<span class="label label-success">已适配yQuery</span>
+						</p>
+						<p>
+							<strong>版本：</strong>
+							<a target="_blank" class="badge" href="js/jquery-scrollbar/latest/jquery-scrollbar.min.js">latest</a>
+							<a target="_blank" class="badge" href="js/jquery-scrollbar/1.2/jquery-scrollbar.min.js">v 1.1</a>
+							<a target="_blank" class="badge" href="js/jquery-scrollbar/1.1/jquery-scrollbar.min.js">v 1.1</a>
+							<a target="_blank" class="badge" href="js/jquery-scrollbar/1.0/jquery-scrollbar.min.js">v 1.0</a>
+						</p>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
+				<div class="box" id="jquery-validate">
+					<div class="box-name">
+						<a href="js/jquery-validate/">jquery-validate</a>
+					</div>
+					<div class="box-body">
+						<p>
+							<strong>版本：</strong>
+							<a target="_blank" class="badge" href="js/jquery-validate/latest/jquery-validate.min.js">latest</a>
+							<a target="_blank" class="badge" href="js/jquery-validate/1.0/jquery-validate.min.js">v 1.0</a>
+						</p>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
+				<div class="box" id="jquery-preview">
+					<div class="box-name">
+						<a href="js/jquery-preview/">jquery-preview</a>
+					</div>
+					<div class="box-body">
+						<p>
+							<strong>版本：</strong>
+							<a target="_blank" class="badge" href="js/jquery-preview/latest/jquery-preview.min.js">latest</a>
+							<a target="_blank" class="badge" href="js/jquery-preview/1.0/jquery-preview.min.js">v 1.0</a>
+						</p>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
+				<div class="box" id="jquery-upload">
+					<div class="box-name">
+						<a href="js/jquery-upload/">jquery-upload</a>
+					</div>
+					<div class="box-body">
+						<p>
+							<strong>版本：</strong>
+							<a target="_blank" class="badge" href="js/jquery-upload/latest/jquery-upload.min.js">latest</a>
+							<a target="_blank" class="badge" href="js/jquery-upload/1.2/jquery-upload.min.js">v 1.2</a>
+							<a target="_blank" class="badge" href="js/jquery-upload/1.1/jquery-upload.min.js">v 1.1</a>
+							<a target="_blank" class="badge" href="js/jquery-upload/1.0/jquery-upload.min.js">v 1.0</a>
+						</p>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
+				<div class="box" id="jquery-clip">
+					<div class="box-name">
+						<a href="js/jquery-clip/">jquery-clip</a>
+					</div>
+					<div class="box-body">
+						<p>
+							<strong>版本：</strong>
+							<a target="_blank" class="badge" href="js/jquery-clip/latest/jquery-clip.min.js">latest</a>
+							<a target="_blank" class="badge" href="js/jquery-clip/1.0/jquery-clip.min.js">v 1.0</a>
+						</p>
+						<p>
+							<strong>样式：</strong>
+							<a target="_blank" class="badge" href="css/jquery-clip/default.min.css">default</a>
+						</p>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
+				<div class="box" id="jquery-mousewheel">
+					<div class="box-name">
+						<a href="js/jquery-mousewheel/">jquery-mousewheel</a>
+					</div>
+					<div class="box-body">
+						<p>
+							<span class="label label-success">已适配yQuery</span>
+						</p>
+						<p>
+							<strong>版本：</strong>
+							<a target="_blank" class="badge" href="js/jquery-mousewheel/latest/jquery-mousewheel.min.js">latest</a>
+							<a target="_blank" class="badge" href="js/jquery-mousewheel/1.2/jquery-mousewheel.min.js">v 1.1</a>
+							<a target="_blank" class="badge" href="js/jquery-mousewheel/1.1/jquery-mousewheel.min.js">v 1.1</a>
+							<a target="_blank" class="badge" href="js/jquery-mousewheel/1.0/jquery-mousewheel.min.js">v 1.0</a>
+						</p>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
+				<div class="box" id="jquery-banner">
+					<div class="box-name">
+						<a href="js/jquery-banner/">jquery-banner</a>
+					</div>
+					<div class="box-body">
+						<p>
+							<strong>版本：</strong>
+							<a target="_blank" class="badge" href="js/jquery-banner/latest/jquery-banner.min.js">latest</a>
+							<a target="_blank" class="badge" href="js/jquery-banner/1.1/jquery-banner.min.js">v 1.1</a>
+							<a target="_blank" class="badge" href="js/jquery-banner/1.0/jquery-banner.min.js">v 1.0</a>
+						</p>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
+				<div class="box" id="jquery-datepicker">
+					<div class="box-name">
+						<a href="js/jquery-datepicker/">jquery-datepicker</a>
+					</div>
+					<div class="box-body">
+						<p>
+							<strong>版本：</strong>
+							<a target="_blank" class="badge" href="js/jquery-datepicker/latest/jquery-datepicker.min.js">latest</a>
+							<a target="_blank" class="badge" href="js/jquery-datepicker/1.0/jquery-datepicker.min.js">v 1.0</a>
+						</p>
+						<p>
+							<strong>样式：</strong>
+							<a target="_blank" class="badge" href="css/jquery-datepicker/default.min.css">default</a>
+						</p>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
+				<div class="box" id="jquery-redactor">
+					<div class="box-name">
+						<a href="js/jquery-redactor/">jquery-redactor</a>
+					</div>
+					<div class="box-body">
+						<p>
+							<strong>版本：</strong>
+							<a target="_blank" class="badge" href="js/jquery-redactor/latest/jquery-redactor.min.js">latest</a>
+							<a target="_blank" class="badge" href="js/jquery-redactor/9.2.3/jquery-redactor.min.js">v 9.2.3</a>
+						</p>
+						<p>
+							<strong>样式：</strong>
+							<a target="_blank" class="badge" href="css/jquery-redactor/default.min.css">default</a>
+						</p>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
+				<div class="box" id="jquery-swipe">
+					<div class="box-name">
+						<a href="js/jquery-swipe/">jquery-swipe</a>
+					</div>
+					<div class="box-body">
+						<p class="text-warning">
+							<span class="label label-danger">停止维护！！</span>可使用<a href="#jquery-touch">jquery-touch</a>代替
+						</p>
+						<p>
+							<strong>版本：</strong>
+							<a target="_blank" class="badge" href="js/jquery-swipe/latest/jquery-swipe.min.js">latest</a>
+							<a target="_blank" class="badge" href="js/jquery-swipe/1.1/jquery-swipe.min.js">v 1.1</a>
+							<a target="_blank" class="badge" href="js/jquery-swipe/1.0/jquery-swipe.min.js">v 1.0</a>
+						</p>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
+				<div class="box" id="jquery-progress">
+					<div class="box-name">
+						<a href="js/jquery-progress/">jquery-progress</a>
+					</div>
+					<div class="box-body">
+						<p>
+							<strong>版本：</strong>
+							<a target="_blank" class="badge" href="js/jquery-progress/latest/jquery-progress.min.js">latest</a>
+							<a target="_blank" class="badge" href="js/jquery-progress/1.0/jquery-progress.min.js">v 1.0</a>
+						</p>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
+				<div class="box" id="jquery-fullscreen">
+					<div class="box-name">
+						<a href="js/jquery-fullscreen/">jquery-fullscreen</a>
+					</div>
+					<div class="box-body">
+						<p>
+							<strong>版本：</strong>
+							<a target="_blank" class="badge" href="js/jquery-fullscreen/latest/jquery-fullscreen.min.js">latest</a>
+							<a target="_blank" class="badge" href="js/jquery-fullscreen/1.0/jquery-fullscreen.min.js">v 1.0</a>
+						</p>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
+				<div class="box" id="jquery-selection">
+					<div class="box-name">
+						<a href="js/jquery-selection/">jquery-selection</a>
+					</div>
+					<div class="box-body">
+						<p>
+							<strong>版本：</strong>
+							<a target="_blank" class="badge" href="js/jquery-selection/latest/jquery-selection.min.js">latest</a>
+							<a target="_blank" class="badge" href="js/jquery-selection/1.0/jquery-selection.min.js">v 1.0</a>
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+
+		<p class="lead text-danger" id="jq-property">jQuery 静态插件（jquery.*）</p>
+		<div class="row">
+			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
+				<div class="box" id="jquery.ua">
+					<div class="box-name">
+						<a href="js/jquery.ua/">jquery.ua</a>
+					</div>
+					<div class="box-body">
+						<p>
+							<span class="label label-success">已适配yQuery</span>
+						</p>
+						<p>
+							<strong>版本：</strong>
+							<a target="_blank" class="badge" href="js/jquery.ua/latest/jquery.ua.min.js">latest</a>
+							<a target="_blank" class="badge" href="js/jquery.ua/1.3/jquery.ua.min.js">v 1.3</a>
+							<a target="_blank" class="badge" href="js/jquery.ua/1.2/jquery.ua.min.js">v 1.2</a>
+							<a target="_blank" class="badge" href="js/jquery.ua/1.1/jquery.ua.min.js">v 1.1</a>
+							<a target="_blank" class="badge" href="js/jquery.ua/1.0/jquery.ua.min.js">v 1.0</a>
+						</p>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
+				<div class="box" id="jquery.hash">
+					<div class="box-name">
+						<a href="js/jquery.hash/#!a/1/b/2/c/3">jquery.hash</a>
+					</div>
+					<div class="box-body">
+						<p>
+							<span class="label label-success">已适配yQuery</span>
+						</p>
+						<p>
+							<strong>版本：</strong>
+							<a target="_blank" class="badge" href="js/jquery.hash/latest/jquery.hash.min.js">latest</a>
+							<a target="_blank" class="badge" href="js/jquery.hash/1.2/jquery.hash.min.js">v 1.2</a>
+							<a target="_blank" class="badge" href="js/jquery.hash/1.1/jquery.hash.min.js">v 1.1</a>
+							<a target="_blank" class="badge" href="js/jquery.hash/1.0/jquery.hash.min.js">v 1.0</a>
+						</p>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
+				<div class="box" id="jquery.search">
+					<div class="box-name">
+						<a href="js/jquery.search/?x=1&amp;y=2&amp;z=3">jquery.search</a>
+					</div>
+					<div class="box-body">
+						<p>
+							<span class="label label-success">已适配yQuery</span>
+						</p>
+						<p>
+							<strong>版本：</strong>
+							<a target="_blank" class="badge" href="js/jquery.search/latest/jquery.search.min.js">latest</a>
+							<a target="_blank" class="badge" href="js/jquery.search/1.1/jquery.search.min.js">v 1.1</a>
+							<a target="_blank" class="badge" href="js/jquery.search/1.0/jquery.search.min.js">v 1.0</a>
+						</p>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
+				<div class="box" id="jquery.msg">
+					<div class="box-name">
+						<a href="js/jquery.msg">jquery.msg</a>
+					</div>
+					<div class="box-body">
+						<p>
+							<span class="label label-success">已适配yQuery</span>
+						</p>
+						<p>
+							<strong>版本：</strong>
+							<a target="_blank" class="badge" href="js/jquery.msg/latest/jquery.msg.min.js">latest</a>
+							<a target="_blank" class="badge" href="js/jquery.msg/1.1/jquery.msg.min.js">v 1.1</a>
+							<a target="_blank" class="badge" href="js/jquery.msg/1.0/jquery.msg.min.js">v 1.0</a>
+						</p>
+						<p>
+							<strong>样式：</strong>
+							<a target="_blank" class="badge" href="css/jquery.msg/default.min.css">default</a>
+						</p>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
+				<div class="box" id="jquery.confirm">
+					<div class="box-name">
+						<a href="js/jquery.confirm">jquery.confirm</a>
+					</div>
+					<div class="box-body">
+						<p class="text-warning">
+							<span class="label label-warning">提示：</span>可使用<a href="#jquery.msg">jquery.msg</a>代替
+						</p>
+						<p>
+							<strong>版本：</strong>
+							<a target="_blank" class="badge" href="js/jquery.confirm/latest/jquery.confirm.min.js">latest</a>
+							<a target="_blank" class="badge" href="js/jquery.confirm/1.0/jquery.confirm.min.js">v 1.0</a>
+						</p>
+						<p>
+							<strong>样式：</strong>
+							<a target="_blank" class="badge" href="css/jquery.confirm/default.min.css">default</a>
+						</p>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
+				<div class="box" id="jquery.cookie">
+					<div class="box-name">
+						<a href="js/jquery.cookie">jquery.cookie</a>
+					</div>
+					<div class="box-body">
+						<p>
+							<span class="label label-success">已适配yQuery</span>
+						</p>
+						<p>
+							<strong>版本：</strong>
+							<a target="_blank" class="badge" href="js/jquery.cookie/latest/jquery.cookie.min.js">latest</a>
+							<a target="_blank" class="badge" href="js/jquery.cookie/1.1/jquery.cookie.min.js">v 1.1</a>
+							<a target="_blank" class="badge" href="js/jquery.cookie/1.0/jquery.cookie.min.js">v 1.0</a>
+						</p>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
+				<div class="box" id="jquery.storage">
+					<div class="box-name">
+						<a href="js/jquery.storage">jquery.storage</a>
+					</div>
+					<div class="box-body">
+						<p>
+							<span class="label label-success">已适配yQuery</span>
+						</p>
+						<p>
+							<strong>版本：</strong>
+							<a target="_blank" class="badge" href="js/jquery.storage/latest/jquery.storage.min.js">latest</a>
+							<a target="_blank" class="badge" href="js/jquery.storage/1.1/jquery.storage.min.js">v 1.1</a>
+							<a target="_blank" class="badge" href="js/jquery.storage/1.0/jquery.storage.min.js">v 1.0</a>
+						</p>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
+				<div class="box" id="jquery.notification">
+					<div class="box-name">
+						<a href="js/jquery.notification">jquery.notification</a>
+					</div>
+					<div class="box-body">
+						<p>
+							<strong>版本：</strong>
+							<a target="_blank" class="badge" href="js/jquery.notification/latest/jquery.notification.min.js">latest</a>
+							<a target="_blank" class="badge" href="js/jquery.notification/1.0/jquery.notification.min.js">v 1.0</a>
+						</p>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
+				<div class="box" id="jquery.geolocation">
+					<div class="box-name">
+						<a href="js/jquery.geolocation">jquery.geolocation</a>
+					</div>
+					<div class="box-body">
+						<p>
+							<strong>版本：</strong>
+							<a target="_blank" class="badge" href="js/jquery.geolocation/latest/jquery.geolocation.min.js">latest</a>
+							<a target="_blank" class="badge" href="js/jquery.geolocation/1.0/jquery.geolocation.min.js">v 1.0</a>
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+
+
+		<p class="lead text-danger" id="js-plugin">javascript 插件</p>
+		<div class="row">
+			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
+				<div class="box" id="js/prettify">
+					<div class="box-name">
+						prettify
+					</div>
+					<div class="box-body">
+						<p>
+							<a class="label label-primary" href="https://code.google.com/p/google-code-prettify/" target="_blank">prettify官方</a>
+						</p>
+						<p>
+							<strong>版本：</strong>
+							<a target="_blank" class="badge" href="js/prettify/r298/prettify.min.js">v r298</a>
+						</p>
+						<p>
+							<strong>样式：</strong>
+							<a target="_blank" class="badge" href="css/prettify/bootstrap.min.css">bootstrap</a>
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+
+
+
+		<p class="lead text-danger" id="node-module">Nodejs模块</p>
+		<div class="row">
+			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
+				<div class="box" id="mongoose-validatefilter">
+					<div class="box-name">mongoose-validatefilter</div>
+					<div class="box-body">
+						<p>mongoose 数据验证与过滤</p>
+						<p>
+							<a href="http://cnpmjs.org/package/mongoose-validatefilter/" target="_blank"><img src="https://nodei.co/npm/mongoose-validatefilter.png" alt="mongoose-validatefilter"></a>
+						</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
+				<div class="box" id="mongoose-objectpath">
+					<div class="box-name">mongoose-objectpath</div>
+					<div class="box-body">
+						<p>mongoose Object 字段的增删改查</p>
+						<p>
+							<a href="http://cnpmjs.org/package/mongoose-objectpath/" target="_blank"><img src="https://nodei.co/npm/mongoose-objectpath.png" alt="mongoose-objectpath"></a>
+						</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
+				<div class="box" id="howdo">
+					<div class="box-name">howdo</div>
+					<div class="box-body">
+						<p>如何做，一个简易的异步流程控制</p>
+						<p>
+							<a href="http://cnpmjs.org/package/howdo/" target="_blank"><img src="https://nodei.co/npm/howdo.png" alt="howdo"></a>
+						</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
+				<div class="box" id="youdao">
+					<div class="box-name">youdao</div>
+					<div class="box-body">
+						<p>有道中英文翻译</p>
+						<p>
+							<a href="http://cnpmjs.org/package/youdao/" target="_blank"><img src="https://nodei.co/npm/youdao.png" alt="youdao"></a>
+						</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
+				<div class="box" id="validate2">
+					<div class="box-name">validate2</div>
+					<div class="box-body">
+						<p>简单的表单验证</p>
+						<p>
+							<a href="http://cnpmjs.org/package/validate2/" target="_blank"><img src="https://nodei.co/npm/validate2.png" alt="validate2"></a>
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+
+
+		<p class="lead text-danger" id="css-library">样式库</p>
+
+		<div class="row">
+			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
+				<div class="box" id="bootstrap">
+					<div class="box-name">css.bootstrap</div>
+					<div class="box-body">
+						<p>
+							<a class="label label-primary" href="http://getbootstrap.com/" target="_blank">bootstrap官方</a>
+							<span class="text-muted">兼容ie9+</span>
+						</p>
+						<p>
+							<strong>版本：</strong>
+							<a target="_blank" class="badge" href="bootstrap/3.1.1/css/bootstrap.min.css">v 3.1.1</a>
+						</p>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
+				<div class="box" id="bootstrap">
+					<div class="box-name">css.dashicons</div>
+					<div class="box-body">
+						<p>
+							<span class="text-muted">兼容ie9+</span>
+						</p>
+						<p>
+							<strong>版本：</strong>
+							<a target="_blank" class="badge" href="/css/dashicons/3.8/dashicons.min.css">v 3.8</a>
+							<a href="/css/dashicons/3.8/index.html">v3.8 home</a>
+						</p>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
+				<div class="box" id="css.3">
+					<div class="box-name">
+						<a href="css/3">css.3</a>
+					</div>
+					<div class="box-body">
+						<p>
+							<span class="text-muted">兼容ie9+</span>
+							<span class="label label-danger">暂停维护</span>
+						</p>
+						<p>
+							<strong>版本：</strong>
+							<a target="_blank" class="badge" href="css/3/latest.min.css">latest</a>
+							<a target="_blank" class="badge" href="css/3/1.4.min.css">v 1.4</a>
+							<a target="_blank" class="badge" href="css/3/1.3.min.css">v 1.3</a>
+							<a target="_blank" class="badge" href="css/3/1.2.min.css">v 1.2</a>
+							<a target="_blank" class="badge" href="css/3/1.1.min.css">v 1.1</a>
+							<a target="_blank" class="badge" href="css/3/1.0.min.css">v 1.0</a>
+						</p>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
+				<div class="box" id="css.2">
+					<div class="box-name">
+						<a href="css/2">css.2</a>
+					</div>
+					<div class="box-body">
+						<p>
+							<span class="text-muted">兼容ie6+</span>
+							<span class="label label-danger">暂停维护</span>
+						</p>
+						<p>
+							<strong>版本：</strong>
+							<a target="_blank" class="badge" href="css/2/latest.min.css">latest</a>
+							<a target="_blank" class="badge" href="css/2/1.5.min.css">v 1.5</a>
+							<a target="_blank" class="badge" href="css/2/1.4.min.css">v 1.4</a>
+							<a target="_blank" class="badge" href="css/2/1.3.min.css">v 1.3</a>
+							<a target="_blank" class="badge" href="css/2/1.2.min.css">v 1.2</a>
+							<a target="_blank" class="badge" href="css/2/1.1.min.css">v 1.1</a>
+							<a target="_blank" class="badge" href="css/2/1.0.min.css">v 1.0</a>
+						</p>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
+				<div class="box" id="css.animate">
+					<div class="box-name">
+						<a href="css/animate">css.animate</a>
+					</div>
+					<div class="box-body">
+						<p>
+							<span class="text-muted">兼容ie9+</span>
+							<span class="label label-danger">暂停维护</span>
+						</p>
+						<p>
+							<strong>版本：</strong>
+							<a target="_blank" class="badge" href="css/animate/latest.min.css">latest</a>
+							<a target="_blank" class="badge" href="css/animate/1.1.min.css">v 1.1</a>
+							<a target="_blank" class="badge" href="css/animate/1.0.min.css">v 1.0</a>
+						</p>
+					</div>
+				</div>
+
+			</div>
+		</div>
+
+
+
+		<p class="lead text-danger" id="img-library">图片库</p>
+		<div class="row">
+			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
+				<div class="box">
+					<div class="box-name">
+						loading
+					</div>
+					<div class="box-body">
+						<p>
+							<a target="_blank" href="/img/loading-1.gif">/img/loading-1.gif
+								<img src="img/loading-1.gif" alt="">
+							</a>
+						</p>
+						<p>
+							<a target="_blank" href="/img/loading-2.gif">/img/loading-2.gif
+								<img src="img/loading-2.gif" alt="">
+							</a>
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+
+	</div>
+
+
+	<div id="footer" style="border-top: 1px solid #ddd;padding:20px;margin-top: 30px;">
+		<ul class="list-inline">
+			<li>&copy;云淡然</li>
+			<li>2013 - 2014</li>
+		</ul>
+	</div>
+
+
+</body>
+
+</html>

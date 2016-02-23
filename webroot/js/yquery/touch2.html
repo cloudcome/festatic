@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="renderer" content="webkit">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<meta name="author" content="云淡然;http://ydr.me">
+	<meta name="keywords" content="关键词1,关键词2">
+	<meta name="description" content="描述语句">
+	<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+	<link rel="apple-touch-icon" href="/favicon.png">
+	<title>touch</title>
+	<style>
+		.box{
+			border: 4px solid;
+			padding: 30px;
+			line-height: 60px;
+			text-align: center;
+			font-size: 30px;
+			margin-bottom: 20px;
+		}
+	</style>
+</head>
+<body>
+	
+	<div id="container">
+		<div class="box">taphold此处</div>
+		<div class="box">taphold此处</div>
+		<p>
+			123
+		</p>
+	</div>
+
+	<button id="btn1">添加新的box</button>
+
+	<script src="1.7/yquery.js"></script>
+	<script>
+	$('#btn1').click(function(){
+		$('#container').append('<div class="box">taphold此处</div>');
+	});
+
+	var timestamp = Date.now();
+	$('#container').on('taphold', '.box', function(e){
+		console.log(e);
+		$(this).html(e.type +	 ' ' + Date.now());
+	});
+
+	</script>
+</body>
+</html>

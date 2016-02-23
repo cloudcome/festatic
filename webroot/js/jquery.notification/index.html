@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="renderer" content="webkit">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<meta name="author" content="云淡然;http://ydr.me">
+	<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+	<link rel="stylesheet" href="/bootstrap/3.1.1/css/bootstrap.min.css">
+	<link rel="stylesheet" href="/bootstrap/3.1.1/css/bootstrap-theme.min.css">
+	<link rel="stylesheet" href="/css/prettify/bootstrap.css">
+	<title>jquery.notification.js docs - 前端静态资源</title>
+</head>
+
+
+<body>
+	<div class="jumbotron">
+		<div class="container">
+			<h1>jquery.notification.js docs</h1>
+			<p>作者：云淡然</p>
+			<p>兼容：ie9+、chrome、firefox</p>
+		</div>
+	</div>
+	<div class="container">
+		<div class="panel panel-default">
+			<div class="panel-heading">1、插件说明</div>
+			<div class="panel-body">
+				<ol>
+					<li class="text-danger">目前只有谷歌浏览器支持</li>
+				</ol>
+			</div>
+		</div>
+		<div class="panel panel-default">
+			<div class="panel-heading">2、插件API</div>
+			<div class="panel-body">
+				<pre class="prettyprint linenums">// 插件默认参数
+$.notification.defaults = {
+	title: "通知标题",
+	body: "通知内容",
+	// 标签类别
+	tag: "",
+	// 通知图标
+	icon: "http://festatic.aliapp.com/img/icon.png",
+	// 显示通知
+	onshow: function () {},
+	// 关闭通知
+	onclose: function () {},
+	// 单击通知
+	onclick: function () {},
+	// 错误通知
+	onerror: function () {}
+}
+
+
+// 1、生成桌面通知
+$.notification("标题", "内容");
+$.notification();
+
+
+// 2、清除桌面通知
+$.notification(null);
+</pre>
+			</div>
+		</div>
+		<div class="panel panel-default">
+			<div class="panel-heading">3、插件演示</div>
+			<div class="panel-body">
+				<div class="alert alert-error">
+					<strong>提示：</strong>浏览器通知仅支持域名访问，不支持本地测试。
+				</div>
+				<div class="well">
+					<p class="lead">3.1、生成通知</p>
+					<button class="btn btn-primary" id="button-3-1">生成通知</button>
+					<button class="btn btn-success" id="button-3-2">生成通知，并监听事件</button>
+				</div>
+
+				<div class="well">
+					<p class="lead">3.2、清除通知</p>
+					<button class="btn btn-danger" id="button-4-1">清除通知</button>
+				</div>
+			</div>
+		</div>
+		<div class="panel panel-default">
+			<div class="panel-heading">4、插件下载</div>
+			<div class="panel-body">
+				<a href="/#jquery-plugin" class="btn btn-sm btn-danger">点击前往插件下载页面</a>
+			</div>
+		</div>
+	</div>
+	<div id="footer" style="border-top:1px solid #ddd;padding:20px;margin-top:30px;">
+		<ul class="list-inline">
+			<li>&copy;云淡然</li>
+			<li>2013 - 2014</li>
+			<li>
+				<a href="/">前端静态资源首页</a>
+			</li>
+		</ul>
+	</div>
+	<script src="/js/jquery/1.11.0/jquery.min.js"></script>
+	<script src="/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+	<script src="/js/prettify/r298/prettify.min.js"></script>
+	<script src="latest.js"></script>
+	<script>
+	window.prettyPrint && prettyPrint();
+	var index = 1;
+	var isAlert = 0;
+	$("#button-3-1").click(function() {
+		$.notification("通知=>" + index, "内容" + rand());
+		index++
+	});
+	$("#button-3-2").click(function() {
+		if (!isAlert) {
+			isAlert = 1;
+			alert("已监听桌面通知事件，详细看控制台！")
+		}
+		$.notification({
+			title: "通知=>" + index,
+			body: "内容，单击我就可以也关闭通知哦！" + rand(),
+			ondisplay: function() {
+				console.log("ondisplay=>");
+				console.log(this)
+			},
+			onshow: function() {
+				console.log("onshow=>");
+				console.log(this)
+			},
+			onclick: function() {
+				console.log("onclick=>");
+				console.log(this);
+				this.close()
+			},
+			onclose: function() {
+				console.log("onclose=>");
+				console.log(this)
+			},
+			onerror: function() {
+				console.log("onerror=>");
+				console.log(this)
+			}
+		});
+		index++
+	});
+	$("#button-4-1").click(function() {
+		$.notification(null);
+		alert("已清除全部桌面通知")
+	});
+
+	function rand() {
+		return parseInt(Math.random() * 1000)
+	}
+	</script>
+</body>
+
+</html>

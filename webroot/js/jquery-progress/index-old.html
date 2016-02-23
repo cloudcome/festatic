@@ -1,0 +1,504 @@
+<!doctype html>
+
+<html lang="en">
+
+
+
+<head>
+
+	<meta charset="utf-8">
+
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+
+	<meta name="author" content="云淡然;http://ydr.me">
+
+
+
+	<title>jquery-progress.js demo - 前端静态资源</title>
+
+	<link rel="stylesheet" href="../../css/3/latest.min.css">
+
+
+
+	<style>
+
+	
+
+	</style>
+
+
+
+</head>
+
+
+
+<body style="padding:20px;">
+
+	<div class="hero">
+
+		<h1>jquery-progress.js demo</h1>
+
+		<p>作者：云淡然</p>
+
+		<p>兼容：ie9（含）+、chrome、firefox</p>
+
+	</div>
+
+
+
+	<div class="module">
+
+		<div class="module-header">1、插件特点</div>
+
+		<ol class="module-body">
+
+			<li>测试版。</li>
+
+			<li>进度条目前只有canvas。</li>
+
+			<li>进度指的是从0->1的进度，步进值默认为0.01（即1%）</li>
+
+			<li>进度时针方向，默认以顺时针递增、逆时针递减为准。</li>
+
+			<li>手动设置进度值，都会停止当前进度并清除跑进度。</li>
+
+		</ol>
+
+	</div>
+
+
+
+
+
+	<div class="module">
+
+		<div class="module-header">2、插件API</div>
+
+		<div class="module-body">
+
+			<pre>// 1、默认参数
+
+$.fn.progress.defaults = {
+
+	// 是否逆时针递增
+
+	// flase：顺时针递增，逆时针递减
+
+	// true：逆时针递增，顺时针递减
+
+	anticlockwiseAsc: false,
+
+	// 开始角度，以水平向右方向为0度，顺时针+，逆时针-
+
+	// 默认-90度为垂直向上方向
+
+	beginAngle: -90,
+
+	// 进度步进，为小于1的数
+
+	step: .01,
+
+	// 初始的进度
+
+	progress: 0,
+
+	// 运动进度的开始进度
+
+	begin: 0,
+
+	// 运动进度的结束进度
+
+	// 如果开始进度大于结束进度，则进度递减，否则递增
+
+	end: 1,
+
+	// 运动进度的进度时间
+
+	duration: 6000,
+
+	// 背景类型：arc（圆弧），sector（扇形）
+
+	bgType: "arc",
+
+	// 前景类型：arc（圆弧），sector（扇形）
+
+	fgType: "arc",
+
+	// 背景样式
+
+	bgStyle: {
+
+		// 线头：butt，round 和 square
+
+		lineCap: "butt",
+
+		// 线宽
+
+		lineWidth: 1,
+
+		// 轮廓颜色
+
+		strokeStyle: "#ccc",
+
+		// 填充颜色
+
+		fillStyle: "#ccc"
+
+	},
+
+	// 前景样式
+
+	fgStyle: {
+
+		// 线头：butt，round 和 square
+
+		lineCap: "butt",
+
+		// 线宽
+
+		lineWidth: 1,
+
+		// 轮廓颜色
+
+		strokeStyle: "#0595FC",
+
+		// 填充颜色
+
+		fillStyle: "#0595FC"
+
+	},
+
+	// 进度开始回调
+
+	onstart: function () {},
+
+	// 进度暂停回调
+
+	onpause: function () {},
+
+	// 进度继续回调
+
+	oncontinue: function () {},
+
+	// 进度结束回调
+
+	onstop: function () {},
+
+	// 进度回调
+
+	onprogress: function () {}
+
+};
+
+
+
+
+
+// 2、初始化
+
+$().progress({...});
+
+
+
+
+
+// 3、操作
+
+// 3.1、设置进度值
+
+$("#progress").progress(.5);
+
+
+
+// 3.2、跑进度
+
+$("#progress").progress("run", 开始进度, 结束进度, 进度时间);
+
+
+
+// 3.3、暂停跑进度
+
+$("#progress").progress("pause");
+
+
+
+// 3.4、继续跑进度
+
+$("#progress").progress("continue");
+
+</pre>
+
+		</div>
+
+	</div>
+
+
+
+
+
+	<div class="module">
+
+		<div class="module-header">3、插件演示</div>
+
+		<div class="module-body">
+
+			<p class="text-lead">3.1、canvas arc【顺时针递增，逆时针递减】</p>
+
+			<canvas id="progress-1" width="100" height="100">您的浏览器不支持canvas</canvas>
+
+			<p class="text-lead text-error text-center" style="width:200px;">
+
+				<b id="precent-1">0%</b>
+
+			</p>
+
+			<p class="text-lead text-info" id="info-1">状态</p>
+
+			<hr>
+
+			<button class="button-error" id="button-1">从0%-100%，步进0.001（0.1%），花费时间20秒</button>
+
+			<button class="button-error" id="button-11">从100%-30%，步进0.001（0.1%），花费时间20秒</button>
+
+			<hr>
+
+			<button class="button-info" id="button-2">暂停进度</button>
+
+			<button class="button-success" id="button-3">继续进度</button>
+
+			<button class="button-warning" id="button-4">进度到10%</button>
+
+			<button class="button" id="button-5">进度到50%</button>
+
+			<hr>
+
+			<p class="text-lead">3.2、canvas sector【逆时针递增，顺时针递减】</p>
+
+			<canvas id="progress-2" width="100" height="100">您的浏览器不支持canvas</canvas>
+
+			<p class="text-lead text-error text-center" style="width:200px;">
+
+				<b id="precent-2">0%</b>
+
+			</p>
+
+			<hr>
+
+			<button class="button-error" id="button-21">从0%-100%，步进0.01（1%），花费时间20秒</button>
+
+			<button class="button-error" id="button-211">从100%-30%，步进0.01（1%），花费时间20秒</button>
+
+			<hr>
+
+			<button class="button-info" id="button-22">暂停进度</button>
+
+			<button class="button-success" id="button-23">继续进度</button>
+
+			<button class="button-warning" id="button-24">进度到10%</button>
+
+			<button class="button" id="button-25">进度到50%</button>
+
+		</div>
+
+	</div>
+
+
+
+	<canvas id="canvas"></canvas>
+
+
+
+
+
+	<div class="module">
+
+		<div class="module-header">4、插件源码</div>
+
+		<div class="module-body">
+
+			<p>
+
+				<a href="/#jquery-progress">http://festatic.aliapp.com/#jquery-progress</a>
+
+			</p>
+
+		</div>
+
+	</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<script src="http://libs.baidu.com/jquery/1.10.2/jquery.min.js"></script>
+
+	<script src="latest.js?t=20131205"></script>
+
+	<script>
+
+	$.fn.progress.defaults.bgStyle.lineWidth = 20;
+
+	$.fn.progress.defaults.fgStyle.lineWidth = 20;
+
+	var $p = $("#progress-1");
+
+	var $c = $("#precent-1");
+
+	var $f = $("#info-1");
+
+	$p.progress({
+
+		step: 0.001,
+
+		onprogress: function(p) {
+
+			$c.html((p * 100).toFixed(1) + "%");
+
+			$f.html("进度中……");
+
+		},
+
+		onstart: function() {
+
+			$f.html("开始进度");
+
+		},
+
+		onstop: function() {
+
+			$f.html("结束进度");
+
+		},
+
+		onpause: function() {
+
+			$f.html("进度暂停");
+
+		},
+
+		oncontinue: function() {
+
+			$f.html("进度继续");
+
+		},
+
+	});
+
+	$("#button-1").click(function() {
+
+		$p.progress("run", 0, 1, 20000);
+
+	});
+
+	$("#button-11").click(function() {
+
+		$p.progress("run", 1, .3, 20000);
+
+	});
+
+	$("#button-2").click(function() {
+
+		$p.progress("pause");
+
+	});
+
+	$("#button-3").click(function() {
+
+		$p.progress("continue");
+
+	});
+
+	$("#button-4").click(function() {
+
+		$p.progress(.1);
+
+	});
+
+	$("#button-5").click(function() {
+
+		$p.progress(.5);
+
+	});
+
+	var $p2 = $("#progress-2");
+
+	var $c2 = $("#precent-2");
+
+	$p2.progress({
+
+		anticlockwiseAsc: true,
+
+		bgType: "sector",
+
+		fgType: "sector",
+
+		step: 0.01,
+
+		onprogress: function(p) {
+
+			$c2.html((p * 100).toFixed(0) + "%");
+
+		}
+
+	});
+
+	$("#button-21").click(function() {
+
+		$p2.progress("run", 0, 1, 20000);
+
+	});
+
+	$("#button-211").click(function() {
+
+		$p2.progress("run", 1, .3, 20000);
+
+	});
+
+	$("#button-22").click(function() {
+
+		$p2.progress("pause");
+
+	});
+
+	$("#button-23").click(function() {
+
+		$p2.progress("continue");
+
+	});
+
+	$("#button-24").click(function() {
+
+		$p2.progress(.1);
+
+	});
+
+	$("#button-25").click(function() {
+
+		$p2.progress(.5);
+
+	});
+
+	</script>
+
+
+
+</body>
+
+
+
+</html>
+
